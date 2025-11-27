@@ -7,12 +7,14 @@ import WhyChoose from "./WhyChoose";
 import ThingsYouGet from "./ThingsYouGet";
 import ContactRequest from "./ContactRequest";
 import GlobalLeadership from "./GlobalLeadership";
+import PlatformSection from "../Components/PlatformSection";
 
 const Home = () => {
   return (
     <div className="">
       <Banner />
       <WelcomeSection />
+      <PlatformSection />
       <VideoSection />
       <OurServices />
       <WhyChoose />

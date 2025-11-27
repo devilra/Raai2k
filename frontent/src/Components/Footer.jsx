@@ -7,9 +7,9 @@ export default function Footer() {
         {/* LEFT — LOGO + SHORT TEXT */}
         <div className="flex flex-col gap-5">
           <img
-            src="/logo.jpeg"
+            src="/logo.png"
             alt="logo"
-            className="h-16 w-56 rounded-[14px] shadow-md"
+            className="h-16 w-36 rounded-[14px] object-cover shadow-md"
           />
 
           <p className="text-sm leading-relaxed">

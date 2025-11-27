@@ -1,10 +1,45 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // useLocation ஐ இறக்குமதி செய்யவும்
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCall, IoClose } from "react-icons/io5";
 import { IoTime } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AnimatePresence, motion } from "framer-motion";
+
+// Active Link-க்கு ஒரு தனிப்பயன் component
+const ActiveLink = ({ to, children }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  // Active மற்றும் Hover நிலையில் உள்ள Border-க்கு பொதுவான Tailwind classes
+  const baseClasses =
+    "relative transition-colors duration-300 font-bold hover:text-blue-600";
+
+  // Active/Hover-க்கான Curved Bottom Line Component
+  const BorderLine = () => (
+    <motion.div
+      layoutId="active-nav-link" // Framer Motion மூலம் Smooth Transition கிடைக்கும்
+      className="absolute -bottom-2.5 left-0 right-0 h-[3px] bg-blue-600"
+      initial={{ borderRadius: 0 }}
+      animate={{ borderRadius: "0 0 10px 10px" }} // Bottom corners-க்கு Curve Shape
+      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+    />
+  );
+
+  return (
+    <Link to={to} className={baseClasses}>
+      {children}
+
+      {/* Active Link-க்கு மட்டும் Border Line */}
+      {isActive && <BorderLine />}
+
+      {/* Hover Effect-க்கு ஒரு தனிப்பட்ட Border Line (isActive-ஆக இல்லை என்றால் மட்டும்) */}
+      {!isActive && (
+        <div className="absolute -bottom-2.5 left-0 right-0 h-[3px] bg-blue-600 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100 rounded-b-lg opacity-0 group-hover:opacity-100" />
+      )}
+    </Link>
+  );
+};
 
 export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
@@ -23,9 +58,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // உங்கள் Link விவரங்கள்
+  const navItems = [
+    { name: "Home", path: "/" },
+    //{ name: "About", path: "/about" },
+    { name: "Service", path: "/service" },
+    //{ name: "Elements", path: "/elements" },
+    //{ name: "Contact", path: "/contact" },
+  ];
+
   return (
     <>
-      {/* Top Info Bar */}
+      {/* Top Info Bar (Without changes) */}
+      {/* ... (உங்கள் பழைய கோட்) ... */}
       <div className="w-full hidden md:hidden lg:block bg-[#2A3855] text-white py-5">
         <div className="flex max-w-6xl mx-auto items-center justify-between px-4 ">
           <div className="flex items-center gap-5">
@@ -53,9 +98,10 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
       {/* Main Navbar */}
       <div
-        className={`w-full bg-white  transition-all duration-300 z-50 ${
+        className={`w-full bg-white transition-all duration-300 z-50 ${
           isSticky
             ? "fixed top-0 shadow-md backdrop-blur-lg bg-white/70 backdrop-saturate-200 "
             : "relative"
@@ -64,23 +110,30 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-7">
           <div className="flex items-center gap-5">
             <div>
-              <img src="/logo.jpeg" className="h-12" />
+              <img
+                src="/logo.png" // இதை உங்கள் logo.png Path-க்கு மாற்றவும்
+                className="h-12 object-cover w-32 rounded-full"
+              />
             </div>
+            {/* Desktop Navigation Links */}
             <div className="hidden md:hidden lg:flex gap-8 text-[#2A3855] tracking-[1px] font-semibold text-lg">
-              <Link to="/">Home</Link>
-              <Link to="/pages">Pages</Link>
-              <Link to="/news">News</Link>
-              <Link to="/elements">Elements</Link>
-              <Link to="/contact">Contact</Link>
+              {/* ActiveLink Component-ஐப் பயன்படுத்துதல் */}
+              <nav className="flex gap-8 text-[#2A3855] tracking-[1px] font-semibold text-lg">
+                {navItems.map((item) => (
+                  <ActiveLink key={item.path} to={item.path}>
+                    {item.name}
+                  </ActiveLink>
+                ))}
+              </nav>
             </div>
           </div>
 
-          {/* Purchase Button */}
+          {/* Purchase Button (Without changes) */}
           <button className="border-2 hidden md:hidden lg:block font-bold border-[#223058] text-[#223058] px-6 py-1 rounded-full hover:bg-[#223058] hover:text-white transition">
             Purchase
           </button>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Menu Icon (Without changes) */}
           <div
             className="lg:hidden text-[#2A3855] text-3xl cursor-pointer"
             onClick={() => setOpenMenu(!openMenu)}
@@ -112,28 +165,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Slide Down Menu */}
+      {/* Mobile Slide Down Menu (Without changes) */}
+      {/* ... (உங்கள் பழைய கோட்) ... */}
       <AnimatePresence>
         {openMenu && (
           <motion.div
             initial={{ y: "-100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
-            //transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="fixed top-14 shadow-2xl rounded-bl-4xl rounded-br-4xl z-55  w-full h-[300px] bg-white/70 backdrop-blur-lg  px-6 py-8"
+            className="fixed top-14 shadow-2xl rounded-bl-4xl rounded-br-4xl z-55 w-full h-[300px] bg-white/70 backdrop-blur-lg px-6 py-8"
           >
-            {/* Top Row */}
-            {/* <div className="flex justify-between items-center mb-8">
-              <img src="/logo.jpeg" className="h-12" />
-              
-              <IoClose
-                className="text-4xl text-[#2A3855]"
-                onClick={() => setOpenMenu(false)}
-              />
-            </div> */}
-
-            {/* Mobile Menu Items */}
-
             <div className="flex flex-col gap-2 text-[#2A3855] font-semibold text-lg">
               <Link onClick={() => setOpenMenu(false)} to="/">
                 Home
@@ -151,8 +192,7 @@ export default function Navbar() {
                 Contact
               </Link>
             </div>
-            {/* Purchase Button Bottom */}
-            <div className="absolute bottom-5  left-0 w-full px-6">
+            <div className="absolute bottom-5 left-0 w-full px-6">
               <button className="w-full border-2 border-[#223058] text-[#223058] font-semibold py-3 rounded-full">
                 Purchase
               </button>
