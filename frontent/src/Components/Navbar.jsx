@@ -61,10 +61,10 @@ export default function Navbar() {
   // உங்கள் Link விவரங்கள்
   const navItems = [
     { name: "Home", path: "/" },
-    //{ name: "About", path: "/about" },
+    { name: "About", path: "/about" },
     { name: "Service", path: "/service" },
     //{ name: "Elements", path: "/elements" },
-    //{ name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
