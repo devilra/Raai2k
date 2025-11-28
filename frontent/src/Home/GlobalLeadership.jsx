@@ -51,7 +51,7 @@ export default function GlobalLeadership() {
         {leaders.map((leader, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow overflow-hidden text-center"
+            className="bg-white rounded-xl shadow hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden text-center"
           >
             {/* IMAGE */}
             <img
