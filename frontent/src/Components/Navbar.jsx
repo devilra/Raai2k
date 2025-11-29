@@ -111,8 +111,12 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <div>
               <img
-                src="/logo.png" // இதை உங்கள் logo.png Path-க்கு மாற்றவும்
-                className="h-12 object-cover w-32 rounded-full"
+                src="/logo.png"
+                // style={{
+                //   filter:
+                //     "invert(54%) sepia(94%) saturate(500%) hue-rotate(10deg) brightness(95%) contrast(90%)",
+                // }}
+                className=" object-cover filter invert brightness-100 saturate-0  rounded-full"
               />
             </div>
             {/* Desktop Navigation Links */}
@@ -179,15 +183,15 @@ export default function Navbar() {
               <Link onClick={() => setOpenMenu(false)} to="/">
                 Home
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/pages">
-                Pages
+              <Link onClick={() => setOpenMenu(false)} to="/about">
+                About
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/news">
-                News
+              <Link onClick={() => setOpenMenu(false)} to="/service">
+                Service
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/elements">
+              {/* <Link onClick={() => setOpenMenu(false)} to="/elements">
                 Elements
-              </Link>
+              </Link> */}
               <Link onClick={() => setOpenMenu(false)} to="/contact">
                 Contact
               </Link>

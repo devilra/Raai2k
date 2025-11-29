@@ -67,7 +67,7 @@ const PlatformSection = () => {
       icon: <FaPhp size={56} className="text-indigo-700" />,
     },
     {
-      pos: "top-[40%] right-[40%]",
+      pos: "top-[40%] right-[30%]",
       icon: <FaShopify size={56} className="text-green-600" />,
     },
 

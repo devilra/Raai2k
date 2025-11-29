@@ -1,75 +1,164 @@
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaLinkedin, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-[#1f2937] text-gray-300 pt-14 pb-6">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-        {/* LEFT — LOGO + SHORT TEXT */}
-        <div className="flex flex-col gap-5">
-          <img
-            src="/logo.png"
-            alt="logo"
-            className="h-16 w-36 rounded-[14px] object-cover shadow-md"
-          />
-
-          <p className="text-sm leading-relaxed">
-            RAai 2K-powered by{" "}
-            <span className="text-yellow-400 font-semibold">amigowebster</span>,
-            helps you build modern, scalable and creative digital experiences.
-            We focus on clean UI, performance and user-friendly design.
+    <footer className="bg-[#2d3b59] text-white pt-16">
+      {/* ================= TOP SECTION ================= */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Email Signup Box */}
+        <div className="bg-[#1f2a41] p-10 rounded-2xl shadow-lg">
+          <h2 className="text-3xl font-bold mb-2">Sign up for email alerts</h2>
+          <p className="text-gray-300 mb-6">
+            Stay current with our latest insights
           </p>
+
+          <form className="flex flex-col sm:flex-row gap-4">
+            <input
+              type="email"
+              placeholder="Enter Email Here"
+              required
+              className="flex-1 px-4 py-3 rounded-md bg-white text-gray-800 focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="bg-yellow-400 text-gray-900 font-semibold px-8 py-3 rounded-md hover:bg-yellow-500 transition"
+            >
+              Submit
+            </button>
+          </form>
         </div>
 
-        {/* MIDDLE — QUICK LINKS */}
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-          <ul className="flex flex-col gap-3 text-sm">
-            <li className="hover:text-white cursor-pointer">Home</li>
-            <li className="hover:text-white cursor-pointer">Services</li>
-            <li className="hover:text-white cursor-pointer">Pricing</li>
-            <li className="hover:text-white cursor-pointer">Contact</li>
-            <li className="hover:text-white cursor-pointer">About</li>
-          </ul>
-        </div>
+        {/* Right Links + Socials */}
+        <div className="flex justify-between gap-10">
+          {/* Internal Links */}
+          <div className="space-y-4">
+            <Link
+              to="/contact"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Contact Us
+            </Link>
 
-        {/* RIGHT — CONTACT INFO */}
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
+            <Link
+              to="/faq"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              FAQ
+            </Link>
 
-          <div className="flex items-center gap-3 mb-3">
-            <FaPhoneAlt className="text-yellow-400" />
-            <p>+91 98765 43210</p>
+            <Link
+              to="/privacy-policy"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              to="/terms"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Terms of Use
+            </Link>
+
+            <Link
+              to="/global-office"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Global Office
+            </Link>
+
+            <Link
+              to="/local-office"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Local Office
+            </Link>
           </div>
 
-          <div className="flex items-center gap-3 mb-3">
-            <FaEnvelope className="text-yellow-400" />
-            <p>support@raai2k.com</p>
-          </div>
+          {/* Social Icons */}
+          <div className="space-y-4">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
+                <FaLinkedin />
+              </div>
+              <span className="group-hover:text-yellow-300 transition">
+                Linkedin
+              </span>
+            </a>
 
-          <div className="flex items-start gap-3">
-            <FaMapMarkerAlt className="text-yellow-400 mt-1" />
-            <p>
-              #101, Tech Park,
-              <br />
-              Chennai, India
-            </p>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
+                <FaTwitter />
+              </div>
+              <span className="group-hover:text-yellow-300 transition">
+                Twitter
+              </span>
+            </a>
+
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
+                <FaFacebook />
+              </div>
+              <span className="group-hover:text-yellow-300 transition">
+                Facebook
+              </span>
+            </a>
+
+            <a
+              href="https://google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
+                <FaGoogle />
+              </div>
+              <span className="group-hover:text-yellow-300 transition">
+                Google+
+              </span>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* BOTTOM COPYRIGHT */}
-      <div className="mt-10 border-t border-gray-600 pt-4 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} RAaI 2K-Designed by
-        <a
-          href="https://amigowebster.com"
-          target="_blank"
-          className="text-yellow-400 font-semibold"
-        >
-          {" "}
-          amigowebster
-        </a>
-        . All Rights Reserved.
+      {/* ================= BOTTOM BAR ================= */}
+      <div className="mt-16 border-t border-gray-600 py-6">
+        <div className="max-w-7xl mx-auto px-6  text-gray-300 text-sm">
+          {/* Left Logo & Copyright */}
+          <div className="flex items-center justify-between gap-3 mb-4 md:mb-0">
+            <img
+              src="/logo.png"
+              alt="logo"
+              className="object-cover filter  brightness-100 saturate-0  rounded-full"
+            />
+            <span>© Copyright {new Date().getFullYear()} Raai2K Inc.</span>
+          </div>
+
+          {/* Right Credits */}
+          {/* <span className="hover:text-yellow-300 transition cursor-pointer">
+            Designed by Raai2K Team
+          </span> */}
+        </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
