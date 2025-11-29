@@ -27,22 +27,20 @@ const ContactPage = () => {
           {/* Melbourne */}
           <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:-translate-y-1">
             <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
-              Melbourne Office
+              Chennai
             </h3>
-            <p className="text-gray-600 leading-relaxed">
-              121 King Street, <br /> Melbourne 1200, <br /> Australia
-            </p>
+            <p className="text-gray-600 leading-relaxed">TamilNadu</p>
           </div>
 
           {/* Sydney */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:-translate-y-1">
+          {/* <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:-translate-y-1">
             <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
               Sydney Office
             </h3>
             <p className="text-gray-600 leading-relaxed">
               62 Collins Street West, <br /> Sydney 3000, <br /> Australia
             </p>
-          </div>
+          </div> */}
 
           {/* Social Icons */}
           <div className="bg-linear-to-br from-white to-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -72,7 +70,7 @@ const ContactPage = () => {
           <div className="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
             <iframe
               title="Google Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31597.54151194607!2d144.9347303!3d-37.8136278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772b26ef674e7b!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1701234567890!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497511.2310708575!2d79.87899949645977!3d13.04798594062866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1764400376747!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}
