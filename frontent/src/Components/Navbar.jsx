@@ -63,8 +63,10 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Service", path: "/service" },
+    { name: "Solutions", path: "/solution" },
     //{ name: "Elements", path: "/elements" },
     { name: "Contact", path: "/contact" },
+    { name: "FAQs", path: "/faq" },
   ];
 
   return (
@@ -76,9 +78,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <p className="flex gap-2 items-center font-bold">
               <FaLocationDot className="text-yellow-400" />
-              <span className="text-white text-[13px]">
-                1010 Avenue, New York, NY 10018 US.
-              </span>
+              <span className="text-white text-[13px]">Chennai, TamilNadu</span>
             </p>
             <a
               href="tel:2123865575"
@@ -89,12 +89,12 @@ export default function Navbar() {
             </a>
           </div>
           <div>
-            <p className="flex gap-2 items-center font-bold">
+            {/* <p className="flex gap-2 items-center font-bold">
               <IoTime className="text-yellow-400" />
               <span className="text-white text-[13px] ">
                 Mon-Sat: 8.00-18.00. Sunday CLOSED
               </span>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
@@ -133,9 +133,9 @@ export default function Navbar() {
           </div>
 
           {/* Purchase Button (Without changes) */}
-          <button className="border-2 hidden md:hidden lg:block font-bold border-[#223058] text-[#223058] px-6 py-1 rounded-full hover:bg-[#223058] hover:text-white transition">
+          {/* <button className="border-2 hidden md:hidden lg:block font-bold border-[#223058] text-[#223058] px-6 py-1 rounded-full hover:bg-[#223058] hover:text-white transition">
             Purchase
-          </button>
+          </button> */}
 
           {/* Mobile Menu Icon (Without changes) */}
           <div
@@ -189,11 +189,17 @@ export default function Navbar() {
               <Link onClick={() => setOpenMenu(false)} to="/service">
                 Service
               </Link>
+              <Link onClick={() => setOpenMenu(false)} to="/solution">
+                Solutions
+              </Link>
               {/* <Link onClick={() => setOpenMenu(false)} to="/elements">
                 Elements
               </Link> */}
               <Link onClick={() => setOpenMenu(false)} to="/contact">
                 Contact
+              </Link>
+              <Link onClick={() => setOpenMenu(false)} to="/faq">
+                FAQs
               </Link>
             </div>
             <div className="absolute bottom-5 left-0 w-full px-6">
