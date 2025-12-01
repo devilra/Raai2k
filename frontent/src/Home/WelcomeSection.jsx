@@ -1,28 +1,40 @@
 import { BiBarChartAlt2 } from "react-icons/bi";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { LuLightbulb } from "react-icons/lu";
-import { FiHeadphones } from "react-icons/fi";
+import { MdPayment } from "react-icons/md";
+import { GiReceiveMoney } from "react-icons/gi";
+import { TbShieldLock } from "react-icons/tb";
+import { PiCubeTransparentLight } from "react-icons/pi";
+import { AiOutlineLineChart } from "react-icons/ai";
 
 const features = [
   {
     icon: <BiBarChartAlt2 size={40} className="text-[#2A3855]" />,
-    title: "Business Consulting",
-    desc: "Solution for every business related problems, readily and skillfully.",
+    title: "Core Banking & Digital Banking Systems",
+    desc: "Core and digital banking systems engineered for secure, scalable, and modern financial operations.",
   },
   {
-    icon: <IoIosNotificationsOutline size={40} className="text-[#2A3855]" />,
-    title: "Risk Management",
-    desc: "Calculate every possible risk in your business, take control over them.",
+    icon: <MdPayment size={40} className="text-[#2A3855]" />,
+    title: "Payments & Wallets",
+    desc: "Seamless, secure payment rails and wallet systems built for real-time digital transactions.",
   },
   {
-    icon: <LuLightbulb size={40} className="text-[#2A3855]" />,
-    title: "Market Research",
-    desc: "Know the market before taking any step, reduce risks before you go.",
+    icon: <GiReceiveMoney size={40} className="text-[#2A3855]" />,
+    title: "Lending, Credit & Risk Systems",
+    desc: "Automated lending, credit decisioning, and risk systems built for accuracy, speed, and compliance.",
   },
   {
-    icon: <FiHeadphones size={40} className="text-[#2A3855]" />,
-    title: "Quality Services",
-    desc: "Experience unparalleled service, from beginning to final construction.",
+    icon: <TbShieldLock size={40} className="text-[#2A3855]" />,
+    title: "RegTech & Compliance Engineering",
+    desc: "RegTech-driven compliance systems that automate KYC, AML, and regulatory workflows with precision.",
+  },
+  {
+    icon: <PiCubeTransparentLight size={40} className="text-[#2A3855]" />,
+    title: "Blockchain & Distributed Ledger",
+    desc: "Secure and transparent blockchain solutions designed for trusted, tamper-proof digital transactions.",
+  },
+  {
+    icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
+    title: "Data Analytics, AI & Machine Learning",
+    desc: "Advanced analytics and AI/ML models that unlock insights, automate decisions, and drive business growth.",
   },
 ];
 
@@ -38,15 +50,18 @@ const WelcomeSection = () => {
           </h2>
           {/* Sub text */}
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-            Get expert consultancy and support with Elixir, an advisory firm
-            that stand by your side always.
+            Core banking, payments, lending, compliance (RegTech), blockchain
+            and AI/ML together form the foundation of a secure and scalable
+            fintech ecosystem. We design end-to-end architectures, automate
+            compliance, build lending & risk systems, and deliver intelligent
+            analytics to enhance decisions and reduce fraud.
           </p>
           {/* Center line */}
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-6"></div>
 
           {/* Features */}
 
-          <div className="mt-12 md:mt-16 lg:mt-24 flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-10 justify-between md:items-center items-center">
+          <div className="mt-12 md:mt-16 lg:mt-24 flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-10 justify-between md:items-center md:flex-wrap items-center">
             {features.map((item, index) => (
               <div
                 key={index}
@@ -61,7 +76,7 @@ const WelcomeSection = () => {
                   {item.title}
                 </h3>
                 {/* Description */}
-                <p className="text-gray-600 md:text-[13px] lg:text-lg text-center">
+                <p className="text-gray-600 md:text-[13px] lg:text-[15px] text-center">
                   {item.desc}
                 </p>
               </div>

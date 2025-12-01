@@ -1,5 +1,9 @@
 import React from "react";
 import { FaQuoteLeft } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaBolt } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { FaRocket } from "react-icons/fa";
 
 const CompanyOverview = () => {
   return (
@@ -27,51 +31,140 @@ const CompanyOverview = () => {
           </p>
 
           {/* QUOTE LINE */}
-          <div className="flex items-start gap-4 mb-10">
-            <FaQuoteLeft className="text-4xl text-gray-300 mt-1" />
+          <div className="flex items-start gap-2 mb-10">
+            <FaQuoteLeft size={18} className="text-4xl text-gray-300 mt-1" />
             <p className="text-xl font-semibold text-[#2A3855] leading-relaxed">
-              “We don’t just build software — we help founders turn concepts
-              into successful, scalable companies.”
+              We turn complex fintech ideas into scalable, secure, and
+              future-ready digital solutions.
             </p>
           </div>
 
           {/* TWO COLUMN PARAGRAPHS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-600 leading-relaxed text-[15.5px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-600 leading-relaxed text-[15.5px]">
             <p>
-              <span className="text-3xl font-bold text-[#2A3855]">W</span>e’re a
-              startup-centric IT consulting team helping founders move from
-              concept to product with clarity and speed. Whether you're building
-              an MVP, optimizing your tech stack, or preparing for scale, Raai2k
-              brings deep technical expertise, hands-on execution, and a
-              founder-friendly approach designed to remove confusion and
-              accelerate progress.
-              <br />
-              <br />
-              Our mission is simple: to help early-stage companies build
-              smarter, faster, and without unnecessary cost — while ensuring
-              every decision supports long-term growth and technical excellence.
+              <span className="text-3xl font-bold text-[#2A3855]">W</span>e are
+              a technology consulting firm helping organizations turn ideas into
+              robust, scalable, and efficient software systems.
+            </p>
+            <p className="py-2">
+              {" "}
+              We are specializing in fintech transformation. Our team brings
+              together deep experience in banking systems, digital payments,
+              regulatory compliance, blockchain, data security, and financial
+              product engineering.
+            </p>
+            <p className="py-2">
+              Whether you’re a startup launching a digital wallet or an
+              established bank modernizing legacy infrastructure, we partner
+              closely with you to design and deliver robust, future-ready
+              systems.
             </p>
 
             <p>
-              Raai2k’s engineering and strategy teams specialize in delivering
-              scalable software architecture, clean UI/UX, and cloud-first
-              infrastructure that grows with your business.
-              <br />
-              <br />
-              We work closely with founders to validate ideas, reduce
-              time-to-market, implement modern development standards, and ensure
-              your product is ready for customers, investors, and real-world
-              scale. Our structured process helps you avoid technical debt,
-              expensive rewrites, and unclear product direction.
-              <br />
-              <br />
-              From startups to emerging enterprises, Raai2k is dedicated to
-              building technology that performs, scales, and drives real
-              business outcomes.
+              Our team brings deep expertise in architecture, engineering,
+              cloud, DevOps, and product strategy—enabling you to innovate
+              quickly while reducing cost and risk.
+            </p>
+            <p>
+              We partner with startups, SMBs, and enterprises to modernize
+              legacy systems, launch digital products, optimize performance, and
+              achieve operational excellence.
             </p>
           </div>
         </div>
       </div>
+
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* TITLE */}
+          <h2 className="text-3xl md:text-4xl font-bold text-[#2A3855] text-center">
+            Our Approach
+          </h2>
+          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
+
+          {/* GRID SECTION */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* =================== 1. UNDERSTAND • ENGINEER • DELIVER =================== */}
+            <div className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
+                How We Work
+              </h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-green-500 mt-1" />
+                  Understand the business
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-green-500 mt-1" />
+                  Engineer the right solution
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-green-500 mt-1" />
+                  Deliver measurable outcomes
+                </li>
+              </ul>
+            </div>
+
+            {/* =================== 2. OUR MISSION =================== */}
+            <div className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
+                Our Mission
+              </h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-blue-500 mt-1" />
+                  Bridge technology and finance
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-blue-500 mt-1" />
+                  Deliver compliant, secure fintech solutions
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-blue-500 mt-1" />
+                  Accelerate time-to-market
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-blue-500 mt-1" />
+                  Enable sustainable growth
+                </li>
+              </ul>
+            </div>
+
+            {/* =================== 3. WE UNDERSTAND STARTUPS =================== */}
+            <div className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
+                We Understand Startups
+              </h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <FaBolt className="text-yellow-500 mt-1" />
+                  Move fast
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaCheckCircle className="text-gray-500 mt-1" />
+                  Keep costs predictable
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaLock className="text-red-500 mt-1" />
+                  Stay secure & compliant
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaRocket className="text-purple-500 mt-1" />
+                  Build only what matters for launch
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* BOTTOM STATEMENT */}
+          <div className="text-center mt-14 max-w-3xl mx-auto">
+            <p className="text-lg text-[#2A3855] font-medium leading-relaxed">
+              We become your extended tech partner - so you can focus on users,
+              funding, and growth while we handle the engineering.
+            </p>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };

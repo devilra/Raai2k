@@ -1,40 +1,40 @@
-import { LuBrainCircuit } from "react-icons/lu";
-import { LuMail } from "react-icons/lu";
-import { PiTargetBold } from "react-icons/pi";
-import { SlGlobeAlt } from "react-icons/sl";
-import { PiBankBold } from "react-icons/pi";
-import { IoStatsChartSharp } from "react-icons/io5";
+import { MdPayment } from "react-icons/md";
+import { GiReceiveMoney } from "react-icons/gi";
+import { RiBankCardLine } from "react-icons/ri";
+import { GiChart } from "react-icons/gi";
+import { HiOutlineLightBulb } from "react-icons/hi";
+import { LuLaptop } from "react-icons/lu";
 
 const items = [
   {
-    icon: <LuBrainCircuit size={38} className="text-[#2A3855]" />,
-    title: "Creative Support",
-    desc: "We transform brands, grow businesses, and tell brand and product stories in a most creative way.",
+    icon: <MdPayment size={38} className="text-[#2A3855]" />,
+    title: "Wallets & Payments",
+    desc: "UPI, cards, payment gateways, merchant APIs.",
   },
   {
-    icon: <LuMail size={38} className="text-[#2A3855]" />,
-    title: "Creating Experiences",
-    desc: "We cover a large range of creative platforms and digital projects with one purpose: to create experiences.",
+    icon: <GiReceiveMoney size={38} className="text-[#2A3855]" />,
+    title: "Lending & BNPL Apps",
+    desc: "Credit scoring, workflows, risk checks.",
   },
   {
-    icon: <PiTargetBold size={38} className="text-[#2A3855]" />,
-    title: "Product Consulting",
-    desc: "We guide you through the pipelines that generate new products with higher potential and lower risk.",
+    icon: <RiBankCardLine size={38} className="text-[#2A3855]" />,
+    title: "Neobanking MVPs",
+    desc: "Accounts, onboarding, transaction engines.",
   },
   {
-    icon: <SlGlobeAlt size={38} className="text-[#2A3855]" />,
-    title: "Business Boosting",
-    desc: "We provide energy-efficient and environmentally conservative solutions to our clients to boost their business.",
+    icon: <GiChart size={38} className="text-[#2A3855]" />,
+    title: "Investment & Wealth Apps",
+    desc: "Portfolio, orders, data feeds, analytics.",
   },
   {
-    icon: <PiBankBold size={38} className="text-[#2A3855]" />,
-    title: "Strategic Approach",
-    desc: "Based on solid strategic framework and relevant research, we create prototypes, not presentations.",
+    icon: <HiOutlineLightBulb size={38} className="text-[#2A3855]" />,
+    title: "Custom Fintech Products",
+    desc: "Any fintech idea. Any scale",
   },
   {
-    icon: <IoStatsChartSharp size={38} className="text-[#2A3855]" />,
-    title: "Logistic Consulting",
-    desc: "We work buy side and sell side to give our clients answers and focus hard on best opportunities.",
+    icon: <LuLaptop size={38} className="text-[#2A3855]" />,
+    title: "CTO-as-a-Service",
+    desc: "Architecture, tech decisions, roadmap, hiring",
   },
 ];
 

@@ -6,9 +6,14 @@ import {
   FaUserTie,
   FaLifeRing,
 } from "react-icons/fa";
-import { FaCreditCard, FaBuilding, FaChartLine } from "react-icons/fa";
-import { MdOutlinePayment, MdOutlineSecurity } from "react-icons/md";
+import { FaChartLine } from "react-icons/fa";
+import { FaChartPie } from "react-icons/fa";
+import { IoStatsChart } from "react-icons/io5";
+import { ImUserTie } from "react-icons/im";
+import { MdGavel } from "react-icons/md";
+import { RiToolsFill } from "react-icons/ri";
 import { GiBank } from "react-icons/gi";
+import { LiaArchwaySolid } from "react-icons/lia";
 
 export default function ServiceHome() {
   return (
@@ -100,34 +105,34 @@ export default function ServiceHome() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Fintech Product Development",
-                desc: "Highly secure, scalable fintech application development.",
-                icon: <FaCreditCard size={30} />,
+                title: "Fintech Product Strategy",
+                desc: "MVP scope, product roadmap, user flows, competitive insights.",
+                icon: <IoStatsChart size={30} />, // Strategy-focused icon
               },
               {
-                title: "Payments Engineering",
-                desc: "UPI, wallets, payouts, settlement systems & integrations.",
-                icon: <MdOutlinePayment size={30} />,
+                title: "Technology & Architecture",
+                desc: "Core banking, payments, lending stack, microservices, cloud architecture.",
+                icon: <LiaArchwaySolid size={30} />, // Tech architecture icon
               },
               {
-                title: "Core Banking Integrations",
-                desc: "Temenos, Mambu, Finacle, Oracle Flexcube & more.",
-                icon: <GiBank size={30} />,
+                title: "Compliance & Risk Advisory",
+                desc: "RBI, KYC/AML, digital lending, PCI-DSS, security frameworks.",
+                icon: <MdGavel size={30} />, // Perfect for legal & compliance
               },
               {
-                title: "AI & Automation for Fintech",
-                desc: "Fraud detection, KYC automation, risk scoring tools.",
-                icon: <FaRobot size={30} />,
+                title: "MVP Build & Engineering Delivery",
+                desc: "UX/UI, frontend, backend, DevOps, QA, production deployment.",
+                icon: <RiToolsFill size={30} />, // Engineering tools icon
               },
               {
-                title: "Cloud & DevSecOps for Finance",
-                desc: "Secure infra setup for high-risk finance environments.",
-                icon: <MdOutlineSecurity size={30} />,
+                title: "Fractional CTO",
+                desc: "Senior leadership for startups without full-time tech heads.",
+                icon: <ImUserTie size={30} />, // CTO / leadership icon
               },
               {
-                title: "RegTech & Compliance",
-                desc: "AML, KYC, PCI-DSS, SOC2 & RBI compliance automation.",
-                icon: <FaBuilding size={30} />,
+                title: "GTM & Growth",
+                desc: "Pricing, analytics, activation, retention, growth experiments",
+                icon: <FaChartPie size={30} />, // Growth / analytics icon
               },
             ].map((s, i) => (
               <div

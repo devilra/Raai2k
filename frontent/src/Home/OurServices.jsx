@@ -3,37 +3,50 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { IoChatbox } from "react-icons/io5";
 import { IoCall } from "react-icons/io5";
 import { TfiNewWindow } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
 const services = [
   {
     id: 1,
-    title: "Business Consulting",
-    desc: `As one of the world’s largest accountancy networks, elixir helps a diverse 
-    range of clients with a diverse range of needs. This is especially true of 
-    our Advisory Practice, which provides corporate finance and transaction 
-    services, business restructuring.`,
-    img: "/ourService/s1.jpg",
+    title: "Fintech Product Strategy",
+    desc: `MVP scope, product roadmap, user flows, competitive insights.`,
+    img: "/ourService/s4.jpg",
     reverse: false, // image left, text right
   },
   {
     id: 2,
-    title: "Tax Consulting",
-    desc: `Elixir serves clients across the country and around the world as they 
-    navigate an increasingly complex tax landscape. Our tax professionals draw 
-    on deep experience and industry-specific knowledge to deliver clients the 
-    insights and innovation they need.`,
-    img: "/ourService/s2.jpg",
+    title: "Technology & Architecture",
+    desc: `Core banking, payments, lending stack, microservices, cloud architecture.`,
+    img: "/ourService/s5.jpg",
     reverse: true, // image right, text left
   },
   {
     id: 3,
-    title: "Tax Consulting",
-    desc: `Elixir serves clients across the country and around the world as they 
-    navigate an increasingly complex tax landscape. Our tax professionals draw 
-    on deep experience and industry-specific knowledge to deliver clients the 
-    insights and innovation they need.`,
-    img: "/ourService/s3.jpg",
+    title: "Compliance & Risk Advisory",
+    desc: `RBI, KYC/AML, digital lending, PCI-DSS, security frameworks.`,
+    img: "/ourService/s6.jpg",
     reverse: false, // image right, text left
+  },
+  {
+    id: 4,
+    title: "MVP Build & Engineering Delivery",
+    desc: `UX/UI, frontend, backend, DevOps, QA, production deployment.`,
+    img: "/ourService/s7.jpg",
+    reverse: true, // image right, text left
+  },
+  {
+    id: 5,
+    title: "Fractional CTO",
+    desc: `Senior leadership for startups without full-time tech heads.`,
+    img: "/ourService/s8.webp",
+    reverse: false, // image right, text left
+  },
+  {
+    id: 6,
+    title: "GTM & Growth",
+    desc: `Pricing, analytics, activation, retention, growth experiments`,
+    img: "/ourService/s9.jpg",
+    reverse: true, // image right, text left
   },
 ];
 
@@ -66,7 +79,7 @@ const OurServices = () => {
   return (
     <div>
       <section className="w-full py-20 mt-14 bg-neutral-50">
-        <div className="max-w-6xl mx-auto px-5">
+        <div className="max-w-5xl mx-auto px-5">
           {/* Section Title */}
           <h2 className="text-center text-4xl md:text-5xl font-bold text-[#2A3855]">
             Our Services
@@ -82,7 +95,7 @@ const OurServices = () => {
                   item.reverse ? "lg:flex-row-reverse" : "lg:flex-row"
                 } gap-10 bg-white rounded-xl overflow-hidden`}
               >
-                <div className="w-full lg:w-1/2">
+                <div className="w-full lg:w-[400px]">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -96,9 +109,12 @@ const OurServices = () => {
                   <p className="text-gray-600 leading-relaxed mb-6">
                     {item.desc}
                   </p>
-                  <button className="flex items-center gap-2 text-[#2A3855] font-semibold hover:gap-3 transition-all duration-200">
+                  <Link
+                    to="/service"
+                    className="flex items-center gap-2 text-[#2A3855] font-semibold hover:gap-3 transition-all duration-200"
+                  >
                     Learn More <FaArrowRightLong />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

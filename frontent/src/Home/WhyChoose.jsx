@@ -5,18 +5,18 @@ import { MdCreateNewFolder } from "react-icons/md";
 const items = [
   {
     icon: <FaRegComments size={26} className="text-[#2A3855]" />,
-    title: "We Are Professional",
-    desc: "We resource, train, speak, mentor and encourage; marketplace leaders, business owners and career professionals to be effective in the workplace.",
+    //title: "We Are Professional",
+    desc: "Deep Domain Knowledge: Experienced in financial regulations, banking operations, and risk management",
   },
   {
     icon: <MdCreateNewFolder size={26} className="text-[#2A3855]" />,
-    title: "We Are Creative",
-    desc: "With so many factors to consider when deciding how to characterize your company, wouldn’t it be great to have a group of forward-thinking, well-informed individuals on board who know what they’re doing?",
+    // title: "We Are Creative",
+    desc: "Agile & Flexible Engagements: Choose from advisory, MVP build, or long-term tech partnership",
   },
   {
     icon: <GiSandsOfTime size={26} className="text-[#2A3855]" />,
-    title: "24/7 Great Support",
-    desc: "Design clever and compelling marketing strategies, improve product positioning, and drive conversion rates, Elixir is all time available to guide you.",
+    //title: "24/7 Great Support",
+    desc: "Proven Track Record: Delivered fintech systems for banks, startups, and regulated financial firms",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function WhyChooseElixir() {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-col lg:flex-row gap-12 md:gap-16 items-start">
         {/* Left Image */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-[400px]">
           <img
             src="/service/s1.jpg"
             className="rounded-xl shadow-md w-full object-cover"
@@ -50,9 +50,9 @@ export default function WhyChooseElixir() {
               <div>{item.icon}</div>
 
               <div>
-                <h3 className="text-xl font-bold text-[#2A3855] mb-2">
+                {/* <h3 className="text-xl font-bold text-[#2A3855] mb-2">
                   {item.title}
-                </h3>
+                </h3> */}
                 <p className="text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
             </div>
