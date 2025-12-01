@@ -4,6 +4,8 @@ import CompanyOverview from "./CompanyOverview";
 import StatsSection from "./StatsSection";
 import LeadershipSection from "./LeadershipSection";
 import CaseStudySection from "./CaseStudySection";
+import BlogsSection from "./BlogsSection";
+import ClientTestimonials from "./ClientTestimonials";
 
 const AboutPage = () => {
   return (
@@ -12,6 +14,8 @@ const AboutPage = () => {
       <CompanyOverview />
       <CaseStudySection />
       <StatsSection />
+      <BlogsSection />
+      <ClientTestimonials />
       {/* <LeadershipSection /> */}
     </div>
   );
