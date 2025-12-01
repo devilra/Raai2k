@@ -9,32 +9,32 @@ const features = [
   {
     icon: <BiBarChartAlt2 size={40} className="text-[#2A3855]" />,
     title: "Core Banking & Digital Banking Systems",
-    desc: "Core and digital banking systems engineered for secure, scalable, and modern financial operations.",
+    desc: "Secure and scalable digital banking systems built for modern financial operations.",
   },
   {
     icon: <MdPayment size={40} className="text-[#2A3855]" />,
     title: "Payments & Wallets",
-    desc: "Seamless, secure payment rails and wallet systems built for real-time digital transactions.",
+    desc: "Secure, real-time payment and wallet systems.",
   },
   {
     icon: <GiReceiveMoney size={40} className="text-[#2A3855]" />,
     title: "Lending, Credit & Risk Systems",
-    desc: "Automated lending, credit decisioning, and risk systems built for accuracy, speed, and compliance.",
+    desc: "Automated lending with fast, compliant risk checks.",
   },
   {
     icon: <TbShieldLock size={40} className="text-[#2A3855]" />,
     title: "RegTech & Compliance Engineering",
-    desc: "RegTech-driven compliance systems that automate KYC, AML, and regulatory workflows with precision.",
+    desc: "Automated KYC, AML, and compliance workflows.",
   },
   {
     icon: <PiCubeTransparentLight size={40} className="text-[#2A3855]" />,
     title: "Blockchain & Distributed Ledger",
-    desc: "Secure and transparent blockchain solutions designed for trusted, tamper-proof digital transactions.",
+    desc: "Secure, transparent, tamper-proof blockchain solutions.",
   },
   {
     icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
     title: "Data Analytics, AI & Machine Learning",
-    desc: "Advanced analytics and AI/ML models that unlock insights, automate decisions, and drive business growth.",
+    desc: "AI/ML analytics that unlock insights and automate decisions.",
   },
 ];
 
@@ -46,15 +46,12 @@ const WelcomeSection = () => {
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
             Welcome to the{" "}
-            <span className="text-orange-400 font-mono text-4xl">RAai2K</span>
+            <span className="text-orange-400  text-4xl">RAai2K</span>
           </h2>
           {/* Sub text */}
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-            Core banking, payments, lending, compliance (RegTech), blockchain
-            and AI/ML together form the foundation of a secure and scalable
-            fintech ecosystem. We design end-to-end architectures, automate
-            compliance, build lending & risk systems, and deliver intelligent
-            analytics to enhance decisions and reduce fraud.
+            Core banking, payments, lending, compliance, blockchain, and AI/ML
+            together power a secure and scalable modern fintech ecosystem.
           </p>
           {/* Center line */}
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-6"></div>

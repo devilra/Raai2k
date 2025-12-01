@@ -27,8 +27,7 @@ export default function WhyChooseElixir() {
       {/* Heading */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
-          Why Choose{" "}
-          <span className="text-orange-400 font-mono text-4xl">RAai2K</span>
+          Why Choose <span className="text-orange-400  text-4xl">RAai2K</span>
         </h2>
         <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3"></div>
       </div>
@@ -62,21 +61,6 @@ export default function WhyChooseElixir() {
       </div>
 
       {/* Bottom CTA Section */}
-      <div className="w-full flex justify-center mt-20 px-4">
-        <div className="max-w-5xl w-full bg-[#2A3855] text-white rounded-2xl shadow-xl px-8 py-10 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <h3 className="text-center text-xl md:text-2xl font-semibold leading-relaxed">
-            If you have any query related to investment... <br /> we are
-            available 24/7
-          </h3>
-
-          <Link
-            to="/contact"
-            className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </div>
     </section>
   );
 }
