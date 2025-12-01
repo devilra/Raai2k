@@ -88,7 +88,7 @@ const PlatformSection = () => {
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    pauseOnHover: false,
+    pauseOnHover: true,
 
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 4 } },

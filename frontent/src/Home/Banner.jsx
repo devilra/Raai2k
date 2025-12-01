@@ -7,20 +7,20 @@ import { Link } from "react-router-dom";
 const bannerData = [
   {
     id: 1,
-    title: "Helping Leaders",
-    desc: "We look forward to help you in taking your company to new height.",
+    // title: "Helping Leaders",
+    // desc: "We look forward to help you in taking your company to new height.",
     img: "/carosel/c1.jpg",
   },
   {
     id: 2,
-    title: "Business Growth",
-    desc: "Grow your business with our expert consulting and guidance.",
+    // title: "Business Growth",
+    // desc: "Grow your business with our expert consulting and guidance.",
     img: "/carosel/c2.jpg",
   },
   {
     id: 3,
-    title: "Creative Solutions",
-    desc: "We provide creative solutions tailored for your success.",
+    // title: "Creative Solutions",
+    // desc: "We provide creative solutions tailored for your success.",
     img: "/carosel/c3.jpg",
   },
 ];
@@ -29,7 +29,7 @@ const bannerData = [
 const NextArrow = ({ onClick }) => (
   <div
     onClick={onClick}
-    className="absolute  top-1/2 right-2 z-20 p-3 bg-white/70 backdrop-blur-lg rounded-full cursor-pointer shadow-md"
+    className="absolute hidden md:hidden lg:block top-1/2 right-2 z-20 p-3 bg-white/70 backdrop-blur-lg rounded-full cursor-pointer shadow-md"
   >
     <FaChevronRight className="text-[#2A3855] text-xl" />
   </div>
@@ -38,7 +38,7 @@ const NextArrow = ({ onClick }) => (
 const PrevArrow = ({ onClick }) => (
   <div
     onClick={onClick}
-    className="absolute top-1/2   left-2 z-20 p-3 bg-white/30 backdrop-blur-2xl rounded-full cursor-pointer shadow-md"
+    className="absolute top-1/2 hidden md:hidden lg:block  left-2 z-20 p-3 bg-white/30 backdrop-blur-2xl rounded-full cursor-pointer shadow-md"
   >
     <FaChevronLeft className="text-[#2A3855] text-xl" />
   </div>
@@ -66,20 +66,6 @@ const Banner = () => {
   };
 
   // அனிமேஷன் மாறுபாடுகள் (Variants)
-  const contentVariants = {
-    // ஸ்லைடு செயலில் இருக்கும்போது
-    active: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.7, delay: 0.1 }, // அனிமேஷன் வேகம்
-    },
-    // ஸ்லைடு செயலில் இல்லாதபோது (சும்மா இருக்கும்போது)
-    inactive: {
-      opacity: 0,
-      x: -60,
-      transition: { duration: 0.5 }, // இது ஸ்லைடு வெளியே போகும்போது
-    },
-  };
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -118,7 +104,7 @@ const Banner = () => {
                   {item.desc}
                 </p>
                 {/* Buttons */}
-                <div className="flex gap-5">
+                {/* <div className="flex gap-5">
                   <Link to="/read-more">
                     <button className="px-7 py-3 bg-[#2A3855] text-white rounded-md hover:bg-[#1d2a47] flex items-center gap-2">
                       Read more <FaChevronRight />
@@ -130,7 +116,7 @@ const Banner = () => {
                       Contact us <FaChevronRight />
                     </button>
                   </Link>
-                </div>
+                </div> */}
               </motion.div>
             </div>
           </div>

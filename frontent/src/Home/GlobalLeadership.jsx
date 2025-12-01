@@ -1,39 +1,21 @@
 const leaders = [
   {
-    name: "Reenal Scott",
-    role: "Advertising Consultant",
-    desc: "Reenal Scott is the Founder and CEO of Elixir, which he started from his dorm room in 2013 with 3 people only.",
-    img: "/global/r.jpg",
+    name: "Karthi Nat",
+    role: "Founder",
+    desc: `Fintech is changing faster than we could imagine — and we're here 
+    to bridge that gap. Our mission is to help teams build innovative products 
+    the right way: faster, safer, and with clarity. Most founders don’t fail 
+    because their idea is weak, but because the financial ecosystem is complex.`,
+    img: "/about/ceo.jpg", // Change path if required
   },
   {
-    name: "Lily Anderson",
-    role: "Activation Consultant",
-    desc: "Lily leads Elixir UK and oversees the company’s Customer Operations teams supporting millions of users.",
-    img: "/global/l.jpg",
-  },
-  {
-    name: "Thomas Anderson",
-    role: "Change Management Consultant",
-    desc: "As the VP of People, Thomas’s focus lies in the development and optimization of talent retention.",
-    img: "/global/t.jpg",
-  },
-  {
-    name: "Legartha Mantana",
-    role: "Brand Management Consultant",
-    desc: "As General Counsel of Elixir, Tony oversees global legal activities and policies across all aspects.",
-    img: "/global/le.jpg",
-  },
-  {
-    name: "John Snow",
-    role: "Business Analyst",
-    desc: "John has overseen the meteoric growth while protecting scaling its uniquely creative and culture.",
-    img: "/global/j.jpg",
-  },
-  {
-    name: "Ragner Lothbrok",
-    role: "Business Consultant",
-    desc: "Ragner, SVP of Engineering, oversees Elixir’s vast engineering organization which drives the core programming.",
-    img: "/global/ra.jpg",
+    name: "Senthil",
+    role: "Founder",
+    desc: `We help teams build future-proof solutions with reduced dependency 
+    and minimized risks. Through headless (omni-channel) implementations and 
+    deep OOTB/SAAS expertise, we deliver scalable systems at unmatched pricing 
+    — without middlemen or commission layers.`,
+    img: "/about/ceo.jpg", // Change path if required
   },
 ];
 
@@ -42,12 +24,17 @@ export default function GlobalLeadership() {
     <section className="w-full py-20 bg-white">
       {/* TITLE */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-[#2A3855]">Global leadership</h2>
-        <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3"></div>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
+          Global Leadership
+        </h2>
+
+        <div className="flex justify-center items-center gap-2 mt-3">
+          <span className="h-[3px] w-20 bg-[#2A3855] rounded-full"></span>
+        </div>
       </div>
 
       {/* GRID */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         {leaders.map((leader, index) => (
           <div
             key={index}
@@ -57,7 +44,7 @@ export default function GlobalLeadership() {
             <img
               src={leader.img}
               alt={leader.name}
-              className="w-full h-56 object-cover"
+              className="w-full h-64 object-cover"
             />
 
             {/* CONTENT */}
@@ -66,7 +53,7 @@ export default function GlobalLeadership() {
                 {leader.name}
               </h3>
 
-              <p className="text-sm text-gray-400  mb-3">{leader.role}</p>
+              <p className="text-sm text-gray-400 mb-3">{leader.role}</p>
 
               <p className="text-gray-600 leading-relaxed">{leader.desc}</p>
             </div>

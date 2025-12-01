@@ -21,8 +21,8 @@ const Home = () => {
       <WhyChoose />
       <ThingsYouGet />
       <PartnersComponent />
+      <GlobalLeadership />
       <ContactRequest />
-      {/* <GlobalLeadership /> */}
     </div>
   );
 };

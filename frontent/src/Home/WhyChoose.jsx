@@ -1,6 +1,7 @@
 import { FaRegComments } from "react-icons/fa6";
 import { GiSandsOfTime } from "react-icons/gi";
 import { MdCreateNewFolder } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -61,14 +62,20 @@ export default function WhyChooseElixir() {
       </div>
 
       {/* Bottom CTA Section */}
-      <div className="bg-[#2A3855] text-white mt-20 py-10 flex flex-col lg:flex-row px-5 justify-between items-center gap-5">
-        <h3 className="text-center text-xl md:text-2xl font-semibold">
-          If you have any query related investment... we are available 24/7
-        </h3>
+      <div className="w-full flex justify-center mt-20 px-4">
+        <div className="max-w-5xl w-full bg-[#2A3855] text-white rounded-2xl shadow-xl px-8 py-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <h3 className="text-center text-xl md:text-2xl font-semibold leading-relaxed">
+            If you have any query related to investment... <br /> we are
+            available 24/7
+          </h3>
 
-        <button className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition">
-          Contact Us
-        </button>
+          <Link
+            to="/contact"
+            className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition"
+          >
+            Contact Us
+          </Link>
+        </div>
       </div>
     </section>
   );

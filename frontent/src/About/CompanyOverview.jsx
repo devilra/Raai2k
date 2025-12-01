@@ -5,6 +5,9 @@ import { FaBolt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { FaRocket } from "react-icons/fa";
 
+const iconSize =
+  window.innerWidth < 480 ? 38 : window.innerWidth < 768 ? 28 : 26;
+
 const CompanyOverview = () => {
   return (
     <section className="py-20 bg-gray-50">
@@ -32,7 +35,7 @@ const CompanyOverview = () => {
 
           {/* QUOTE LINE */}
           <div className="flex items-start gap-2 mb-10">
-            <FaQuoteLeft size={18} className="text-4xl text-gray-300 mt-1" />
+            <FaQuoteLeft size={iconSize} className="text-4xl text-gray-300 " />
             <p className="text-xl font-semibold text-[#2A3855] leading-relaxed">
               We turn complex fintech ideas into scalable, secure, and
               future-ready digital solutions.

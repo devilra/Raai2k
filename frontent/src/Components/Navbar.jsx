@@ -202,11 +202,11 @@ export default function Navbar() {
                 FAQs
               </Link>
             </div>
-            <div className="absolute bottom-5 left-0 w-full px-6">
+            {/* <div className="absolute bottom-5 left-0 w-full px-6">
               <button className="w-full border-2 border-[#223058] text-[#223058] font-semibold py-3 rounded-full">
                 Purchase
               </button>
-            </div>
+            </div> */}
           </motion.div>
         )}
       </AnimatePresence>

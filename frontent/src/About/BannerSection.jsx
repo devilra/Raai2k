@@ -22,42 +22,81 @@ const CeoMessage = () => {
       </div>
 
       {/* 🔶 CEO MESSAGE SECTION */}
-      <div className="max-w-6xl mx-auto px-6  mt-10">
-        <div className="bg-white shadow-md rounded-2xl flex flex-col md:flex-col md:items-center lg:items-start lg:flex   lg:flex-row  lg:gap-5">
+      <div className="max-w-6xl mx-auto px-6 mt-16 space-y-14">
+        {/* ======= FOUNDER 1 ======= */}
+        <div className="bg-white shadow-md rounded-2xl flex flex-col lg:flex-row gap-5">
           {/* LEFT IMAGE */}
-          <div className="">
+          <div className="w-full lg:w-1/2">
             <img
               src="/about/ceo.jpg"
-              alt="CEO"
-              className="h-[400px] w-full lg:w-[700px] md:h-[300px] lg:h-[450px] overflow-hidden md:rounded  object-cover"
+              alt="Founder"
+              className="h-[400px] w-full object-cover rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
             />
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className="p-10 flex flex-col justify-center">
-            <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
-              Message From CEO
-            </h3>
-
-            <p className="text-gray-600 leading-relaxed mb-6">
-              At RAai2K, our mission is to empower businesses by solving their
-              most complex challenges through innovation, creativity, and
-              technology.
-              <br />
-              <br />
-              We believe in strong partnerships, transparency, and delivering
-              solutions that bring long-term value. Our team blends passion,
-              skill, and dedication to help companies achieve success in a
-              rapidly evolving digital world.
+          <div className="p-10 flex flex-col justify-center lg:w-1/2">
+            <h3 className="text-2xl font-bold text-[#2A3855] ">KARTHI NAT</h3>
+            <p className="text-sm text-gray-600 font-medium mb-5 px-3">
+              (Founder)
             </p>
 
-            {/* SIGNATURE */}
-            <div className="mt-6">
-              <img src="/signature.png" alt="sign" className="h-10 mb-2" />
+            <p className="text-gray-600 leading-relaxed mb-6">
+              Fintech is changing faster than we could imagine—and we're exactly
+              here to bridge that gap. Our mission is to help teams build
+              innovative products the right way: faster, safer, and with
+              absolute clarity.
+              <br />
+              <br />
+              Most founders don't fail because their idea is weak, but because
+              the financial ecosystem is complex. While startups move fast,
+              fintech demands precision — and that’s where we come in.
+            </p>
+
+            {/* SIGNATURE AREA (Optional) */}
+            <div className="mt-4">
               <h4 className="text-lg font-semibold text-[#2A3855]">
-                RENAL SCOTT
+                KARTHI NAT
               </h4>
-              <p className="text-sm text-gray-500">CEO, RAai2K</p>
+              <p className="text-sm text-gray-500">Founder, RAai2K</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ======= FOUNDER 2 ======= */}
+        <div className="bg-white shadow-md rounded-2xl flex flex-col lg:flex-row-reverse gap-5">
+          {/* RIGHT IMAGE */}
+          <div className="w-full lg:w-1/2">
+            <img
+              src="/about/ceo.jpg"
+              alt="Founder"
+              className="h-[400px] w-full object-cover rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none"
+            />
+          </div>
+
+          {/* LEFT CONTENT */}
+          <div className="p-10 flex flex-col justify-center lg:w-1/2">
+            <h3 className="text-2xl font-bold text-[#2A3855]  ">SENTHIL</h3>
+            <p className="text-sm text-gray-600 font-medium mb-5 px-3">
+              (Founder)
+            </p>
+
+            <p className="text-gray-600 leading-relaxed mb-6">
+              We help teams build future-proof solutions with reduced dependency
+              and minimized risks. Through our Headless (Omni-channel)
+              implementations and deep OOTB/SAAS expertise, we deliver scalable
+              and modern systems.
+              <br />
+              <br />
+              Our pricing is unmatched — almost 1/3rd of any typical SI —
+              because we operate without middlemen or commission structures.
+              Every benefit is passed fully to the client.
+            </p>
+
+            {/* SIGNATURE AREA (Optional) */}
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold text-[#2A3855]">SENTHIL</h4>
+              <p className="text-sm text-gray-500">Founder, RAai2K</p>
             </div>
           </div>
         </div>

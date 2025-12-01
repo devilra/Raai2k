@@ -77,7 +77,7 @@ const CaseStudySection = () => {
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-[#2A3855]">
-                  {item.title} <span className="text-yellow-500">*</span>
+                  {item.title}
                 </h3>
               </div>
 
