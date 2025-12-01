@@ -1,7 +1,7 @@
 import React from "react";
-import { FaAws } from "react-icons/fa";
-import { SiAdobe, SiSap, SiAngular, SiMulesoft } from "react-icons/si";
+import Slider from "react-slick";
 import {
+  FaAws,
   FaSalesforce,
   FaJava,
   FaJs,
@@ -9,125 +9,122 @@ import {
   FaPhp,
   FaShopify,
   FaReact,
+  FaPython,
+  FaWordpress,
 } from "react-icons/fa";
-import { IoLogoAndroid } from "react-icons/io";
-import { IoLogoTableau } from "react-icons/io5";
+import {
+  SiAdobe,
+  SiSap,
+  SiAngular,
+  SiMulesoft,
+  SiBlockchaindotcom,
+} from "react-icons/si";
+import { IoLogoAndroid, IoLogoTableau } from "react-icons/io5";
 import { VscAzure } from "react-icons/vsc";
-import { FaPython, FaWordpress } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+
+const tools = [
+  { name: "AWS", icon: <FaAws size={50} className="text-gray-700" /> },
+  { name: "Adobe", icon: <SiAdobe size={50} className="text-red-500" /> },
+  {
+    name: "Salesforce",
+    icon: <FaSalesforce size={50} className="text-sky-500" />,
+  },
+  { name: "SAP", icon: <SiSap size={50} className="text-blue-600" /> },
+  {
+    name: "Tableau",
+    icon: <IoLogoTableau size={50} className="text-orange-500" />,
+  },
+  { name: "Azure", icon: <VscAzure size={50} className="text-blue-500" /> },
+  { name: "Java", icon: <FaJava size={50} className="text-orange-700" /> },
+  {
+    name: "Android",
+    icon: <IoLogoAndroid size={50} className="text-green-500" />,
+  },
+  { name: "JavaScript", icon: <FaJs size={50} className="text-yellow-500" /> },
+  { name: "Node.js", icon: <FaNode size={50} className="text-green-600" /> },
+  { name: "PHP", icon: <FaPhp size={50} className="text-indigo-700" /> },
+  { name: "Shopify", icon: <FaShopify size={50} className="text-green-600" /> },
+  { name: "React", icon: <FaReact size={50} className="text-blue-400" /> },
+  { name: "Angular", icon: <SiAngular size={50} className="text-red-600" /> },
+  { name: "Mulesoft", icon: <SiMulesoft size={50} className="text-sky-700" /> },
+  { name: "Python", icon: <FaPython size={50} className="text-blue-400" /> },
+  {
+    name: "WordPress",
+    icon: <FaWordpress size={50} className="text-blue-400" />,
+  },
+  {
+    name: "Blockchain",
+    icon: <SiBlockchaindotcom size={50} className="text-teal-600" />,
+  },
+];
+
+const NextArrow = ({ onClick }) => (
+  <div
+    className="absolute hidden md:hidden lg:block -right-3 top-1/2 -translate-y-1/2 z-20 bg-white p-3 rounded-full shadow-md cursor-pointer"
+    onClick={onClick}
+  >
+    <FaChevronRight className="text-[#2A3855]" />
+  </div>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute hidden md:hidden lg:block left-0 top-1/2 -translate-y-1/2 z-20 bg-white p-3 rounded-full shadow-md cursor-pointer"
+    onClick={onClick}
+  >
+    <FaChevronLeft className="text-[#2A3855]" />
+  </div>
+);
 
 const PlatformSection = () => {
-  const tech = [
-    {
-      pos: "top-[10%] left-1/2 -translate-x-1/2",
-      icon: <FaAws size={56} className="text-gray-700" />,
-    },
-    {
-      pos: "top-[25%] left-[15%]",
-      icon: <SiAdobe size={56} className="text-red-500" />,
-    },
-    {
-      pos: "top-[25%] right-[15%]",
-      icon: <FaSalesforce size={56} className="text-sky-500" />,
-    },
+  const settings = {
+    infinite: true,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    speed: 600,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    pauseOnHover: false,
 
-    {
-      pos: "top-1/2 left-[5%] -translate-y-1/2",
-      icon: <SiSap size={56} className="text-blue-600" />,
-    },
-    {
-      pos: "top-1/2 right-[5%] -translate-y-1/2",
-      icon: <IoLogoTableau size={56} className="text-orange-500" />,
-    },
-
-    {
-      pos: "bottom-[25%] left-[15%]",
-      icon: <VscAzure size={56} className="text-blue-500" />,
-    },
-    {
-      pos: "bottom-[25%] right-[15%]",
-      icon: <FaJava size={56} className="text-orange-700" />,
-    },
-
-    {
-      pos: "bottom-[10%] left-1/2 -translate-x-1/2",
-      icon: <IoLogoAndroid size={56} className="text-green-500" />,
-    },
-
-    {
-      pos: "top-[55%] left-[25%]",
-      icon: <FaJs size={56} className="text-yellow-500" />,
-    },
-    {
-      pos: "top-[55%] right-[25%]",
-      icon: <FaNode size={56} className="text-green-600" />,
-    },
-
-    {
-      pos: "top-[40%] left-[40%]",
-      icon: <FaPhp size={56} className="text-indigo-700" />,
-    },
-    {
-      pos: "top-[40%] right-[30%]",
-      icon: <FaShopify size={56} className="text-green-600" />,
-    },
-
-    {
-      pos: "bottom-[70%] left-[30%]",
-      icon: <FaReact size={56} className="text-blue-400" />,
-    },
-    {
-      pos: "top-[10%] right-[30%]",
-      icon: <SiAngular size={56} className="text-red-600" />,
-    },
-
-    {
-      pos: "bottom-[18%] left-[30%]",
-      icon: <SiMulesoft size={56} className="text-sky-700" />,
-    },
-    {
-      pos: "bottom-[18%] right-[30%]",
-      icon: <FaPython size={56} className="text-blue-400" />,
-    },
-    {
-      pos: "bottom-[5%] left-[10%]",
-      icon: <FaWordpress size={56} className="text-blue-400" />,
-    },
-
-    {
-      pos: "bottom-[3%] right-1/4 translate-x-1/2",
-      icon: (
-        <img
-          src="/ibm.webp"
-          alt="ibm"
-          className="h-10 w-auto rounded-full object-contain"
-        />
-      ),
-    },
-  ];
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 4 } },
+      { breakpoint: 768, settings: { slidesToShow: 3 } },
+      { breakpoint: 480, settings: { slidesToShow: 2 } },
+    ],
+  };
 
   return (
-    <section className="w-full flex justify-center py-20 bg-white">
-      <div className="relative w-[1100px] h-[500px] border-4 border-blue-400/15 rounded-3xl flex justify-center items-center">
-        {/* 🖼 CENTER IMAGE */}
-        {/* <img
-          src="/video-banner.jpg"
-          alt="Tech"
-          className="w-[650px] h-[380px] rounded-3xl object-cover shadow-lg"
-        /> */}
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl  mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center text-[#2A3855] mb-10">
+          Platform Tools
+        </h2>
 
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-sm font-semibold px-6 py-1 rounded-full shadow-md">
-          PLATFORM TOOLS
+        <div className="relative">
+          <Slider {...settings}>
+            {tools.map((item, i) => (
+              <div key={i} className="px-3 mb-5">
+                <div
+                  className="
+                  bg-white border border-gray-200 shadow-md rounded-2xl 
+                  flex flex-col items-center justify-center gap-3
+                  py-8 hover:shadow-xl hover:-translate-y-2 
+                  transition-all duration-300 cursor-pointer
+                "
+                >
+                  {item.icon}
+                  <p className="text-[#2A3855] font-semibold text-sm">
+                    {item.name}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
-
-        {/* 🎯 ABSOLUTE ICONS AROUND BORDER */}
-        {tech.map((item, i) => (
-          <div
-            key={i}
-            className={`absolute ${item.pos} hover:scale-125 transition-all cursor-pointer`}
-          >
-            {item.icon}
-          </div>
-        ))}
       </div>
     </section>
   );

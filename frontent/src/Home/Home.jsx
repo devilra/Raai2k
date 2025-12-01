@@ -8,6 +8,7 @@ import ThingsYouGet from "./ThingsYouGet";
 import ContactRequest from "./ContactRequest";
 import GlobalLeadership from "./GlobalLeadership";
 import PlatformSection from "../Components/PlatformSection";
+import PartnersComponent from "../Components/PartnersComponent";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <OurServices />
       <WhyChoose />
       <ThingsYouGet />
+      <PartnersComponent />
       <ContactRequest />
       {/* <GlobalLeadership /> */}
     </div>
