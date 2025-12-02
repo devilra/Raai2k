@@ -13,7 +13,7 @@ const AboutPage = () => {
       <CeoMessage />
       <CompanyOverview />
       {/* <CaseStudySection /> */}
-      <StatsSection />
+      {/* <StatsSection /> */}
       {/* <BlogsSection /> */}
       {/* <ClientTestimonials /> */}
       {/* <LeadershipSection /> */}
