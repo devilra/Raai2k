@@ -28,9 +28,9 @@ const CeoMessage = () => {
           {/* LEFT IMAGE */}
           <div className="w-full lg:w-1/2">
             <img
-              src="/about/ceo.jpg"
+              src="/global/f.jpg"
               alt="Founder"
-              className="h-[400px] w-full object-cover rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
+              className="h-[400px] w-full object-cover object-[0%_8%] rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
             />
           </div>
 
@@ -68,9 +68,9 @@ const CeoMessage = () => {
           {/* RIGHT IMAGE */}
           <div className="w-full lg:w-1/2">
             <img
-              src="/about/ceo.jpg"
+              src="/global/m.jpg"
               alt="Founder"
-              className="h-[400px] w-full object-cover rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none"
+              className="h-[400px] w-full object-cover object-[0%_8%] rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none"
             />
           </div>
 

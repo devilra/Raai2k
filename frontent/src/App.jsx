@@ -9,6 +9,8 @@ import ContactPage from "./Contact/ContactPage";
 import Solutions from "./Solutions/Solutions";
 import Faq from "./FAQ/Faq";
 import ScrollToTop from "./Components/ScrollToTop";
+import CaseStudies from "./CaseStudies/CaseStudies";
+import Blogs from "./Blogs/Blogs";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/service" element={<ServicePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/solution" element={<Solutions />} />
+        <Route path="/case" element={<CaseStudies />} />
+        <Route path="/blog" element={<Blogs />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/faq" element={<Faq />} />
       </Routes>

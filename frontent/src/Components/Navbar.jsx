@@ -64,8 +64,11 @@ export default function Navbar() {
     { name: "About", path: "/about" },
     { name: "Service", path: "/service" },
     { name: "Solutions", path: "/solution" },
+    { name: "Case Studies", path: "/case" },
+    { name: "Blogs", path: "/blog" },
     //{ name: "Elements", path: "/elements" },
     { name: "Contact", path: "/contact" },
+
     { name: "FAQs", path: "/faq" },
   ];
 
@@ -120,9 +123,9 @@ export default function Navbar() {
               />
             </div>
             {/* Desktop Navigation Links */}
-            <div className="hidden md:hidden lg:flex gap-8 text-[#2A3855] tracking-[1px] font-semibold text-lg">
+            <div className="hidden md:hidden lg:flex gap-8 text-[#2A3855] tracking-[1px] font-semibold ">
               {/* ActiveLink Component-ஐப் பயன்படுத்துதல் */}
-              <nav className="flex gap-8 text-[#2A3855] tracking-[1px] font-semibold text-lg">
+              <nav className="flex gap-8 text-[#2A3855] tracking-[1px] font-semibold text-[15px]">
                 {navItems.map((item) => (
                   <ActiveLink key={item.path} to={item.path}>
                     {item.name}
@@ -177,28 +180,67 @@ export default function Navbar() {
             initial={{ y: "-100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
-            className="fixed top-14 shadow-2xl rounded-bl-4xl rounded-br-4xl z-55 w-full h-[300px] bg-white/70 backdrop-blur-lg px-6 py-8"
+            className="fixed top-16 shadow-2xl rounded-bl-4xl rounded-br-4xl z-50 w-full h-[400px] bg-white/70 backdrop-blur-lg  py-8"
           >
-            <div className="flex flex-col gap-2 text-[#2A3855] font-semibold text-lg">
-              <Link onClick={() => setOpenMenu(false)} to="/">
+            <div className="flex flex-col items-center gap-2 text-[#2A3855] font-semibold text-md md:text-lg">
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/"
+              >
                 Home
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/about">
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/about"
+              >
                 About
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/service">
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/service"
+              >
                 Service
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/solution">
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/solution"
+              >
                 Solutions
+              </Link>
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/case"
+              >
+                Case Studies
+              </Link>
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/blog"
+              >
+                Blogs
               </Link>
               {/* <Link onClick={() => setOpenMenu(false)} to="/elements">
                 Elements
               </Link> */}
-              <Link onClick={() => setOpenMenu(false)} to="/contact">
+              <Link
+                className=" w-full text-center py-1 border-b border-gray-200"
+                onClick={() => setOpenMenu(false)}
+                to="/contact"
+              >
                 Contact
               </Link>
-              <Link onClick={() => setOpenMenu(false)} to="/faq">
+
+              <Link
+                className=" w-full text-center py-1 "
+                onClick={() => setOpenMenu(false)}
+                to="/faq"
+              >
                 FAQs
               </Link>
             </div>
