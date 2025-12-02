@@ -5,55 +5,65 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { FaShieldAlt } from "react-icons/fa";
 import { MdShowChart } from "react-icons/md";
 import { SiBlockchaindotcom } from "react-icons/si";
+import { LuMonitorCog } from "react-icons/lu";
 
+// Icon-ன் வண்ணத்தை data-ல் வைத்திருக்கிறேன்
 const industries = [
   {
-    icon: <PiBankBold size={40} className="text-blue-600" />,
+    id: 1,
+    icon: <PiBankBold size={35} className="text-blue-600" />,
+    color: "text-blue-600",
     title: "Retail Banking & Neobanks",
-    bg: "from-blue-50 to-white",
     desc: "Next-gen digital banking platforms with seamless onboarding, secure transactions, and modern UX.",
   },
   {
-    icon: <MdPayments size={40} className="text-purple-600" />,
+    id: 2,
+    icon: <MdPayments size={35} className="text-purple-600" />,
+    color: "text-purple-600",
     title: "Payments & Digital Wallets",
-    bg: "from-purple-50 to-white",
     desc: "High-speed, compliant payment and wallet systems built for reliability and instant settlements.",
   },
   {
-    icon: <GiReceiveMoney size={40} className="text-green-600" />,
+    id: 3,
+    icon: <GiReceiveMoney size={35} className="text-green-600" />,
+    color: "text-green-600",
     title: "Peer-to-Peer Lending & Microlending",
-    bg: "from-green-50 to-white",
     desc: "Automated credit workflows, risk checks, scoring engines, and lending lifecycle management.",
   },
   {
-    icon: <FaShieldAlt size={40} className="text-orange-600" />,
+    id: 4,
+    icon: <FaShieldAlt size={35} className="text-orange-600" />,
+    color: "text-orange-600",
     title: "Insurtech",
-    bg: "from-orange-100 to-white",
     desc: "Digital insurance platforms powered by claims automation, risk modeling, and customer analytics.",
   },
   {
-    icon: <MdShowChart size={40} className="text-yellow-600" />,
+    id: 5,
+    icon: <MdShowChart size={35} className="text-yellow-600" />,
+    color: "text-yellow-600",
     title: "Wealthtech & Robo-Advisory",
-    bg: "from-yellow-50 to-white",
     desc: "Investment engines with portfolios, market data, advisory automation, and seamless user experiences.",
   },
   {
-    icon: <SiBlockchaindotcom size={40} className="text-teal-600" />,
+    id: 6,
+    icon: <SiBlockchaindotcom size={35} className="text-teal-600" />,
+    color: "text-teal-600",
     title: "Cryptocurrency & Digital Assets",
-    bg: "from-teal-50 to-white",
     desc: "Blockchain-backed asset platforms with secure custody, tokenization, and compliant digital transactions.",
   },
   {
-    icon: <FaShieldAlt size={40} className="text-red-600" />,
+    id: 7,
+    icon: <LuMonitorCog size={35} className="text-red-600" />,
+    color: "text-red-600",
     title: "RegTech & Compliance Firms",
-    bg: "from-red-50 to-white",
     desc: "KYC, AML, and regulatory workflow automation with advanced monitoring and reporting systems.",
   },
 ];
 
 const IndustriesWeServe = () => {
   return (
-    <section className="py-24 bg-gray-50">
+    // Tailwind Gradient Background சேர்க்கப்பட்டுள்ளது
+    <section className="py-24 bg-linear-to-br from-gray-100 to-gray-200">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A3855]">
@@ -64,34 +74,41 @@ const IndustriesWeServe = () => {
           <span className="h-[3px] w-20 bg-[#2A3855] rounded-full"></span>
         </div>
 
-        {/* Unique Zig-Zag Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Outline Grid with Numbers (3 columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {industries.map((item, index) => (
             <div
-              key={index}
+              key={item.id}
               className={`
-                p-8 rounded-2xl shadow-md hover:shadow-2xl transition 
-                bg-linear-to-br ${item.bg} border border-gray-200
-                transform hover:-translate-y-2 duration-300
+                p-6 rounded-xl border border-gray-300 shadow-xl transition duration-300 bg-white
+                hover:shadow-2xl hover:border-red-500 transform hover:-translate-y-1
               `}
             >
-              {/* Icon Section */}
-              <div className="p-4 bg-white rounded-xl shadow mb-5 w-fit">
-                {item.icon}
+              <div className="flex items-center gap-4 mb-4">
+                {/* 1. Numbered Icon Container */}
+                <div
+                  className={`shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 ${item.color} border-gray-300`}
+                >
+                  <span className={`text-lg font-bold ${item.color}`}>
+                    {index + 1}
+                  </span>
+                </div>
+
+                {/* 2. Title */}
+                <h3 className="text-xl font-extrabold text-[#2A3855]">
+                  {item.title}
+                </h3>
               </div>
 
-              {/* Title */}
-              <h3 className="text-xl font-semibold text-[#2A3855] mb-3">
-                {item.title}
-              </h3>
-
-              {/* Arrow line indicator */}
-              <div className="h-[3px] w-16 bg-[#2A3855] rounded-full mb-3"></div>
-
-              {/* Optional description */}
-              <p className="text-gray-700 text-[15.5px] leading-relaxed">
+              {/* 3. Description */}
+              <p className="text-gray-600 text-[15px] leading-relaxed border-l-4 border-gray-100 pl-4 py-1">
                 {item.desc}
               </p>
+
+              {/* Optional: Actual Icon below description, if needed */}
+              <div className="mt-4 flex justify-end opacity-70">
+                {item.icon}
+              </div>
             </div>
           ))}
         </div>
