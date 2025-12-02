@@ -3,8 +3,8 @@ import CeoMessage from "./BannerSection";
 import CompanyOverview from "./CompanyOverview";
 import StatsSection from "./StatsSection";
 import LeadershipSection from "./LeadershipSection";
-import CaseStudySection from "./CaseStudySection";
-import BlogsSection from "./BlogsSection";
+import CaseStudySection from "../CaseStudies/CaseStudySection";
+import BlogsSection from "../Blogs/BlogsSection";
 import ClientTestimonials from "../Components/ClientTestimonials";
 
 const AboutPage = () => {
@@ -12,9 +12,9 @@ const AboutPage = () => {
     <div className="">
       <CeoMessage />
       <CompanyOverview />
-      <CaseStudySection />
+      {/* <CaseStudySection /> */}
       <StatsSection />
-      <BlogsSection />
+      {/* <BlogsSection /> */}
       {/* <ClientTestimonials /> */}
       {/* <LeadershipSection /> */}
     </div>
