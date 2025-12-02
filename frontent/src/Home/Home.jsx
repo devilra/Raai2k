@@ -9,21 +9,25 @@ import ContactRequest from "./ContactRequest";
 import GlobalLeadership from "./GlobalLeadership";
 import PlatformSection from "../Components/PlatformSection";
 import PartnersComponent from "../Components/PartnersComponent";
+import StatsSection from "../About/StatsSection";
+import ClientTestimonials from "../Components/ClientTestimonials";
 
 const Home = () => {
   return (
     <div className="">
       <Banner />
-      <WhyChoose />
+
       <WelcomeSection />
       <PlatformSection />
       <VideoSection />
       <OurServices />
-
+      <WhyChoose />
       <ThingsYouGet />
-      <PartnersComponent />
-      <GlobalLeadership />
       <ContactRequest />
+      <GlobalLeadership />
+      <StatsSection />
+      <ClientTestimonials />
+      <PartnersComponent />
     </div>
   );
 };

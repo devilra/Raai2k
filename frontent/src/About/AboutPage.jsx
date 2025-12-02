@@ -5,7 +5,7 @@ import StatsSection from "./StatsSection";
 import LeadershipSection from "./LeadershipSection";
 import CaseStudySection from "./CaseStudySection";
 import BlogsSection from "./BlogsSection";
-import ClientTestimonials from "./ClientTestimonials";
+import ClientTestimonials from "../Components/ClientTestimonials";
 
 const AboutPage = () => {
   return (
@@ -15,7 +15,7 @@ const AboutPage = () => {
       <CaseStudySection />
       <StatsSection />
       <BlogsSection />
-      <ClientTestimonials />
+      {/* <ClientTestimonials /> */}
       {/* <LeadershipSection /> */}
     </div>
   );

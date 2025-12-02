@@ -4,6 +4,8 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { TbShieldLock } from "react-icons/tb";
 import { PiCubeTransparentLight } from "react-icons/pi";
 import { AiOutlineLineChart } from "react-icons/ai";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { IoIosChatbubbles } from "react-icons/io";
 
 const features = [
   {
@@ -12,10 +14,11 @@ const features = [
     desc: "Secure and scalable digital banking systems built for modern financial operations.",
   },
   {
-    icon: <MdPayment size={40} className="text-[#2A3855]" />,
-    title: "Payments & Wallets",
-    desc: "Secure, real-time payment and wallet systems.",
+    icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
+    title: "Data Analytics, AI & Machine Learning",
+    desc: "AI/ML analytics that unlock insights and automate decisions.",
   },
+
   {
     icon: <GiReceiveMoney size={40} className="text-[#2A3855]" />,
     title: "Lending, Credit & Risk Systems",
@@ -32,9 +35,19 @@ const features = [
     desc: "Secure, transparent, tamper-proof blockchain solutions.",
   },
   {
-    icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
-    title: "Data Analytics, AI & Machine Learning",
-    desc: "AI/ML analytics that unlock insights and automate decisions.",
+    icon: <MdPayment size={40} className="text-[#2A3855]" />,
+    title: "Payments & Wallets",
+    desc: "Secure, real-time payment and wallet systems.",
+  },
+  {
+    icon: <HiOutlineUserGroup size={40} className="text-[#2A3855]" />,
+    title: "Awesome Team",
+    desc: "Before talking destination, we shine a spotlight across your organizationto fully understand it.",
+  },
+  {
+    icon: <IoIosChatbubbles size={40} className="text-[#2A3855]" />,
+    title: "Excellent Support",
+    desc: "If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.",
   },
 ];
 
@@ -58,18 +71,28 @@ const WelcomeSection = () => {
 
           {/* Features */}
 
-          <div className="mt-12 md:mt-16 lg:mt-24 flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-10 justify-between md:items-center md:flex-wrap items-center">
+          {/* Features Grid */}
+          <div
+            className="mt-12 md:mt-16 lg:mt-24 
+  grid 
+  grid-cols-1 
+  sm:grid-cols-2 
+  md:grid-cols-3 
+  lg:grid-cols-4 
+  gap-12 md:gap-6 lg:gap-12 
+  items-start"
+          >
             {features.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col  items-center text-center max-w-xs"
+                className="flex flex-col items-center text-center h-full"
               >
                 {/* Icon circle */}
                 <div className="w-20 h-20 flex items-center justify-center rounded-full font-bold bg-[#f7f7f7] border border-gray-200 mb-6">
                   {item.icon}
                 </div>
                 {/* Title */}
-                <h3 className="text-md font-bold text-[#2A3855] mb-3">
+                <h3 className="text-[16px] font-bold text-[#2A3855] mb-3 ">
                   {item.title}
                 </h3>
                 {/* Description */}

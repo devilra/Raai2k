@@ -7,20 +7,20 @@ import { Link } from "react-router-dom";
 const bannerData = [
   {
     id: 1,
-    // title: "Helping Leaders",
-    // desc: "We look forward to help you in taking your company to new height.",
+    title: "Helping Leaders",
+    desc: "We look forward to help you in taking your company to new height.",
     img: "/carosel/c1.jpg",
   },
   {
     id: 2,
-    // title: "Business Growth",
-    // desc: "Grow your business with our expert consulting and guidance.",
+    title: "Business Growth",
+    desc: "Grow your business with our expert consulting and guidance.",
     img: "/carosel/c2.jpg",
   },
   {
     id: 3,
-    // title: "Creative Solutions",
-    // desc: "We provide creative solutions tailored for your success.",
+    title: "Creative Solutions",
+    desc: "We provide creative solutions tailored for your success.",
     img: "/carosel/c3.jpg",
   },
 ];
@@ -97,26 +97,28 @@ const Banner = () => {
                 //transition={{ duration: 0.7 }}
                 className="text-left max-w-xl px-10"
               >
-                <h1 className="text-6xl font-bold text-[#2A3855] mb-5 drop-shadow-md">
+                <h1 className="text-3xl md:text-6xl font-bold text-[#2A3855] mb-5 drop-shadow-md">
                   {item.title}
                 </h1>
                 <p className="text-2xl text-[#2A3855] font-semibold mb-10 max-w-[600px]">
                   {item.desc}
                 </p>
                 {/* Buttons */}
-                {/* <div className="flex gap-5">
-                  <Link to="/read-more">
-                    <button className="px-7 py-3 bg-[#2A3855] text-white rounded-md hover:bg-[#1d2a47] flex items-center gap-2">
-                      Read more <FaChevronRight />
-                    </button>
+                <div className="flex gap-5">
+                  <Link
+                    to="/service"
+                    className="px-7 py-3 text-[13px] md:text-[15px] bg-[#2A3855] text-white rounded-md hover:bg-[#1d2a47] flex items-center gap-2"
+                  >
+                    Read more <FaChevronRight />
                   </Link>
 
-                  <Link to="/contact">
-                    <button className="px-7 py-3 bg-yellow-400 text-[#2A3855] rounded-md hover:bg-yellow-500 flex items-center gap-2">
-                      Contact us <FaChevronRight />
-                    </button>
+                  <Link
+                    to="/contact"
+                    className="px-7 py-3 text-[13px] md:text-[15px] bg-yellow-400 text-[#2A3855] rounded-md hover:bg-yellow-500 flex items-center gap-2"
+                  >
+                    Contact us <FaChevronRight />
                   </Link>
-                </div> */}
+                </div>
               </motion.div>
             </div>
           </div>

@@ -6,7 +6,7 @@ const leaders = [
     to bridge that gap. Our mission is to help teams build innovative products 
     the right way: faster, safer, and with clarity. Most founders don’t fail 
     because their idea is weak, but because the financial ecosystem is complex.`,
-    img: "/about/ceo.jpg", // Change path if required
+    img: "/global/f.jpg", // Change path if required
   },
   {
     name: "Senthil",
@@ -15,7 +15,7 @@ const leaders = [
     and minimized risks. Through headless (omni-channel) implementations and 
     deep OOTB/SAAS expertise, we deliver scalable systems at unmatched pricing 
     — without middlemen or commission layers.`,
-    img: "/about/ceo.jpg", // Change path if required
+    img: "/global/m.jpg", // Change path if required
   },
 ];
 
@@ -34,7 +34,7 @@ export default function GlobalLeadership() {
       </div>
 
       {/* GRID */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         {leaders.map((leader, index) => (
           <div
             key={index}
@@ -44,7 +44,7 @@ export default function GlobalLeadership() {
             <img
               src={leader.img}
               alt={leader.name}
-              className="w-full h-64 object-cover"
+              className="w-full h-[300px] object-cover object-[50%_7%]"
             />
 
             {/* CONTENT */}

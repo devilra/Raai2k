@@ -2,17 +2,19 @@ import { FaUsers } from "react-icons/fa";
 import { FaRegComments } from "react-icons/fa6";
 import { IoFlashOutline } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
+import { VscWorkspaceTrusted } from "react-icons/vsc";
+import { MdOutlineArchitecture } from "react-icons/md";
 
 const features = [
   {
-    icon: <FaUsers size={28} className="text-[#2A3855]" />,
-    title: "Awesome Team",
-    desc: "Before talking destination, we shine a spotlight across your organization to fully understand it.",
+    icon: <VscWorkspaceTrusted size={28} className="text-[#2A3855]" />,
+    title: "Trusted Security",
+    desc: "We ensure enterprise-grade protection with continuous monitoring, secure architecture, and fully compliant workflows.",
   },
   {
-    icon: <FaRegComments size={28} className="text-[#2A3855]" />,
-    title: "Excellent Support",
-    desc: "If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.",
+    icon: <MdOutlineArchitecture size={28} className="text-[#2A3855]" />,
+    title: "Scalable Architecture",
+    desc: "Your systems grow as your business grows, powered by highly optimized, cloud-ready architecture.",
   },
   {
     icon: <IoFlashOutline size={28} className="text-[#2A3855]" />,
