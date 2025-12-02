@@ -112,7 +112,7 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-7">
           <div className="flex items-center gap-5">
-            <div>
+            <Link to="/">
               <img
                 src="/logo.png"
                 // style={{
@@ -121,7 +121,7 @@ export default function Navbar() {
                 // }}
                 className=" object-cover filter invert brightness-100 saturate-0  rounded-full"
               />
-            </div>
+            </Link>
             {/* Desktop Navigation Links */}
             <div className="hidden md:hidden lg:flex gap-8 text-[#2A3855] tracking-[1px] font-semibold ">
               {/* ActiveLink Component-ஐப் பயன்படுத்துதல் */}
