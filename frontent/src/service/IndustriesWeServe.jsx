@@ -47,13 +47,13 @@ export const IndustriesWeServe = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20 bg-[#F2F2F2]">
       {" "}
       {/* Dark background for contrast */}
-      <h2 className="text-4xl font-extrabold text-center text-white mb-6">
+      <h2 className="text-4xl font-extrabold text-center text-[#2A3855] mb-6">
         Industries We Transform
       </h2>
-      <p className="text-center text-gray-400 text-lg mb-16 max-w-3xl mx-auto">
+      <p className="text-center text-gray-600 text-lg mb-16 max-w-3xl mx-auto">
         We deliver custom digital solutions across diverse sectors,
         understanding the unique challenges of each industry.
       </p>
@@ -63,7 +63,7 @@ export const IndustriesWeServe = () => {
           <div
             key={i}
             className={`relative p-8 rounded-xl shadow-lg transform hover:scale-[1.03] transition-all duration-300 group
-                        bg-white border-b-4 border-l-4 border-opacity-20 hover:shadow-2xl`}
+                        bg-white border-b-4 border-l-4 border-neutral-300 border-opacity-20 hover:shadow-2xl`}
           >
             {/* Unique Icon Container (Inspired by Hexagonal/Badge look) */}
             <div
