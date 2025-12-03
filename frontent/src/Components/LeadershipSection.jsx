@@ -3,39 +3,40 @@ import React from "react";
 const leaders = [
   {
     name: "Reenal Scott",
-    role: "Chief Executive Officer",
+    role: "COO (Strategy & Ops)",
     img: "/about/r.jpg",
-    desc: "Reenal leads Raai2K with a mission to help startups build fast, scale smart, and adopt modern technology without complexity or heavy cost.",
+    desc: "Ensures operational excellence across teams, enabling consistent, compliant, high-performance execution.",
   },
   {
     name: "Lily Anderson",
-    role: "Head of Operations",
+    role: "B2B (Partnership & Acquisition)",
     img: "/about/l.jpg",
-    desc: "Lily ensures projects at Raai2K run smoothly by managing delivery, quality, and client operations across global time zones.",
-  },
-  {
-    name: "Thomas Anderson",
-    role: "Chief Technology Officer",
-    img: "/about/t.jpg",
-    desc: "Thomas drives Raai2K’s technical vision—specializing in cloud, AI automation, and scalable architectures for fast-growing startups.",
+    desc: " Identifies, negotiates and closes strategic deals towards mutual win-win scenario.",
   },
   {
     name: "Legartha Mantana",
-    role: "Head of Strategy & Branding",
+    role: "Business Analyst (Banking, Payments, Lending)",
     img: "/about/le.jpg",
-    desc: "Legartha helps brands craft strong digital identities, ensuring each startup we support stands out with clarity and purpose.",
+    desc: "Translates business needs into clear, actionable requirements that drive accuracy, alignment, and delivery excellence",
   },
   {
+    name: "Thomas Anderson",
+    role: "Solution Architect (OOTB, Custom)",
+    img: "/about/t.jpg",
+    desc: "Designs scalable, secure, and future-ready financial architectures that align technology with business strategy.",
+  },
+
+  {
     name: "John Snow",
-    role: "Lead Solutions Architect",
+    role: "Integration Expert (3rd party, APIs)",
     img: "/about/j.jpg",
-    desc: "John builds scalable technical solutions, guiding founders on infrastructure, product planning, and long-term technology strategy.",
+    desc: "Ensures seamless, compliant, and high-reliability integrations across banking systems, APIs, and enterprise platforms.",
   },
   {
     name: "Ragner Lothbrok",
-    role: "VP of Engineering",
+    role: "Design (UI/UX)",
     img: "/about/ra.jpg",
-    desc: "Ragner leads engineering teams at Raai2K, ensuring every product we build is reliable, high-performance, and future-ready.",
+    desc: "Designs clean, intuitive experiences that make money easier for everyone.",
   },
 ];
 
@@ -43,7 +44,7 @@ const LeadershipSection = () => {
   return (
     <section className="py-20 bg-white">
       {/* Title */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A3855]">
+      <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2A3855]">
         Global Leadership
       </h2>
       <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-16"></div>

@@ -25,7 +25,7 @@ export default function GlobalLeadership() {
       {/* TITLE */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
-          Global Leadership
+          Leadership
         </h2>
 
         <div className="flex justify-center items-center gap-2 mt-3">

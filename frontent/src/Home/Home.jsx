@@ -11,6 +11,7 @@ import PlatformSection from "../Components/PlatformSection";
 import PartnersComponent from "../Components/PartnersComponent";
 import StatsSection from "../About/StatsSection";
 import ClientTestimonials from "../Components/ClientTestimonials";
+import LeadershipSection from "../Components/LeadershipSection";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
       <ThingsYouGet />
       <ContactRequest />
       <GlobalLeadership />
+      <LeadershipSection />
       <StatsSection />
       <ClientTestimonials />
       <PartnersComponent />
