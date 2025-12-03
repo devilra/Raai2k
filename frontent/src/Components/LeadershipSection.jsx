@@ -47,7 +47,7 @@ const LeadershipSection = () => {
       <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2A3855]">
         Global Leadership
       </h2>
-      <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-16"></div>
+      <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-4 mb-16"></div>
 
       {/* Cards Grid */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
