@@ -7,7 +7,7 @@ const ContactPage = () => {
       {/* ================= BANNER =================== */}
       <section
         className="w-full h-[310px] md:h-[380px] bg-cover bg-center relative flex flex-col justify-center px-10 md:px-20"
-        style={{ backgroundImage: "url('/about/a1.jpg')" }}
+        style={{ backgroundImage: "url('/contact/c1.jpg')" }}
       >
         <div className="absolute inset-0 bg-linear-to-r from-[#1f2937]/80 to-[#111827]/30"></div>
 

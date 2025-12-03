@@ -64,12 +64,12 @@ export default function Navbar() {
     { name: "About", path: "/about" },
     { name: "Service", path: "/service" },
     { name: "Solutions", path: "/solution" },
-    { name: "Case Studies", path: "/case" },
+    // { name: "Case Studies", path: "/case" },
     { name: "Blogs", path: "/blog" },
     //{ name: "Elements", path: "/elements" },
     { name: "Contact", path: "/contact" },
 
-    { name: "FAQs", path: "/faq" },
+    // { name: "FAQs", path: "/faq" },
   ];
 
   return (
@@ -211,13 +211,13 @@ export default function Navbar() {
               >
                 Solutions
               </Link>
-              <Link
+              {/* <Link
                 className=" w-full text-center py-1 border-b border-gray-200"
                 onClick={() => setOpenMenu(false)}
                 to="/case"
               >
                 Case Studies
-              </Link>
+              </Link> */}
               <Link
                 className=" w-full text-center py-1 border-b border-gray-200"
                 onClick={() => setOpenMenu(false)}
@@ -236,13 +236,13 @@ export default function Navbar() {
                 Contact
               </Link>
 
-              <Link
+              {/* <Link
                 className=" w-full text-center py-1 "
                 onClick={() => setOpenMenu(false)}
                 to="/faq"
               >
                 FAQs
-              </Link>
+              </Link> */}
             </div>
             {/* <div className="absolute bottom-5 left-0 w-full px-6">
               <button className="w-full border-2 border-[#223058] text-[#223058] font-semibold py-3 rounded-full">

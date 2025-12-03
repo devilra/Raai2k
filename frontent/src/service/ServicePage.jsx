@@ -3,6 +3,7 @@ import ServiceHome from "./ServiceHome";
 import { ProcessWorkflow } from "./ProcessWorkflow";
 import { EngagementModels } from "./EngagementModels";
 import { IndustriesWeServe } from "./IndustriesWeServe";
+import Faq from "../FAQ/Faq";
 
 const ServicePage = () => {
   return (
@@ -11,6 +12,7 @@ const ServicePage = () => {
       <ProcessWorkflow />
       <EngagementModels />
       <IndustriesWeServe />
+      <Faq />
     </div>
   );
 };

@@ -6,7 +6,7 @@ const CeoMessage = () => {
       {/* 🔵 TOP BACKGROUND BANNER */}
       <div
         className="w-full h-[300px] md:h-[350px] bg-cover relative bg-center flex flex-col justify-center px-10 md:px-20"
-        style={{ backgroundImage: "url('/about/a1.jpg')" }}
+        style={{ backgroundImage: "url('/about/about.jpg')" }}
       >
         {/* TITLE */}
 

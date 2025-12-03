@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaLinkedin, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
+import { IoLogoYoutube } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -42,35 +44,35 @@ const Footer = () => {
             </Link>
 
             <Link
-              to="/faq"
+              to="/contact"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
               FAQ
             </Link>
 
             <Link
-              to="/privacy-policy"
+              to="/privacy"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
               Privacy Policy
             </Link>
 
             <Link
-              to="/terms"
+              to="/terms-of-use"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
               Terms of Use
             </Link>
 
             <Link
-              to="/global-office"
+              to="/contact"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
               Global Office
             </Link>
 
             <Link
-              to="/local-office"
+              to="/contact"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
               Local Office
@@ -80,7 +82,7 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="space-y-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/raai2k/?viewAsMember=true"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 group"
@@ -94,16 +96,16 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://twitter.com"
+              href="https://www.youtube.com/@amigowebster"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 group"
             >
               <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
-                <FaTwitter />
+                <IoLogoYoutube />
               </div>
               <span className="group-hover:text-yellow-300 transition">
-                Twitter
+                Youtube
               </span>
             </a>
 
@@ -122,16 +124,16 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://google.com"
-              target="_blank"
+              href="mailto:support@raai2k.com?subject=Support%20Query&body=Hi%20Team,"
+              // target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 group"
             >
               <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
-                <FaGoogle />
+                <IoMail />
               </div>
               <span className="group-hover:text-yellow-300 transition">
-                Google+
+                Email
               </span>
             </a>
           </div>

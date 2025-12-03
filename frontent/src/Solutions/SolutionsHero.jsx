@@ -4,7 +4,10 @@ const SolutionsHero = () => {
   return (
     <section
       className="w-full h-[310px] md:h-[380px] bg-cover bg-center relative flex items-center"
-      style={{ backgroundImage: "url('/about/a1.jpg')" }} // Change if needed
+      style={{
+        backgroundImage: "url('/solution/solution.jpg')",
+        backgroundPosition: "10% 60%",
+      }} // Change if needed
     >
       {/* Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-linear-to-r from-[#1f2937]/90 via-[#1f2937]/70 to-transparent"></div>

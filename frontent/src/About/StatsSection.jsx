@@ -63,25 +63,27 @@ const StatsSection = () => {
           {/* 1 */}
           <div>
             <h3 className="text-5xl font-bold text-white">
-              <Counter from={0} to={52} start={isInView} />
+              <Counter from={0} to={70} start={isInView} />%
             </h3>
-            <p className="mt-2 text-lg opacity-90">Cases Solved</p>
+            <p className="mt-2 text-lg opacity-90">Certified</p>
           </div>
 
           {/* 2 */}
           <div>
             <h3 className="text-5xl font-bold text-white">
-              <Counter from={0} to={164} start={isInView} />
+              <Counter from={0} to={60} start={isInView} />
+              ++
             </h3>
-            <p className="mt-2 text-lg opacity-90">Trained Experts</p>
+            <p className="mt-2 text-lg opacity-90">Projects</p>
           </div>
 
           {/* 3 */}
           <div>
             <h3 className="text-5xl font-bold text-white">
-              <Counter from={0} to={38} start={isInView} />
+              <Counter from={0} to={8} start={isInView} />
+              ++
             </h3>
-            <p className="mt-2 text-lg opacity-90">Branches</p>
+            <p className="mt-2 text-lg opacity-90">Geographies</p>
           </div>
 
           {/* 4 */}
