@@ -2,38 +2,38 @@ import React from "react";
 
 const leaders = [
   {
-    name: "Reenal Scott",
+    //name: "Reenal Scott",
     role: "COO (Strategy & Ops)",
     img: "/global/m.jpg",
     desc: "Ensures operational excellence across teams, enabling consistent, compliant, high-performance execution.",
   },
   {
-    name: "Lily Anderson",
+    //name: "Lily Anderson",
     role: "B2B (Partnership & Acquisition)",
     img: "/global/f.jpg",
     desc: " Identifies, negotiates and closes strategic deals towards mutual win-win scenario.",
   },
   {
-    name: "Legartha Mantana",
+    //name: "Legartha Mantana",
     role: "Business Analyst (Banking, Payments, Lending)",
     img: "/global/f.jpg",
     desc: "Translates business needs into clear, actionable requirements that drive accuracy, alignment, and delivery excellence",
   },
   {
-    name: "Thomas Anderson",
+    //name: "Thomas Anderson",
     role: "Solution Architect (OOTB, Custom)",
     img: "/global/m.jpg",
     desc: "Designs scalable, secure, and future-ready financial architectures that align technology with business strategy.",
   },
 
   {
-    name: "John Snow",
+    //name: "John Snow",
     role: "Integration Expert (3rd party, APIs)",
     img: "/global/m.jpg",
     desc: "Ensures seamless, compliant, and high-reliability integrations across banking systems, APIs, and enterprise platforms.",
   },
   {
-    name: "Ragner Lothbrok",
+    //name: "Ragner Lothbrok",
     role: "Design (UI/UX)",
     img: "/global/m.jpg",
     desc: "Designs clean, intuitive experiences that make money easier for everyone.",

@@ -12,6 +12,7 @@ import PartnersComponent from "../Components/PartnersComponent";
 import StatsSection from "../About/StatsSection";
 import ClientTestimonials from "../Components/ClientTestimonials";
 import LeadershipSection from "../Components/LeadershipSection";
+import LatestNews from "../LatestNews/LatestNews";
 
 const Home = () => {
   return (
@@ -30,6 +31,7 @@ const Home = () => {
       <StatsSection />
       <ClientTestimonials />
       <PartnersComponent />
+      {/* <LatestNews /> */}
     </div>
   );
 };

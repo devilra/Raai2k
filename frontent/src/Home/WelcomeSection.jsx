@@ -58,8 +58,7 @@ const WelcomeSection = () => {
         <div className="max-w-6xl mx-auto text-center px-6">
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
-            Welcome to the{" "}
-            <span className="text-orange-400  text-4xl">RAai2K</span>
+            Welcome to the raai2k
           </h2>
           {/* Sub text */}
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
