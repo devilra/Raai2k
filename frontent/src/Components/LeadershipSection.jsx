@@ -4,38 +4,38 @@ const leaders = [
   {
     //name: "Reenal Scott",
     role: "COO (Strategy & Ops)",
-    img: "/global/m.jpg",
+    img: "/global/m1.jpg",
     desc: "Ensures operational excellence across teams, enabling consistent, compliant, high-performance execution.",
   },
   {
     //name: "Lily Anderson",
     role: "B2B (Partnership & Acquisition)",
-    img: "/global/f.jpg",
+    img: "/global/f1.jpg",
     desc: " Identifies, negotiates and closes strategic deals towards mutual win-win scenario.",
   },
   {
     //name: "Legartha Mantana",
     role: "Business Analyst (Banking, Payments, Lending)",
-    img: "/global/f.jpg",
+    img: "/global/f2.jpg",
     desc: "Translates business needs into clear, actionable requirements that drive accuracy, alignment, and delivery excellence",
   },
   {
     //name: "Thomas Anderson",
     role: "Solution Architect (OOTB, Custom)",
-    img: "/global/m.jpg",
+    img: "/global/m2.jpg",
     desc: "Designs scalable, secure, and future-ready financial architectures that align technology with business strategy.",
   },
 
   {
     //name: "John Snow",
     role: "Integration Expert (3rd party, APIs)",
-    img: "/global/m.jpg",
+    img: "/global/m3.jpg",
     desc: "Ensures seamless, compliant, and high-reliability integrations across banking systems, APIs, and enterprise platforms.",
   },
   {
     //name: "Ragner Lothbrok",
     role: "Design (UI/UX)",
-    img: "/global/m.jpg",
+    img: "/global/m4.jpg",
     desc: "Designs clean, intuitive experiences that make money easier for everyone.",
   },
 ];

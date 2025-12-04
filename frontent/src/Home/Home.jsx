@@ -20,7 +20,7 @@ const Home = () => {
       <Banner />
 
       <WelcomeSection />
-      <PlatformSection />
+      {/* <PlatformSection /> */}
       <VideoSection />
       <OurServices />
       <WhyChoose />

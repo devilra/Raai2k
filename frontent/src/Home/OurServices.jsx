@@ -10,7 +10,7 @@ const services = [
     id: 1,
     title: "Wallets & Payments",
     desc: "UPI, cards, payment gateways, merchant APIs.",
-    img: "/ourService/w.jpg",
+    img: "/ourService/wal.jpg",
     reverse: false, // image left, text right
   },
   {
@@ -38,14 +38,14 @@ const services = [
     id: 5,
     title: "Custom Fintech Products",
     desc: "Any fintech idea. Any scale",
-    img: "/ourService/cu.jpg",
+    img: "/ourService/cus.jpg",
     reverse: false, // image right, text left
   },
   {
     id: 6,
     title: "CTO-as-a-Service",
     desc: "Architecture, tech decisions, roadmap, hiring",
-    img: "/ourService/ct.jpg",
+    img: "/ourService/cto.jpg",
     reverse: true, // image right, text left
   },
 ];
