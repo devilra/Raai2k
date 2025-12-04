@@ -10,42 +10,42 @@ const services = [
     id: 1,
     title: "Wallets & Payments",
     desc: "UPI, cards, payment gateways, merchant APIs.",
-    img: "/ourService/s4.jpg",
+    img: "/ourService/w.jpg",
     reverse: false, // image left, text right
   },
   {
     id: 2,
     title: "Lending & BNPL Apps",
     desc: "Credit scoring, workflows, risk checks.",
-    img: "/ourService/s5.jpg",
+    img: "/ourService/l.jpg",
     reverse: true, // image right, text left
   },
   {
     id: 3,
     title: "Neobanking MVPs",
     desc: "Accounts, onboarding, transaction engines.",
-    img: "/ourService/s6.jpg",
+    img: "/ourService/n.jpg",
     reverse: false, // image right, text left
   },
   {
     id: 4,
     title: "Investment & Wealth Apps",
     desc: "Portfolio, orders, data feeds, analytics.",
-    img: "/ourService/s7.jpg",
+    img: "/ourService/i.jpg",
     reverse: true, // image right, text left
   },
   {
     id: 5,
     title: "Custom Fintech Products",
     desc: "Any fintech idea. Any scale",
-    img: "/ourService/s8.webp",
+    img: "/ourService/cu.jpg",
     reverse: false, // image right, text left
   },
   {
     id: 6,
     title: "CTO-as-a-Service",
     desc: "Architecture, tech decisions, roadmap, hiring",
-    img: "/ourService/s9.jpg",
+    img: "/ourService/ct.jpg",
     reverse: true, // image right, text left
   },
 ];
@@ -99,11 +99,11 @@ const OurServices = () => {
   `}
               >
                 {/* IMAGE BLOCK */}
-                <div className="w-full lg:w-1/2 h-[350px] md:h-[300px]">
+                <div className="w-full lg:w-1/2 h-[350px]  md:h-[300px]">
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover border  border-gray-100"
                   />
                 </div>
 

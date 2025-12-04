@@ -1,112 +1,168 @@
-import React from "react";
-// Icons தேவை இல்லை, ஆனால் தேவைப்பட்டால் பயன்படுத்திக் கொள்ளலாம்.
+import { FaArrowRightLong } from "react-icons/fa6";
+import { CiCreditCard1 } from "react-icons/ci";
+import { IoChatbox } from "react-icons/io5";
+import { IoCall } from "react-icons/io5";
+import { TfiNewWindow } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
-// Data Structure (மாற்றப்படவில்லை)
-const expertise = [
+const services = [
   {
+    id: 1,
     imageUrl: "/solution/s.jpg", // Architecture Image
     color: "text-blue-600",
     bg: "bg-blue-50",
     title: "Software Architecture & Technical Strategy",
     desc: "Design modern, scalable, secure architecture that supports long-term growth. We ensure the system foundation is robust and scalable for future demands.",
+    reverse: false, // image left, text right
   },
   {
+    id: 2,
     imageUrl: "/solution/cu.jpg", // Development Image
     color: "text-green-600",
     bg: "bg-green-50",
     title: "Custom Software Development",
     desc: "End-to-end development for web, mobile, and enterprise applications. Bringing your unique vision to life with reliable, modern codebases.",
+    reverse: true, // image right, text left
   },
   {
+    id: 3,
     imageUrl: "/solution/d.png", // Cloud Image
     color: "text-purple-600",
     bg: "bg-purple-50",
     title: "Cloud & DevOps Consulting",
     desc: "Migrate, optimize, and automate your infrastructure. Achieve faster deployments, higher uptime, and reduced operational costs with expert guidance.",
+    reverse: false, // image right, text left
   },
   {
+    id: 4,
     imageUrl: "/solution/l.png", // Modernization Image
     color: "text-orange-600",
     bg: "bg-orange-50",
     title: "Legacy Modernization",
     desc: "Transform old systems into fast, flexible, API-driven platforms. Renewing outdated systems to meet today's performance and security standards.",
+    reverse: true, // image right, text left
   },
   {
+    id: 5,
     imageUrl: "/solution/di.webp", // Product Consulting Image
     color: "text-yellow-600",
     bg: "bg-yellow-50",
     title: "Digital Product Consulting",
     desc: "Turn your idea into a validated, launch-ready digital product. Focusing on user needs, market fit, and a clear product roadmap for success.",
+    reverse: false, // image right, text left
   },
   {
+    id: 6,
     imageUrl: "/solution/ct.png", // Strategy/CTO Image
     color: "text-red-600",
     bg: "bg-red-50",
     title: "IT Strategy & CTO-as-a-Service",
     desc: "Get leadership-level guidance without full-time costs. Strategic planning, technology roadmapping, and team mentoring from experienced leaders.",
+    reverse: true, // image right, text left
+  },
+];
+
+const features = [
+  {
+    icon: <CiCreditCard1 size={28} className="text-[#2A3855]" />,
+    title: "Special financing",
+    desc: "Apply for special financial support and earn exclusive rewards.",
+  },
+  {
+    icon: <IoChatbox size={28} className="text-[#2A3855]" />,
+    title: "Chat with team",
+    desc: (
+      <div className="text-gray-600">
+        Have a question? Chat online with an expert.
+        <span className="text-[#2A3855] flex items-center gap-1 font-bold mt-1 cursor-pointer hover:underline">
+          Start chatting <TfiNewWindow size={30} className="px-2" />
+        </span>
+      </div>
+    ),
+  },
+  {
+    icon: <IoCall size={28} className="text-[#2A3855]" />,
+    title: "Call a specialist",
+    desc: "Our 24/7 support team is ready for you at",
   },
 ];
 
 const ExpertiseSection = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Title */}
-        <h2 className="text-4xl font-bold text-center text-[#2A3855]">
-          Expertise
-        </h2>
+    <div>
+      <section className="w-full py-20 mt-14">
+        <div className="max-w-6xl mx-auto px-5">
+          {/* Section Title */}
+          <h2 className="text-center text-4xl md:text-5xl font-bold text-[#2A3855]">
+            Expertise
+          </h2>
+          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-4 mb-12"></div>
 
-        {/* Styled underline */}
-        <div className="flex justify-center items-center gap-2 mt-3 mb-16">
-          <span className="h-[3px] w-24 bg-[#2A3855] rounded-full"></span>
-        </div>
-
-        {/* Alternating Feature Layout */}
-        <div className="space-y-20">
-          {expertise.map((item, i) => {
-            // Index-ஐப் பொறுத்து, படத்தையும் Text-உம் மாற்றி அமைக்கிறோம்
-            const isImageLeft = i % 2 === 0;
-
-            return (
+          {/* Service Blocks */}
+          <div className="flex flex-col gap-5 md:gap-10 lg:gap-0">
+            {services.map((item) => (
               <div
-                key={i}
-                className={`flex flex-col md:flex-row items-center gap-12 p-4 md:p-0 ${
-                  isImageLeft ? "md:flex-row-reverse" : "md:flex-row"
-                }`}
+                key={item.id}
+                className={`
+    flex flex-col 
+    ${item.reverse ? "lg:flex-row-reverse" : "lg:flex-row"} 
+    bg-white overflow-hidden 
+    w-full
+  `}
               >
-                {/* 1. Image Block (மாறி வரும் வரிசை) */}
-                <div className="md:w-1/2 w-full flex justify-center">
-                  <div
-                    className={`p-8 ${item.bg} rounded-3xl shadow-2xl transition duration-300 hover:shadow-2xl`}
-                  >
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      // படத்தை இன்னும் பெரியதாக மாற்றப்பட்டுள்ளது
-                      className="w-full md:w-[200px] rounded-2xl md:h-[200px] max-w-sm h-auto object-cover"
-                    />
-                  </div>
+                {/* IMAGE BLOCK */}
+                <div className="w-full lg:w-1/2 h-[350px] md:h-[300px]">
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                {/* 2. Text Content Block */}
-                <div className="md:w-1/2 w-full">
-                  {/* <p className={`text-lg font-semibold mb-2 ${item.color}`}>
-                    Service #{i + 1}
-                  </p> */}
-                  <h3 className="text-3xl font-extrabold text-[#2A3855] mb-4">
+                {/* TEXT BLOCK */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10">
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#2A3855] mb-4">
                     {item.title}
                   </h3>
-
-                  <p className="text-gray-700 text-lg leading-relaxed border-l-4 border-red-500 pl-4">
+                  <p className="text-gray-600 leading-relaxed border-l-4 pl-4 border-red-500 mb-6">
                     {item.desc}
                   </p>
+                  {/* <Link
+                    to="/service"
+                    className="flex items-center gap-2 text-[#2A3855] font-semibold hover:gap-3 transition-all duration-200"
+                  >
+                    Learn More <FaArrowRightLong />
+                  </Link> */}
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          <div
+            className="mt-16 md:mt-20 
+  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+  gap-10"
+          >
+            {features.map((item, index) => (
+              <div key={index} className=" p-6 rounded-xl  transition ">
+                {/* Icon + Title */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="text-[#2A3855]">{item.icon}</div>
+                  <h3 className="text-lg font-bold text-[#2A3855]">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* Description */}
+                <p className="text-gray-600 text-[15px] leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
