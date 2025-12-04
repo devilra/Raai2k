@@ -96,6 +96,20 @@ const Footer = () => {
               </span>
             </a>
 
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
+                <FaTwitter />
+              </div>
+              <span className="group-hover:text-yellow-300 transition">
+                Twitter
+              </span>
+            </a>
+
             {/* <a
               href="https://www.youtube.com/@amigowebster"
               target="_blank"
