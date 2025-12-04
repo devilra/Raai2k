@@ -24,13 +24,13 @@ const CeoMessage = () => {
       {/* 🔶 CEO MESSAGE SECTION */}
       <div className="max-w-6xl mx-auto px-6 mt-16 space-y-14">
         {/* ======= FOUNDER 1 ======= */}
-        <div className="bg-white shadow-md rounded-2xl flex flex-col lg:flex-row gap-5">
+        <div className="bg-white shadow-md rounded-2xl flex flex-col lg:flex-row lg:justify-around gap-5">
           {/* LEFT IMAGE */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/4 ">
             <img
               src="/global/f.jpg"
               alt="Founder"
-              className="h-[400px] w-full object-cover object-[0%_8%] rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
+              className="h-[400px] w-[300px]  object-cover  rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
             />
           </div>
 
@@ -64,13 +64,13 @@ const CeoMessage = () => {
         </div>
 
         {/* ======= FOUNDER 2 ======= */}
-        <div className="bg-white shadow-md rounded-2xl flex flex-col lg:flex-row-reverse gap-5">
+        <div className="bg-white shadow-md rounded-2xl flex flex-col lg:flex-row-reverse lg:justify-around gap-5">
           {/* RIGHT IMAGE */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/4 md:pr-5">
             <img
               src="/global/m.jpg"
               alt="Founder"
-              className="h-[400px] w-full object-cover object-[0%_8%] rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none"
+              className="h-[400px] w-[300px] object-cover  rounded-t-2xl lg:rounded-r-2xl lg:rounded-tl-none"
             />
           </div>
 

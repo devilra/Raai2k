@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaLinkedin, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { IoLogoYoutube } from "react-icons/io";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -95,7 +96,7 @@ const Footer = () => {
               </span>
             </a>
 
-            <a
+            {/* <a
               href="https://www.youtube.com/@amigowebster"
               target="_blank"
               rel="noopener noreferrer"
@@ -107,19 +108,19 @@ const Footer = () => {
               <span className="group-hover:text-yellow-300 transition">
                 Youtube
               </span>
-            </a>
+            </a> */}
 
             <a
-              href="https://facebook.com"
+              href="https://wa.me/12345?text=Hi%2C%20I%20need%20more%20details!"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 group"
             >
               <div className="p-3 bg-[#1f2a41] rounded-md text-xl group-hover:bg-yellow-400 group-hover:text-gray-900 transition">
-                <FaFacebook />
+                <IoLogoWhatsapp />
               </div>
               <span className="group-hover:text-yellow-300 transition">
-                Facebook
+                WhatsApp
               </span>
             </a>
 

@@ -44,7 +44,7 @@ export default function GlobalLeadership() {
             <img
               src={leader.img}
               alt={leader.name}
-              className="w-full h-[300px] object-cover object-[50%_7%]"
+              className="w-full h-[200px] object-contain "
             />
 
             {/* CONTENT */}

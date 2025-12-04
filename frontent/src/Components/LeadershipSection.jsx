@@ -4,38 +4,38 @@ const leaders = [
   {
     name: "Reenal Scott",
     role: "COO (Strategy & Ops)",
-    img: "/about/r.jpg",
+    img: "/global/m.jpg",
     desc: "Ensures operational excellence across teams, enabling consistent, compliant, high-performance execution.",
   },
   {
     name: "Lily Anderson",
     role: "B2B (Partnership & Acquisition)",
-    img: "/about/l.jpg",
+    img: "/global/f.jpg",
     desc: " Identifies, negotiates and closes strategic deals towards mutual win-win scenario.",
   },
   {
     name: "Legartha Mantana",
     role: "Business Analyst (Banking, Payments, Lending)",
-    img: "/about/le.jpg",
+    img: "/global/f.jpg",
     desc: "Translates business needs into clear, actionable requirements that drive accuracy, alignment, and delivery excellence",
   },
   {
     name: "Thomas Anderson",
     role: "Solution Architect (OOTB, Custom)",
-    img: "/about/t.jpg",
+    img: "/global/m.jpg",
     desc: "Designs scalable, secure, and future-ready financial architectures that align technology with business strategy.",
   },
 
   {
     name: "John Snow",
     role: "Integration Expert (3rd party, APIs)",
-    img: "/about/j.jpg",
+    img: "/global/m.jpg",
     desc: "Ensures seamless, compliant, and high-reliability integrations across banking systems, APIs, and enterprise platforms.",
   },
   {
     name: "Ragner Lothbrok",
     role: "Design (UI/UX)",
-    img: "/about/ra.jpg",
+    img: "/global/m.jpg",
     desc: "Designs clean, intuitive experiences that make money easier for everyone.",
   },
 ];
@@ -65,7 +65,7 @@ const LeadershipSection = () => {
             <img
               src={leader.img}
               alt={leader.name}
-              className="w-full h-[230px] object-cover rounded-lg"
+              className="w-full h-[300px] object-cover object-[20%_10%] rounded-lg"
             />
 
             {/* Name + Role */}

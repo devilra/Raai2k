@@ -8,43 +8,43 @@ import { Link } from "react-router-dom";
 const services = [
   {
     id: 1,
-    title: "Wallets & Payments",
-    desc: "UPI, cards, payment gateways, merchant APIs.",
+    title: "Fintech Product Strategy",
+    desc: `MVP scope, product roadmap, user flows, competitive insights.`,
     img: "/ourService/s4.jpg",
     reverse: false, // image left, text right
   },
   {
     id: 2,
-    title: "Lending & BNPL Apps",
-    desc: "Credit scoring, workflows, risk checks.",
+    title: "Technology & Architecture",
+    desc: `Core banking, payments, lending stack, microservices, cloud architecture.`,
     img: "/ourService/s5.jpg",
     reverse: true, // image right, text left
   },
   {
     id: 3,
-    title: "Neobanking MVPs",
-    desc: "Accounts, onboarding, transaction engines.",
+    title: "Compliance & Risk Advisory",
+    desc: `RBI, KYC/AML, digital lending, PCI-DSS, security frameworks.`,
     img: "/ourService/s6.jpg",
     reverse: false, // image right, text left
   },
   {
     id: 4,
-    title: "Investment & Wealth Apps",
-    desc: "Portfolio, orders, data feeds, analytics.",
+    title: "MVP Build & Engineering Delivery",
+    desc: `UX/UI, frontend, backend, DevOps, QA, production deployment.`,
     img: "/ourService/s7.jpg",
     reverse: true, // image right, text left
   },
   {
     id: 5,
-    title: "Custom Fintech Products",
-    desc: "Any fintech idea. Any scale",
+    title: "Fractional CTO",
+    desc: `Senior leadership for startups without full-time tech heads.`,
     img: "/ourService/s8.webp",
     reverse: false, // image right, text left
   },
   {
     id: 6,
-    title: "CTO-as-a-Service",
-    desc: "Architecture, tech decisions, roadmap, hiring",
+    title: "GTM & Growth",
+    desc: `Pricing, analytics, activation, retention, growth experiments`,
     img: "/ourService/s9.jpg",
     reverse: true, // image right, text left
   },
@@ -79,7 +79,7 @@ const OurServices = () => {
   return (
     <div>
       <section className="w-full py-20 mt-14 bg-neutral-50">
-        <div className="max-w-6xl mx-auto px-5">
+        <div className="max-w-5xl mx-auto px-5">
           {/* Section Title */}
           <h2 className="text-center text-4xl md:text-5xl font-bold text-[#2A3855]">
             Our Services
@@ -91,24 +91,18 @@ const OurServices = () => {
             {services.map((item) => (
               <div
                 key={item.id}
-                className={`
-    flex flex-col 
-    ${item.reverse ? "lg:flex-row-reverse" : "lg:flex-row"} 
-    bg-white overflow-hidden 
-    w-full
-  `}
+                className={`flex flex-col md:flex-col ${
+                  item.reverse ? "lg:flex-row-reverse" : "lg:flex-row"
+                } gap-10 bg-white rounded-xl overflow-hidden`}
               >
-                {/* IMAGE BLOCK */}
-                <div className="w-full lg:w-1/2 h-[350px] md:h-[300px]">
+                <div className="w-full lg:w-[400px]">
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-xl"
                   />
                 </div>
-
-                {/* TEXT BLOCK */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10">
+                <div className="w-full lg:w-1/2 flex flex-col justify-center p-6">
                   <h3 className="text-2xl md:text-3xl font-bold text-[#2A3855] mb-4">
                     {item.title}
                   </h3>
@@ -126,25 +120,22 @@ const OurServices = () => {
             ))}
           </div>
 
-          <div
-            className="mt-16 md:mt-20 
-  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
-  gap-10"
-          >
+          <div className="mt-16 md:mt-20 flex flex-col md:flex-row md:flex-wrap justify-between gap-10 md:gap-10">
             {features.map((item, index) => (
-              <div key={index} className=" p-6 rounded-xl  transition ">
-                {/* Icon + Title */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="text-[#2A3855]">{item.icon}</div>
-                  <h3 className="text-lg font-bold text-[#2A3855]">
-                    {item.title}
-                  </h3>
+              <div key={index} className="">
+                <div className="flex flex-col  items-start gap-2">
+                  {/* Text */}
+                  <div className="flex gap-4">
+                    {/* Icon */}
+                    <div className="text-[#2A3855]  ">{item.icon}</div>
+                    <h3 className="text-md md:text-lg font-bold text-[#2A3855]">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 text-[14px] md:text-[15px] max-w-xs leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-
-                {/* Description */}
-                <p className="text-gray-600 text-[15px] leading-relaxed">
-                  {item.desc}
-                </p>
               </div>
             ))}
           </div>

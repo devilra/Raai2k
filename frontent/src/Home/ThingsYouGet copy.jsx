@@ -9,33 +9,33 @@ import { Link } from "react-router-dom";
 const items = [
   {
     icon: <MdPayment size={38} className="text-[#2A3855]" />,
-    title: "Fintech Product Strategy",
-    desc: "MVP scope, product roadmap, user flows, competitive insights.",
+    title: "Wallets & Payments",
+    desc: "UPI, cards, payment gateways, merchant APIs.",
   },
   {
     icon: <GiReceiveMoney size={38} className="text-[#2A3855]" />,
-    title: "Technology & Architecture",
-    desc: `Core banking, payments, lending stack, microservices, cloud architecture.`,
+    title: "Lending & BNPL Apps",
+    desc: "Credit scoring, workflows, risk checks.",
   },
   {
     icon: <RiBankCardLine size={38} className="text-[#2A3855]" />,
-    title: "Compliance & Risk Advisory",
-    desc: `RBI, KYC/AML, digital lending, PCI-DSS, security frameworks.`,
+    title: "Neobanking MVPs",
+    desc: "Accounts, onboarding, transaction engines.",
   },
   {
     icon: <GiChart size={38} className="text-[#2A3855]" />,
-    title: "MVP Build & Engineering Delivery",
-    desc: `UX/UI, frontend, backend, DevOps, QA, production deployment.`,
+    title: "Investment & Wealth Apps",
+    desc: "Portfolio, orders, data feeds, analytics.",
   },
   {
     icon: <HiOutlineLightBulb size={38} className="text-[#2A3855]" />,
-    title: "Fractional CTO",
-    desc: `Senior leadership for startups without full-time tech heads.`,
+    title: "Custom Fintech Products",
+    desc: "Any fintech idea. Any scale",
   },
   {
     icon: <LuLaptop size={38} className="text-[#2A3855]" />,
-    title: "GTM & Growth",
-    desc: `Pricing, analytics, activation, retention, growth experiments`,
+    title: "CTO-as-a-Service",
+    desc: "Architecture, tech decisions, roadmap, hiring",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function ThingsYouGet() {
       </div>
 
       {/* Grid Items */}
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
         {items.map((item, index) => (
           <div key={index} className="text-center flex flex-col items-center">
             {/* Icon */}

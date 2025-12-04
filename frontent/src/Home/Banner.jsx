@@ -23,6 +23,29 @@ const bannerData = [
     desc: "We provide creative solutions tailored for your success.",
     img: "/carosel/c3.jpg",
   },
+
+  // ⭐ NEWLY ADDED 3 SLIDES ⭐
+  {
+    id: 4,
+    title: "Fintech Innovation",
+    desc: "Build secure, scalable, next-gen fintech products with our expertise.",
+    img: "/carosel/c4.jpg",
+    objectPos: "object-right",
+  },
+  {
+    id: 5,
+    title: "Digital Transformation",
+    desc: "Transform your business processes with modern technology solutions.",
+    img: "/carosel/c5.jpg",
+    objectPos: "object-[100%_50%]",
+  },
+  {
+    id: 6,
+    title: "Smart Automation",
+    desc: "Automate workflows and improve efficiency with intelligent systems.",
+    img: "/carosel/c6.jpg",
+    objectPos: "object-[100%_50%]",
+  },
 ];
 
 // Custom Arrow Components
@@ -76,7 +99,7 @@ const Banner = () => {
             <img
               src={item.img}
               alt="banner"
-              className="w-full h-full  object-cover"
+              className={`w-full h-full object-cover ${item.objectPos}`}
             />
 
             {/* Overlay Content */}
