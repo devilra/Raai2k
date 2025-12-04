@@ -88,8 +88,47 @@ const LatestNewsHome = () => {
       </div>
 
       {/* Carousel Section */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl hidden md:block mx-auto px-6">
         <Slider {...settings}>
+          {newsData.map((item) => (
+            <div key={item.id} className="px-3">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
+                {/* Image */}
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-56 object-cover"
+                />
+
+                {/* Content */}
+                <div className="p-8">
+                  <Link
+                    to={`/news/${item.id}`}
+                    className="text-xl font-bold text-[#2A3855] leading-snug mb-2 block"
+                  >
+                    {item.title}
+                  </Link>
+
+                  <p className="text-gray-500 text-sm mb-4">By {item.author}</p>
+
+                  <p className="text-gray-600 text-[15px] leading-relaxed mb-6">
+                    {item.desc}
+                  </p>
+
+                  <Link
+                    to={`/news/${item.id}`}
+                    className="text-[#2A3855] font-semibold flex items-center gap-2 hover:gap-4 transition-all"
+                  >
+                    Learn More →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <div className="max-w-7xl md:hidden mx-auto px-6">
+        <Slider {...settings} slidesToShow={1}>
           {newsData.map((item) => (
             <div key={item.id} className="px-3">
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">

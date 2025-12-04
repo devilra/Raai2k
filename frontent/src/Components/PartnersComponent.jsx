@@ -45,16 +45,16 @@ const PartnersComponent = () => {
     //prevArrow: <PrevArrow />,
     pauseOnHover: false,
 
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 4 } },
-      { breakpoint: 768, settings: { slidesToShow: 3 } },
-      { breakpoint: 480, settings: { slidesToShow: 2 } },
-    ],
+    // responsive: [
+    //   { breakpoint: 1024, settings: { slidesToShow: 4 } },
+    //   { breakpoint: 768, settings: { slidesToShow: 3 } },
+    //   { breakpoint: 480, settings: { slidesToShow: 2 } },
+    // ],
   };
 
   return (
-    <section className="py-16 mb-24 bg-[#F2F2F2]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-10 md:py-16 mb-5 md:mb-24 bg-[#F2F2F2]">
+      <div className="max-w-7xl hidden md:block mx-auto px-6">
         {/* Heading */}
         {/* <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2A3855]">
           Trusted Partners
@@ -63,6 +63,26 @@ const PartnersComponent = () => {
         <div className="w-24 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div> */}
 
         <Slider {...settings}>
+          {partners.map((item, i) => (
+            <div key={i} className="flex justify-center items-center px-6">
+              <img
+                src={item.img}
+                alt={item.name}
+                className="h-20 w-auto  hover:opacity-70 transition-all duration-300"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <div className="max-w-7xl md:hidden mx-auto px-6">
+        {/* Heading */}
+        {/* <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2A3855]">
+          Trusted Partners
+        </h2>
+
+        <div className="w-24 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div> */}
+
+        <Slider {...settings} slidesToShow={3}>
           {partners.map((item, i) => (
             <div key={i} className="flex justify-center items-center px-6">
               <img
