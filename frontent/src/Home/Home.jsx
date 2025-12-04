@@ -31,7 +31,7 @@ const Home = () => {
       <StatsSection />
       <ClientTestimonials />
       <PartnersComponent />
-      {/* <LatestNews /> */}
+      <LatestNews />
     </div>
   );
 };
