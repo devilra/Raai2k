@@ -36,12 +36,12 @@ const CeoMessage = () => {
 
           {/* RIGHT CONTENT */}
           <div className="p-10 flex flex-col justify-center lg:w-1/2">
-            <h3 className="text-2xl font-bold text-[#2A3855] ">KARTHI NAT</h3>
-            <p className="text-sm text-gray-600 font-medium mb-5 px-3">
-              (Founder)
-            </p>
+            <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] ">
+              KARTHI NAT
+            </h3>
+            <p className="text-sm text-gray-400">Founder, RAai2K</p>
 
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="text-gray-600 text-[16px] my-6">
               Fintech is changing faster than we could imagine—and we're exactly
               here to bridge that gap. Our mission is to help teams build
               innovative products the right way: faster, safer, and with
@@ -54,12 +54,12 @@ const CeoMessage = () => {
             </p>
 
             {/* SIGNATURE AREA (Optional) */}
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <h4 className="text-lg font-semibold text-[#2A3855]">
                 KARTHI NAT
               </h4>
-              <p className="text-sm text-gray-500">Founder, RAai2K</p>
-            </div>
+             
+            </div> */}
           </div>
         </div>
 
@@ -76,12 +76,12 @@ const CeoMessage = () => {
 
           {/* LEFT CONTENT */}
           <div className="p-10 flex flex-col justify-center lg:w-1/2">
-            <h3 className="text-2xl font-bold text-[#2A3855]  ">SENTHIL</h3>
-            <p className="text-sm text-gray-600 font-medium mb-5 px-3">
-              (Founder)
-            </p>
+            <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]  ">
+              SENTHIL
+            </h3>
+            <p className="text-[16px] text-gray-400">Founder, RAai2K</p>
 
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="text-gray-600 text-[16px] my-6">
               We help teams build future-proof solutions with reduced dependency
               and minimized risks. Through our Headless (Omni-channel)
               implementations and deep OOTB/SAAS expertise, we deliver scalable
@@ -94,10 +94,10 @@ const CeoMessage = () => {
             </p>
 
             {/* SIGNATURE AREA (Optional) */}
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <h4 className="text-lg font-semibold text-[#2A3855]">SENTHIL</h4>
-              <p className="text-sm text-gray-500">Founder, RAai2K</p>
-            </div>
+              <p className="text-[16px] text-gray-400">Founder, RAai2K</p>
+            </div> */}
           </div>
         </div>
       </div>

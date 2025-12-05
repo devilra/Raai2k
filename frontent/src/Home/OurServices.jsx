@@ -4,6 +4,7 @@ import { IoChatbox } from "react-icons/io5";
 import { IoCall } from "react-icons/io5";
 import { TfiNewWindow } from "react-icons/tfi";
 import { Link } from "react-router-dom";
+import { BsFillCreditCardFill } from "react-icons/bs";
 
 const services = [
   {
@@ -52,7 +53,7 @@ const services = [
 
 const features = [
   {
-    icon: <CiCreditCard1 size={28} className="text-[#2A3855]" />,
+    icon: <BsFillCreditCardFill size={28} className="text-[#2A3855]" />,
     title: "Special financing",
     desc: "Apply for special financial support and earn exclusive rewards.",
   },
@@ -81,7 +82,7 @@ const OurServices = () => {
       <section className="w-full py-20 mt-14 bg-neutral-50">
         <div className="max-w-6xl mx-auto px-5">
           {/* Section Title */}
-          <h2 className="text-center text-4xl md:text-5xl font-bold text-[#2A3855]">
+          <h2 className="text-center text-[28px] md:text-[37px] md:text-5xl font-bold text-[#2A3855]">
             Our Services
           </h2>
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-4 mb-12"></div>
@@ -109,15 +110,15 @@ const OurServices = () => {
 
                 {/* TEXT BLOCK */}
                 <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10">
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#2A3855] mb-4">
+                  <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-gray-600 text-[16px] md:text-[] mb-6">
                     {item.desc}
                   </p>
                   <Link
                     to="/service"
-                    className="flex items-center gap-2 text-[#2A3855] font-semibold hover:gap-3 transition-all duration-200"
+                    className="flex text-[16px]  items-center gap-2 text-[#2A3855] font-semibold hover:gap-3 transition-all duration-200"
                   >
                     Learn More <FaArrowRightLong />
                   </Link>
@@ -136,15 +137,13 @@ const OurServices = () => {
                 {/* Icon + Title */}
                 <div className="flex items-center gap-4 mb-4">
                   <div className="text-[#2A3855]">{item.icon}</div>
-                  <h3 className="text-lg font-bold text-[#2A3855]">
+                  <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
                     {item.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 text-[15px] leading-relaxed">
-                  {item.desc}
-                </p>
+                <p className="text-gray-600 text-[16px] ">{item.desc}</p>
               </div>
             ))}
           </div>

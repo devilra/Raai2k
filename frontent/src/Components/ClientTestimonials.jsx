@@ -87,12 +87,14 @@ const ClientTestimonials = () => {
 
                 {/* Right Content */}
                 <div className="text-left">
-                  <p className="text-gray-600 text-lg leading-relaxed mb-5">
+                  <p className="text-gray-600 text-[20px] md:text-[21px]  mb-5">
                     {t.quote}
                   </p>
 
-                  <h4 className="text-xl font-bold text-[#2A3855]">{t.name}</h4>
-                  <p className="text-gray-500 text-sm">{t.position}</p>
+                  <h4 className="text-[16px] font-bold text-[#2A3855]">
+                    {t.name}
+                  </h4>
+                  <p className="text-gray-400 text-sm">{t.position}</p>
                 </div>
               </div>
             </div>

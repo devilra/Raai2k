@@ -12,7 +12,7 @@ const ServicePage = () => {
       <ProcessWorkflow />
       <EngagementModels />
       <IndustriesWeServe />
-      <Faq />
+      {/* <Faq /> */}
     </div>
   );
 };

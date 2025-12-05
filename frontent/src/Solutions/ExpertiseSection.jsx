@@ -121,10 +121,10 @@ const ExpertiseSection = () => {
 
                 {/* TEXT BLOCK */}
                 <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10">
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#2A3855] mb-4">
+                  <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed border-l-4 pl-4 border-red-500 mb-6">
+                  <p className="text-gray-600 text-[16px] border-l-4 pl-4 border-red-500 mb-6">
                     {item.desc}
                   </p>
                   {/* <Link
@@ -138,14 +138,14 @@ const ExpertiseSection = () => {
             ))}
           </div>
 
-          <div
+          {/* <div
             className="mt-16 md:mt-20 
   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
   gap-10"
           >
             {features.map((item, index) => (
               <div key={index} className=" p-6 rounded-xl  transition ">
-                {/* Icon + Title */}
+               
                 <div className="flex items-center gap-4 mb-4">
                   <div className="text-[#2A3855]">{item.icon}</div>
                   <h3 className="text-lg font-bold text-[#2A3855]">
@@ -153,13 +153,13 @@ const ExpertiseSection = () => {
                   </h3>
                 </div>
 
-                {/* Description */}
+              
                 <p className="text-gray-600 text-[15px] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

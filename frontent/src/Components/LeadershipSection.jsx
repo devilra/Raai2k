@@ -44,7 +44,7 @@ const LeadershipSection = () => {
   return (
     <section className="py-20 bg-white">
       {/* Title */}
-      <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2A3855]">
+      <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]">
         Global Leadership
       </h2>
       <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-4 mb-16"></div>
@@ -72,12 +72,10 @@ const LeadershipSection = () => {
             <h3 className="mt-4 text-xl font-semibold text-[#2A3855]">
               {leader.name}
             </h3>
-            <p className="text-gray-500 text-sm">{leader.role}</p>
+            <p className="text-gray-400 text-sm">{leader.role}</p>
 
             {/* Description */}
-            <p className="mt-3 text-gray-600 text-[15px] leading-relaxed">
-              {leader.desc}
-            </p>
+            <p className="mt-3 text-gray-600 text-[16px] ">{leader.desc}</p>
           </div>
         ))}
       </div>

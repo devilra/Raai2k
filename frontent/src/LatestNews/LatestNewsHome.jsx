@@ -81,7 +81,7 @@ const LatestNewsHome = () => {
     <section className="py-20">
       {/* Title */}
       <div className="text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
+        <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
           Latest News
         </h2>
         <div className="w-16 h-[3px] bg-[#2A3855] mx-auto mt-4"></div>
@@ -104,20 +104,18 @@ const LatestNewsHome = () => {
                 <div className="p-8">
                   <Link
                     to={`/news/${item.id}`}
-                    className="text-xl font-bold text-[#2A3855] leading-snug mb-2 block"
+                    className="text-[21px] md:text-[18px] font-bold text-[#2A3855] leading-snug mb-2 block"
                   >
                     {item.title}
                   </Link>
 
-                  <p className="text-gray-500 text-sm mb-4">By {item.author}</p>
+                  <p className="text-gray-400 text-sm mb-4">By {item.author}</p>
 
-                  <p className="text-gray-600 text-[15px] leading-relaxed mb-6">
-                    {item.desc}
-                  </p>
+                  <p className="text-gray-600 text-[16px]  mb-6">{item.desc}</p>
 
                   <Link
                     to={`/news/${item.id}`}
-                    className="text-[#2A3855] font-semibold flex items-center gap-2 hover:gap-4 transition-all"
+                    className="text-[#2A3855] text-[16px] font-semibold flex items-center gap-2 hover:gap-4 transition-all"
                   >
                     Learn More →
                   </Link>
@@ -143,16 +141,14 @@ const LatestNewsHome = () => {
                 <div className="p-8">
                   <Link
                     to={`/news/${item.id}`}
-                    className="text-xl font-bold text-[#2A3855] leading-snug mb-2 block"
+                    className="text-[21px] md:text-[18px] font-bold text-[#2A3855]  mb-2 block"
                   >
                     {item.title}
                   </Link>
 
                   <p className="text-gray-500 text-sm mb-4">By {item.author}</p>
 
-                  <p className="text-gray-600 text-[15px] leading-relaxed mb-6">
-                    {item.desc}
-                  </p>
+                  <p className="text-gray-600 text-[16px]  mb-6">{item.desc}</p>
 
                   <Link
                     to={`/news/${item.id}`}

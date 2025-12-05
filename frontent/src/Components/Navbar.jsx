@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"; // useLocation ஐ இறக்குமதி செய்யவும்
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCall, IoClose } from "react-icons/io5";
-import { IoTime } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -114,12 +113,12 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Link to="/">
               <img
-                src="/logo.png"
+                src="/logo3.jpeg"
                 // style={{
                 //   filter:
                 //     "invert(54%) sepia(94%) saturate(500%) hue-rotate(10deg) brightness(95%) contrast(90%)",
                 // }}
-                className=" object-cover filter invert brightness-100 saturate-0  rounded-full"
+                className=" object-cover h-[45px] filter invert brightness-100 saturate-0  rounded-full"
               />
             </Link>
             {/* Desktop Navigation Links */}

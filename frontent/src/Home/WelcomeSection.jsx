@@ -57,11 +57,11 @@ const WelcomeSection = () => {
       <section className="py-10 md:py-12 lg:py-20 bg-white w-full">
         <div className="max-w-6xl mx-auto text-center px-6">
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl font-bold text-[#2A3855]">
+          <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
             Welcome to the raai2k
           </h2>
           {/* Sub text */}
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-[16px] ">
             Core banking, payments, lending, compliance, blockchain, and AI/ML
             together power a secure and scalable modern fintech ecosystem.
           </p>
@@ -91,11 +91,11 @@ const WelcomeSection = () => {
                   {item.icon}
                 </div>
                 {/* Title */}
-                <h3 className="text-[16px] font-bold text-[#2A3855] mb-3 ">
+                <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-3 ">
                   {item.title}
                 </h3>
                 {/* Description */}
-                <p className="text-gray-600 md:text-[13px] lg:text-[15px] text-center">
+                <p className="text-gray-600 text-[16px]  text-center">
                   {item.desc}
                 </p>
               </div>

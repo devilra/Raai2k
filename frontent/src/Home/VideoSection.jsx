@@ -58,11 +58,11 @@ const VideoSection = () => {
                   <div className="flex gap-4">
                     {/* Icon */}
                     <div className="text-[#2A3855]  ">{item.icon}</div>
-                    <h3 className="text-md md:text-lg font-bold text-[#2A3855]">
+                    <h3 className="text-[21px]  md:text-[18px] font-bold text-[#2A3855]">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 text-[14px] md:text-[15px] max-w-xs leading-relaxed">
+                  <p className="text-gray-600 text-[16px]  max-w-xs ">
                     {item.desc}
                   </p>
                 </div>

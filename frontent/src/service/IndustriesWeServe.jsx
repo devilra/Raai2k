@@ -15,32 +15,32 @@ const industryColors = [
 export const IndustriesWeServe = () => {
   const industries = [
     {
-      icon: <GiBank size={30} />,
+      icon: <GiBank size={28} />,
       title: "FinTech & Banking",
       desc: "Digital banking, loan platforms, payments, wallets & compliance systems.",
     },
     {
-      icon: <FaHospitalUser size={30} />,
+      icon: <FaHospitalUser size={28} />,
       title: "Healthcare",
       desc: "Appointment systems, telemedicine, EMR/EHR solutions & health automation.",
     },
     {
-      icon: <FaStore size={30} />,
+      icon: <FaStore size={28} />,
       title: "E-Commerce",
       desc: "Full-fledged marketplaces, inventory, delivery, and order management.",
     },
     {
-      icon: <MdCastForEducation size={30} />,
+      icon: <MdCastForEducation size={28} />,
       title: "EdTech",
       desc: "Learning platforms, course management, video delivery & live classes.",
     },
     {
-      icon: <GiTruck size={30} />,
+      icon: <GiTruck size={28} />,
       title: "Logistics",
       desc: "Fleet tracking, delivery routing, warehouse automation & ERP systems.",
     },
     {
-      icon: <FaBuilding size={30} />,
+      icon: <FaBuilding size={28} />,
       title: "Enterprise SaaS",
       desc: "CRM, workflow automation, HR tech, cloud apps & large-scale platforms.",
     },
@@ -50,10 +50,11 @@ export const IndustriesWeServe = () => {
     <section className="py-20 bg-[#F2F2F2]">
       {" "}
       {/* Dark background for contrast */}
-      <h2 className="text-4xl font-extrabold text-center text-[#2A3855] mb-6">
+      <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]">
         Industries We Transform
       </h2>
-      <p className="text-center text-gray-600 text-lg mb-16 max-w-3xl mx-auto">
+      <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-7"></div>
+      <p className="text-center text-gray-600 text-[16px] mb-16 max-w-3xl mx-auto">
         We deliver custom digital solutions across diverse sectors,
         understanding the unique challenges of each industry.
       </p>
@@ -66,18 +67,20 @@ export const IndustriesWeServe = () => {
                         bg-white border-b-4 border-l-4 border-neutral-300 border-opacity-20 hover:shadow-2xl`}
           >
             {/* Unique Icon Container (Inspired by Hexagonal/Badge look) */}
-            <div
-              className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 
+            <div className="flex items-center gap-4">
+              <div
+                className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 
                           ${industryColors[i % industryColors.length]} 
                           shadow-inner group-hover:shadow-xl transition-shadow duration-300`}
-            >
-              {ind.icon}
-            </div>
+              >
+                {ind.icon}
+              </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">
-              {ind.title}
-            </h3>
-            <p className="text-gray-600 mt-2">{ind.desc}</p>
+              <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-2">
+                {ind.title}
+              </h3>
+            </div>
+            <p className="text-gray-600 text-[16px] mt-2">{ind.desc}</p>
 
             {/* Bottom Accent Line on Hover */}
             <div
