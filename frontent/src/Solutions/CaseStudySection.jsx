@@ -8,7 +8,7 @@ import { PiCubeTransparentLight } from "react-icons/pi";
 
 const caseStudies = [
   {
-    icon: <BsWallet2 size={38} className="text-[#2A3855]" />,
+    icon: <BsWallet2 size={28} className="text-white" />,
     title: "Digital Wallet for a Neobank",
     points: [
       "Built a mobile/web wallet with real-time peer-to-peer payments.",
@@ -17,7 +17,7 @@ const caseStudies = [
     ],
   },
   {
-    icon: <GiReceiveMoney size={38} className="text-[#2A3855]" />,
+    icon: <GiReceiveMoney size={28} className="text-white" />,
     title: "Lending Platform for a Fintech Startup",
     points: [
       "Developed a credit underwriting engine with AI-based risk scoring.",
@@ -26,7 +26,7 @@ const caseStudies = [
     ],
   },
   {
-    icon: <MdOutlinePayments size={38} className="text-[#2A3855]" />,
+    icon: <MdOutlinePayments size={28} className="text-white" />,
     title: "BNPL (Buy Now Pay Later) Prototype",
     points: [
       "Built credit scoring model + lending flow.",
@@ -35,7 +35,7 @@ const caseStudies = [
     ],
   },
   {
-    icon: <TbChartInfographic size={38} className="text-[#2A3855]" />,
+    icon: <TbChartInfographic size={28} className="text-white" />,
     title: "Investment App Proof of Concept",
     points: [
       "Portfolio view, orders, alerts.",
@@ -44,7 +44,7 @@ const caseStudies = [
     ],
   },
   {
-    icon: <PiCubeTransparentLight size={38} className="text-[#2A3855]" />,
+    icon: <PiCubeTransparentLight size={28} className="text-white" />,
     title: "Blockchain-Enabled Asset Platform",
     points: [
       "Created a tokenization system for real-world assets.",
@@ -59,7 +59,7 @@ const CaseStudySection = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-[#2A3855] text-center">
+        <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855] text-center">
           Case Studies
         </h2>
         <div className="w-24 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
@@ -73,7 +73,7 @@ const CaseStudySection = () => {
             >
               {/* Icon + Title */}
               <div className="flex items-center gap-4 mb-5">
-                <div className="p-3 bg-white rounded-xl shadow">
+                <div className="p-3 bg-[#2A3855] rounded-xl shadow">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-[#2A3855]">
@@ -82,11 +82,18 @@ const CaseStudySection = () => {
               </div>
 
               {/* Points */}
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 list-disc text-gray-700 w-full">
                 {item.points.map((point, i) => (
-                  <li key={i} className="flex gap-2">
-                    <FaCheckCircle className="text-green-500 mt-1" />
-                    {point}
+                  // <li key={i} className="flex gap-2">
+                  //   <FaCheckCircle className="text-gray-500 hidden md:hidden lg:block mt-1" />
+                  //   {point}
+                  // </li>
+                  <li key={i} className="flex items-center gap-4 mb-6">
+                    <div className="">
+                      <FaCheckCircle className="text-gray-500 " />
+                    </div>
+
+                    <h3 className="  text-[#2A3855]">{point}</h3>
                   </li>
                 ))}
               </ul>

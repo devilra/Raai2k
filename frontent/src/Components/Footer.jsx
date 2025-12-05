@@ -161,11 +161,26 @@ const Footer = () => {
           {/* Left Logo & Copyright */}
           <div className="flex items-center justify-between gap-3 mb-4 md:mb-0">
             <img
-              src="/logo.png"
+              src="/logo3.jpeg"
               alt="logo"
-              className="object-cover filter  brightness-100 saturate-0  rounded-full"
+              className=" object-cover h-[45px] filter invert brightness-100 saturate-0  rounded-full"
             />
-            <span>© Copyright {new Date().getFullYear()} Raai2K Inc.</span>
+            <div className="inline-flex gap-5">
+              <span className="">
+                Designed by{" "}
+                <a
+                  className="font-bold underline"
+                  href="https://amigowebster.com/"
+                  target="_blank"
+                >
+                  amigowebster
+                </a>
+              </span>
+              <span>
+                © Copyright {new Date().getFullYear()}{" "}
+                <span className="font-bold">Raai2K Inc.</span>
+              </span>
+            </div>
           </div>
 
           {/* Right Credits */}

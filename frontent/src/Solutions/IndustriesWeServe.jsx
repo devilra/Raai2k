@@ -87,15 +87,19 @@ const IndustriesWeServe = () => {
               <div className="flex items-center gap-4 mb-4">
                 {/* 1. Numbered Icon Container */}
                 <div
-                  className={`shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 ${item.color} border-gray-300`}
+                  // className={`shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 ${item.color} border-gray-300`}
+                  className={`shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2  border-[#dadee5]`}
                 >
-                  <span className={`text-lg font-bold ${item.color}`}>
+                  <span
+                    //  className={`text-lg font-bold ${item.color}`}
+                    className={`text-lg font-bold text-[#2A3855] `}
+                  >
                     {index + 1}
                   </span>
                 </div>
 
                 {/* 2. Title */}
-                <h3 className="text-xl font-extrabold text-[#2A3855]">
+                <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
                   {item.title}
                 </h3>
               </div>
@@ -106,9 +110,7 @@ const IndustriesWeServe = () => {
               </p>
 
               {/* Optional: Actual Icon below description, if needed */}
-              <div className="mt-4 flex justify-end opacity-70">
-                {item.icon}
-              </div>
+              <div className="mt-4 flex justify-end ">{item.icon}</div>
             </div>
           ))}
         </div>
