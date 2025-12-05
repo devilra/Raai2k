@@ -13,6 +13,7 @@ import CaseStudies from "./CaseStudies/CaseStudies";
 import Blogs from "./Blogs/Blogs";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import TermsOfUse from "./Components/TermsOfUse";
+import Careers from "./Careers/Careers";
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/solution" element={<Solutions />} />
         {/* <Route path="/case" element={<CaseStudies />} /> */}
-        <Route path="/blog" element={<Blogs />} />
+        {/* <Route path="/blog" element={<Blogs />} /> */}
+        <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<ContactPage />} />
         {/* <Route path="/faq" element={<Faq />} /> */}
         <Route path="/privacy" element={<PrivacyPolicy />} />

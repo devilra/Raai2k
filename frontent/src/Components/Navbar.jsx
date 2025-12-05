@@ -9,16 +9,17 @@ import { AnimatePresence, motion } from "framer-motion";
 const ActiveLink = ({ to, children }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
+  const [isHover, setIsHover] = useState(false);
 
   // Active மற்றும் Hover நிலையில் உள்ள Border-க்கு பொதுவான Tailwind classes
   const baseClasses =
-    "relative transition-colors duration-300 font-bold hover:text-blue-600";
+    "relative transition-colors duration-300 font-bold hover:text-[#0f264f]";
 
   // Active/Hover-க்கான Curved Bottom Line Component
   const BorderLine = () => (
     <motion.div
       layoutId="active-nav-link" // Framer Motion மூலம் Smooth Transition கிடைக்கும்
-      className="absolute -bottom-2.5 left-0 right-0 h-[3px] bg-blue-600"
+      className="absolute -bottom-2.5 left-0 right-0 h-[3px] bg-[#2A3855]"
       initial={{ borderRadius: 0 }}
       animate={{ borderRadius: "0 0 10px 10px" }} // Bottom corners-க்கு Curve Shape
       transition={{ type: "spring", stiffness: 500, damping: 30 }}
@@ -26,7 +27,12 @@ const ActiveLink = ({ to, children }) => {
   );
 
   return (
-    <Link to={to} className={baseClasses}>
+    <Link
+      to={to}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      className={baseClasses}
+    >
       {children}
 
       {/* Active Link-க்கு மட்டும் Border Line */}
@@ -34,7 +40,18 @@ const ActiveLink = ({ to, children }) => {
 
       {/* Hover Effect-க்கு ஒரு தனிப்பட்ட Border Line (isActive-ஆக இல்லை என்றால் மட்டும்) */}
       {!isActive && (
-        <div className="absolute -bottom-2.5 left-0 right-0 h-[3px] bg-blue-600 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100 rounded-b-lg opacity-0 group-hover:opacity-100" />
+        <AnimatePresence>
+          {isHover && (
+            <motion.div
+              className="absolute -bottom-2.5 left-0 right-0 h-[3px] bg-[#2A3855]"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              exit={{ scaleX: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              style={{ borderRadius: "0 0 10px 10px" }}
+            />
+          )}
+        </AnimatePresence>
       )}
     </Link>
   );
@@ -64,7 +81,7 @@ export default function Navbar() {
     { name: "Service", path: "/service" },
     { name: "Solutions", path: "/solution" },
     // { name: "Case Studies", path: "/case" },
-    { name: "Blogs", path: "/blog" },
+    { name: "Careers", path: "/careers" },
     //{ name: "Elements", path: "/elements" },
     { name: "Contact", path: "/contact" },
 
@@ -183,28 +200,44 @@ export default function Navbar() {
           >
             <div className="flex flex-col items-center gap-2 text-[#2A3855] font-semibold text-md md:text-lg">
               <Link
-                className=" w-full text-center py-1 border-b border-gray-200"
+                className={` w-full text-center py-3  ${
+                  location.pathname === "/"
+                    ? "bg-[#2A3855] text-white"
+                    : "text-[#2A3855]"
+                } `}
                 onClick={() => setOpenMenu(false)}
                 to="/"
               >
                 Home
               </Link>
               <Link
-                className=" w-full text-center py-1 border-b border-gray-200"
+                className={` w-full text-center py-3  ${
+                  location.pathname === "/about"
+                    ? "bg-[#2A3855] text-white"
+                    : "text-[#2A3855]"
+                } `}
                 onClick={() => setOpenMenu(false)}
                 to="/about"
               >
                 About
               </Link>
               <Link
-                className=" w-full text-center py-1 border-b border-gray-200"
+                className={` w-full text-center py-3  ${
+                  location.pathname === "/service"
+                    ? "bg-[#2A3855] text-white"
+                    : "text-[#2A3855]"
+                } `}
                 onClick={() => setOpenMenu(false)}
                 to="/service"
               >
                 Service
               </Link>
               <Link
-                className=" w-full text-center py-1 border-b border-gray-200"
+                className={` w-full text-center py-3  ${
+                  location.pathname === "/solution"
+                    ? "bg-[#2A3855] text-white"
+                    : "text-[#2A3855]"
+                } `}
                 onClick={() => setOpenMenu(false)}
                 to="/solution"
               >
@@ -218,17 +251,25 @@ export default function Navbar() {
                 Case Studies
               </Link> */}
               <Link
-                className=" w-full text-center py-1 border-b border-gray-200"
+                className={` w-full text-center py-3  ${
+                  location.pathname === "/careers"
+                    ? "bg-[#2A3855] text-white"
+                    : "text-[#2A3855]"
+                } `}
                 onClick={() => setOpenMenu(false)}
-                to="/blog"
+                to="/careers"
               >
-                Blogs
+                Careers
               </Link>
               {/* <Link onClick={() => setOpenMenu(false)} to="/elements">
                 Elements
               </Link> */}
               <Link
-                className=" w-full text-center py-1 border-b border-gray-200"
+                className={` w-full text-center py-3  ${
+                  location.pathname === "/contact"
+                    ? "bg-[#2A3855] text-white"
+                    : "text-[#2A3855]"
+                } `}
                 onClick={() => setOpenMenu(false)}
                 to="/contact"
               >

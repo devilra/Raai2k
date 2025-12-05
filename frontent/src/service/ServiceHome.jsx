@@ -53,7 +53,7 @@ export default function ServiceHome() {
           </h2>
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "MVP Development",
@@ -90,7 +90,6 @@ export default function ServiceHome() {
                 key={i}
                 className="p-7 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition duration-300"
               >
-                {/* <div className="text-blue-600 mb-4">{s.icon}</div> */}
                 <div className="flex items-center gap-5">
                   <div className="text-[#2A3855] mb-4">{s.icon}</div>
                   <h3 className="text-[21px] md:text-[18px] truncate text-[#2A3855] font-bold mb-2">
@@ -111,37 +110,37 @@ export default function ServiceHome() {
 
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "Fintech Product Strategy",
                 desc: "MVP scope, product roadmap, user flows, competitive insights.",
-                icon: <IoStatsChart size={28} />, // Strategy-focused icon
+                icon: <IoStatsChart size={28} />,
               },
               {
                 title: "Technology & Architecture",
                 desc: "Core banking, payments, lending stack, microservices, cloud architecture.",
-                icon: <FaArchway size={28} />, // Tech architecture icon
+                icon: <FaArchway size={28} />,
               },
               {
                 title: "Compliance & Risk Advisory",
                 desc: "RBI, KYC/AML, digital lending, PCI-DSS, security frameworks.",
-                icon: <MdGavel size={28} />, // Perfect for legal & compliance
+                icon: <MdGavel size={28} />,
               },
               {
                 title: "MVP Build & Engineering Delivery",
                 desc: "UX/UI, frontend, backend, DevOps, QA, production deployment.",
-                icon: <RiToolsFill size={28} />, // Engineering tools icon
+                icon: <RiToolsFill size={28} />,
               },
               {
                 title: "Fractional CTO",
                 desc: "Senior leadership for startups without full-time tech heads.",
-                icon: <ImUserTie size={28} />, // CTO / leadership icon
+                icon: <ImUserTie size={28} />,
               },
               {
                 title: "GTM & Growth",
                 desc: "Pricing, analytics, activation, retention, growth experiments",
-                icon: <FaChartPie size={28} />, // Growth / analytics icon
+                icon: <FaChartPie size={28} />,
               },
             ].map((s, i) => (
               <div
@@ -167,7 +166,7 @@ export default function ServiceHome() {
           </h2>
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Banking Technology Solutions",

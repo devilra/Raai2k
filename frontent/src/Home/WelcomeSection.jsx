@@ -6,6 +6,22 @@ import { PiCubeTransparentLight } from "react-icons/pi";
 import { AiOutlineLineChart } from "react-icons/ai";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoIosChatbubbles } from "react-icons/io";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // one by one animate
+    },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+};
 
 const features = [
   {
@@ -53,7 +69,12 @@ const features = [
 
 const WelcomeSection = () => {
   return (
-    <div>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <section className="py-10 md:py-12 lg:py-20 bg-white w-full">
         <div className="max-w-6xl mx-auto text-center px-6">
           {/* Heading */}
@@ -82,8 +103,9 @@ const WelcomeSection = () => {
   items-start"
           >
             {features.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={itemEffect}
                 className="flex flex-col items-center text-center h-full"
               >
                 {/* Icon circle */}
@@ -98,12 +120,12 @@ const WelcomeSection = () => {
                 <p className="text-gray-600 text-[16px]  text-center">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
