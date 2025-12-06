@@ -15,6 +15,7 @@ import { RiToolsFill } from "react-icons/ri";
 import { GiBank } from "react-icons/gi";
 import { LiaArchwaySolid } from "react-icons/lia";
 import { FaArchway } from "react-icons/fa6";
+import IndustriesWeServe from "../Solutions/IndustriesWeServe";
 
 export default function ServiceHome() {
   return (
@@ -36,6 +37,10 @@ export default function ServiceHome() {
         </div>
       </section>
 
+      <div>
+        <IndustriesWeServe />
+      </div>
+
       <div className="py-20 px-6 lg:px-20 bg-gray-50">
         {/* MAIN TITLE */}
         {/* <h1 className="text-5xl font-bold text-center text-[#2A3855] mb-4">
@@ -45,62 +50,6 @@ export default function ServiceHome() {
         We help startups, enterprises and fintech companies build modern,
         scalable and secure digital products.
       </p> */}
-
-        {/* ================= GENERAL SERVICES ================= */}
-        <section className="mb-20">
-          <h2 className="text-[28px] md:text-[37px] text-center font-bold text-[#2A3855] ">
-            General Services
-          </h2>
-          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "MVP Development",
-                desc: "Launch your MVP in weeks with modern, scalable architecture.",
-                icon: <FaRocket size={28} />,
-              },
-              {
-                title: "Custom Software Development",
-                desc: "Web, mobile & backend development for any business model.",
-                icon: <FaTools size={28} />,
-              },
-              {
-                title: "Cloud & DevOps",
-                desc: "CI/CD, cloud deployment, infra automation & monitoring.",
-                icon: <FaCloud size={28} />,
-              },
-              {
-                title: "AI & Automation",
-                desc: "AI chatbots, process automation, document workflows & more.",
-                icon: <FaRobot size={28} />,
-              },
-              {
-                title: "CTO-as-a-Service",
-                desc: "Technical leadership for startups & growing companies.",
-                icon: <FaUserTie size={28} />,
-              },
-              {
-                title: "IT Support & Maintenance",
-                desc: "Product upgrades, security patches and 24/7 monitoring.",
-                icon: <FaLifeRing size={28} />,
-              },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className="p-7 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition duration-300"
-              >
-                <div className="flex items-center gap-5">
-                  <div className="text-[#2A3855] mb-4">{s.icon}</div>
-                  <h3 className="text-[21px] md:text-[18px] truncate text-[#2A3855] font-bold mb-2">
-                    {s.title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 text-[16px]">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* ================= FINTECH SERVICES ================= */}
         <section className="mb-20">
@@ -128,20 +77,25 @@ export default function ServiceHome() {
                 icon: <MdGavel size={28} />,
               },
               {
-                title: "MVP Build & Engineering Delivery",
-                desc: "UX/UI, frontend, backend, DevOps, QA, production deployment.",
-                icon: <RiToolsFill size={28} />,
+                title: "AI & Automation",
+                desc: "AI chatbots, process automation, document workflows & more.",
+                icon: <FaRobot size={28} />,
               },
-              {
-                title: "Fractional CTO",
-                desc: "Senior leadership for startups without full-time tech heads.",
-                icon: <ImUserTie size={28} />,
-              },
-              {
-                title: "GTM & Growth",
-                desc: "Pricing, analytics, activation, retention, growth experiments",
-                icon: <FaChartPie size={28} />,
-              },
+              // {
+              //   title: "MVP Build & Engineering Delivery",
+              //   desc: "UX/UI, frontend, backend, DevOps, QA, production deployment.",
+              //   icon: <RiToolsFill size={28} />,
+              // },
+              // {
+              //   title: "Fractional CTO",
+              //   desc: "Senior leadership for startups without full-time tech heads.",
+              //   icon: <ImUserTie size={28} />,
+              // },
+              // {
+              //   title: "GTM & Growth",
+              //   desc: "Pricing, analytics, activation, retention, growth experiments",
+              //   icon: <FaChartPie size={28} />,
+              // },
             ].map((s, i) => (
               <div
                 key={i}
@@ -150,6 +104,62 @@ export default function ServiceHome() {
                 <div className="flex items-center gap-5">
                   <div className="text-[#2A3855] mb-4">{s.icon}</div>
                   <h3 className="text-[21px] md:text-[18px] truncate font-bold text-[#2A3855] mb-2">
+                    {s.title}
+                  </h3>
+                </div>
+                <p className="text-gray-600 text-[16px]">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= GENERAL SERVICES ================= */}
+        <section className="mb-20">
+          <h2 className="text-[28px] md:text-[37px] text-center font-bold text-[#2A3855] ">
+            General Services
+          </h2>
+          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "MVP Development",
+                desc: "Launch your MVP in weeks with modern, scalable architecture.",
+                icon: <FaRocket size={28} />,
+              },
+              {
+                title: "Custom Software Development",
+                desc: "Web, mobile & backend development for any business model.",
+                icon: <FaTools size={28} />,
+              },
+              {
+                title: "Cloud & DevOps",
+                desc: "CI/CD, cloud deployment, infra automation & monitoring.",
+                icon: <FaCloud size={28} />,
+              },
+              // {
+              //   title: "AI & Automation",
+              //   desc: "AI chatbots, process automation, document workflows & more.",
+              //   icon: <FaRobot size={28} />,
+              // },
+              // {
+              //   title: "CTO-as-a-Service",
+              //   desc: "Technical leadership for startups & growing companies.",
+              //   icon: <FaUserTie size={28} />,
+              // },
+              // {
+              //   title: "IT Support & Maintenance",
+              //   desc: "Product upgrades, security patches and 24/7 monitoring.",
+              //   icon: <FaLifeRing size={28} />,
+              // },
+            ].map((s, i) => (
+              <div
+                key={i}
+                className="p-7 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition duration-300"
+              >
+                <div className="flex items-center gap-5">
+                  <div className="text-[#2A3855] mb-4">{s.icon}</div>
+                  <h3 className="text-[21px] md:text-[18px] truncate text-[#2A3855] font-bold mb-2">
                     {s.title}
                   </h3>
                 </div>

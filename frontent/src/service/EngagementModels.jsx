@@ -23,7 +23,7 @@ export const EngagementModels = () => {
   ];
 
   return (
-    <section className="py-20 bg-linear-to-br ">
+    <section className="py-20 bg-linear-to-br bg-gray-50 ">
       <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]  drop-shadow-sm">
         Choose Your Perfect Engagement Model
         <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-purple-600"></span>{" "}

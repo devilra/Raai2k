@@ -4,14 +4,17 @@ import { ProcessWorkflow } from "./ProcessWorkflow";
 import { EngagementModels } from "./EngagementModels";
 import { IndustriesWeServe } from "./IndustriesWeServe";
 import Faq from "../FAQ/Faq";
+import CaseStudySection from "../Solutions/CaseStudySection";
 
 const ServicePage = () => {
   return (
     <div>
       <ServiceHome />
-      <ProcessWorkflow />
       <EngagementModels />
-      <IndustriesWeServe />
+      <ProcessWorkflow />
+      <CaseStudySection />
+
+      {/* <IndustriesWeServe /> */}
       {/* <Faq /> */}
     </div>
   );

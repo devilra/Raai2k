@@ -63,7 +63,7 @@ const industries = [
 const IndustriesWeServe = () => {
   return (
     // Tailwind Gradient Background சேர்க்கப்பட்டுள்ளது
-    <section className="py-24 bg-linear-to-br from-gray-100 to-gray-200">
+    <section className="py-24 bg-linear-to-br ">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A3855]">

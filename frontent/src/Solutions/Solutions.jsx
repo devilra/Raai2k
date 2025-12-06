@@ -5,6 +5,7 @@ import ExpertiseSection from "./ExpertiseSection";
 import ProcessWorkflow from "./ProcessWorkflow";
 import IndustriesWeServe from "./IndustriesWeServe";
 import CaseStudySection from "./CaseStudySection";
+import Accelerators from "./Accelerators";
 
 const Solutions = () => {
   return (
@@ -12,9 +13,10 @@ const Solutions = () => {
       <SolutionsHero />
       <SolutionsList />
       <ExpertiseSection />
+      <Accelerators />
       <ProcessWorkflow />
-      <IndustriesWeServe />
-      <CaseStudySection />
+      {/* <IndustriesWeServe /> */}
+      {/* <CaseStudySection /> */}
     </div>
   );
 };

@@ -79,7 +79,7 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Service", path: "/service" },
-    { name: "Solutions", path: "/solution" },
+    { name: "Capabilities", path: "/capabilities" },
     // { name: "Case Studies", path: "/case" },
     { name: "Careers", path: "/careers" },
     //{ name: "Elements", path: "/elements" },
@@ -234,14 +234,14 @@ export default function Navbar() {
               </Link>
               <Link
                 className={` w-full text-center py-3  ${
-                  location.pathname === "/solution"
+                  location.pathname === "/capabilities"
                     ? "bg-[#2A3855] text-white"
                     : "text-[#2A3855]"
                 } `}
                 onClick={() => setOpenMenu(false)}
-                to="/solution"
+                to="/capabilities"
               >
-                Solutions
+                Capabilities
               </Link>
               {/* <Link
                 className=" w-full text-center py-1 border-b border-gray-200"
