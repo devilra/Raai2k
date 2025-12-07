@@ -6,7 +6,7 @@ const leaders = [
     to bridge that gap. Our mission is to help teams build innovative products 
     the right way: faster, safer, and with clarity. Most founders don’t fail 
     because their idea is weak, but because the financial ecosystem is complex.`,
-    img: "/global/f.jpg", // Change path if required
+    img: "/global/f.png", // Change path if required
   },
   {
     name: "Senthil",

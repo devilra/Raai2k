@@ -4,7 +4,7 @@ const leaders = [
   {
     //name: "Reenal Scott",
     role: "COO (Strategy & Ops)",
-    img: "/global/m1.jpg",
+    img: "/global/m1.png",
     desc: "Ensures operational excellence across teams, enabling consistent, compliant, high-performance execution.",
   },
   {
@@ -35,7 +35,7 @@ const leaders = [
   {
     //name: "Ragner Lothbrok",
     role: "Design (UI/UX)",
-    img: "/global/m4.jpg",
+    img: "/global/m4.png",
     desc: "Designs clean, intuitive experiences that make money easier for everyone.",
   },
 ];
@@ -65,7 +65,7 @@ const LeadershipSection = () => {
             <img
               src={leader.img}
               alt={leader.name}
-              className="w-full h-[300px] object-cover object-[20%_10%] rounded-lg"
+              className="w-full h-[300px] object-contain rounded-lg"
             />
 
             {/* Name + Role */}
