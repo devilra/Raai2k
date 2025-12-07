@@ -6,12 +6,14 @@ import CaseStudySection from "../CaseStudies/CaseStudySection";
 import BlogsSection from "../Blogs/BlogsSection";
 import ClientTestimonials from "../Components/ClientTestimonials";
 import LeadershipSection from "../Components/LeadershipSection";
+import Roadmap from "./Roadmap";
 
 const AboutPage = () => {
   return (
     <div className="">
       <CeoMessage />
-      <CompanyOverview />
+      {/* <Roadmap /> */}
+
       {/* <CaseStudySection /> */}
       {/* <StatsSection /> */}
       {/* <BlogsSection /> */}

@@ -1,4 +1,5 @@
 import React from "react";
+import CompanyOverview from "./CompanyOverview";
 
 const CeoMessage = () => {
   return (
@@ -21,6 +22,10 @@ const CeoMessage = () => {
         </p> */}
       </div>
 
+      <section>
+        <CompanyOverview />
+      </section>
+
       {/* 🔶 CEO MESSAGE SECTION */}
       <div className="max-w-6xl mx-auto px-6 mt-16 space-y-14">
         {/* ======= FOUNDER 1 ======= */}
@@ -28,7 +33,7 @@ const CeoMessage = () => {
           {/* LEFT IMAGE */}
           <div className="w-full lg:w-1/4 ">
             <img
-              src="/global/f.jpg"
+              src="/global/f.png"
               alt="Founder"
               className="h-[400px] w-[300px]  object-cover  rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
             />

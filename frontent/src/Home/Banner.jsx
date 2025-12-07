@@ -48,7 +48,7 @@ const bannerData = [
   },
 ];
 
-// Custom Arrow Components
+// Custom Arrow Components (No change)
 const NextArrow = ({ onClick }) => (
   <div
     onClick={onClick}
@@ -61,7 +61,7 @@ const NextArrow = ({ onClick }) => (
 const PrevArrow = ({ onClick }) => (
   <div
     onClick={onClick}
-    className="absolute top-1/2 hidden md:hidden lg:block  left-2 z-20 p-3 bg-white/30 backdrop-blur-2xl rounded-full cursor-pointer shadow-md"
+    className="absolute top-1/2 hidden md:hidden lg:block  left-2 z-20 p-3 bg-white/30 backdrop-blur-2xl rounded-full cursor-pointer shadow-md"
   >
     <FaChevronLeft className="text-[#2A3855] text-xl" />
   </div>
@@ -71,7 +71,9 @@ const Banner = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const settings = {
-    dots: false,
+    dots: true,
+    // Ensure the custom class is set here
+    dotsClass: "slick-dots custom-dots-bottom",
     infinite: true,
     arrows: true,
     speed: 700,
@@ -88,13 +90,14 @@ const Banner = () => {
     },
   };
 
-  // அனிமேஷன் மாறுபாடுகள் (Variants)
-
   return (
-    <div className="relative w-full overflow-hidden">
+    // ⚠️ CRITICAL CHANGE: Removed 'overflow-hidden' and 'h-[75vh]' from the wrapper.
+    // Added 'pb-20' (padding bottom) to give space for the dots to show below the image.
+    <div className="relative w-full pb-20">
       <Slider {...settings}>
         {bannerData.map((item, index) => (
-          <div key={item.id} className="relative w-full h-[80vh]">
+          // The individual slide maintains its height, e.g., h-[75vh]
+          <div key={item.id} className="relative w-full h-[75vh]">
             {/* Background Image */}
             <img
               src={item.img}
@@ -105,8 +108,6 @@ const Banner = () => {
             {/* Overlay Content */}
             <div className="absolute top-0 left-5 w-full h-full flex items-center">
               <motion.div
-                //key={activeSlide}
-                //initial={{ opacity: 0, x: -60 }}
                 initial={false}
                 animate={activeSlide === index ? "active" : "inactive"}
                 variants={{
@@ -117,7 +118,6 @@ const Banner = () => {
                   },
                   inactive: { y: 20, opacity: 0 },
                 }}
-                //transition={{ duration: 0.7 }}
                 className="text-left max-w-xl px-10"
               >
                 <h1 className="text-3xl md:text-6xl font-bold text-[#2A3855] mb-5 drop-shadow-md">

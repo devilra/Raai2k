@@ -1,5 +1,7 @@
 import React from "react";
 import { FaLinkedin, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
+import ServingClients from "./ServingClients";
+import Faq from "../FAQ/Faq";
 
 const ContactPage = () => {
   return (
@@ -82,6 +84,10 @@ const ContactPage = () => {
         </div>
       </section>
 
+      <section>
+        <ServingClients />
+      </section>
+
       {/* ================= CONTACT FORM =================== */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
@@ -119,6 +125,9 @@ const ContactPage = () => {
             </form>
           </div>
         </div>
+      </section>
+      <section className="w-full">
+        <Faq />
       </section>
     </div>
   );

@@ -1,0 +1,19 @@
+.flourish-credit,
+a[href*="flourish.studio"],
+text[text-anchor="end"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Remove Flourish bad margins */
+.flourish-embed {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Soft Drop Shadow for Premium Look */
+.flourish-embed {
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}

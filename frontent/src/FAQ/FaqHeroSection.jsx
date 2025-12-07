@@ -1,46 +1,213 @@
-import Typewriter from "typewriter-effect";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaMobileAlt,
+  FaUserShield,
+  FaMoneyCheckAlt,
+  FaCogs,
+  FaCodeBranch,
+  FaUsers,
+} from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+
+// FAQ DATA (Already your content)
+const faqData = [
+  {
+    category: "About Our Services",
+    icon: <FaUsers className="text-blue-700 text-xl" />,
+    questions: [
+      {
+        q: "What exactly do you do for fintech startups?",
+        a: "We help founders and teams build, launch, and scale fintech products—covering product strategy, UX, technology, compliance, integrations, and GTM execution.",
+      },
+      {
+        q: "Do you only work with fintech companies?",
+        a: "Yes. We specialize 100% in fintech: neobanking, lending, payments, UPI apps, wealth/robo-advisory, P2P, BNPL, insuretech, and more.",
+      },
+      {
+        q: "Can you work with very early-stage founders?",
+        a: "Absolutely. Many clients come with just an idea or pitch deck. We help validate feasibility, scope the MVP, and plan the product roadmap.",
+      },
+      {
+        q: "Do you take on long-term product/tech ownership?",
+        a: "Yes — we offer fractional CTO, product leadership, and ongoing advisory retained engagements.",
+      },
+    ],
+  },
+  {
+    category: "Product & Technology",
+    icon: <FaCogs className="text-blue-700 text-xl" />,
+    questions: [
+      {
+        q: "Can you build our MVP end-to-end?",
+        a: "Yes. We handle product design, UX, system architecture, engineering, QA, and deployment.",
+      },
+      {
+        q: "What tech stacks do you support?",
+        a: "React/Next, Flutter, Node, Java/Spring, Go, Python, microservices, serverless, and major cloud providers (AWS/GCP/Azure).",
+      },
+      {
+        q: "Do you integrate with fintech APIs?",
+        a: "Yes — including banking-as-a-service providers, UPI/QR/AEPS rails, KYC/AML APIs, payments gateways, wealth platforms, credit bureaus, and lending engines.",
+      },
+      {
+        q: "Can you audit our existing code or product?",
+        a: "Yes — we offer product audits, code reviews, architecture assessments, and security/compliance gap analysis.",
+      },
+    ],
+  },
+  {
+    category: "Pricing & Engagement",
+    icon: <FaMoneyCheckAlt className="text-blue-700 text-xl" />,
+    questions: [
+      {
+        q: "How do you structure your pricing?",
+        a: "Flexible — fixed-cost MVPs, sprint-based pricing, monthly retainers, or long-term fractional roles.",
+      },
+      {
+        q: "Is there a minimum engagement?",
+        a: "Typically 4–6 weeks, but we also offer short engagement strategy workshops for early-stage teams.",
+      },
+      {
+        q: "Do you offer free consultations?",
+        a: "Yes — a 30-minute discovery call to understand your product, challenges, and roadmap.",
+      },
+    ],
+  },
+  {
+    category: "Timelines & Delivery",
+    icon: <FaCodeBranch className="text-blue-700 text-xl" />,
+    questions: [
+      {
+        q: "How long does an MVP take?",
+        a: "Most fintech MVPs are delivered within 6–12 weeks, depending on complexity and integrations.",
+      },
+      {
+        q: "Can you accelerate delivery for investor deadlines?",
+        a: "Yes — we often support time-sensitive fundraising, PoCs, and pitch-based MVPs.",
+      },
+    ],
+  },
+  {
+    category: "Working With Your Team",
+    icon: <FaUserShield className="text-blue-700 text-xl" />,
+    questions: [
+      {
+        q: "Can you collaborate with our existing developers or designers?",
+        a: "Yes — we frequently co-build with in-house teams to boost velocity and strengthen architecture/product quality.",
+      },
+      {
+        q: "Do you offer ongoing support after launch?",
+        a: "Yes — including maintenance, performance monitoring, feature updates, and compliance enhancements.",
+      },
+    ],
+  },
+  {
+    category: "Trust & Credentials",
+    icon: <FaMobileAlt className="text-blue-700 text-xl" />,
+    questions: [
+      {
+        q: "Have you worked with regulated institutions?",
+        a: "Yes — we’ve collaborated with banks, NBFCs, P2P lenders, payment providers, wealth advisors, and fintech BaaS partners across India and international markets.",
+      },
+    ],
+  },
+];
 
 const FaqHeroSection = () => {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = (categoryData) => {
+    setSelectedCategory(categoryData);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => setModalOpen(false);
+
   return (
-    <div
-      className="w-full h-[420px] md:h-[460px] bg-cover bg-center bg-no-repeat flex items-center justify-center"
-      style={{
-        backgroundImage: "url('/faq/f.jpg')",
-      }}
-    >
-      {/* Overlay */}
-      <div className="w-full h-full bg-[#F2F2F2]/80 flex flex-col items-center justify-center text-center px-6">
-        {/* --- MAIN FAQ TITLE (STATIC) --- */}
-        <h2 className="text-[#2A3855] text-3xl md:text-5xl font-extrabold mb-10 tracking-wide">
-          Frequently Asked Questions
+    <section className="w-full bg-[#F4F6F8] py-20">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Title */}
+        <h2 className="text-[28px] md:text-[37px] bg-[#F2F2F2] p-5 font-bold text-center text-[#1A2E47] mb-12 tracking-wide">
+          FAQs
         </h2>
 
-        {/* --- TYPEWRITER QUESTIONS (DYNAMIC) --- */}
-        <h1 className="text-[#2A3855] text-xl md:text-3xl font-semibold mb-4">
-          <Typewriter
-            options={{
-              strings: [
-                "What services does RAai2K offer?",
-                "How does the fintech consulting process work?",
-                "What is the timeline for development?",
-                "Is my data secure with RAai2K?",
-                "Do you offer support & maintenance?",
-              ],
-              autoStart: true,
-              loop: true,
-              deleteSpeed: 35,
-              delay: 40,
-            }}
-          />
-        </h1>
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {faqData.map((section, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-7 rounded-2xl shadow-lg hover:shadow-xl transition border border-gray-200"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                {section.icon}
+                <h3 className="text-lg font-bold text-gray-800">
+                  {section.category}
+                </h3>
+              </div>
 
-        {/* Subtitle */}
-        <p className="text-gray-700 max-w-2xl text-[15px] md:text-lg leading-relaxed mt-2">
-          Find answers to the most common questions about our consulting,
-          development, cloud, and fintech solutions.
-        </p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-5">
+                {section.questions[0].q}
+              </p>
+
+              <button
+                onClick={() => openModal(section)}
+                className="font-semibold bg-[#1A2E47] cursor-pointer text-white px-5 py-2 text-sm rounded-lg hover:bg-[#102033] transition"
+              >
+                VIEW ARTICLES
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Animated Modal */}
+        <AnimatePresence>
+          {isModalOpen && selectedCategory && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/60 flex justify-center items-center z-50 px-4"
+            >
+              <motion.div
+                initial={{ scale: 0.7, opacity: 0, y: 50 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.7, opacity: 0, y: 50 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="bg-white rounded-xl w-full max-w-3xl px-6 pb-6 relative overflow-y-auto max-h-[80vh]"
+              >
+                {/* Close Button */}
+                <div className="flex justify-end sticky top-0  z-50">
+                  <button
+                    onClick={closeModal}
+                    className="text-2xl text-gray-700 bg-white/80 cursor-pointer backdrop-blur-sm p-2 rounded-full shadow hover:bg-white"
+                  >
+                    <IoClose />
+                  </button>
+                </div>
+
+                <h3 className="text-2xl font-bold text-[#1A2E47] underline mb-6">
+                  {selectedCategory.category}
+                </h3>
+
+                {/* Full Questions */}
+                <div className="space-y-6 pr-2">
+                  {selectedCategory.questions.map((item, index) => (
+                    <div key={index} className="border-b pb-4">
+                      <h4 className="font-semibold text-lg text-gray-900">
+                        {item.q}
+                      </h4>
+                      <p className="text-gray-600 mt-2 text-[15px]">{item.a}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 };
 

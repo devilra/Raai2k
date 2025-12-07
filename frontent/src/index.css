@@ -1,22 +1,56 @@
 @import "tailwindcss";
 
 /* Scrollbar width */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
-}
+} */
 
 /* Scrollbar track (background) */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background: #e5e7eb;
   border-radius: 10px;
-}
+} */
 
 /* Scrollbar thumb (scroll handle) */
-::-webkit-scrollbar-thumb {
-  background: #2a3855; /* blue-900 */
-}
+/* ::-webkit-scrollbar-thumb {
+  background: #2a3855; 
+} */
 
 /* Hover effect */
-::-webkit-scrollbar-thumb:hover {
-  background: #121925; /* blue-500 */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #121925; 
+} */
+
+/* ========================================================== */
+/* react-slick Dots Position and Styling Override */
+/* ========================================================== */
+
+/* 1. Custom Dots position (Moves the dots inside the image area, near the bottom) */
+/* ========================================================== */
+/* react-slick Dots Position and Styling Override (Global) */
+/* This moves the dots below the image container */
+/* ========================================================== */
+
+.custom-dots-bottom {
+  /* Targets the <ul> element for the dots */
+  bottom: -40px !important; /* Adjust this value to control how far below the image the dots appear */
+  z-index: 20;
+  position: absolute;
+  /* Centering the dots when they move outside */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+/* Styling for Inactive Dots */
+.custom-dots-bottom li button:before {
+  color: #a0a0a0 !important; /* Light Gray color for better visibility on white background */
+  font-size: 10px !important;
+  opacity: 1;
+}
+
+/* Styling for Active Dot */
+.custom-dots-bottom li.slick-active button:before {
+  color: #2a3855 !important; /* Dark Blue color for active dot */
+  opacity: 1;
 }
