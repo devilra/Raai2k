@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const newsData = [
   {
@@ -55,6 +56,21 @@ const PrevArrow = ({ onClick }) => (
   </div>
 );
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // one by one animate
+    },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+};
+
 const LatestNewsHome = () => {
   const settings = {
     infinite: true,
@@ -80,7 +96,13 @@ const LatestNewsHome = () => {
   };
 
   return (
-    <section className="py-10">
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="py-10"
+    >
       {/* Title */}
       <div className="text-center mb-14">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
@@ -90,11 +112,11 @@ const LatestNewsHome = () => {
       </div>
 
       {/* Carousel Section */}
-      <div className="max-w-7xl hidden md:block mx-auto px-6 ">
+      <div className="max-w-7xl hidden md:block mx-auto px-6 overflow-hidden ">
         <Slider {...settings}>
           {newsData.map((item) => (
-            <div key={item.id} className="px-3">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
+            <motion.div variants={itemEffect} key={item.id} className="px-3">
+              <div className="bg-white rounded-2xl shadow-sm  hover:shadow-xl transition-all duration-300">
                 {/* Image */}
                 <img
                   src={item.img}
@@ -125,15 +147,15 @@ const LatestNewsHome = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </Slider>
       </div>
-      <div className="max-w-7xl md:hidden mx-auto px-6">
+      <div className="max-w-7xl md:hidden mx-auto px-6 overflow-hidden">
         <Slider {...settings} slidesToShow={1}>
           {newsData.map((item) => (
-            <div key={item.id} className="px-3">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
+            <motion.div variants={itemEffect} key={item.id} className="px-3">
+              <div className="bg-white rounded-2xl shadow-sm  hover:shadow-xl transition-all duration-300">
                 {/* Image */}
                 <img
                   src={item.img}
@@ -162,11 +184,11 @@ const LatestNewsHome = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </Slider>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const leaders = [
   {
@@ -40,9 +41,30 @@ const leaders = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // one by one animate
+    },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+};
+
 const LeadershipSection = () => {
   return (
-    <section className="py-20 bg-white">
+    <section
+      // variants={container}
+      // initial="hidden"
+      // whileInView="show"
+      // viewport={{ once: true, amount: 0.2 }}
+      className="py-20 bg-white"
+    >
       {/* Title */}
       <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]">
         Global Leadership
@@ -52,8 +74,12 @@ const LeadershipSection = () => {
       {/* Cards Grid */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {leaders.map((leader, i) => (
-          <div
+          <motion.div
             key={i}
+            variants={itemEffect}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
             className="
               flex flex-col bg-white p-4 rounded-xl 
               transition-all duration-300
@@ -76,7 +102,7 @@ const LeadershipSection = () => {
 
             {/* Description */}
             <p className="mt-3 text-gray-600 text-[16px] ">{leader.desc}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

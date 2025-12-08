@@ -4,6 +4,34 @@ import { IoFlashOutline } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { MdOutlineArchitecture } from "react-icons/md";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "tween",
+      ease: "easeOut",
+      duration: 0.6,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "tween",
+      ease: "easeOut",
+      duration: 2,
+    },
+  },
+};
 
 const features = [
   {
@@ -25,7 +53,12 @@ const features = [
 
 const VideoSection = () => {
   return (
-    <div>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.5 }}
+    >
       <section className="w-full py-10 md:py-12 lg:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-5">
           {/* IMAGE + PLAY BUTTON */}
@@ -49,7 +82,8 @@ const VideoSection = () => {
           {/* FEATURES */}
           <div className="mt-16 flex flex-col md:flex-row justify-between gap-5 md:gap-2">
             {features.map((item, index) => (
-              <div
+              <motion.div
+                variants={itemEffect}
                 key={index}
                 className="border p-2 md:p-3 border-neutral-400/30 shadow-md rounded-lg"
               >
@@ -66,12 +100,12 @@ const VideoSection = () => {
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,16 @@
 import React from "react";
 import Slider from "react-slick";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { motion } from "framer-motion";
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -150 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1.3, ease: "easeOut" },
+  },
+};
 
 // Testimonial Data
 const testimonials = [
@@ -60,7 +70,13 @@ const ClientTestimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <motion.section
+      variants={fadeLeft}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="py-20 bg-white"
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         {/* <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2A3855]">
@@ -101,7 +117,7 @@ const ClientTestimonials = () => {
           ))}
         </Slider>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

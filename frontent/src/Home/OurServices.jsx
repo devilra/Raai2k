@@ -5,6 +5,38 @@ import { IoCall } from "react-icons/io5";
 import { TfiNewWindow } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { BsFillCreditCardFill } from "react-icons/bs";
+import { motion } from "framer-motion";
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "tween",
+      ease: "easeOut",
+      duration: 2,
+    },
+  },
+};
 
 const services = [
   {
@@ -100,16 +132,28 @@ const OurServices = () => {
   `}
               >
                 {/* IMAGE BLOCK */}
-                <div className="w-full lg:w-1/2 h-[350px]  md:h-[300px]">
+                <motion.div
+                  variants={item.reverse ? fadeRight : fadeLeft}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="w-full lg:w-1/2 h-[350px]  md:h-[300px]"
+                >
                   <img
                     src={item.img}
                     alt={item.title}
                     className="w-full h-full object-cover border  border-gray-100"
                   />
-                </div>
+                </motion.div>
 
                 {/* TEXT BLOCK */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10">
+                <motion.div
+                  variants={item.reverse ? fadeLeft : fadeRight}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10"
+                >
                   <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
                     {item.title}
                   </h3>
@@ -122,12 +166,16 @@ const OurServices = () => {
                   >
                     Learn More <FaArrowRightLong />
                   </Link>
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>
 
-          <div
+          <motion.div
+            variants={itemEffect}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
             className="mt-16 md:mt-20 
   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
   gap-10"
@@ -146,7 +194,7 @@ const OurServices = () => {
                 <p className="text-gray-600 text-[16px] ">{item.desc}</p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

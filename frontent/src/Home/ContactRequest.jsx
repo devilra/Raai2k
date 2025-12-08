@@ -1,9 +1,35 @@
+import { motion } from "framer-motion";
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -10 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1.5, ease: "easeOut" },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 10 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1.5, ease: "easeOut" },
+  },
+};
+
 export default function ContactRequest() {
   return (
     <section className="w-full bg-[#243253] py-20">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start justify-between gap-16">
         {/* LEFT BOX */}
-        <div className="md:w-1/2 w-full border border-yellow-400 rounded-xl p-10 text-center">
+        <motion.div
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="md:w-1/2 w-full border border-yellow-400 rounded-xl p-10 text-center"
+        >
           <h2 className="text-3xl font-bold text-white mb-6">
             Request a call back
           </h2>
@@ -13,10 +39,16 @@ export default function ContactRequest() {
             phone? Just submit your details and we’ll be in touch shortly. You
             can also email us if you would prefer.
           </p>
-        </div>
+        </motion.div>
 
         {/* RIGHT FORM */}
-        <div className="md:w-1/2 w-full">
+        <motion.div
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="md:w-1/2 w-full"
+        >
           <h3 className="text-2xl font-bold text-white mb-8">
             I would like to discuss:
           </h3>
@@ -53,7 +85,7 @@ export default function ContactRequest() {
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

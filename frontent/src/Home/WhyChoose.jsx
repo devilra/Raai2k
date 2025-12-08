@@ -2,6 +2,7 @@ import { FaComments, FaRegComments } from "react-icons/fa6";
 import { GiSandsOfTime, GiTimeTrap } from "react-icons/gi";
 import { MdCreateNewFolder } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const items = [
   {
@@ -21,6 +22,24 @@ const items = [
   },
 ];
 
+const fadeLeft = {
+  hidden: { opacity: 0, x: -60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
 export default function WhyChooseElixir() {
   return (
     <section className="w-full bg-white pt-10">
@@ -35,16 +54,28 @@ export default function WhyChooseElixir() {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-col lg:flex-row gap-12 md:gap-16 items-start">
         {/* Left Image */}
-        <div className="w-full lg:w-[400px]">
+        <motion.div
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full lg:w-[400px]"
+        >
           <img
             src="/service/s1.jpg"
             className="rounded-xl shadow-md w-full object-cover"
             alt="Choose RAai 2k"
           />
-        </div>
+        </motion.div>
 
         {/* Right Items */}
-        <div className="w-full lg:w-1/2 flex flex-col gap-10">
+        <motion.div
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full lg:w-1/2 flex flex-col gap-10"
+        >
           {items.map((item, index) => (
             <div key={index} className="flex items-start gap-4">
               <div>{item.icon}</div>
@@ -57,7 +88,7 @@ export default function WhyChooseElixir() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom CTA Section */}
