@@ -26,12 +26,14 @@ const newsData = [
     desc: "Social engineering involves the collection of information from various sources about a target...",
     img: "/latest/l3.jpg",
   },
+
+  // ⭐ ADDED NEW ARTICLE ⭐
   {
     id: 4,
-    title: "The growing menace of social engineering fraud",
-    author: "Robson",
-    desc: "Social engineering involves the collection of information from various sources about a target...",
-    img: "/latest/l3.jpg",
+    title: "How AI is transforming financial services in 2025",
+    author: "Sarah Mitchell",
+    desc: "AI-driven automation and predictive analytics are reshaping lending, compliance, and customer experience in the fintech world...",
+    img: "/latest/l4.jpg",
   },
 ];
 
@@ -78,7 +80,7 @@ const LatestNewsHome = () => {
   };
 
   return (
-    <section className="py-20">
+    <section className="py-10">
       {/* Title */}
       <div className="text-center mb-14">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
@@ -88,7 +90,7 @@ const LatestNewsHome = () => {
       </div>
 
       {/* Carousel Section */}
-      <div className="max-w-7xl hidden md:block mx-auto px-6">
+      <div className="max-w-7xl hidden md:block mx-auto px-6 ">
         <Slider {...settings}>
           {newsData.map((item) => (
             <div key={item.id} className="px-3">
@@ -111,7 +113,9 @@ const LatestNewsHome = () => {
 
                   <p className="text-gray-400 text-sm mb-4">By {item.author}</p>
 
-                  <p className="text-gray-600 text-[16px]  mb-6">{item.desc}</p>
+                  <p className="text-gray-600 text-[16px] truncate mb-6">
+                    {item.desc}
+                  </p>
 
                   <Link
                     to={`/news/${item.id}`}

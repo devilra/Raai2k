@@ -26,7 +26,7 @@ const Home = () => {
       <WhyChoose />
       <ThingsYouGet />
       <ContactRequest />
-      <GlobalLeadership />
+      {/* <GlobalLeadership /> */}
       <LeadershipSection />
       <StatsSection />
       <ClientTestimonials />

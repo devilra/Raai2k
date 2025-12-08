@@ -53,7 +53,7 @@ const PartnersComponent = () => {
   };
 
   return (
-    <section className="py-10 md:py-16 mb-5 md:mb-10 bg-[#F2F2F2]">
+    <section className="py-10 md:py-10 mb-5 md:mb-10 bg-[#F2F2F2]">
       <div className="max-w-7xl hidden md:block mx-auto px-6">
         {/* Heading */}
         {/* <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2A3855]">

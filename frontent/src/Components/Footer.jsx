@@ -161,9 +161,9 @@ const Footer = () => {
           {/* Left Logo & Copyright */}
           <div className="flex items-center justify-between gap-3 mb-4 md:mb-0">
             <img
-              src="/logo3.jpeg"
+              src="/logo3.png"
               alt="logo"
-              className=" object-cover h-[45px] filter invert brightness-100 saturate-0  rounded-full"
+              className=" object-cover h-[45px] w-[100px] filter invert brightness-100 saturate-0  rounded-full"
             />
             <div className="inline-flex gap-5">
               <span className="">

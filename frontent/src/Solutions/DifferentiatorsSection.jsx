@@ -1,291 +1,91 @@
-"use client"; // This must be at the top for Hooks like useRef to work
-
 import { motion } from "framer-motion";
-import React, { RefObject, useEffect, useId, useState, useRef } from "react";
-// Assuming you have a utility function for Tailwind class merging
-const cn = (...classes) => classes.filter(Boolean).join(" ");
 
-// --- 1. ANIMATED BEAM COMPONENT (No changes needed here for UI/clipping fixes) ---
-
-export const AnimatedBeam = ({
-  className,
-  containerRef,
-  fromRef,
-  toRef,
-  curvature = 0,
-  reverse = false,
-  duration = Math.random() * 3 + 4,
-  delay = 0,
-  pathColor = "gray",
-  pathWidth = 2,
-  pathOpacity = 0.2,
-  gradientStartColor = "#7C3AED",
-  gradientStopColor = "#FBBF24",
-  startXOffset = 0,
-  startYOffset = 0,
-  endXOffset = 0,
-  endYOffset = 0,
-}) => {
-  const id = useId();
-  const [pathD, setPathD] = useState("");
-  const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
-
-  const gradientCoordinates = reverse
-    ? {
-        x1: ["90%", "-10%"],
-        x2: ["100%", "0%"],
-        y1: ["0%", "0%"],
-        y2: ["0%", "0%"],
-      }
-    : {
-        x1: ["10%", "110%"],
-        x2: ["0%", "100%"],
-        y1: ["0%", "0%"],
-        y2: ["0%", "0%"],
-      };
-
-  useEffect(() => {
-    const updatePath = () => {
-      if (containerRef.current && fromRef.current && toRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const rectA = fromRef.current.getBoundingClientRect();
-        const rectB = toRef.current.getBoundingClientRect();
-
-        const svgWidth = containerRect.width;
-        const svgHeight = containerRect.height;
-        setSvgDimensions({ width: svgWidth, height: svgHeight });
-
-        const startX =
-          rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
-        const startY =
-          rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
-        const endX =
-          rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
-        const endY =
-          rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
-
-        const controlY = startY - curvature;
-        const d = `M ${startX},${startY} Q ${
-          (startX + endX) / 2
-        },${controlY} ${endX},${endY}`;
-        setPathD(d);
-      }
-    };
-
-    const resizeObserver = new ResizeObserver(() => {
-      updatePath();
-    });
-
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    updatePath();
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [
-    containerRef,
-    fromRef,
-    toRef,
-    curvature,
-    startXOffset,
-    startYOffset,
-    endXOffset,
-    endYOffset,
-  ]);
-
-  return (
-    <svg
-      fill="none"
-      width={svgDimensions.width}
-      height={svgDimensions.height}
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn(
-        "pointer-events-none absolute top-0 left-0 transform-gpu stroke-2",
-        className
-      )}
-      viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
-    >
-      {/* Base Path (faint line) */}
-      <path
-        d={pathD}
-        stroke={pathColor}
-        strokeWidth={pathWidth}
-        strokeOpacity={pathOpacity}
-        strokeLinecap="round"
-      />
-      {/* Animated Gradient Path (The beam) */}
-      <path
-        d={pathD}
-        strokeWidth={pathWidth}
-        stroke={`url(#${id})`}
-        strokeOpacity="1"
-        strokeLinecap="round"
-      />
-      <defs>
-        <motion.linearGradient
-          className="transform-gpu"
-          id={id}
-          gradientUnits={"userSpaceOnUse"}
-          initial={{
-            x1: "0%",
-            x2: "0%",
-            y1: "0%",
-            y2: "0%",
-          }}
-          animate={{
-            x1: gradientCoordinates.x1,
-            x2: gradientCoordinates.x2,
-            y1: gradientCoordinates.y1,
-            y2: gradientCoordinates.y2,
-          }}
-          transition={{
-            delay,
-            duration,
-            ease: [0.16, 1, 0.3, 1], // easeOutExpo
-            repeat: Infinity,
-            repeatDelay: 0,
-          }}
-        >
-          <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
-          <stop stopColor={gradientStartColor}></stop>
-          <stop offset="32.5%" stopColor={gradientStopColor}></stop>
-          <stop
-            offset="100%"
-            stopColor={gradientStopColor}
-            stopOpacity="0"
-          ></stop>
-        </motion.linearGradient>
-      </defs>
-    </svg>
-  );
-};
-
-// --- 2. MAIN COMPONENT INTEGRATION ---
-
-const differentiators = [
-  "Assets & Accelerator’s", // 0: Top Left
-  "Optimal App Performance", // 1: Top Right
-  "User Experience (Priority 1st)", // 2: Middle Right
-  "Scratch Implementation", // 3: Bottom Right
-  "OOTB Best Practices & Coding Standards", // 4: Bottom Center
-  "Establish Process & Aid PROJECT Roadmap", // 5: Bottom Left
-  "Global Support & Training", // 6: Middle Left
-  "System (Health) Check & Recommendations", // 7: Top Center
-];
-
-// Reusable Card Component with Mobile text size adjustment
-const DifferentiatorCard = ({ children, index, className = "", cardRef }) => {
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      className={`relative overflow-hidden bg-[#111] border border-[#333] 
-        rounded-xl p-4 sm:p-6 text-white shadow-lg 
-        hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] 
-        hover:border-[#555] transition max-w-[200px] sm:max-w-[280px] ${className}`} // Adjusted max-w for mobile
-    >
-      <div className="relative z-20">{children}</div>
-    </motion.div>
-  );
-};
-
-export default function DifferentiatorsSection() {
-  const containerRef = useRef(null);
-  const centerRef = useRef(null);
-  const cardRefs = differentiators.map(() => useRef(null));
-
-  // Adjusted cardPositions for better spacing and to avoid left-side clipping
-  const cardPositions = [
-    "top-[5%] left-[70%] ", // 0: Top Left - Shifted right
-    "top-[3%] left-[40%] ", // 1: Top Right - Shifted left
-    "-top-[10%] -right-[10%] ", // 2: Middle Right (Keep close to right edge)
-    "bottom-[5%] right-[10%] ", // 3: Bottom Right - Shifted left
-    "bottom-[2%] left-1/2 ", // 4: Bottom Center
-    "bottom-[5%] left-[10%] ", // 5: Bottom Left - Shifted right
-    "-top-1/2  -right-[75%] ", // 6: Middle Left (Keep close to left edge)
-    "-top-1/2  ", // 7: Top Center
+export default function CircleMindMap() {
+  const items = [
+    "Assets & Accelerator’s",
+    "Optimal app performance",
+    "User Experience (Priority 1st)",
+    "Scratch implementation",
+    "OOTB Best Practices & Coding Standards",
+    "Establish Process & Aid PROJECT Roadmap",
+    "Global Support & Training",
+    "System (Health) check & Recommendations",
   ];
 
-  // Offsets adjusted slightly to accommodate card shift and maintain connection
-  const offsets = [
-    { startX: -40, startY: -40, endX: 40, endY: 40 }, // 0: Top Left
-    { startX: 40, startY: -40, endX: -40, endY: 40 }, // 1: Top Right
-    { startX: 50, startY: 0, endX: -50, endY: 0 }, // 2: Middle Right
-    { startX: 40, startY: 40, endX: -40, endY: -40 }, // 3: Bottom Right
-    { startX: 0, startY: 50, endX: 0, endY: -50 }, // 4: Bottom Center
-    { startX: -40, startY: 40, endX: 40, endY: -40 }, // 5: Bottom Left
-    { startX: -50, startY: 0, endX: 50, endY: 0 }, // 6: Middle Left
-    { startX: 0, startY: -50, endX: 0, endY: 50 }, // 7: Top Center
+  // PERFECT RADIAL POSITIONS (Matches reference image)
+  const positions = [
+    { top: "10%", left: "38%" },
+    { top: "20%", left: "50%" }, // top-right
+    { top: "22%", left: "72%" }, // mid-right 1
+    { top: "40%", left: "75%" }, // mid-right 2
+    { top: "62%", left: "65%" }, // bottom-right center
+    { top: "72%", left: "45%" }, // bottom
+    { top: "60%", left: "25%" }, // bottom-left
+    { top: "35%", left: "22%" }, // mid-left
   ];
 
   return (
-    // Responsive height and padding for better visibility on all screens
-    <section className="relative py-16 md:py-40 bg-black overflow-hidden h-[900px] flex items-center justify-center">
-      {/* MAIN CONTAINER FOR THE MIND-MAP LAYOUT */}
+    <section className="relative w-full h-[500px] bg-white overflow-hidden rounded-3xl">
+      {/* CENTER BIG CIRCLE - EXACT REFERENCE */}
       <div
-        ref={containerRef}
-        // max-w-full use panni, parent section padding-a use panni spacing maintain pannalam
-        className="relative w-full h-[900px] max-h-[900px] px-4 sm:px-8"
+        className="absolute top-[45%] left-[38%] -translate-x-1/2 -translate-y-1/2 
+         w-[150px] h-[150px] md:w-[200px] md:h-[200px] bg-[#DDEAFF] rounded-full flex items-center justify-center 
+          border-[7px] border-white shadow-xl"
       >
-        {/* ANIMATED BEAMS (SVG Connections) */}
-        <div className="absolute inset-0 z-10">
-          {differentiators.map((_, idx) => (
-            <AnimatedBeam
-              key={`beam-${idx}`}
-              containerRef={containerRef}
-              fromRef={centerRef}
-              toRef={cardRefs[idx]}
-              duration={3 + Math.random() * 2}
-              curvature={20}
-              pathColor="#4F46E5"
-              gradientStartColor="#9333ea"
-              gradientStopColor="#6366f1"
-              startXOffset={offsets[idx].startX}
-              startYOffset={offsets[idx].startY}
-              endXOffset={offsets[idx].endX}
-              endYOffset={offsets[idx].endY}
-            />
-          ))}
-        </div>
+        <h1 className="text-[#0A2B7A] font-bold text-[12px] p-10 md:text-md text-center">
+          OUR DIFFERENTIATORS
+        </h1>
+      </div>
 
-        {/* CENTER CHIP TITLE (MAIN DIFFERENTIATOR) - Responsive text size */}
-        <motion.div
-          ref={centerRef}
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 z-30 
-                    w-fit px-6 py-3 md:px-10 md:py-4 rounded-full bg-[#1A1A1A] text-white text-base md:text-2xl font-bold 
-                    border border-indigo-500 shadow-[0_0_30px_6px_rgba(99,102,241,0.5)] cursor-pointer"
+      {/* SMALL CIRCLES */}
+      {/* {items.map((item, i) => (
+        <div
+          key={i}
+          className="absolute transition-all"
+          style={{
+            top: positions[i].top,
+            left: positions[i].left,
+          }}
         >
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-300 to-white">
-            Our Core Differentiators
-          </span>
-        </motion.div>
+          
+          <div className="relative w-[150px] h-[150px] bg-[#E9F2FF] rounded-full border-[5px] border-white shadow-md flex items-center justify-center">
+            <div className="text-center px-3">
+              <h3 className="text-[#0A2B7A] font-semibold text-sm leading-tight">
+                {item}
+              </h3>
+              <p className="text-gray-500 text-xs mt-1 text-center">
+                Unique approach ensures quality.
+              </p>
+            </div>
+          </div>
 
-        {/* DIFFERENTIATOR CARDS (Z-20) - Responsive text size in Card content */}
-        {differentiators.map((text, idx) => (
-          <DifferentiatorCard
-            key={idx}
-            index={idx}
-            cardRef={cardRefs[idx]}
-            className={`absolute z-20 ${cardPositions[idx]}`}
-          >
-            <h3 className="text-sm sm:text-base font-bold mb-1 sm:mb-2 text-transparent bg-clip-text bg-linear-to-r from-white to-gray-300">
-              {text}
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-400">
-              Unique approach ensures quality.
-            </p>
-          </DifferentiatorCard>
-        ))}
+    
+          <div
+            className="absolute w-[3px] bg-[#4B8BFF]"
+            style={{
+              height: "90px",
+              left: "50%",
+              top: "-88px",
+              transform: "translateX(-50%)",
+            }}
+          ></div>
+        </div>
+      ))} */}
+
+      {/* RIGHT SIDE EXACT TEXT LIST */}
+      <div>
+        {/* <h2 className="text-[#0A2B7A] text-3xl font-bold mb-5">
+          Our Differentiators
+        </h2> */}
+
+        {/* <ul className="space-y-4 text-[17px]">
+          {items.map((item, i) => (
+            <li key={i} className="flex gap-2 items-start">
+              <span className="text-[#4B8BFF] text-xl">✔</span>
+              <span className="text-gray-700">{item}</span>
+            </li>
+          ))}
+        </ul> */}
       </div>
     </section>
   );

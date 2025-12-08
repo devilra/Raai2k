@@ -75,7 +75,7 @@ const WelcomeSection = () => {
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <section className="py-10 md:py-12 lg:py-20 bg-white w-full">
+      <section className="pt-5 md:pt-10 lg:pt-10 bg-white w-full">
         <div className="max-w-6xl mx-auto text-center px-6">
           {/* Heading */}
           <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">

@@ -130,12 +130,12 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Link to="/">
               <img
-                src="/logo3.jpeg"
+                src="/logo3.png"
                 // style={{
                 //   filter:
                 //     "invert(54%) sepia(94%) saturate(500%) hue-rotate(10deg) brightness(95%) contrast(90%)",
                 // }}
-                className=" object-cover h-[45px] filter invert brightness-100 saturate-0  rounded-full"
+                className=" object-cover h-[50px] w-[100px] "
               />
             </Link>
             {/* Desktop Navigation Links */}

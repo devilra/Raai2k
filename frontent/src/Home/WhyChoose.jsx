@@ -23,7 +23,7 @@ const items = [
 
 export default function WhyChooseElixir() {
   return (
-    <section className="w-full bg-white py-16 md:py-24">
+    <section className="w-full bg-white pt-10">
       {/* Heading */}
       <div className="text-center mb-16">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">

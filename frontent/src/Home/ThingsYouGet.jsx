@@ -41,7 +41,7 @@ const items = [
 
 export default function ThingsYouGet() {
   return (
-    <section className="w-full py-20 bg-white">
+    <section className="w-full py-10 bg-white">
       {/* Title */}
       <div className="text-center mb-16">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">

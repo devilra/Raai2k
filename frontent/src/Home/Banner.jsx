@@ -97,7 +97,7 @@ const Banner = () => {
       <Slider {...settings}>
         {bannerData.map((item, index) => (
           // The individual slide maintains its height, e.g., h-[75vh]
-          <div key={item.id} className="relative w-full h-[75vh]">
+          <div key={item.id} className="relative w-full h-[45vh] md:h-[75vh] ">
             {/* Background Image */}
             <img
               src={item.img}

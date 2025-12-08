@@ -90,7 +90,7 @@ const features = [
 const ExpertiseSection = () => {
   return (
     <div>
-      <section className="w-full py-20 mt-14">
+      <section className="w-full py-5 md:py-20 mt-14">
         <div className="max-w-6xl mx-auto px-5">
           {/* Section Title */}
           <h2 className="text-center text-4xl md:text-5xl font-bold text-[#2A3855]">
