@@ -68,7 +68,7 @@ const ContactPage = () => {
         </div>
 
         {/* ================= MAP =================== */}
-        <div className="max-w-7xl mx-auto px-6 mt-14">
+        {/* <div className="max-w-7xl mx-auto px-6 mt-14">
           <div className="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
             <iframe
               title="Google Map"
@@ -81,7 +81,7 @@ const ContactPage = () => {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section>

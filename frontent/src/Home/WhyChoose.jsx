@@ -54,7 +54,7 @@ const fadeUp = {
 
 export default function WhyChooseElixir() {
   return (
-    <section className="w-full bg-white pt-10">
+    <section className="w-full bg-white pt-20">
       {/* Heading */}
       <div className="text-center mb-16">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
@@ -105,7 +105,7 @@ export default function WhyChooseElixir() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="w-full flex justify-center mt-20"
+        className="w-full flex justify-center pt-20"
       >
         <div
           className="w-full bg-[#2A3855] text-white shadow-xl px-8 py-10 

@@ -21,7 +21,7 @@ const leaders = [
 
 export default function GlobalLeadership() {
   return (
-    <section className="w-full pt-10 bg-white">
+    <section className="w-full py-20 bg-white">
       {/* TITLE */}
       <div className="text-center mb-10">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">

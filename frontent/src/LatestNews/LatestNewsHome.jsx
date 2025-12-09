@@ -101,7 +101,7 @@ const LatestNewsHome = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      className="py-10"
+      className="pt-20 pb-20"
     >
       {/* Title */}
       <div className="text-center mb-14">

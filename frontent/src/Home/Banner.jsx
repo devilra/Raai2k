@@ -29,7 +29,7 @@ const bannerData = [
     id: 4,
     title: "Fintech Innovation",
     desc: "Build secure, scalable, next-gen fintech products with our expertise.",
-    img: "/carosel/c4.jpg",
+    img: "/carosel/c7.jpg",
     objectPos: "object-right",
   },
   {
@@ -102,11 +102,17 @@ const Banner = () => {
             <img
               src={item.img}
               alt="banner"
-              className={`w-full h-full object-cover ${item.objectPos}`}
+              className={`w-full h-full object-cover ${item.objectPos} ${
+                item.id === 4 && "object-top"
+              }`}
             />
 
             {/* Overlay Content */}
-            <div className="absolute top-0 left-5 w-full h-full flex items-center">
+            <div
+              // className="absolute top-0 left-5 w-full h-full flex items-center"
+              className={`absolute top-0 left-5 w-full h-full flex
+              ${item.id === 4 ? "justify-end" : "items-center"}`}
+            >
               <motion.div
                 initial={false}
                 animate={activeSlide === index ? "active" : "inactive"}
@@ -126,6 +132,7 @@ const Banner = () => {
                 <p className="text-2xl text-[#2A3855] font-semibold mb-10 max-w-[600px]">
                   {item.desc}
                 </p>
+
                 {/* Buttons */}
                 <div className="flex gap-5">
                   <Link

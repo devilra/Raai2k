@@ -12,10 +12,11 @@ const AboutPage = () => {
   return (
     <div className="">
       <CeoMessage />
+
       {/* <Roadmap /> */}
 
       {/* <CaseStudySection /> */}
-      {/* <StatsSection /> */}
+
       {/* <BlogsSection /> */}
       {/* <ClientTestimonials /> */}
       {/* <LeadershipSection /> */}

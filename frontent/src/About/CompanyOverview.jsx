@@ -1,6 +1,12 @@
 import React from "react";
 import { FaQuoteLeft, FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
+import StatsSection from "./StatsSection";
+import LeadershipSection from "../Components/LeadershipSection";
+import { Link } from "react-router-dom";
+
+// Detect lg device
+const isLargeScreen = window.innerWidth >= 1024;
 
 const CompanyOverview = () => {
   // Icon size (optional – you can also hardcode)
@@ -24,13 +30,22 @@ const CompanyOverview = () => {
     },
   };
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: isLargeScreen ? 0 : 50 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: "easeOut" },
+    },
+  };
+
   return (
     <motion.section
       variants={container}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      className="py-20 bg-gray-50"
+      className="pt-10 bg-gray-50/10"
     >
       {/* MAIN WRAPPER */}
       <motion.div variants={itemEffect} className="max-w-6xl mx-auto px-6">
@@ -107,7 +122,7 @@ const CompanyOverview = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="pt-10 bg-gray-50"
+        className="py-10 bg-gray-50"
       >
         <div className="max-w-7xl mx-auto px-6">
           {/* TITLE */}
@@ -182,6 +197,42 @@ const CompanyOverview = () => {
           </motion.p>
         </div>
       </motion.section>
+
+      <div className="pt-20">
+        <StatsSection />
+      </div>
+
+      <div>
+        <LeadershipSection />
+      </div>
+
+      <section>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="w-full flex justify-center pt-20"
+        >
+          <div
+            className="w-full bg-[#2A3855] text-white  px-8 py-10 
+        flex flex-col md:flex-row items-center lg:justify-center gap-6"
+          >
+            <h3 className="max-w-4xl mx-auto text-xl md:text-2xl font-semibold leading-relaxed">
+              Ready to transform the financial platform? Talk to our fintech
+              consulting team…
+            </h3>
+
+            <Link
+              to="/contact"
+              className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full 
+            hover:bg-gray-200 transition whitespace-nowrap"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </motion.div>
+      </section>
     </motion.section>
   );
 };

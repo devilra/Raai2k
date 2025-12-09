@@ -111,7 +111,7 @@ const features = [
 const OurServices = () => {
   return (
     <div>
-      <section className="w-full pt-10 bg-neutral-50">
+      <section className="w-full pt-20 bg-neutral-50">
         <div className="max-w-6xl mx-auto px-5">
           {/* TITLE */}
           <h2 className="text-center text-[28px] md:text-[37px] font-bold text-[#2A3855]">
