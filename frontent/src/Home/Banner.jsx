@@ -106,7 +106,7 @@ const Banner = () => {
               className={`w-full h-full object-cover ${
                 // item.id 4 ஆக இருந்தால்: Custom position-ஐ மட்டும் பயன்படுத்தவும்.
                 item.id === 4
-                  ? "object-[10%_10%]"
+                  ? "object-[10%_20%]"
                   : // item.id 4 இல்லையென்றால்: item.objectPos-ஐப் பயன்படுத்தவும்.
                     item.objectPos
               }`}

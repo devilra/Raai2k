@@ -60,7 +60,7 @@ export default function ThingsYouGet() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      className="w-full py-20 bg-white"
+      className="w-full pt-20 pb-24 bg-white"
     >
       {/* Title */}
       <div className="text-center mb-16">
