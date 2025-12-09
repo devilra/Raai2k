@@ -37,10 +37,10 @@ const itemEffect = {
 const CeoMessage = () => {
   return (
     <div>
-      <section className="w-full pt-10 bg-gray-50">
+      <section className="w-full  bg-gray-50">
         {/* 🔵 TOP BACKGROUND BANNER */}
         <div
-          className="w-full h-[300px] md:h-[350px] bg-cover relative bg-center flex flex-col justify-center  pt-0md:px-20"
+          className="w-full h-[300px] md:h-[350px] bg-cover relative bg-center flex flex-col justify-center  pt-0 md:px-20"
           style={{ backgroundImage: "url('/about/about.jpg')" }}
         >
           {/* TITLE */}
