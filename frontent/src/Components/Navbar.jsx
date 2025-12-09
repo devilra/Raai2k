@@ -97,7 +97,10 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <p className="flex gap-2 items-center font-bold">
               <FaLocationDot className="text-yellow-400" />
-              <span className="text-white text-[13px]"> India (South)</span>
+              <span className="text-white text-[13px]">
+                {" "}
+                Chennai, India (South)
+              </span>
             </p>
             <a
               href="tel:2123865575"

@@ -28,8 +28,11 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Melbourne */}
           <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:-translate-y-1">
-            <h3 className="text-xl font-semibold text-[#2A3855] mb-4">India</h3>
-            <p className="text-gray-600 leading-relaxed">(South)</p>
+            <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
+              {" "}
+              Chennai,{" "}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">India (South)</p>
           </div>
 
           {/* Sydney */}
