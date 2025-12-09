@@ -102,8 +102,13 @@ const Banner = () => {
             <img
               src={item.img}
               alt="banner"
-              className={`w-full h-full object-cover ${item.objectPos} ${
-                item.id === 4 && "object-top"
+              // w-full, h-full, object-cover ஆகியவற்றை நிரந்தரமாக வைக்கவும்.
+              className={`w-full h-full object-cover ${
+                // item.id 4 ஆக இருந்தால்: Custom position-ஐ மட்டும் பயன்படுத்தவும்.
+                item.id === 4
+                  ? "object-[10%_10%]"
+                  : // item.id 4 இல்லையென்றால்: item.objectPos-ஐப் பயன்படுத்தவும்.
+                    item.objectPos
               }`}
             />
 

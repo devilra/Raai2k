@@ -21,6 +21,7 @@ const Home = () => {
 
       <WelcomeSection />
       {/* <PlatformSection /> */}
+
       <VideoSection />
       <OurServices />
       <WhyChoose />

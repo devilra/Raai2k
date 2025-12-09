@@ -5,7 +5,7 @@ import { MdOutlineArchitecture } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import ReactPlayer from "react-player";
+import VideoJS from "./VideoJS";
 
 const container = {
   hidden: { opacity: 0, y: 40 },
@@ -46,6 +46,26 @@ const features = [
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const videoJsOptions = {
+    autoplay: true,
+    controls: true,
+    muted: true,
+    responsive: true,
+    fluid: true,
+    loop: true,
+    //techOrder: ["youtube"],
+    sources: [
+      {
+        src: "/video/v.mp4",
+        type: "video/mp4",
+      },
+    ],
+  };
+
+  const handlePlayerReady = () => {
+    console.log("VideoJS Player Ready");
+  };
+
   return (
     <motion.div
       variants={container}
@@ -66,14 +86,14 @@ const VideoSection = () => {
             <button
               onClick={() => setIsPlaying(true)}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                         bg-white w-20 h-20 rounded-full flex items-center justify-center
-                         shadow-xl hover:scale-110 transition"
+              bg-white w-20 h-20 rounded-full flex items-center justify-center
+              shadow-xl hover:scale-110 transition"
             >
               <FaPlay size={22} className="text-black" />
             </button>
           </div>
 
-          {/* VIDEO POPUP */}
+          {/* VIDEO POPUP MODAL */}
           {isPlaying && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -88,26 +108,22 @@ const VideoSection = () => {
                 className="relative w-full max-w-4xl rounded-xl overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Close Button */}
+                {/* CLOSE BUTTON */}
                 <button
                   onClick={() => setIsPlaying(false)}
-                  className="absolute -top-12 right-0 text-white text-4xl"
+                  className="absolute -top-12 right-0 text-white text-4xl z-50"
                 >
                   <IoClose />
                 </button>
 
                 {/* VIDEO PLAYER */}
                 <div className="relative pt-[56.25%]">
-                  <ReactPlayer
-                    url="/video/v.mp4"
-                    playing={true}
-                    loop={true}
-                    controls={true}
-                    muted={true}
-                    width="100%"
-                    height="100%"
-                    className="absolute top-0 left-0"
-                  />
+                  <div className="absolute top-0 left-0 w-full h-full">
+                    <VideoJS
+                      options={videoJsOptions}
+                      onReady={handlePlayerReady}
+                    />
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

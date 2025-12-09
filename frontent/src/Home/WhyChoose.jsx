@@ -105,7 +105,7 @@ export default function WhyChooseElixir() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="w-full flex justify-center pt-20"
+        className="w-full flex justify-center pt-30"
       >
         <div
           className="w-full bg-[#2A3855] text-white shadow-xl px-8 py-10 

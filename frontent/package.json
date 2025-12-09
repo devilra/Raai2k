@@ -27,7 +27,8 @@
     "react-vertical-timeline-component": "^3.5.3",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^4.1.17",
-    "typewriter-effect": "^2.22.0"
+    "typewriter-effect": "^2.22.0",
+    "video.js": "^8.23.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
