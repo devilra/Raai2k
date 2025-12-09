@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { PiBankFill } from "react-icons/pi";
 import { MdPayment } from "react-icons/md";
 import { GiReceiveMoney } from "react-icons/gi";
@@ -9,53 +10,80 @@ const solutions = [
     icon: <PiBankFill size={28} className="text-white" />,
     title: "Neobanking",
     desc: "Modern digital banks built with secure architecture, compliant onboarding, and seamless user journeys.",
-    bg: "bg-blue-50",
-    border: "border-blue-300",
   },
   {
     icon: <GiReceiveMoney size={28} className="text-white" />,
     title: "Digital Lending & Credit",
     desc: "We design and build lending stacks that minimize risk, maximize automation, and stay audit-ready.",
-    bg: "bg-green-50",
-    border: "border-green-300",
   },
   {
     icon: <MdPayment size={28} className="text-white" />,
     title: "Payments, Cards & Wallets",
     desc: "We build fast, reliable, compliant payment systems with deep integration logic.",
-    bg: "bg-purple-50",
-    border: "border-purple-300",
   },
   {
     icon: <RiLineChartFill size={28} className="text-white" />,
     title: "Wealth & Investment Platforms",
     desc: "Trusted, compliant wealth platforms designed for clarity, security, and long-term engagement.",
-    bg: "bg-yellow-50",
-    border: "border-yellow-300",
   },
 ];
 
+// ANIMATION
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
 const SolutionsList = () => {
   return (
-    <section className="py-20 bg-white">
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="pt-10 bg-white"
+    >
       <div className="max-w-6xl mx-auto px-6">
-        {/* Heading */}
-        <h2 className="text-[28px]  md:text-[37px] font-bold text-center text-[#2A3855]">
+        {/* Title */}
+        <motion.h2
+          variants={fadeIn}
+          className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]"
+        >
           Our Solutions
-        </h2>
+        </motion.h2>
 
-        {/* Fancy Underline */}
-        <div className="flex justify-center items-center gap-2 mt-4 mb-14">
+        {/* Underline */}
+        <motion.div
+          variants={fadeIn}
+          className="flex justify-center items-center gap-2 mt-4 mb-14"
+        >
           <span className="h-[3px] w-20 bg-[#2A3855] rounded-full"></span>
-        </div>
+        </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <motion.div
+          variants={container}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+        >
           {solutions.map((item, i) => (
-            <div
+            <motion.div
               key={i}
-              // className={`${item.bg} border ${item.border} p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}
-              className={`bg-white   p-8 rounded-2xl shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}
+              variants={fadeIn}
+              className="bg-white p-8 rounded-2xl shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
             >
               <div className="p-4 bg-[#2A3855] rounded-xl shadow-md mb-4 w-fit">
                 {item.icon}
@@ -68,11 +96,11 @@ const SolutionsList = () => {
               <p className="text-gray-700 text-[15.5px] leading-relaxed">
                 {item.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -79,7 +79,7 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Service", path: "/service" },
-    { name: "Capabilities", path: "/capabilities" },
+    { name: "Solutions", path: "/solution" },
     // { name: "Case Studies", path: "/case" },
     { name: "Careers", path: "/careers" },
     //{ name: "Elements", path: "/elements" },
@@ -239,9 +239,9 @@ export default function Navbar() {
                     : "text-[#2A3855]"
                 } `}
                 onClick={() => setOpenMenu(false)}
-                to="/capabilities"
+                to="/solution"
               >
-                Capabilities
+                Solutions
               </Link>
               {/* <Link
                 className=" w-full text-center py-1 border-b border-gray-200"

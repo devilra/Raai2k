@@ -1,16 +1,33 @@
+import { motion } from "framer-motion";
 import { FaHospitalUser, FaBuilding, FaStore } from "react-icons/fa";
 import { MdCastForEducation } from "react-icons/md";
 import { GiBank, GiTruck } from "react-icons/gi";
 
 // ஒவ்வொரு கார்டுக்கும் தனிப்பயன் நிறங்கள்
 const industryColors = [
-  "text-blue-600 bg-blue-100", // FinTech
-  "text-green-600 bg-green-100", // Healthcare
-  "text-orange-600 bg-orange-100", // E-Commerce
-  "text-red-600 bg-red-100", // EdTech
-  "text-purple-600 bg-purple-100", // Logistics
-  "text-pink-600 bg-pink-100", // Enterprise SaaS
+  "text-blue-600 bg-blue-100",
+  "text-green-600 bg-green-100",
+  "text-orange-600 bg-orange-100",
+  "text-red-600 bg-red-100",
+  "text-purple-600 bg-purple-100",
+  "text-pink-600 bg-pink-100",
 ];
+
+// NORMAL FADE-IN EFFECT (all devices)
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // one by one animate
+    },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+};
 
 export const IndustriesWeServe = () => {
   const industries = [
@@ -47,31 +64,50 @@ export const IndustriesWeServe = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#F2F2F2]">
-      {" "}
-      {/* Dark background for contrast */}
-      <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]">
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="pt-10 bg-[#F2F2F2]"
+    >
+      {/* Section Title */}
+      <motion.h2
+        variants={itemEffect}
+        className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]"
+      >
         Industries We Transform
-      </h2>
-      <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-7"></div>
-      <p className="text-center text-gray-600 text-[16px] mb-16 max-w-3xl mx-auto">
+      </motion.h2>
+
+      <motion.div
+        variants={itemEffect}
+        className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-7"
+      ></motion.div>
+
+      <motion.p
+        variants={itemEffect}
+        className="text-center text-gray-600 text-[16px] mb-16 max-w-3xl mx-auto"
+      >
         We deliver custom digital solutions across diverse sectors,
         understanding the unique challenges of each industry.
-      </p>
-      {/* Grid Layout - 3 columns on large screens */}
+      </motion.p>
+
+      {/* Grid Layout */}
       <div className="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {industries.map((ind, i) => (
-          <div
+          <motion.div
             key={i}
-            className={`relative p-8 rounded-xl shadow-lg transform hover:scale-[1.03] transition-all duration-300 group
-                        bg-white border-b-4 border-l-4 border-neutral-300 border-opacity-20 hover:shadow-2xl`}
+            variants={itemEffect}
+            className={`relative p-8 rounded-xl shadow-lg transform hover:scale-[1.03] 
+                        transition-all duration-300 group bg-white 
+                        border-b-4 border-l-4 border-neutral-300 border-opacity-20 hover:shadow-2xl`}
           >
-            {/* Unique Icon Container (Inspired by Hexagonal/Badge look) */}
+            {/* Icon + Title */}
             <div className="flex items-center gap-4">
               <div
                 className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 
-                          ${industryColors[i % industryColors.length]} 
-                          shadow-inner group-hover:shadow-xl transition-shadow duration-300`}
+                            ${industryColors[i % industryColors.length]}
+                            shadow-inner group-hover:shadow-xl transition-shadow duration-300`}
               >
                 {ind.icon}
               </div>
@@ -80,19 +116,21 @@ export const IndustriesWeServe = () => {
                 {ind.title}
               </h3>
             </div>
+
             <p className="text-gray-600 text-[16px] mt-2">{ind.desc}</p>
 
-            {/* Bottom Accent Line on Hover */}
+            {/* Bottom Accent */}
             <div
-              className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 rounded-full
-                             ${industryColors[i % industryColors.length]
-                               .replace("bg-", "bg-")
-                               .replace("100", "500")
-                               .replace("text-", "")}`}
+              className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full 
+                          transition-all duration-500 rounded-full
+                          ${industryColors[i % industryColors.length]
+                            .replace("bg-", "bg-")
+                            .replace("100", "500")
+                            .replace("text-", "")}`}
             ></div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };

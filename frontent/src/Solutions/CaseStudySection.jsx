@@ -1,10 +1,30 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { BsWallet2 } from "react-icons/bs";
 import { GiReceiveMoney } from "react-icons/gi";
 import { MdOutlinePayments } from "react-icons/md";
 import { TbChartInfographic } from "react-icons/tb";
 import { PiCubeTransparentLight } from "react-icons/pi";
+
+// Detect LG device
+const isLargeScreen = window.innerWidth >= 1024;
+
+// Animation Variants
+const fadeLeft = {
+  hidden: { opacity: 0, x: isLargeScreen ? -10 : 0 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: isLargeScreen ? 10 : 0 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } },
+};
 
 const caseStudies = [
   {
@@ -66,39 +86,45 @@ const CaseStudySection = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {caseStudies.map((item, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition group"
-            >
-              {/* Icon + Title */}
-              <div className="flex items-center gap-4 mb-5">
-                <div className="p-3 bg-[#2A3855] rounded-xl shadow">
-                  {item.icon}
+          {caseStudies.map((item, index) => {
+            // Animation logic
+            const animationVariant = isLargeScreen
+              ? index % 2 === 0
+                ? fadeLeft
+                : fadeRight
+              : fadeIn; // Mobile + Tablet
+
+            return (
+              <motion.div
+                key={index}
+                variants={animationVariant}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition group"
+              >
+                {/* Icon + Title */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="p-3 bg-[#2A3855] rounded-xl shadow">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#2A3855]">
+                    {item.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-semibold text-[#2A3855]">
-                  {item.title}
-                </h3>
-              </div>
 
-              {/* Points */}
-              <ul className="space-y-3 list-disc text-gray-700 w-full">
-                {item.points.map((point, i) => (
-                  // <li key={i} className="flex gap-2">
-                  //   <FaCheckCircle className="text-gray-500 hidden md:hidden lg:block mt-1" />
-                  //   {point}
-                  // </li>
-                  <li key={i} className="flex items-center gap-4 mb-6">
-                    <div className="">
-                      <FaCheckCircle className="text-gray-500 " />
-                    </div>
-
-                    <h3 className="  text-[#2A3855]">{point}</h3>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                {/* Points */}
+                <ul className="space-y-3 text-gray-700 w-full">
+                  {item.points.map((point, i) => (
+                    <li key={i} className="flex items-center gap-4 mb-3">
+                      <FaCheckCircle className="text-gray-500" />
+                      <span className="text-[#2A3855]">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

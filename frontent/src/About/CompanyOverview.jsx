@@ -1,176 +1,188 @@
 import React from "react";
-import { FaQuoteLeft } from "react-icons/fa";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaBolt } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
-import { FaRocket } from "react-icons/fa";
-
-const iconSize =
-  window.innerWidth < 480 ? 38 : window.innerWidth < 768 ? 28 : 26;
+import { FaQuoteLeft, FaCheckCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const CompanyOverview = () => {
+  // Icon size (optional – you can also hardcode)
+  const iconSize = 28;
+
+  // === SAME FADE-UP EFFECT FOR ALL DEVICES ===
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemEffect = {
+    hidden: { opacity: 0, y: 50 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="py-20 bg-gray-50"
+    >
+      {/* MAIN WRAPPER */}
+      <motion.div variants={itemEffect} className="max-w-6xl mx-auto px-6">
         {/* PAGE TITLE */}
-        <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]">
+        <motion.h2
+          variants={itemEffect}
+          className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]"
+        >
           Company Overview
-        </h2>
-        <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-10"></div>
+        </motion.h2>
 
-        {/* MAIN CARD */}
-        <div className="bg-white p-10 md:p-14 rounded-2xl shadow-sm">
-          {/* TOP TITLE */}
-          <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
+        <motion.div
+          variants={itemEffect}
+          className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-10"
+        ></motion.div>
+
+        {/* CARD */}
+        <motion.div
+          variants={itemEffect}
+          className="bg-white p-10 md:p-14 rounded-2xl shadow-sm"
+        >
+          {/* Heading */}
+          <motion.h3
+            variants={itemEffect}
+            className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4"
+          >
             Build Fast. Scale Smart. Launch Confidently.
-          </h3>
+          </motion.h3>
 
-          {/* FIRST PARAGRAPH */}
-          <p className="text-gray-600 text-[16px] mb-8">
+          {/* Paragraph */}
+          <motion.p
+            variants={itemEffect}
+            className="text-gray-600 text-[16px] mb-8"
+          >
             At Raai2k, we help startups turn ideas into scalable, investor-ready
-            technology. From MVP development to cloud architecture and AI
-            automation, we provide end-to-end IT consulting built for speed,
-            quality, and affordability.
-          </p>
+            technology...
+          </motion.p>
 
-          {/* QUOTE LINE */}
-          <div className="flex items-start gap-2 mb-10">
-            <FaQuoteLeft size={iconSize} className="text-4xl text-gray-300 " />
+          {/* Quote */}
+          <motion.div
+            variants={itemEffect}
+            className="flex items-start gap-2 mb-10"
+          >
+            <FaQuoteLeft size={iconSize} className="text-4xl text-gray-300" />
             <p className="text-[21px] md:text-[18px] font-bold text-[#2A3855] leading-relaxed">
               We turn complex fintech ideas into scalable, secure, and
               future-ready digital solutions.
             </p>
-          </div>
+          </motion.div>
 
-          {/* TWO COLUMN PARAGRAPHS */}
+          {/* GRID CONTENT */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-600 leading-relaxed text-[15.5px]">
-            <p>
-              <span className="text-3xl font-bold text-[#2A3855]">W</span>
-              <span className="text-gray-600 text-[16px]">
-                e are a technology consulting firm helping organizations turn
-                ideas into robust, scalable, and efficient software systems.
-              </span>
-            </p>
-            <p className="py-2 text-gray-600 text-[16px]">
-              {" "}
-              We are specializing in fintech transformation. Our team brings
-              together deep experience in banking systems, digital payments,
-              regulatory compliance, blockchain, data security, and financial
-              product engineering.
-            </p>
-            <p className="py-2 text-gray-600 text-[16px]">
-              Whether you’re a startup launching a digital wallet or an
-              established bank modernizing legacy infrastructure, we partner
-              closely with you to design and deliver robust, future-ready
-              systems.
-            </p>
-
-            <p className="text-gray-600 text-[16px]">
-              Our team brings deep expertise in architecture, engineering,
-              cloud, DevOps, and product strategy—enabling you to innovate
-              quickly while reducing cost and risk.
-            </p>
-            <p className="text-gray-600 text-[16px]">
-              We partner with startups, SMBs, and enterprises to modernize
-              legacy systems, launch digital products, optimize performance, and
-              achieve operational excellence.
-            </p>
+            {[
+              "W e are a technology consulting firm helping organizations turn ideas into robust, scalable systems.",
+              "We specialize in fintech transformation... banking systems, compliance, blockchain...",
+              "Whether you're a startup launching a wallet or a bank modernizing systems...",
+              "Deep expertise in architecture, engineering, cloud, DevOps...",
+              "We help startups, SMBs, enterprises optimize performance...",
+            ].map((text, index) => (
+              <motion.p key={index} variants={itemEffect}>
+                {index === 0 && (
+                  <span className="text-3xl font-bold text-[#2A3855]">W</span>
+                )}
+                {index === 0 ? text.slice(1) : text}
+              </motion.p>
+            ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <section className="py-20 bg-gray-50">
+      {/* SECOND SECTION */}
+      <motion.section
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="pt-10 bg-gray-50"
+      >
         <div className="max-w-7xl mx-auto px-6">
           {/* TITLE */}
-          <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855] text-center">
+          <motion.h2
+            variants={itemEffect}
+            className="text-[28px] md:text-[37px] font-bold text-[#2A3855] text-center"
+          >
             Our Approach
-          </h2>
-          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
+          </motion.h2>
 
-          {/* GRID SECTION */}
+          <motion.div
+            variants={itemEffect}
+            className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"
+          ></motion.div>
+
+          {/* GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* =================== 1. UNDERSTAND • ENGINEER • DELIVER =================== */}
-            <div className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
-              <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
-                How We Work
-              </h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Understand the business
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Engineer the right solution
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Deliver measurable outcomes
-                </li>
-              </ul>
-            </div>
+            {[
+              {
+                title: "How We Work",
+                points: [
+                  "Understand the business",
+                  "Engineer the right solution",
+                  "Deliver measurable outcomes",
+                ],
+              },
+              {
+                title: "Our Mission",
+                points: [
+                  "Bridge technology and finance",
+                  "Deliver secure fintech systems",
+                  "Accelerate time-to-market",
+                ],
+              },
+              {
+                title: "We Understand Startups",
+                points: [
+                  "Move fast",
+                  "Keep costs predictable",
+                  "Stay compliant",
+                ],
+              },
+            ].map((section, i) => (
+              <motion.div
+                key={i}
+                variants={itemEffect}
+                className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition"
+              >
+                <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
+                  {section.title}
+                </h3>
 
-            {/* =================== 2. OUR MISSION =================== */}
-            <div className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
-              <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
-                Our Mission
-              </h3>
-              <ul className="space-y-3  text-gray-700">
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Bridge technology and finance
-                </li>
-                <li className="flex items-start w-full  gap-2">
-                  <FaCheckCircle size={17} className="text-gray-500 " />
-                  Deliver compliant, secure fintech solutions
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Accelerate time-to-market
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Enable sustainable growth
-                </li>
-              </ul>
-            </div>
-
-            {/* =================== 3. WE UNDERSTAND STARTUPS =================== */}
-            <div className="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
-              <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
-                We Understand Startups
-              </h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Move fast
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Keep costs predictable
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Stay secure & compliant
-                </li>
-                <li className="flex items-start gap-2">
-                  <FaCheckCircle size={15} className="text-gray-500 mt-1" />
-                  Build only what matters for launch
-                </li>
-              </ul>
-            </div>
+                <ul className="space-y-3 text-gray-700">
+                  {section.points.map((p, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <FaCheckCircle size={15} className="text-gray-500 mt-1" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
 
-          {/* BOTTOM STATEMENT */}
-          <div className="text-center mt-14 max-w-3xl mx-auto">
-            <p className="text-[21px] md:text-[18px] text-[#2A3855] font-medium leading-relaxed">
-              We become your extended tech partner - so you can focus on users,
-              funding, and growth while we handle the engineering.
-            </p>
-          </div>
+          {/* FOOTER TEXT */}
+          <motion.p
+            variants={itemEffect}
+            className="text-center mt-14 max-w-3xl mx-auto text-[21px] md:text-[18px] text-[#2A3855] font-medium leading-relaxed"
+          >
+            We become your extended tech partner — so you focus on users,
+            funding, and growth.
+          </motion.p>
         </div>
-      </section>
-    </section>
+      </motion.section>
+    </motion.section>
   );
 };
 

@@ -16,10 +16,31 @@ import { GiBank } from "react-icons/gi";
 import { LiaArchwaySolid } from "react-icons/lia";
 import { FaArchway } from "react-icons/fa6";
 import IndustriesWeServe from "../Solutions/IndustriesWeServe";
+import { motion } from "framer-motion";
+
+// Animation Variants
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemEffect = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
 
 export default function ServiceHome() {
   return (
-    <>
+    <div>
       <section
         className="w-full h-[310px] md:h-[380px] bg-cover bg-center relative flex flex-col justify-center px-10 md:px-20"
         style={{ backgroundImage: "url('/service/service.jpg')" }}
@@ -41,7 +62,7 @@ export default function ServiceHome() {
         <IndustriesWeServe />
       </div>
 
-      <div className="py-20 px-6 lg:px-20 bg-gray-50">
+      <div className="py-2 px-6 lg:px-20 bg-gray-50">
         {/* MAIN TITLE */}
         {/* <h1 className="text-5xl font-bold text-center text-[#2A3855] mb-4">
         Our Services
@@ -52,12 +73,24 @@ export default function ServiceHome() {
       </p> */}
 
         {/* ================= FINTECH SERVICES ================= */}
-        <section className="mb-20">
-          <h2 className="text-[28px] md:text-[37px] text-center font-bold text-[#2A3855] ">
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mb-10 pt-10"
+        >
+          <motion.h2
+            variants={itemEffect}
+            className="text-[28px] md:text-[37px] text-center font-bold text-[#2A3855] "
+          >
             FinTech Services
-          </h2>
+          </motion.h2>
 
-          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
+          <motion.div
+            variants={itemEffect}
+            className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"
+          ></motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -97,7 +130,8 @@ export default function ServiceHome() {
               //   icon: <FaChartPie size={28} />,
               // },
             ].map((s, i) => (
-              <div
+              <motion.div
+                variants={itemEffect}
                 key={i}
                 className="p-8 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition duration-300"
               >
@@ -108,17 +142,29 @@ export default function ServiceHome() {
                   </h3>
                 </div>
                 <p className="text-gray-600 text-[16px]">{s.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* ================= GENERAL SERVICES ================= */}
-        <section className="mb-20">
-          <h2 className="text-[28px] md:text-[37px] text-center font-bold text-[#2A3855] ">
+        {/* <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mb-20"
+        >
+          <motion.h2
+            variants={itemEffect}
+            className="text-[28px] md:text-[37px] text-center font-bold text-[#2A3855] "
+          >
             General Services
-          </h2>
-          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
+          </motion.h2>
+          <motion.div
+            variants={itemEffect}
+            className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"
+          ></motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -153,7 +199,8 @@ export default function ServiceHome() {
               //   icon: <FaLifeRing size={28} />,
               // },
             ].map((s, i) => (
-              <div
+              <motion.div
+                variants={itemEffect}
                 key={i}
                 className="p-7 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition duration-300"
               >
@@ -164,17 +211,28 @@ export default function ServiceHome() {
                   </h3>
                 </div>
                 <p className="text-gray-600 text-[16px]">{s.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section> */}
 
         {/* ================= SOLUTIONS ================= */}
-        <section>
-          <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855] ">
+        {/* <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.h2
+            variants={itemEffect}
+            className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855] "
+          >
             Solutions
-          </h2>
-          <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
+          </motion.h2>
+          <motion.div
+            variants={itemEffect}
+            className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"
+          ></motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -194,7 +252,8 @@ export default function ServiceHome() {
                 icon: <FaChartLine size={28} />,
               },
             ].map((s, i) => (
-              <div
+              <motion.div
+                variants={itemEffect}
                 key={i}
                 className="p-8 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition duration-300"
               >
@@ -205,11 +264,11 @@ export default function ServiceHome() {
                   </h3>
                 </div>
                 <p className="text-gray-600">{s.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section> */}
       </div>
-    </>
+    </div>
   );
 }

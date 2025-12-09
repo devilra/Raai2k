@@ -15,7 +15,7 @@ const SolutionsHero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl  px-6 md:px-20">
         <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
-          Capabilities
+          Solutions
         </h1>
 
         <p className="text-lg md:text-xl text-gray-200 mt-4 max-w-2xl leading-relaxed">

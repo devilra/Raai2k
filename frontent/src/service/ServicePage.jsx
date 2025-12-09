@@ -11,7 +11,7 @@ const ServicePage = () => {
     <div>
       <ServiceHome />
       <EngagementModels />
-      <ProcessWorkflow />
+      {/* <ProcessWorkflow /> */}
       <CaseStudySection />
 
       {/* <IndustriesWeServe /> */}

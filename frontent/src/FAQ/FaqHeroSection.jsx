@@ -10,7 +10,25 @@ import {
 } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
-// FAQ DATA (Already your content)
+// NORMAL FADE-IN VARIANTS
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+// FAQ DATA (same as yours)
 const faqData = [
   {
     category: "About Our Services",
@@ -126,18 +144,28 @@ const FaqHeroSection = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <section className="w-full bg-[#F4F6F8] py-20">
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="w-full bg-[#F4F6F8] py-20"
+    >
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
-        <h2 className="text-[28px] md:text-[37px] bg-[#F2F2F2] p-5 font-bold text-center text-[#1A2E47] mb-12 tracking-wide">
+        <motion.h2
+          variants={fadeIn}
+          className="text-[28px] md:text-[37px] bg-[#F2F2F2] p-5 font-bold text-center text-[#1A2E47] mb-12 tracking-wide"
+        >
           FAQs
-        </h2>
+        </motion.h2>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {faqData.map((section, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={fadeIn}
               className="bg-white p-7 rounded-2xl shadow-lg hover:shadow-xl transition border border-gray-200"
             >
               <div className="flex items-center gap-3 mb-3">
@@ -157,7 +185,7 @@ const FaqHeroSection = () => {
               >
                 VIEW ARTICLES
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -165,23 +193,27 @@ const FaqHeroSection = () => {
         <AnimatePresence>
           {isModalOpen && selectedCategory && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial="hidden"
+              animate="show"
               exit={{ opacity: 0 }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: { opacity: 1, transition: { duration: 0.3 } },
+              }}
               className="fixed inset-0 bg-black/60 flex justify-center items-center z-50 px-4"
             >
               <motion.div
-                initial={{ scale: 0.7, opacity: 0, y: 50 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.7, opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 50, scale: 0.9 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 className="bg-white rounded-xl w-full max-w-3xl px-6 pb-6 relative overflow-y-auto max-h-[80vh]"
               >
                 {/* Close Button */}
-                <div className="flex justify-end sticky top-0  z-50">
+                <div className="flex justify-end sticky top-0 z-50">
                   <button
                     onClick={closeModal}
-                    className="text-2xl text-gray-700 bg-white/80 cursor-pointer backdrop-blur-sm p-2 rounded-full shadow hover:bg-white"
+                    className="text-2xl text-gray-700 cursor-pointer bg-white/80 backdrop-blur-sm p-2 rounded-full shadow hover:bg-white"
                   >
                     <IoClose />
                   </button>
@@ -191,15 +223,19 @@ const FaqHeroSection = () => {
                   {selectedCategory.category}
                 </h3>
 
-                {/* Full Questions */}
+                {/* Questions */}
                 <div className="space-y-6 pr-2">
                   {selectedCategory.questions.map((item, index) => (
-                    <div key={index} className="border-b pb-4">
+                    <motion.div
+                      key={index}
+                      variants={fadeIn}
+                      className="border-b pb-4"
+                    >
                       <h4 className="font-semibold text-lg text-gray-900">
                         {item.q}
                       </h4>
                       <p className="text-gray-600 mt-2 text-[15px]">{item.a}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
@@ -207,7 +243,7 @@ const FaqHeroSection = () => {
           )}
         </AnimatePresence>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

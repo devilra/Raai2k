@@ -13,7 +13,7 @@ const Solutions = () => {
       <SolutionsHero />
       <SolutionsList />
       <ExpertiseSection />
-      <Accelerators />
+      {/* <Accelerators /> */}
       <ProcessWorkflow />
       {/* <IndustriesWeServe /> */}
       {/* <CaseStudySection /> */}
