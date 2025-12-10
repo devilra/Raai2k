@@ -94,8 +94,8 @@ export default function Navbar() {
       {/* ... (உங்கள் பழைய கோட்) ... */}
       <div className="w-full hidden md:hidden lg:block bg-[#2A3855] text-white py-5">
         <div className="flex max-w-6xl mx-auto items-center justify-between px-4 ">
-          <div className="flex items-center gap-5">
-            <p className="flex gap-2 items-center font-bold">
+          <div className="flex items-center justify-between w-[60%] gap-5">
+            <p className="flex gap-2 items-center  font-bold">
               <FaLocationDot className="text-yellow-400" />
               <span className="text-white text-[13px]">
                 {" "}

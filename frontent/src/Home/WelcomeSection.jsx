@@ -84,9 +84,13 @@ const WelcomeSection = () => {
             Welcome to the raai2k
           </h2>
           {/* Sub text */}
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-[16px] ">
+          {/* <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-[16px] ">
             Core banking, payments, lending, compliance, blockchain, and AI/ML
             together power a secure and scalable modern fintech ecosystem.
+          </p> */}
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-[16px] ">
+            Get expert consultancy and support with raai2k, an FinTech advisory
+            firm that stand by your side always.
           </p>
           {/* Center line */}
           <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-6"></div>

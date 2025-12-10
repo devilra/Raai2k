@@ -71,8 +71,7 @@ const StatsSection = () => {
           {/* 2 */}
           <div>
             <h3 className="text-5xl font-bold text-white">
-              <Counter from={0} to={60} start={isInView} />
-              ++
+              <Counter from={0} to={60} start={isInView} />+
             </h3>
             <p className="mt-2 text-lg opacity-90">Projects</p>
           </div>
@@ -80,8 +79,7 @@ const StatsSection = () => {
           {/* 3 */}
           <div>
             <h3 className="text-5xl font-bold text-white">
-              <Counter from={0} to={8} start={isInView} />
-              ++
+              <Counter from={0} to={8} start={isInView} />+
             </h3>
             <p className="mt-2 text-lg opacity-90">Geographies</p>
           </div>
@@ -89,9 +87,9 @@ const StatsSection = () => {
           {/* 4 */}
           <div>
             <h3 className="text-5xl font-bold text-white">
-              <Counter from={0} to={100} start={isInView} />
+              <Counter from={0} to={20} start={isInView} />+
             </h3>
-            <p className="mt-2 text-lg opacity-90">Satisfied Clients</p>
+            <p className="mt-2 text-lg opacity-90">Clients</p>
           </div>
         </div>
       </div>
