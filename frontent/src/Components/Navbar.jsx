@@ -102,17 +102,17 @@ export default function Navbar() {
                 Chennai, India (South)
               </span>
             </p>
-            <a
+            {/* <a
               href="tel:2123865575"
               className="flex gap-2 items-center hover:underline font-bold"
             >
               <IoCall className="text-yellow-400" />
               <span className="text-white text-[13px] ">212 386 5575</span>
-            </a>
+            </a> */}
             {/* EMAIL */}
             <a
               href="mailto:support@raai2k.com"
-              className="flex gap-2 items-center hover:underline font-bold ml-20"
+              className="flex gap-2 items-center hover:underline font-bold "
             >
               <IoMail className="text-yellow-400" />
               <span className="text-white text-[13px]">support@raai2k.com</span>
