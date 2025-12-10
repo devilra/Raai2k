@@ -29,10 +29,16 @@ const features = [
     title: "Core Banking & Digital Banking Systems",
     desc: "Secure and scalable digital banking systems built for modern financial operations.",
   },
+  // {
+  //   icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
+  //   title: "Data Analytics, AI & Machine Learning",
+  //   desc: "AI/ML analytics that unlock insights and automate decisions.",
+  // },
+
   {
-    icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
-    title: "Data Analytics, AI & Machine Learning",
-    desc: "AI/ML analytics that unlock insights and automate decisions.",
+    icon: <MdPayment size={40} className="text-[#2A3855]" />,
+    title: "Payments & Wallets",
+    desc: "Secure, real-time payment and wallet systems.",
   },
 
   {
@@ -45,26 +51,22 @@ const features = [
     title: "RegTech & Compliance Engineering",
     desc: "Automated KYC, AML, and compliance workflows.",
   },
-  {
-    icon: <PiCubeTransparentLight size={40} className="text-[#2A3855]" />,
-    title: "Blockchain & Distributed Ledger",
-    desc: "Secure, transparent, tamper-proof blockchain solutions.",
-  },
-  {
-    icon: <MdPayment size={40} className="text-[#2A3855]" />,
-    title: "Payments & Wallets",
-    desc: "Secure, real-time payment and wallet systems.",
-  },
-  {
-    icon: <HiOutlineUserGroup size={40} className="text-[#2A3855]" />,
-    title: "Awesome Team",
-    desc: "Before talking destination, we shine a spotlight across your organizationto fully understand it.",
-  },
-  {
-    icon: <IoIosChatbubbles size={40} className="text-[#2A3855]" />,
-    title: "Excellent Support",
-    desc: "If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.",
-  },
+  // {
+  //   icon: <PiCubeTransparentLight size={40} className="text-[#2A3855]" />,
+  //   title: "Blockchain & Distributed Ledger",
+  //   desc: "Secure, transparent, tamper-proof blockchain solutions.",
+  // },
+
+  // {
+  //   icon: <HiOutlineUserGroup size={40} className="text-[#2A3855]" />,
+  //   title: "Awesome Team",
+  //   desc: "Before talking destination, we shine a spotlight across your organizationto fully understand it.",
+  // },
+  // {
+  //   icon: <IoIosChatbubbles size={40} className="text-[#2A3855]" />,
+  //   title: "Excellent Support",
+  //   desc: "If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.",
+  // },
 ];
 
 const WelcomeSection = () => {
