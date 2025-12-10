@@ -64,7 +64,7 @@ export default function WhyChooseElixir() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row gap-12 md:gap-16 items-start">
+      <div className="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row lg:items-center gap-12 md:gap-16 items-start">
         {/* Left Image */}
         <motion.div
           variants={isLargeScreen ? fadeLeft : fadeUp}

@@ -94,9 +94,9 @@ const features = [
     desc: (
       <div className="text-gray-600">
         Have a question? Chat online with an expert.
-        <span className="text-[#2A3855] flex items-center gap-1 font-bold mt-1 cursor-pointer hover:underline">
+        {/* <span className="text-[#2A3855] flex items-center gap-1 font-bold mt-1 cursor-pointer hover:underline">
           Start chatting <TfiNewWindow size={30} className="px-2" />
-        </span>
+        </span> */}
       </div>
     ),
   },
@@ -150,7 +150,7 @@ const OurServices = () => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, amount: 0.3 }}
-                  className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10"
+                  className="w-full lg:w-1/2 flex flex-col  justify-center px-6 py-10"
                 >
                   <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
                     {item.title}
