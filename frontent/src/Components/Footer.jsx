@@ -202,7 +202,7 @@ const Footer = () => {
               </span>
               <span>
                 © Copyright {new Date().getFullYear()}{" "}
-                <span className="font-bold">Raai2K Inc.</span>
+                <span className="font-bold">raai2K Inc.</span>
               </span>
             </div>
           </div>

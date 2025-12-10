@@ -108,17 +108,16 @@ export default function WhyChooseElixir() {
         className="w-full flex justify-center pt-30"
       >
         <div
-          className="w-full bg-[#2A3855] text-white shadow-xl px-6 py-10 
-        flex flex-col md:flex-row items-center lg:justify-center gap-6"
+          className="w-full bg-[#2A3855] text-white shadow-xl px-6 lg:px-10 py-10 
+        flex flex-col md:flex-row items-center lg:justify-between  gap-6"
         >
           <h3 className="text-xl md:text-2xl font-semibold leading-relaxed">
-            Ready to transform the financial platform? Talk to our fintech
-            consulting team…
+            Ready to transform the financial platform ? Talk to our team..
           </h3>
 
           <Link
             to="/contact"
-            className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full 
+            className="bg-white text-[#2A3855] font-semibold  px-8 py-3 rounded-full 
             hover:bg-gray-200 transition whitespace-nowrap"
           >
             Contact Us

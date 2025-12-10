@@ -22,7 +22,7 @@ const GlobalPresenceSection = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]"
       >
-        Our Global Presence
+        Our Client base
       </motion.h2>
 
       <motion.div

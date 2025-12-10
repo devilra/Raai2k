@@ -124,8 +124,8 @@ const PlatformSection = () => {
     autoplaySpeed: 1500,
     speed: 600,
     arrows: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    //nextArrow: <NextArrow />,
+    //prevArrow: <PrevArrow />,
     pauseOnHover: true,
 
     responsive: [
@@ -138,11 +138,11 @@ const PlatformSection = () => {
   return (
     <section className="py-10 bg-[#F2F2F2]">
       <div className="max-w-7xl  mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-[#2A3855] mb-5">
+        {/* <h2 className="text-3xl font-bold text-center text-[#2A3855] mb-5">
           Platform Tools
-        </h2>
-        <div className="w-16 h-[3px] bg-[#2A3855] mx-auto mt-4"></div>
-        <div className="relative hidden md:block">
+        </h2> */}
+        {/* <div className="w-16 h-[3px] bg-[#2A3855] mx-auto mt-4"></div> */}
+        <div className="relative hidden md:block overflow-hidden">
           <Slider {...settings}>
             {tools.map((item, i) => (
               <div key={i} className="px-3 mb-5">
@@ -169,7 +169,7 @@ const PlatformSection = () => {
             ))}
           </Slider>
         </div>
-        <div className="relative md:hidden">
+        <div className="relative md:hidden overflow-hidden">
           <Slider {...settings} slidesToShow={3}>
             {tools.map((item, i) => (
               <div key={i} className="px-3 mb-5">
