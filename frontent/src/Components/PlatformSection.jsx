@@ -23,39 +23,78 @@ import { IoLogoAndroid, IoLogoTableau } from "react-icons/io5";
 import { VscAzure } from "react-icons/vsc";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
+// const tools = [
+//   { name: "AWS", icon: <FaAws size={50} className="text-gray-700" /> },
+//   { name: "Adobe", icon: <SiAdobe size={50} className="text-red-500" /> },
+//   {
+//     name: "Salesforce",
+//     icon: <FaSalesforce size={50} className="text-sky-500" />,
+//   },
+//   { name: "SAP", icon: <SiSap size={50} className="text-blue-600" /> },
+//   {
+//     name: "Tableau",
+//     icon: <IoLogoTableau size={50} className="text-orange-500" />,
+//   },
+//   { name: "Azure", icon: <VscAzure size={50} className="text-blue-500" /> },
+//   { name: "Java", icon: <FaJava size={50} className="text-orange-700" /> },
+//   {
+//     name: "Android",
+//     icon: <IoLogoAndroid size={50} className="text-green-500" />,
+//   },
+//   { name: "JavaScript", icon: <FaJs size={50} className="text-yellow-500" /> },
+//   { name: "Node.js", icon: <FaNode size={50} className="text-green-600" /> },
+//   { name: "PHP", icon: <FaPhp size={50} className="text-indigo-700" /> },
+//   { name: "Shopify", icon: <FaShopify size={50} className="text-green-600" /> },
+//   { name: "React", icon: <FaReact size={50} className="text-blue-400" /> },
+//   { name: "Angular", icon: <SiAngular size={50} className="text-red-600" /> },
+//   { name: "Mulesoft", icon: <SiMulesoft size={50} className="text-sky-700" /> },
+//   { name: "Python", icon: <FaPython size={50} className="text-blue-400" /> },
+//   {
+//     name: "WordPress",
+//     icon: <FaWordpress size={50} className="text-blue-400" />,
+//   },
+//   {
+//     name: "Blockchain",
+//     icon: <SiBlockchaindotcom size={50} className="text-teal-600" />,
+//   },
+// ];
+
 const tools = [
-  { name: "AWS", icon: <FaAws size={50} className="text-gray-700" /> },
-  { name: "Adobe", icon: <SiAdobe size={50} className="text-red-500" /> },
+  { name: "AWS", icon: <FaAws size={50} className="text-gray-500" /> },
+  { name: "Adobe", icon: <SiAdobe size={50} className="text-gray-500" /> },
   {
     name: "Salesforce",
-    icon: <FaSalesforce size={50} className="text-sky-500" />,
+    icon: <FaSalesforce size={50} className="text-gray-500" />,
   },
-  { name: "SAP", icon: <SiSap size={50} className="text-blue-600" /> },
+  { name: "SAP", icon: <SiSap size={50} className="text-gray-500" /> },
   {
     name: "Tableau",
-    icon: <IoLogoTableau size={50} className="text-orange-500" />,
+    icon: <IoLogoTableau size={50} className="text-gray-500" />,
   },
-  { name: "Azure", icon: <VscAzure size={50} className="text-blue-500" /> },
-  { name: "Java", icon: <FaJava size={50} className="text-orange-700" /> },
+  { name: "Azure", icon: <VscAzure size={50} className="text-gray-500" /> },
+  { name: "Java", icon: <FaJava size={50} className="text-gray-500" /> },
   {
     name: "Android",
-    icon: <IoLogoAndroid size={50} className="text-green-500" />,
+    icon: <IoLogoAndroid size={50} className="text-gray-500" />,
   },
-  { name: "JavaScript", icon: <FaJs size={50} className="text-yellow-500" /> },
-  { name: "Node.js", icon: <FaNode size={50} className="text-green-600" /> },
-  { name: "PHP", icon: <FaPhp size={50} className="text-indigo-700" /> },
-  { name: "Shopify", icon: <FaShopify size={50} className="text-green-600" /> },
-  { name: "React", icon: <FaReact size={50} className="text-blue-400" /> },
-  { name: "Angular", icon: <SiAngular size={50} className="text-red-600" /> },
-  { name: "Mulesoft", icon: <SiMulesoft size={50} className="text-sky-700" /> },
-  { name: "Python", icon: <FaPython size={50} className="text-blue-400" /> },
+  { name: "JavaScript", icon: <FaJs size={50} className="text-gray-500" /> },
+  { name: "Node.js", icon: <FaNode size={50} className="text-gray-500" /> },
+  { name: "PHP", icon: <FaPhp size={50} className="text-gray-500" /> },
+  { name: "Shopify", icon: <FaShopify size={50} className="text-gray-500" /> },
+  { name: "React", icon: <FaReact size={50} className="text-gray-500" /> },
+  { name: "Angular", icon: <SiAngular size={50} className="text-gray-500" /> },
+  {
+    name: "Mulesoft",
+    icon: <SiMulesoft size={50} className="text-gray-500" />,
+  },
+  { name: "Python", icon: <FaPython size={50} className="text-gray-500" /> },
   {
     name: "WordPress",
-    icon: <FaWordpress size={50} className="text-blue-400" />,
+    icon: <FaWordpress size={50} className="text-gray-500" />,
   },
   {
     name: "Blockchain",
-    icon: <SiBlockchaindotcom size={50} className="text-teal-600" />,
+    icon: <SiBlockchaindotcom size={50} className="text-gray-500" />,
   },
 ];
 
