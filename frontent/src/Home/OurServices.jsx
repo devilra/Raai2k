@@ -29,15 +29,14 @@ const fadeRight = {
 };
 
 // Mobile/Tablet fade-up effect
-const itemEffect = {
-  hidden: { opacity: 0, y: 50 },
+const fadeUp = {
+  hidden: { opacity: 0, y: isLargeScreen ? 0 : 50 },
   show: {
     opacity: 1,
     y: 0,
     transition: { duration: 1, ease: "easeOut" },
   },
 };
-
 const services = [
   {
     id: 1,
@@ -170,7 +169,7 @@ const OurServices = () => {
 
           {/* FEATURES SECTION */}
           <motion.div
-            variants={itemEffect}
+            variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}

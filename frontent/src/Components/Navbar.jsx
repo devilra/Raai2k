@@ -81,7 +81,7 @@ export default function Navbar() {
     { name: "Service", path: "/service" },
     { name: "Solutions", path: "/solution" },
     // { name: "Case Studies", path: "/case" },
-    { name: "Careers", path: "/careers" },
+    // { name: "Careers", path: "/careers" },
     //{ name: "Elements", path: "/elements" },
     { name: "Contact", path: "/contact" },
 
@@ -133,12 +133,12 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Link to="/">
               <img
-                src="/logo3.png"
+                src="/logo4.png"
                 // style={{
                 //   filter:
                 //     "invert(54%) sepia(94%) saturate(500%) hue-rotate(10deg) brightness(95%) contrast(90%)",
                 // }}
-                className=" object-cover h-[50px] w-[100px] "
+                className=" object-cover h-[50px] w-[150px] "
               />
             </Link>
             {/* Desktop Navigation Links */}
@@ -253,7 +253,7 @@ export default function Navbar() {
               >
                 Case Studies
               </Link> */}
-              <Link
+              {/* <Link
                 className={` w-full text-center py-3  ${
                   location.pathname === "/careers"
                     ? "bg-[#2A3855] text-white"
@@ -263,7 +263,7 @@ export default function Navbar() {
                 to="/careers"
               >
                 Careers
-              </Link>
+              </Link> */}
               {/* <Link onClick={() => setOpenMenu(false)} to="/elements">
                 Elements
               </Link> */}

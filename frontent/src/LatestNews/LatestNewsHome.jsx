@@ -12,6 +12,7 @@ const newsData = [
     author: "Paul O'Sullivan",
     desc: "HMRC released a consultation document to flag some potential tax impacts that a forthcoming change...",
     img: "/latest/l1.jpg",
+    link: "https://www.finextra.com/newsarticle/47027/abu-dhabi-launches-fintech-centre-with-focus-on-digital-assets",
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const newsData = [
     author: "Enrico Ambrosi",
     desc: "Assuming that the referendum is not ignored completely, there are two possible futures for the UK...",
     img: "/latest/l2.jpg",
+    link: "https://techafricanews.com/2025/12/09/abu-dhabi-launches-fida-cluster-to-advance-fintech-insurance-digital-and-alternative-assets/",
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ const newsData = [
     author: "Robson",
     desc: "Social engineering involves the collection of information from various sources about a target...",
     img: "/latest/l3.jpg",
+    link: "https://ibsintelligence.com/ibsi-news/emirates-gold-public-gold-launches-fintech-powered-gold-atms/",
   },
 
   // ⭐ ADDED NEW ARTICLE ⭐
@@ -35,6 +38,27 @@ const newsData = [
     author: "Sarah Mitchell",
     desc: "AI-driven automation and predictive analytics are reshaping lending, compliance, and customer experience in the fintech world...",
     img: "/latest/l4.jpg",
+    link: "https://fintechnews.sg/123265/videos/the-next-chapter-in-payments-safety-experience-speed-hasan-khan-trust-bank/",
+  },
+
+  // ⭐ EXTRA ARTICLE 1 ⭐
+  {
+    id: 5,
+    title: "UPI Cross-Border Payments: What Businesses Need to Know",
+    author: "Rohit Sharma",
+    desc: "India’s UPI is now expanding globally, enabling seamless international transactions with lower fees and faster settlements...",
+    img: "/latest/l5.jpg",
+    link: "https://fintechnews.my/55637/ai/ai-malaysia-banking-roundtable/",
+  },
+
+  // ⭐ EXTRA ARTICLE 2 ⭐
+  {
+    id: 6,
+    title: "Why cybersecurity will define fintech growth in 2025",
+    author: "Meera Iyer",
+    desc: "With rising digital threats, fintech companies must adopt multi-layered security to protect customers and maintain trust...",
+    img: "/latest/l6.jpg",
+    link: "https://www.fintechweekly.com/magazine/articles/uk-research-project-bnpl-debt-risks-swansea-university",
   },
 ];
 
@@ -126,12 +150,14 @@ const LatestNewsHome = () => {
 
                 {/* Content */}
                 <div className="p-8">
-                  <Link
-                    to={`/news/${item.id}`}
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    //to={`/news/${item.id}`}
                     className="text-[21px] md:text-[18px] font-bold text-[#2A3855] leading-snug mb-2 block"
                   >
                     {item.title}
-                  </Link>
+                  </a>
 
                   <p className="text-gray-400 text-sm mb-4">By {item.author}</p>
 
@@ -139,12 +165,14 @@ const LatestNewsHome = () => {
                     {item.desc}
                   </p>
 
-                  <Link
-                    to={`/news/${item.id}`}
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    //to={`/news/${item.id}`}
                     className="text-[#2A3855] text-[16px] font-semibold flex items-center gap-2 hover:gap-4 transition-all"
                   >
                     Learn More →
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

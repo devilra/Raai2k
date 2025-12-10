@@ -30,21 +30,21 @@ const CompanyOverview = () => {
     },
   };
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: isLargeScreen ? 0 : 50 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.9, ease: "easeOut" },
-    },
-  };
+  // const fadeUp = {
+  //   hidden: { opacity: 0, y: isLargeScreen ? 0 : 50 },
+  //   show: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: { duration: 0.9, ease: "easeOut" },
+  //   },
+  // };
 
   return (
     <motion.section
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.05 }}
       className="pt-10 bg-gray-50/10"
     >
       {/* MAIN WRAPPER */}
@@ -118,14 +118,13 @@ const CompanyOverview = () => {
 
       {/* SECOND SECTION */}
       <motion.section
-        variants={container}
+        variants={itemEffect}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.05 }}
         className="py-10 bg-gray-50"
       >
         <div className="max-w-7xl mx-auto px-6">
-          {/* TITLE */}
           <motion.h2
             variants={itemEffect}
             className="text-[28px] md:text-[37px] font-bold text-[#2A3855] text-center"
@@ -138,7 +137,6 @@ const CompanyOverview = () => {
             className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"
           ></motion.div>
 
-          {/* GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
@@ -187,7 +185,6 @@ const CompanyOverview = () => {
             ))}
           </div>
 
-          {/* FOOTER TEXT */}
           <motion.p
             variants={itemEffect}
             className="text-center mt-14 max-w-3xl mx-auto text-[21px] md:text-[18px] text-[#2A3855] font-medium leading-relaxed"
@@ -208,7 +205,7 @@ const CompanyOverview = () => {
 
       <section>
         <motion.div
-          variants={fadeUp}
+          variants={itemEffect}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}

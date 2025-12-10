@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import VideoJS from "./VideoJS";
+import "videojs-youtube"; // ⭐ IMPORTANT — YouTube plugin
 
 const container = {
   hidden: { opacity: 0, y: 40 },
@@ -29,7 +30,7 @@ const features = [
   {
     icon: <VscWorkspaceTrusted size={28} className="text-[#2A3855]" />,
     title: "Trusted Security",
-    desc: "We ensure enterprise-grade protection with continuous monitoring, secure architecture, and fully compliant workflows.",
+    desc: "We ensure enterprise-grade protection with secure architecture.",
   },
   {
     icon: <MdOutlineArchitecture size={28} className="text-[#2A3855]" />,
@@ -39,31 +40,47 @@ const features = [
   {
     icon: <IoFlashOutline size={28} className="text-[#2A3855]" />,
     title: "Faster Performance",
-    desc: "We build optimized end-to-end engineered systems.",
+    desc: "We build optimized engineered systems.",
   },
 ];
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // -------------------------------------------------------
+  // ⭐ OLD MP4 VIDEO - COMMENTED & HIGHLIGHTED
+  // -------------------------------------------------------
+  // const videoJsOptions = {
+  //   autoplay: true,
+  //   controls: true,
+  //   muted: true,
+  //   responsive: true,
+  //   fluid: true,
+  //   loop: true,
+  //   sources: [
+  //     { src: "/video/v.mp4", type: "video/mp4" },
+  //   ],
+  // };
+  // -------------------------------------------------------
+
+  // ⭐ NEW YOUTUBE VIDEO OPTIONS
   const videoJsOptions = {
     autoplay: true,
     controls: true,
-    muted: true,
+    muted: false,
     responsive: true,
     fluid: true,
-    loop: true,
-    //techOrder: ["youtube"],
+    techOrder: ["youtube"],
     sources: [
       {
-        src: "/video/v.mp4",
-        type: "video/mp4",
+        src: "https://www.youtube.com/watch?v=THLgA1uBlHU",
+        type: "video/youtube",
       },
     ],
   };
 
   const handlePlayerReady = () => {
-    console.log("VideoJS Player Ready");
+    console.log("YouTube Video Ready!");
   };
 
   return (
@@ -93,7 +110,7 @@ const VideoSection = () => {
             </button>
           </div>
 
-          {/* VIDEO POPUP MODAL */}
+          {/* VIDEO POPUP */}
           {isPlaying && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -116,7 +133,7 @@ const VideoSection = () => {
                   <IoClose />
                 </button>
 
-                {/* VIDEO PLAYER */}
+                {/* VIDEO JS PLAYER */}
                 <div className="relative pt-[56.25%]">
                   <div className="absolute top-0 left-0 w-full h-full">
                     <VideoJS
@@ -135,7 +152,7 @@ const VideoSection = () => {
               <motion.div
                 key={index}
                 variants={itemEffect}
-                className="border p-3 border-neutral-400/30 shadow-md rounded-lg"
+                className="border p-3 shadow-md rounded-lg border-neutral-400/30"
               >
                 <div className="flex items-start gap-4">
                   <div className="text-[#2A3855]">{item.icon}</div>

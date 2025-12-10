@@ -63,7 +63,7 @@ const CeoMessage = () => {
             variants={isLargeScreen ? fadeLeft : itemEffect}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             className="bg-white shadow rounded-2xl flex flex-col lg:flex-row lg:justify-around gap-5"
           >
             {/* LEFT IMAGE */}
@@ -90,14 +90,14 @@ const CeoMessage = () => {
           </motion.div>
 
           {/* ========= FOUNDER 2 (Fade Right on LG, Fade Up on small) ========= */}
-          <motion.div
+          {/* <motion.div
             variants={isLargeScreen ? fadeRight : itemEffect}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             className="bg-white shadow rounded-2xl flex flex-col lg:flex-row-reverse lg:justify-around gap-5"
           >
-            {/* RIGHT IMAGE */}
+          
             <div className="w-full lg:w-1/4 md:pr-5">
               <img
                 src="/global/m.png"
@@ -106,7 +106,7 @@ const CeoMessage = () => {
               />
             </div>
 
-            {/* LEFT CONTENT */}
+           
             <div className="p-10 flex flex-col justify-center lg:w-1/2">
               <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
                 SENTHIL
@@ -118,7 +118,7 @@ const CeoMessage = () => {
                 dependency and minimized risks...
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         <section>

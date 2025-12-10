@@ -2,6 +2,7 @@ import React from "react";
 import { FaLinkedin, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
 import ServingClients from "./ServingClients";
 import Faq from "../FAQ/Faq";
+import GlobalPresenceSection from "./GlobalPresenceSection";
 
 const ContactPage = () => {
   return (
@@ -84,9 +85,13 @@ const ContactPage = () => {
           </div>
         </div> */}
       </section>
-
+      {/* 
       <section>
         <ServingClients />
+      </section> */}
+
+      <section>
+        <GlobalPresenceSection />
       </section>
 
       {/* ================= CONTACT FORM =================== */}

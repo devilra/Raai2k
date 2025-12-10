@@ -46,6 +46,13 @@ const bannerData = [
     img: "/carosel/c6.jpg",
     objectPos: "object-[100%_50%]",
   },
+  // {
+  //   id: 7,
+  //   title: "AI-Powered Insights",
+  //   desc: "Leverage data intelligence to make smarter business decisions.",
+  //   img: "/carosel/c10.jpg",
+  //   objectPos: "object-center",
+  // },
 ];
 
 // Custom Arrow Components (No change)
@@ -105,7 +112,7 @@ const Banner = () => {
               // w-full, h-full, object-cover ஆகியவற்றை நிரந்தரமாக வைக்கவும்.
               className={`w-full h-full object-cover ${
                 // item.id 4 ஆக இருந்தால்: Custom position-ஐ மட்டும் பயன்படுத்தவும்.
-                item.id === 4
+                item.id === 4 || item.id === 7
                   ? "object-[10%_20%]"
                   : // item.id 4 இல்லையென்றால்: item.objectPos-ஐப் பயன்படுத்தவும்.
                     item.objectPos

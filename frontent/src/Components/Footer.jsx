@@ -38,10 +38,34 @@ const Footer = () => {
           {/* Internal Links */}
           <div className="space-y-4">
             <Link
+              to="/"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              About
+            </Link>
+            <Link
+              to="/service"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Service
+            </Link>
+            <Link
+              to="/solution"
+              className="block hover:text-yellow-300 transition cursor-pointer"
+            >
+              Solutions
+            </Link>
+            <Link
               to="/contact"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
-              Contact Us
+              Contact
             </Link>
 
             <Link
@@ -51,7 +75,7 @@ const Footer = () => {
               FAQ
             </Link>
 
-            <Link
+            {/* <Link
               to="/privacy"
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
@@ -77,7 +101,7 @@ const Footer = () => {
               className="block hover:text-yellow-300 transition cursor-pointer"
             >
               Local Office
-            </Link>
+            </Link> */}
           </div>
 
           {/* Social Icons */}
@@ -159,14 +183,14 @@ const Footer = () => {
       <div className="mt-16   bg-[#2a3855] py-6">
         <div className="max-w-7xl mx-auto px-6  text-gray-300 text-sm">
           {/* Left Logo & Copyright */}
-          <div className="flex items-center justify-between gap-3 mb-4 md:mb-0">
+          <div className="flex flex-col md:flex-row items-center md:justify-between gap-3 mb-4 md:mb-0">
             <img
-              src="/logo3.png"
+              src="/logo4.png"
               alt="logo"
-              className=" object-cover h-[45px] w-[100px] filter invert brightness-100 saturate-0  rounded-full"
+              className=" object-cover h-[45px] w-[150px] filter invert brightness-100 saturate-0  rounded-full"
             />
             <div className="inline-flex gap-5">
-              <span className="">
+              <span className="hidden">
                 Designed by{" "}
                 <a
                   className="font-bold underline"

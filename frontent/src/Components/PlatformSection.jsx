@@ -98,22 +98,55 @@ const PlatformSection = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 bg-[#F2F2F2]">
       <div className="max-w-7xl  mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-[#2A3855] mb-10">
+        <h2 className="text-3xl font-bold text-center text-[#2A3855] mb-5">
           Platform Tools
         </h2>
-
-        <div className="relative">
+        <div className="w-16 h-[3px] bg-[#2A3855] mx-auto mt-4"></div>
+        <div className="relative hidden md:block">
           <Slider {...settings}>
             {tools.map((item, i) => (
               <div key={i} className="px-3 mb-5">
                 <div
+                  //   className="
+                  //   bg-white border border-gray-200 shadow-md rounded-2xl
+                  //   flex flex-col items-center justify-center gap-3
+                  //   py-8 hover:shadow-xl hover:-translate-y-2
+                  //   transition-all duration-300 cursor-pointer
+                  // "
                   className="
-                  bg-white border border-gray-200 shadow-md rounded-2xl 
+                     
                   flex flex-col items-center justify-center gap-3
-                  py-8 hover:shadow-xl hover:-translate-y-2 
-                  transition-all duration-300 cursor-pointer
+                  py-8  
+                  transition-all duration-300 
+                "
+                >
+                  {item.icon}
+                  <p className="text-[#2A3855] font-semibold text-sm">
+                    {item.name}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+        <div className="relative md:hidden">
+          <Slider {...settings} slidesToShow={3}>
+            {tools.map((item, i) => (
+              <div key={i} className="px-3 mb-5">
+                <div
+                  //   className="
+                  //   bg-white border border-gray-200 shadow-md rounded-2xl
+                  //   flex flex-col items-center justify-center gap-3
+                  //   py-8 hover:shadow-xl hover:-translate-y-2
+                  //   transition-all duration-300 cursor-pointer
+                  // "
+                  className="
+                     
+                  flex flex-col items-center justify-center gap-3
+                  py-8  
+                  transition-all duration-300 
                 "
                 >
                   {item.icon}

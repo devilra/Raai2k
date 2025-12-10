@@ -20,7 +20,6 @@ const Home = () => {
       <Banner />
 
       <WelcomeSection />
-      {/* <PlatformSection /> */}
 
       <VideoSection />
       <OurServices />
@@ -31,7 +30,8 @@ const Home = () => {
       <LeadershipSection />
       <StatsSection />
       <ClientTestimonials />
-      <PartnersComponent />
+      {/* <PartnersComponent /> */}
+      <PlatformSection />
       <LatestNews />
     </div>
   );

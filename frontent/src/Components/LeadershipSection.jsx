@@ -4,38 +4,44 @@ import { motion } from "framer-motion";
 const leaders = [
   {
     //name: "Reenal Scott",
-    role: "COO (Strategy & Ops)",
+    role: "COO",
+    des: "Strategy & Ops",
     img: "/global/m1.png",
     desc: "Ensures operational excellence across teams, enabling consistent, compliant, high-performance execution.",
   },
   {
     //name: "Lily Anderson",
-    role: "B2B (Partnership & Acquisition)",
+    role: "B2B",
+    des: "Partnership & Acquisition",
     img: "/global/f1.png",
     desc: " Identifies, negotiates and closes strategic deals towards mutual win-win scenario.",
   },
   {
     //name: "Legartha Mantana",
-    role: "Business Analyst (Banking, Payments, Lending)",
+    role: "Business Analyst",
+    des: "(Banking, Payments, Lending)",
     img: "/global/f2.png",
     desc: "Translates business needs into clear, actionable requirements that drive accuracy, alignment, and delivery excellence",
   },
   {
     //name: "Thomas Anderson",
-    role: "Solution Architect (OOTB, Custom)",
+    role: "Solution Architect",
+    des: "(OOTB, Custom)",
     img: "/global/m2.png",
     desc: "Designs scalable, secure, and future-ready financial architectures that align technology with business strategy.",
   },
 
   {
     //name: "John Snow",
-    role: "Integration Expert (3rd party, APIs)",
+    role: "Integration Expert",
+    des: "(3rd party, APIs)",
     img: "/global/m3.png",
     desc: "Ensures seamless, compliant, and high-reliability integrations across banking systems, APIs, and enterprise platforms.",
   },
   {
     //name: "Ragner Lothbrok",
-    role: "Design (UI/UX)",
+    role: "Design",
+    des: "UI/UX",
     img: "/global/m4.png",
     desc: "Designs clean, intuitive experiences that make money easier for everyone.",
   },
@@ -58,11 +64,11 @@ const itemEffect = {
 
 const LeadershipSection = () => {
   return (
-    <section
-      // variants={container}
-      // initial="hidden"
-      // whileInView="show"
-      // viewport={{ once: true, amount: 0.2 }}
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.05 }}
       className="py-20 bg-white"
     >
       {/* Title */}
@@ -79,7 +85,7 @@ const LeadershipSection = () => {
             variants={itemEffect}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05 }}
             // className="
             //   flex flex-col bg-white p-4 rounded-xl
             //   transition-all duration-300
@@ -107,13 +113,14 @@ const LeadershipSection = () => {
             <p className="font-bold text-[#2A3855] py-1 text-sm">
               {leader.role}
             </p>
+            <p className=" text-gray-400 py-1 text-sm">{leader.des}</p>
 
             {/* Description */}
             <p className="mt-3 text-gray-600 text-[16px] ">{leader.desc}</p>
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
