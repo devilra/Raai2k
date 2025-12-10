@@ -212,10 +212,10 @@ const CompanyOverview = () => {
           className="w-full flex justify-center pt-20"
         >
           <div
-            className="w-full bg-[#2A3855] text-white  px-8 py-10 
+            className="w-full bg-[#2A3855] text-white px-5 md:px-5 lg:px-0 py-10 
         flex flex-col md:flex-row items-center lg:justify-center gap-6"
           >
-            <h3 className="max-w-4xl mx-auto text-xl md:text-2xl font-semibold leading-relaxed">
+            <h3 className=" text-xl md:text-2xl font-semibold leading-relaxed">
               Ready to transform the financial platform? Talk to our fintech
               consulting team…
             </h3>

@@ -64,7 +64,7 @@ const CeoMessage = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="bg-white shadow rounded-2xl flex flex-col lg:flex-row lg:justify-around gap-5"
+            className="bg-white  rounded-2xl flex flex-col lg:flex-row lg:px-5 gap-3"
           >
             {/* LEFT IMAGE */}
             <div className="w-full lg:w-1/4">
@@ -77,15 +77,19 @@ const CeoMessage = () => {
 
             {/* RIGHT CONTENT */}
             <div className="p-10 flex flex-col justify-center lg:w-1/2">
-              <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
-                KARTHI NAT
+              <h3 className="text-[21px] md:text-[19px] font-bold text-[#2A3855]">
+                Message From CEO
               </h3>
-              <p className="text-sm text-gray-400">Founder, RAai2K</p>
 
               <p className="text-gray-600 text-[16px] my-6">
                 Fintech is changing faster than we could imagine—and we're here
                 to bridge that gap...
               </p>
+
+              <h3 className="text-[21px] md:text-[18px] font-medium text-[#2A3855]">
+                KARTHI NAT
+              </h3>
+              <p className="text-sm text-gray-400">Founder, RAai2K</p>
             </div>
           </motion.div>
 
@@ -95,9 +99,8 @@ const CeoMessage = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="bg-white shadow rounded-2xl flex flex-col lg:flex-row-reverse lg:justify-around gap-5"
+            className="bg-white shadow rounded-2xl flex flex-col lg:flex-row lg:px-5 gap-3"
           >
-          
             <div className="w-full lg:w-1/4 md:pr-5">
               <img
                 src="/global/m.png"
@@ -106,17 +109,19 @@ const CeoMessage = () => {
               />
             </div>
 
-           
             <div className="p-10 flex flex-col justify-center lg:w-1/2">
-              <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
-                SENTHIL
+              <h3 className="text-[21px] md:text-[19px] font-bold text-[#2A3855]">
+                Message From CEO
               </h3>
-              <p className="text-[16px] text-gray-400">Founder, RAai2K</p>
 
               <p className="text-gray-600 text-[16px] my-6">
                 We help teams build future-proof solutions with reduced
                 dependency and minimized risks...
               </p>
+              <h3 className="text-[21px] md:text-[18px] font-medium text-[#2A3855]">
+                SENTHIL
+              </h3>
+              <p className="text-[16px] text-gray-400">Founder, RAai2K</p>
             </div>
           </motion.div> */}
         </div>

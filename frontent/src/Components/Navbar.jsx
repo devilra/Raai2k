@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"; // useLocation ஐ இறக்குமதி செய்யவும்
 import { FaLocationDot } from "react-icons/fa6";
-import { IoCall, IoClose } from "react-icons/io5";
+import { IoCall, IoClose, IoMail, IoTime } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -109,14 +109,20 @@ export default function Navbar() {
               <IoCall className="text-yellow-400" />
               <span className="text-white text-[13px] ">212 386 5575</span>
             </a>
+            {/* EMAIL */}
+            <a
+              href="mailto:support@raai2k.com"
+              className="flex gap-2 items-center hover:underline font-bold ml-20"
+            >
+              <IoMail className="text-yellow-400" />
+              <span className="text-white text-[13px]">support@raai2k.com</span>
+            </a>
           </div>
           <div>
-            {/* <p className="flex gap-2 items-center font-bold">
+            <p className="flex gap-2 items-center font-bold">
               <IoTime className="text-yellow-400" />
-              <span className="text-white text-[13px] ">
-                Mon-Sat: 8.00-18.00. Sunday CLOSED
-              </span>
-            </p> */}
+              <span className="text-white text-[13px] ">GMT IST SGT</span>
+            </p>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#3D4C6F] text-white pt-16">
       {/* ================= TOP SECTION ================= */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Email Signup Box */}
         <div className="bg-[#2a3855] p-10 rounded-2xl shadow-lg">
           <h2 className="text-3xl font-bold mb-2">Sign up for email alerts</h2>
