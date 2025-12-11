@@ -15,6 +15,7 @@ import PrivacyPolicy from "./Components/PrivacyPolicy";
 import TermsOfUse from "./Components/TermsOfUse";
 import Careers from "./Careers/Careers";
 import NewsDetails from "./LatestNews/NewsDetails";
+import DashBoard from "./ADMIN/Dashboard/DashBoard";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/news/:id" element={<NewsDetails />} />
+        <Route path="/admin" element={<DashBoard />} />
       </Routes>
       <Footer />
     </>
