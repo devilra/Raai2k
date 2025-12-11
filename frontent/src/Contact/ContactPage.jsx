@@ -3,6 +3,7 @@ import { FaLinkedin, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
 import ServingClients from "./ServingClients";
 import Faq from "../FAQ/Faq";
 import GlobalPresenceSection from "./GlobalPresenceSection";
+import { IoLogoWhatsapp, IoMail } from "react-icons/io5";
 
 const ContactPage = () => {
   return (
@@ -57,18 +58,38 @@ const ContactPage = () => {
             </h3>
 
             <div className="flex gap-4 text-2xl text-[#2A3855]">
-              <div className="p-3 bg-gray-100 rounded-full hover:bg-blue-100 hover:text-blue-600 transition cursor-pointer">
+              <a
+                href="https://www.linkedin.com/company/raai2k/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-100 rounded-full hover:bg-blue-100 hover:text-blue-600 transition cursor-pointer"
+              >
                 <FaLinkedin />
-              </div>
-              <div className="p-3 bg-gray-100 rounded-full hover:bg-blue-200 hover:text-blue-500 transition cursor-pointer">
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-100 rounded-full hover:bg-blue-200 hover:text-blue-500 transition cursor-pointer"
+              >
                 <FaTwitter />
-              </div>
-              <div className="p-3 bg-gray-100 rounded-full hover:bg-blue-200 hover:text-blue-700 transition cursor-pointer">
-                <FaFacebook />
-              </div>
-              <div className="p-3 bg-gray-100 rounded-full hover:bg-red-200 hover:text-red-600 transition cursor-pointer">
-                <FaGoogle />
-              </div>
+              </a>
+              <a
+                href="https://wa.me/12345?text=Hi%2C%20I%20need%20more%20details!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-100 rounded-full hover:bg-blue-200 hover:text-blue-700 transition cursor-pointer"
+              >
+                <IoLogoWhatsapp />
+              </a>
+              <a
+                href="mailto:support@raai2k.com?subject=Support%20Query&body=Hi%20Team,"
+                // target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-100 rounded-full hover:bg-red-200 hover:text-red-600 transition cursor-pointer"
+              >
+                <IoMail />
+              </a>
             </div>
           </div>
         </div>
