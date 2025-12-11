@@ -4,27 +4,58 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-const bannerData = [
-  {
-    id: 1,
-    title: "Helping Leaders",
-    desc: "We look forward to help you in taking your company to new height.",
-    img: "/carosel/c1.jpg",
-  },
-  {
-    id: 2,
-    title: "Business Growth",
-    desc: "Grow your business with our expert consulting and guidance.",
-    img: "/carosel/c2.jpg",
-  },
-  {
-    id: 3,
-    title: "Creative Solutions",
-    desc: "We provide creative solutions tailored for your success.",
-    img: "/carosel/c3.jpg",
-  },
+// const bannerData = [
+//   {
+//     id: 1,
+//     title: "Helping Leaders",
+//     desc: "We look forward to help you in taking your company to new height.",
+//     img: "/carosel/c1.jpg",
+//   },
+//   {
+//     id: 2,
+//     title: "Business Growth",
+//     desc: "Grow your business with our expert consulting and guidance.",
+//     img: "/carosel/c2.jpg",
+//   },
+//   {
+//     id: 3,
+//     title: "Creative Solutions",
+//     desc: "We provide creative solutions tailored for your success.",
+//     img: "/carosel/c3.jpg",
+//   },
 
-  // ⭐ NEWLY ADDED 3 SLIDES ⭐
+//   // ⭐ NEWLY ADDED 3 SLIDES ⭐
+//   {
+//     id: 4,
+//     title: "Fintech Innovation",
+//     desc: "Build secure, scalable, next-gen fintech products with our expertise.",
+//     img: "/carosel/c7.jpg",
+//     objectPos: "object-right",
+//   },
+//   {
+//     id: 5,
+//     title: "Digital Transformation",
+//     desc: "Transform your business processes with modern technology solutions.",
+//     img: "/carosel/c5.jpg",
+//     objectPos: "object-[100%_50%]",
+//   },
+//   {
+//     id: 6,
+//     title: "Smart Automation",
+//     desc: "Automate workflows and improve efficiency with intelligent systems.",
+//     img: "/carosel/c6.jpg",
+//     objectPos: "object-[100%_50%]",
+//   },
+//   // {
+//   //   id: 7,
+//   //   title: "AI-Powered Insights",
+//   //   desc: "Leverage data intelligence to make smarter business decisions.",
+//   //   img: "/carosel/c10.jpg",
+//   //   objectPos: "object-center",
+//   // },
+// ];
+
+const bannerData = [
   {
     id: 4,
     title: "Fintech Innovation",
@@ -39,6 +70,40 @@ const bannerData = [
     img: "/carosel/c5.jpg",
     objectPos: "object-[100%_50%]",
   },
+  {
+    id: 1,
+    title: "Helping Leaders",
+    desc: "Have an idea? Let’s build itYour product, your roadmap—powered by expert startup IT consulting",
+    img: "/carosel/c1.jpg",
+  },
+  // {
+  //   id: 1,
+  //   title: "Helping Leaders",
+  //   desc: "We look forward to help you in taking your company to new height.",
+  //   img: "/carosel/c1.jpg",
+  // },
+  {
+    id: 2,
+    title: "Launch Fast",
+    desc: "Stay Compliant. Scale ConfidentlyWe help fintech startups build secure, investor-ready products — from idea to launch and beyond",
+    img: "/carosel/c2.jpg",
+  },
+  {
+    id: 3,
+    title: "Creative Solutions",
+    desc: "Building fintech? Don’t do it aloneSpeak with our fintech experts",
+    img: "/carosel/c3.jpg",
+  },
+
+  // ⭐ NEWLY ADDED 3 SLIDES ⭐
+  // {
+  //   id: 4,
+  //   title: "Fintech Innovation",
+  //   desc: "Build secure, scalable, next-gen fintech products with our expertise.",
+  //   img: "/carosel/c7.jpg",
+  //   objectPos: "object-right",
+  // },
+
   {
     id: 6,
     title: "Smart Automation",

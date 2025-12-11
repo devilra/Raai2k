@@ -157,7 +157,7 @@ const VideoSection = () => {
                 <div className="flex items-start gap-4">
                   <div className="text-[#2A3855]">{item.icon}</div>
                   <div>
-                    <h3 className="text-[21px] font-bold text-[#2A3855]">
+                    <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
                       {item.title}
                     </h3>
                     <p className="text-gray-600 text-[16px] mt-2 max-w-xs">

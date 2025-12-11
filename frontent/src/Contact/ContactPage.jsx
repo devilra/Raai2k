@@ -29,7 +29,11 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Melbourne */}
           <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:-translate-y-1">
-            <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
+            <h3 className="text-xl font-semibold text-center  text-[#2A3855] mb-4">
+              {" "}
+              Head office
+            </h3>
+            <h3 className="text-xl font-semibold  text-[#2A3855] mb-4">
               {" "}
               Chennai,{" "}
             </h3>
@@ -49,7 +53,7 @@ const ContactPage = () => {
           {/* Social Icons */}
           <div className="bg-linear-to-br from-white to-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <h3 className="text-xl font-semibold text-[#2A3855] mb-4">
-              Social Links
+              Social
             </h3>
 
             <div className="flex gap-4 text-2xl text-[#2A3855]">

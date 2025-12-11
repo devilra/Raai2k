@@ -156,7 +156,7 @@ const PlatformSection = () => {
                   className="
                      
                   flex flex-col items-center justify-center gap-3
-                  py-8  
+                  py-2  
                   transition-all duration-300 
                 "
                 >

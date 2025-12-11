@@ -19,14 +19,14 @@ const leaders = [
   {
     //name: "Legartha Mantana",
     role: "Business Analyst",
-    des: "(Banking, Payments, Lending)",
+    des: "Banking, Payments, Lending",
     img: "/global/f2.png",
     desc: "Translates business needs into clear, actionable requirements that drive accuracy, alignment, and delivery excellence",
   },
   {
     //name: "Thomas Anderson",
     role: "Solution Architect",
-    des: "(OOTB, Custom)",
+    des: "OOTB, Custom",
     img: "/global/m2.png",
     desc: "Designs scalable, secure, and future-ready financial architectures that align technology with business strategy.",
   },
@@ -34,7 +34,7 @@ const leaders = [
   {
     //name: "John Snow",
     role: "Integration Expert",
-    des: "(3rd party, APIs)",
+    des: "3rd party, APIs",
     img: "/global/m3.png",
     desc: "Ensures seamless, compliant, and high-reliability integrations across banking systems, APIs, and enterprise platforms.",
   },
