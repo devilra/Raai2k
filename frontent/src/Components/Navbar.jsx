@@ -205,48 +205,52 @@ export default function Navbar() {
             initial={{ y: "-100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
-            className="fixed top-16 shadow-2xl rounded-bl-4xl rounded-br-4xl z-50 w-full h-[400px] bg-white/70 backdrop-blur-lg  py-8"
+            className="fixed top-16 shadow-2xl rounded-bl-4xl rounded-br-4xl z-50 w-full h-[340px] bg-white/70 backdrop-blur-lg  py-8"
           >
-            <div className="flex flex-col items-center gap-2 text-[#2A3855] font-semibold text-md md:text-lg">
+            <div className="flex flex-col  gap-2 text-[#2A3855] font-semibold text-md md:text-lg">
               <Link
-                className={` w-full text-center py-3  ${
-                  location.pathname === "/"
-                    ? "bg-[#2A3855] text-white"
-                    : "text-[#2A3855]"
-                } `}
+                // className={` w-full text-center py-3  ${
+                //   location.pathname === "/"
+                //     ? "bg-[#2A3855] text-white"
+                //     : "text-[#2A3855]"
+                // } `}
+                className={` w-full px-5 py-1 `}
                 onClick={() => setOpenMenu(false)}
                 to="/"
               >
                 Home
               </Link>
               <Link
-                className={` w-full text-center py-3  ${
-                  location.pathname === "/about"
-                    ? "bg-[#2A3855] text-white"
-                    : "text-[#2A3855]"
-                } `}
+                // className={` w-full text-center py-3  ${
+                //   location.pathname === "/about"
+                //     ? "bg-[#2A3855] text-white"
+                //     : "text-[#2A3855]"
+                // } `}
+                className={` w-full px-5 py-1 `}
                 onClick={() => setOpenMenu(false)}
                 to="/about"
               >
                 About
               </Link>
               <Link
-                className={` w-full text-center py-3  ${
-                  location.pathname === "/service"
-                    ? "bg-[#2A3855] text-white"
-                    : "text-[#2A3855]"
-                } `}
+                // className={` w-full text-center py-3  ${
+                //   location.pathname === "/service"
+                //     ? "bg-[#2A3855] text-white"
+                //     : "text-[#2A3855]"
+                // } `}
+                className={` w-full px-5 py-1 `}
                 onClick={() => setOpenMenu(false)}
                 to="/service"
               >
                 Service
               </Link>
               <Link
-                className={` w-full text-center py-3  ${
-                  location.pathname === "/capabilities"
-                    ? "bg-[#2A3855] text-white"
-                    : "text-[#2A3855]"
-                } `}
+                // className={` w-full text-center py-3  ${
+                //   location.pathname === "/capabilities"
+                //     ? "bg-[#2A3855] text-white"
+                //     : "text-[#2A3855]"
+                // } `}
+                className={`w-full px-5 py-1 `}
                 onClick={() => setOpenMenu(false)}
                 to="/solution"
               >
@@ -274,11 +278,12 @@ export default function Navbar() {
                 Elements
               </Link> */}
               <Link
-                className={` w-full text-center py-3  ${
-                  location.pathname === "/contact"
-                    ? "bg-[#2A3855] text-white"
-                    : "text-[#2A3855]"
-                } `}
+                // className={` w-full text-center py-3  ${
+                //   location.pathname === "/contact"
+                //     ? "bg-[#2A3855] text-white"
+                //     : "text-[#2A3855]"
+                // } `}
+                className={` w-full px-5 py-1 `}
                 onClick={() => setOpenMenu(false)}
                 to="/contact"
               >
