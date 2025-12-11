@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const contactRoutes = require("./routes/contactRoutes");
 
 const app = express();
 
@@ -12,6 +13,13 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.use("/api", contactRoutes);
+
+// Simple root route for testing
+app.get("/", (req, res) => {
+  res.send("Nodemailer Express Backend is running.");
+});
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

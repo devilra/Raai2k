@@ -5,6 +5,8 @@ import { TfiNewWindow } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { motion } from "framer-motion";
+import { GiTeamIdea } from "react-icons/gi";
+import { MdMiscellaneousServices, MdSupportAgent } from "react-icons/md";
 
 // Detect LG device
 const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint
@@ -84,12 +86,12 @@ const services = [
 
 const features = [
   {
-    icon: <BsFillCreditCardFill size={28} className="text-[#2A3855]" />,
+    icon: <GiTeamIdea size={28} className="text-[#2A3855]" />,
     title: "Awesome Team",
     desc: "We’re available 365 days (uninterrupted assistance)",
   },
   {
-    icon: <IoChatbox size={28} className="text-[#2A3855]" />,
+    icon: <MdSupportAgent size={28} className="text-[#2A3855]" />,
     title: "Excellent Support",
     desc: (
       <div className="text-gray-600">
@@ -101,7 +103,7 @@ const features = [
     ),
   },
   {
-    icon: <IoCall size={28} className="text-[#2A3855]" />,
+    icon: <MdMiscellaneousServices size={28} className="text-[#2A3855]" />,
     title: "Quick Service",
     desc: "Free 30-Min Strategy Call, System health-check",
   },
