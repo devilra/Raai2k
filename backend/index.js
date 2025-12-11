@@ -9,7 +9,7 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "https://raai2k.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    //credentials: true,
   })
 );
 app.use(express.json());
