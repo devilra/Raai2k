@@ -209,23 +209,28 @@ const CompanyOverview = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="w-full flex pt-20"
+          className="w-full pt-30"
         >
-          <div
-            className="w-full  bg-[#2A3855] text-white px-5 md:px-5 lg:px-10 py-10 
-        flex flex-col md:flex-row items-center lg:justify-between gap-6"
-          >
-            <h3 className=" text-xl md:text-2xl font-semibold leading-relaxed">
-              Ready to transform the financial platform ? Talk to our team..
-            </h3>
-
-            <Link
-              to="/contact"
-              className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full 
-            hover:bg-gray-200 transition whitespace-nowrap"
+          {/* FULL WIDTH BLUE BACKGROUND */}
+          <div className="w-full bg-[#2A3855] shadow-xl py-10">
+            {/* CENTERED CONTENT ONLY */}
+            <div
+              className="max-w-7xl mx-auto px-6 lg:px-10 
+                            flex flex-col md:flex-row items-center justify-between gap-6 text-white"
             >
-              Contact Us
-            </Link>
+              <h3 className="text-xl md:text-2xl font-semibold leading-relaxed text-center md:text-left">
+                Ready to transform your financial platform ?? Talk to our team,
+                now..
+              </h3>
+
+              <Link
+                to="/contact"
+                className="bg-white text-[#2A3855] font-semibold px-8 py-3 rounded-full 
+                           hover:bg-gray-200 transition whitespace-nowrap"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </motion.div>
       </section>

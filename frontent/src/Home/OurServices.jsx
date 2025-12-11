@@ -85,15 +85,15 @@ const services = [
 const features = [
   {
     icon: <BsFillCreditCardFill size={28} className="text-[#2A3855]" />,
-    title: "Special financing",
-    desc: "Apply for special financial support and earn exclusive rewards.",
+    title: "Awesome Team",
+    desc: "We’re available 365 days (uninterrupted assistance)",
   },
   {
     icon: <IoChatbox size={28} className="text-[#2A3855]" />,
-    title: "Chat with team",
+    title: "Excellent Support",
     desc: (
       <div className="text-gray-600">
-        Have a question? Chat online with an expert.
+        First 90 days free after product installation
         {/* <span className="text-[#2A3855] flex items-center gap-1 font-bold mt-1 cursor-pointer hover:underline">
           Start chatting <TfiNewWindow size={30} className="px-2" />
         </span> */}
@@ -102,8 +102,8 @@ const features = [
   },
   {
     icon: <IoCall size={28} className="text-[#2A3855]" />,
-    title: "Call a specialist",
-    desc: "Our 24/7 support team is ready for you at",
+    title: "Quick Service",
+    desc: "Free 30-Min Strategy Call, System health-check",
   },
 ];
 
