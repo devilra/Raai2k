@@ -188,7 +188,9 @@ const Banner = () => {
             <div
               // className="absolute top-0 left-5 w-full h-full flex items-center"
               className={`absolute top-0 left-5 w-full h-full flex
-              ${item.id === 4 ? "justify-end" : "items-center"}`}
+              ${
+                item.id === 4 || item.id === 2 ? "justify-end" : "items-center"
+              }`}
             >
               <motion.div
                 initial={false}
