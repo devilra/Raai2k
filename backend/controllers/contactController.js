@@ -1,10 +1,24 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 // Configuration for Nodemailer transporter
 // This uses the credentials defined in the .env file
 
+// local server and render base server base gmail send
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS,
+//   },
+// });
+
+// hosting cpanel custom mail send function
+
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -84,7 +98,7 @@ exports.sendContactForm = async (req, res) => {
 
   // --- 2. Define Mail Options for User (User will receive a stylish confirmation) ---
   const userMailOptions = {
-    from: `Support Team <${process.env.EMAIL_USER}>`,
+    from: `raai2k Support Team <${process.env.EMAIL_USER}>`,
     to: email,
     subject: `✅ We Received Your Message - Confirmation for ${name}`,
     html: `
@@ -111,12 +125,12 @@ exports.sendContactForm = async (req, res) => {
                                         In the meantime, you can visit our <a href="#" style="color: #1e88e5; text-decoration: none; font-weight: bold;">FAQ section</a> for quick answers.
                                     </p>
                                     
-                                    <p style="margin-top: 40px; font-size: 16px;">Regards,<br>The Support Team</p>
+                                    <p style="margin-top: 40px; font-size: 16px;">Regards,<br>raai2k Support Team</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center" style="padding: 15px; background-color: #e3f2fd; color: #666; font-size: 12px; border-top: 1px solid #bbdefb;">
-                                    [Your Company Name] | Chennai, India | &copy; ${new Date().getFullYear()}
+                                    raai2k | Chennai, India(South) | &copy; ${new Date().getFullYear()}
                                 </td>
                             </tr>
                         </table>
@@ -150,6 +164,129 @@ exports.sendContactForm = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to send the message. Please try again later.",
+      error: error.message,
+    });
+  }
+};
+
+exports.handleNewsletterSignup = async (req, res) => {
+  // 1. Get email data from the request body
+  const { email } = req.body;
+
+  // Basic validation
+  if (!email) {
+    return res.status(400).json({
+      success: false,
+      message: "Email is required for signup.",
+    });
+  }
+  // --- 2. Define Mail Options for Admin (New Subscriber Notification) ---
+  const adminNotificationMailOptions = {
+    from: `Subscription Service <${process.env.EMAIL_USER}>`,
+    to: process.env.ADMIN_EMAIL, // Admin's email
+    subject: `🔔 NEW Newsletter Subscriber Alert!`,
+    html: `
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+                <tr>
+                    <td align="center">
+                        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #ffc107; border-radius: 8px; overflow: hidden;">
+                            <tr>
+                                <td style="padding: 20px 30px; background-color: #ff9800; color: white;">
+                                    <h1 style="margin: 0; font-size: 24px;">New Newsletter Signup</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 30px;">
+                                    <p style="font-size: 16px; color: #333;">A new user has signed up for email alerts/newsletter:</p>
+                                    
+                                    <table width="100%" cellpadding="10" cellspacing="0" style="border: 1px solid #eee; margin-top: 15px;">
+                                        <tr>
+                                            <td style="background-color: #fff3e0; width: 30%; font-weight: bold; color: #555;">Subscriber Email:</td>
+                                            <td style="background-color: #fff3e0; width: 70%; color: #333;">${email}</td>
+                                        </tr>
+                                    </table>
+
+                                    <p style="margin-top: 30px; font-size: 14px; color: #666;">
+                                        Add this email to your mailing list immediately.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="padding: 15px; background-color: #f4f4f4; color: #999; font-size: 12px; border-top: 1px solid #eee;">
+                                    Subscription Alert System.
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        `,
+  };
+
+  // --- 3. Define Mail Options for User (Confirmation/Welcome Email) ---
+  const userConfirmationMailOptions = {
+    from: `Service Alerts <${process.env.EMAIL_USER}>`,
+    to: email, // User's email
+    subject: `🎉 Welcome! You're Subscribed to Our Email Alerts!`,
+    html: `
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; background-color: #e3f2fd; padding: 20px;">
+                <tr>
+                    <td align="center">
+                        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #bbdefb; border-radius: 8px; overflow: hidden;">
+                            <tr>
+                                <td style="padding: 20px 30px; background-color: #00bcd4; color: white; text-align: center;">
+                                    <h1 style="margin: 0; font-size: 26px;">Subscription Confirmed!</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 30px; color: #333;">
+                                    <p style="font-size: 16px;">Thank you for signing up for our email alerts!</p>
+                                    <p>You will now receive our latest insights and updates directly in your inbox at <strong>${email}</strong>.</p>
+                                    
+                                    <p style="margin-top: 30px;">
+                                        <a href="#" style="background-color: #00bcd4; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                                            Visit Our Website
+                                        </a>
+                                    </p>
+                                    
+                                    <p style="margin-top: 40px; font-size: 16px;">
+                                        We look forward to keeping you informed.<br>The Alerts Team
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        `,
+  };
+
+  // --- 4. Send Both Emails Concurrently using Promise.all ---
+
+  try {
+    const emailPromises = [
+      transporter.sendMail(adminNotificationMailOptions), // Send to Admin
+      transporter.sendMail(userConfirmationMailOptions), // Send Confirmation to User
+    ];
+
+    const [adminInfo, userInfo] = await Promise.all(emailPromises);
+
+    console.log("Admin notified of new signup: %s", adminInfo.messageId);
+    console.log("User received confirmation: %s", userInfo.messageId);
+
+    // Success response
+    res.status(200).json({
+      success: true,
+      message:
+        "Successfully signed up for email alerts! Check your inbox for confirmation.",
+    });
+  } catch (error) {
+    console.error("Error sending signup emails:", error);
+
+    // Error response
+    res.status(500).json({
+      success: false,
+      message: "Failed to process signup. Please try again later.",
       error: error.message,
     });
   }

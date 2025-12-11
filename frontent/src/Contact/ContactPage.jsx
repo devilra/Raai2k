@@ -4,8 +4,106 @@ import ServingClients from "./ServingClients";
 import Faq from "../FAQ/Faq";
 import GlobalPresenceSection from "./GlobalPresenceSection";
 import { IoLogoWhatsapp, IoMail } from "react-icons/io5";
+// MUI Components for Notifications
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useState } from "react";
+import { useMemo } from "react";
+import api from "../api";
+
+// Custom Alert component for Snackbar
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+// Regex for basic email validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    description: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
+  // -------------- HANDLERS ------------------
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbar({
+      ...snackbar,
+      open: false,
+    });
+  };
+
+  // -------------- VALIDATION LOGIC ------------------
+
+  const isEmailValid = useMemo(() => {
+    return emailRegex.test(formData.email);
+  }, [formData.email]);
+
+  const isFormComplete = useMemo(() => {
+    return (
+      formData.name.trim() !== "" &&
+      isEmailValid &&
+      formData.description.trim() !== ""
+    );
+  }, [formData, isEmailValid]);
+
+  // -------------- API SUBMISSION ------------------
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Check final validation before sending
+    if (!isFormComplete) {
+      setSnackbar({
+        open: true,
+        message: "Please fill all fields correctly, especially the email.",
+        severity: "warning",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await api.post("/contact", formData);
+      // Success response from backend
+      setSnackbar({
+        open: true,
+        message: response.data.message || "Message sent successfully!",
+        severity: "success",
+      });
+
+      // Clear the form after success
+      setFormData({ name: "", email: "", description: "" });
+    } catch (error) {
+      // Handle API errors (e.g., 400 or 500 status codes)
+      const errorMessage =
+        error.response?.data?.message ||
+        "Failed to send message. Please try again.";
+      setSnackbar({
+        open: true,
+        message: errorMessage,
+        severity: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="bg-[#f5f7fb]">
       {/* ================= BANNER =================== */}
@@ -127,31 +225,63 @@ const ContactPage = () => {
               Write to us
             </h2>
 
-            <form className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <input
                 type="text"
+                name="name"
+                value={formData.name}
                 placeholder="Your Name"
+                onChange={handleChange}
                 required
                 className="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-700 shadow-sm focus:ring-2 focus:ring-[#2A3855] focus:outline-none"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-700 shadow-sm focus:ring-2 focus:ring-[#2A3855] focus:outline-none"
+                className={`w-full border rounded-md px-4 py-3 text-gray-700 shadow-sm focus:ring-2 focus:ring-[#2A3855] focus:outline-none ${
+                  formData.email && !isEmailValid
+                    ? "border-red-500 ring-red-200"
+                    : "border-gray-300"
+                }`}
               />
+              {/* Email Validation Error Message */}
+              {formData.email && !isEmailValid && (
+                <p className="mt-1 text-sm text-red-500">
+                  Please enter a valid email address.
+                </p>
+              )}
               <textarea
                 rows="8"
+                name="description"
                 placeholder="Enter your descriptions here..."
+                value={formData.description}
+                onChange={handleChange}
                 required
                 className="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-700 shadow-sm focus:ring-2 focus:ring-[#2A3855] focus:outline-none"
               ></textarea>
 
               <button
                 type="submit"
-                className="mt-4 w-44 bg-[#2A3855] hover:bg-[#18263f] text-white font-semibold py-3 rounded-md transition shadow-lg hover:shadow-xl"
+                disabled={!isFormComplete || loading}
+                className={`mt-4 w-44 font-semibold py-3 rounded-md transition shadow-lg 
+                  ${
+                    isFormComplete && !loading
+                      ? "bg-[#2A3855] hover:bg-[#18263f] text-white hover:shadow-xl" // Active styles
+                      : "bg-gray-400 text-gray-700 cursor-not-allowed" // Disabled styles
+                  }`}
               >
-                Send Now
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <CircularProgress size={20} color="inherit" />
+                    <span className="ml-2">Sending...</span>
+                  </div>
+                ) : (
+                  "Send Now"
+                )}
               </button>
             </form>
           </div>
@@ -160,6 +290,22 @@ const ContactPage = () => {
       <section className="w-full">
         <Faq />
       </section>
+
+      {/* ================= MUI SNACKBAR =================== */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
