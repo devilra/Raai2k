@@ -42,7 +42,7 @@ const GlobalPresenceSection = () => {
         className="w-full flex justify-center"
       >
         <img
-          src="/map/map.jpeg"
+          src="/map/map.jpg"
           alt="Global Coverage Map"
           className="
             w-full 
