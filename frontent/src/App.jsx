@@ -22,6 +22,7 @@ import HomePageContent from "./ADMIN/Dashboard/HomeContent/HomePageContent";
 import ServiceContent from "./ADMIN/Dashboard/ServiceContent/ServiceContent";
 import SolutionContent from "./ADMIN/Dashboard/SolutionContent/SolutionContent";
 import AdminProtect from "./ADMIN/adminComponents/AdminProtect";
+import AboutContent from "./ADMIN/Dashboard/AboutContent/AboutContent";
 
 const App = () => {
   const location = useLocation();
@@ -60,6 +61,7 @@ const App = () => {
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<DashboardHome />} />
             <Route path="home" element={<HomePageContent />} />
+            <Route path="aboutContent" element={<AboutContent />} />
             <Route path="serviceContent" element={<ServiceContent />} />
             <Route path="solutionContent" element={<SolutionContent />} />
           </Route>

@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { logoutAdmin } from "../../redux/AdminAuthSlices/adminAuthSlice";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import { HiNewspaper } from "react-icons/hi";
 
 // MuiAlert-ஐ helper function ஆக மாற்றவும்
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -108,6 +109,22 @@ const Sidebar = () => {
             >
               <IoHomeSharp className="mr-3" />
               Home Contents
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="aboutContent"
+              className={({ isActive }) =>
+                `flex items-center p-3 rounded-lg transition duration-200 
+               ${
+                 isActive
+                   ? "bg-blue-600 text-white shadow-lg"
+                   : "text-gray-300 hover:bg-gray-700 hover:text-white"
+               }`
+              }
+            >
+              <HiNewspaper className="mr-3" />
+              About Contents
             </NavLink>
           </li>
           <li>
