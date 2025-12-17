@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft, FaChevronRight, FaSpinner } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchActiveSlides } from "../redux/AdminHomeSlices/adminHomeSlice";
 
 // const bannerData = [
 //   {
@@ -141,12 +143,26 @@ const PrevArrow = ({ onClick }) => (
 
 const Banner = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const dispatch = useDispatch();
+
+  // Redux-லிருந்து டேட்டாவை எடுத்தல்
+  const { activeSlides, isHomeLoading } = useSelector(
+    (state) => state.homeCarosel
+  );
+
+  console.log(activeSlides);
+
+  useEffect(() => {
+    if (activeSlides.length === 0) {
+      dispatch(fetchActiveSlides());
+    }
+  }, [dispatch, activeSlides.length]);
 
   const settings = {
     dots: true,
     // Ensure the custom class is set here
     dotsClass: "slick-dots custom-dots-bottom",
-    infinite: true,
+    infinite: activeSlides.length > 1,
     arrows: true,
     speed: 700,
     slidesToShow: 1,
@@ -162,17 +178,34 @@ const Banner = () => {
     },
   };
 
+  // 1. Loading State: முதல் முறை லோட் ஆகும்போது மட்டும்
+  if (isHomeLoading && activeSlides.length === 0) {
+    return (
+      <div className="flex flex-col justify-center items-center h-[45vh] md:h-[75vh] bg-gray-50">
+        <FaSpinner className="animate-spin text-[#2A3855] text-5xl mb-4" />
+        <p className="text-[#2A3855] font-medium animate-pulse">
+          Loading amazing content...
+        </p>
+      </div>
+    );
+  }
+
+  // 2. No Data State: ஒருவேளை ஆக்டிவ் ஸ்லைடுகள் ஏதும் இல்லை என்றால்
+  if (activeSlides.length === 0) {
+    return null; // அல்லது ஒரு fallback இமேஜ் காட்டலாம்
+  }
+
   return (
     // ⚠️ CRITICAL CHANGE: Removed 'overflow-hidden' and 'h-[75vh]' from the wrapper.
     // Added 'pb-20' (padding bottom) to give space for the dots to show below the image.
     <div className="relative w-full pb-20">
       <Slider {...settings}>
-        {bannerData.map((item, index) => (
+        {activeSlides.map((item, index) => (
           // The individual slide maintains its height, e.g., h-[75vh]
           <div key={item.id} className="relative w-full h-[45vh] md:h-[75vh] ">
             {/* Background Image */}
             <img
-              src={item.img}
+              src={item.image}
               alt="banner"
               // w-full, h-full, object-cover ஆகியவற்றை நிரந்தரமாக வைக்கவும்.
               className={`w-full h-full object-cover ${
@@ -209,7 +242,7 @@ const Banner = () => {
                   {item.title}
                 </h1>
                 <p className="text-2xl text-[#2A3855] font-semibold mb-10 max-w-[600px]">
-                  {item.desc}
+                  {item.description}
                 </p>
 
                 {/* Buttons */}

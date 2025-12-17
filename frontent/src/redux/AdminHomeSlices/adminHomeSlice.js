@@ -40,6 +40,22 @@ export const fetchHomeSlides = createAsyncThunk(
   }
 );
 
+// 2️⃣ Fetch ACTIVE Slides (PUBLIC) - Home Page-க்காக
+export const fetchActiveSlides = createAsyncThunk(
+  "homeContent/fetchActiveSlides",
+  async (_, thunkAPI) => {
+    try {
+      // நாங்கள் உருவாக்கிய புதிய Route: router.get("/active", getActiveSlides);
+      const res = await api.get("/admin/active");
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        getThunkError(error, "Fetch Active Slides Error")
+      );
+    }
+  }
+);
+
 // 2️⃣ Create Slide (ADMIN)
 export const createSlide = createAsyncThunk(
   "homeContent/createSlide",
@@ -103,11 +119,15 @@ export const deleteSlide = createAsyncThunk(
 const homeContentSlice = createSlice({
   name: "homeCarosel",
   initialState: {
-    slides: [],
+    slides: [], // Admin-க்கான எல்லா ஸ்லைடுகளும்
     isLoading: false,
     isSuccess: false,
     isError: false,
     message: "",
+    // Frontend (Home Page) States - தனித்தனியாக
+    activeSlides: [],
+    isHomeLoading: false,
+    homeError: null,
   },
   reducers: {
     // Ellam status-ayum default value-ku reset panna
@@ -115,6 +135,8 @@ const homeContentSlice = createSlice({
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
+      state.isHomeLoading = false; // இதையும் சேர்த்து reset செய்யணும்
+      state.homeError = null;
       state.message = "";
     },
   },
@@ -137,6 +159,20 @@ const homeContentSlice = createSlice({
         state.isError = true;
         state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
+      })
+
+      /* --- FETCH ACTIVE SLIDES (Frontend / Home Page) --- */
+      .addCase(fetchActiveSlides.pending, (state) => {
+        state.isHomeLoading = true; // தனி Loading
+        state.homeError = null;
+      })
+      .addCase(fetchActiveSlides.fulfilled, (state, action) => {
+        state.isHomeLoading = false; // Stop Loading
+        state.activeSlides = action.payload;
+      })
+      .addCase(fetchActiveSlides.rejected, (state, action) => {
+        state.isHomeLoading = false;
+        state.homeError = action.payload; // தனி Error Message
       })
 
       /* ================= CREATE SLIDE STATUS ================= */

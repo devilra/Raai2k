@@ -15,6 +15,23 @@ exports.getSlides = async (req, res) => {
   }
 };
 
+// 5. Active-ஆக உள்ள Slides-களை மட்டும் பெறுதல் (For Website Frontend)
+exports.getActiveSlides = async (req, res) => {
+  try {
+    const activeSlides = await CarouselSlide.findAll({
+      where: {
+        isActive: true, // Active நிலையில் இருப்பவை மட்டும்
+      },
+      order: [["slideOrder", "ASC"]], // வரிசைப்படி
+    });
+
+    return res.status(200).json(activeSlides);
+  } catch (error) {
+    console.error("Error fetching active slides:", error);
+    return res.status(500).json({ message: "Active slides fetch failed" });
+  }
+};
+
 // 2. புதிய Slide-ஐ உருவாக்குதல் (CREATE)
 exports.createSlide = async (req, res) => {
   try {
