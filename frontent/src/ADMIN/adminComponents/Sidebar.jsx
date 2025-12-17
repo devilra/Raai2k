@@ -79,7 +79,7 @@ const Sidebar = () => {
         </h2>
 
         <ul className="space-y-3">
-          <li>
+          {/* <li>
             <NavLink
               to="dashboard"
               className={({ isActive }) =>
@@ -94,7 +94,7 @@ const Sidebar = () => {
               <FaTachometerAlt className="mr-3" />
               Dashboard
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               to="home"

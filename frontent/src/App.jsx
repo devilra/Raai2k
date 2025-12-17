@@ -58,8 +58,8 @@ const App = () => {
           {/* AdminProtect-இல் இருந்து அனுமதி கிடைத்தவுடன், Outlet மூலம் DashBoard Component-க்கு அனுப்பப்படும் */}
           <Route path="" element={<DashBoard />}>
             {/* DashBoard Component-இன் உள்ளே Nested Routes */}
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<DashboardHome />} />
+            <Route index element={<Navigate to="home" replace />} />
+            {/* <Route path="dashboard" element={<DashboardHome />} /> */}
             <Route path="home" element={<HomePageContent />} />
             <Route path="aboutContent" element={<AboutContent />} />
             <Route path="serviceContent" element={<ServiceContent />} />
