@@ -130,7 +130,7 @@ const WelcomeSection = () => {
     <div>
       {/* Snackbar */}
 
-      <div className="p-6  min-h-screen">
+      <div className="p-6">
         <header className="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800">Welcome raai2k</h2>
           <Button

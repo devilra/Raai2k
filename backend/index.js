@@ -14,6 +14,11 @@ const adminExpertiseRoutes = require("./routes/AdminSolutionRoutes/ExpertiseRout
 const adminAboutBannerRoutes = require("./routes/AdminAboutRoutes/AboutBannerRoutes");
 const adminAboutCeoRoutes = require("./routes/AdminAboutRoutes/AboutCeoRoutes");
 const adminAboutCompanyOverview = require("./routes/AdminAboutRoutes/companyOverviewRoutes");
+const adminAboutOurApproach = require("./routes/AdminAboutRoutes/AboutOurApproach");
+const adminAboutGlobalLeadership = require("./routes/AdminAboutRoutes/AboutGlobalLeadeship");
+const latestNewsRoutes = require("./routes/AdminHomeRoutes/LatestNewsRoute");
+const clientTestimonialRoutes = require("./routes/AdminHomeRoutes/clientTestimonialRoutes");
+const thinkYouGetRoutes = require("./routes/AdminHomeRoutes/thingsYouGetRoutes");
 
 const app = express();
 
@@ -54,6 +59,11 @@ app.use("/api/admin", adminExpertiseRoutes);
 app.use("/api/admin", adminAboutBannerRoutes);
 app.use("/api/admin", adminAboutCeoRoutes);
 app.use("/api/admin/about", adminAboutCompanyOverview);
+app.use("/api/admin/about", adminAboutOurApproach);
+app.use("/api/admin/about", adminAboutGlobalLeadership);
+app.use("/api/admin/home", latestNewsRoutes);
+app.use("/api/admin/home", clientTestimonialRoutes);
+app.use("/api/admin/home", thinkYouGetRoutes);
 
 // Simple root route for testing
 app.get("/", (req, res) => {

@@ -9,6 +9,11 @@ import ExpertiseSection from "../redux/AdminSolutionSlices/ExpertiseSlice";
 import AboutBannerSection from "../redux/AdminAboutSlices/aboutBannerSlice";
 import AboutCeoSection from "../redux/AdminAboutSlices/aboutCeoSlice";
 import AboutCompanyOverview from "../redux/AdminAboutSlices/companyOverviewSlice";
+import AboutGlobalLeadership from "../redux/AdminAboutSlices/globalLeadershipSlice";
+import AboutOurApproach from "../redux/AdminAboutSlices/ourApproachSlice";
+import clientTestimonial from "../redux/AdminHomeSlices/testimonialSlice";
+import LatestNews from "../redux/AdminHomeSlices/LatestNewsSlice";
+import ThinkYouGet from "../redux/AdminHomeSlices/ThingsYouGetSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,5 +27,10 @@ export const store = configureStore({
     aboutBanner: AboutBannerSection,
     ceoContent: AboutCeoSection,
     companyOverview: AboutCompanyOverview,
+    ourApproach: AboutOurApproach,
+    globalLeadership: AboutGlobalLeadership,
+    testimonials: clientTestimonial,
+    latestNews: LatestNews,
+    thingsYouGet: ThinkYouGet,
   },
 });
