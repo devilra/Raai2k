@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const DEVELOPMENT_BASE_URL = import.meta.VITE_BACKEND_API_DEVELOPMENT_URL;
-const CPANEL_BASE_URL = import.meta.VITE_BACKEND_API_CPANEL_URL;
+// const DEVELOPMENT_BASE_URL = import.meta.VITE_BACKEND_API_DEVELOPMENT_URL;
+// const CPANEL_BASE_URL = import.meta.VITE_BACKEND_API_CPANEL_URL;
 
 // console.log(DEVELOPMENT_BASE_URL);
 
