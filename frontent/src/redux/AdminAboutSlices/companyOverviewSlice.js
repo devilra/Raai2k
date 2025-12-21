@@ -42,7 +42,7 @@ export const createCompanyOverview = createAsyncThunk(
         "/admin/about/overview-create",
         overviewData
       );
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Overview create error");
@@ -55,13 +55,13 @@ export const updateCompanyOverview = createAsyncThunk(
   "companyOverview/update",
   async ({ id, data }, thunkAPI) => {
     try {
-      console.log(data);
+      //console.log(data);
       const response = await api.put(
         `/admin/about/overview-update/${id}`,
         data
       );
 
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Overview Update Failed");

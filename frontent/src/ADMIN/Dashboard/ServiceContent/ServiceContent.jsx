@@ -1,9 +1,18 @@
 import React from "react";
+import ServiceBanner from "./ServiceBanner/ServiceBanner";
+import IndustryWeServe from "./IndustriWeServe/IndustryWeServe";
+import FintechService from "./FintechServices/FintechSerice";
+import EngagementModel from "./EngagementModel/EngagementModel";
+import CaseStudy from "./CaseStudy/CaseStudy";
 
 const ServiceContent = () => {
   return (
     <div>
-      <h1>Service Content</h1>
+      <ServiceBanner />
+      <IndustryWeServe />
+      <FintechService />
+      <EngagementModel />
+      <CaseStudy />
     </div>
   );
 };

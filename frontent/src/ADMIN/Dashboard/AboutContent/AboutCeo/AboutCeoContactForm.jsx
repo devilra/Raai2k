@@ -31,7 +31,7 @@ const AboutCeoContactForm = ({ isOpen, onClose, ceoData, setAlert }) => {
   const [previewImage, setPreviewImage] = useState(null); // Preview URL/Base URL
   const dispatch = useDispatch();
 
-  console.log(formData);
+  //console.log(formData);
 
   const isEditMode = !!ceoData; // slideData இருந்தால் Edit Mode
 

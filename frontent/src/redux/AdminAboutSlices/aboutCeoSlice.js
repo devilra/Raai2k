@@ -30,7 +30,7 @@ export const fetchCeoMessages = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await api.get("/admin/about-ceo");
-      console.log(res.data);
+      //console.log(res.data);
       return res.data; // Slides data-vai return pannudhu
     } catch (error) {
       // 🚨 AdminAuth style error handling
@@ -52,7 +52,7 @@ export const createCeoMessage = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res.data.data);
+      //console.log(res.data.data);
     } catch (error) {
       // 🚨 AdminAuth style error handling
       const message = getThunkError(error, "CEO Message create error");
@@ -72,7 +72,7 @@ export const updateCeoMessage = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res.data.data);
+      //console.log(res.data.data);
       return res.data.data;
     } catch (error) {
       // 🚨 AdminAuth style error handling
@@ -89,7 +89,7 @@ export const deleteCeoMessage = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await api.delete(`/admin/delete-ceo/${id}`);
-      console.log(id);
+      //console.log(id);
       return id;
     } catch (error) {
       // 🚨 AdminAuth style error handling

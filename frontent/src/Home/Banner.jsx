@@ -150,7 +150,7 @@ const Banner = () => {
     (state) => state.homeCarosel
   );
 
-  console.log(activeSlides);
+  //console.log(activeSlides);
 
   useEffect(() => {
     if (activeSlides.length === 0) {

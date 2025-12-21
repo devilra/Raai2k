@@ -30,7 +30,7 @@ export const registerAdmin = createAsyncThunk(
         // Backend-இல் Cookie செட் செய்யப்படுவதால், frontend-இல் Admin விவரங்களை மட்டும் சேமிக்கலாம்
         localStorage.setItem("admin", JSON.stringify(response.data));
       }
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message =
@@ -64,7 +64,7 @@ export const loginAdmin = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       const message =
         (error.response &&
           error.response.data &&
@@ -83,7 +83,7 @@ export const getMeAdmin = createAsyncThunk(
     // Backend Cookie-ஐ அடிப்படையாகக் கொண்டு User விவரங்கள் அனுப்பப்படும்
     try {
       const response = await api.get("/admin/me");
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message =

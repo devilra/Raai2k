@@ -14,6 +14,11 @@ import AboutOurApproach from "../redux/AdminAboutSlices/ourApproachSlice";
 import clientTestimonial from "../redux/AdminHomeSlices/testimonialSlice";
 import LatestNews from "../redux/AdminHomeSlices/LatestNewsSlice";
 import ThinkYouGet from "../redux/AdminHomeSlices/ThingsYouGetSlice";
+import ServiceBanner from "../redux/AdminServiceSlice/ServiceBannerSlice";
+import IndustryWeServe from "../redux/AdminServiceSlice/industryServeSlice";
+import FintechService from "../redux/AdminServiceSlice/FintechServiceSlice";
+import EngagementModel from "../redux/AdminServiceSlice/EngagementSlice";
+import CaseStudies from "../redux/AdminServiceSlice/CaseStudySlice";
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +37,10 @@ export const store = configureStore({
     testimonials: clientTestimonial,
     latestNews: LatestNews,
     thingsYouGet: ThinkYouGet,
+    serviceBanner: ServiceBanner,
+    industryServe: IndustryWeServe,
+    finTech: FintechService,
+    engagement: EngagementModel,
+    caseStudy: CaseStudies,
   },
 });

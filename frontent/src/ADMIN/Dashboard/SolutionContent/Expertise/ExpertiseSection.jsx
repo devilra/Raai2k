@@ -25,7 +25,7 @@ const ExpertiseSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(null); // Edit செய்யும்போது பயன்படுத்த
 
-  console.log(isModalOpen);
+  //console.log(isModalOpen);
 
   // ----------------------------------------------------
   // 💡 Snackbar State Management
@@ -38,7 +38,7 @@ const ExpertiseSection = () => {
     (state) => state.expertise
   );
 
-  console.log("Expertise section", expertises);
+  //console.log("Expertise section", expertises);
 
   // ----------------------------------------------------
   // 1. Initial Data Fetch (ஸ்லைடுகளைப் பெறுதல்)

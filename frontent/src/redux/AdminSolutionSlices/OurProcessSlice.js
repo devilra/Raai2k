@@ -25,7 +25,7 @@ export const fetchOurProcess = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await api.get("/admin/ourprocess-all");
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content fetch Error");
@@ -39,7 +39,7 @@ export const createOurProcess = createAsyncThunk(
   async (contentData, thunkAPI) => {
     try {
       const response = await api.post("/admin/ourprocess-create", contentData);
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content create error");
@@ -52,10 +52,10 @@ export const updateOurProcess = createAsyncThunk(
   "ourProcess/updateContent",
   async ({ id, data }, thunkAPI) => {
     try {
-      console.log(data);
+      //console.log(data);
       const response = await api.put(`/admin/ourprocess-update/${id}`, data);
 
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content Update Failed");

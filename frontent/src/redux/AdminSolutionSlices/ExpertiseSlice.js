@@ -30,7 +30,7 @@ export const fetchExpertise = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await api.get("/admin/expertise");
-      console.log(res.data);
+      //console.log(res.data);
       return res.data; // Slides data-vai return pannudhu
     } catch (error) {
       // 🚨 AdminAuth style error handling
@@ -51,7 +51,7 @@ export const createExpertise = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res.data.slide);
+      //console.log(res.data.slide);
       return res.data.slide;
     } catch (error) {
       // 🚨 AdminAuth style error handling
@@ -71,7 +71,7 @@ export const updateExpertise = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res.data.slide);
+      //console.log(res.data.slide);
       return res.data.slide;
     } catch (error) {
       // 🚨 AdminAuth style error handling

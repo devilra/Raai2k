@@ -30,7 +30,7 @@ export const fetchHomeSlides = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await api.get("/admin");
-      console.log(res.data);
+      //console.log(res.data);
       return res.data; // Slides data-vai return pannudhu
     } catch (error) {
       // 🚨 AdminAuth style error handling
@@ -86,7 +86,7 @@ export const updateSlide = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res.data.slide);
+      //console.log(res.data.slide);
       return res.data.slide;
     } catch (error) {
       // 🚨 AdminAuth style error handling
@@ -102,7 +102,7 @@ export const deleteSlide = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await api.delete(`/admin/deleteSlide/${id}`);
-      console.log(id);
+      //console.log(id);
       return id;
     } catch (error) {
       // 🚨 AdminAuth style error handling

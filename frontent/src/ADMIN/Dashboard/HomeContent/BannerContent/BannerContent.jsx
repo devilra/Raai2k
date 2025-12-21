@@ -24,7 +24,7 @@ const BannerContent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(null); // Edit செய்யும்போது பயன்படுத்த
 
-  console.log(isModalOpen);
+  //console.log(isModalOpen);
 
   // ----------------------------------------------------
   // 💡 Snackbar State Management

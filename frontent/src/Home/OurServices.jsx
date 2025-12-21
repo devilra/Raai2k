@@ -94,12 +94,12 @@ const features = [
     icon: <MdSupportAgent size={28} className="text-[#2A3855]" />,
     title: "Excellent Support",
     desc: (
-      <div className="text-gray-600">
+      <span className="text-gray-600">
         First 90 days free after product installation
         {/* <span className="text-[#2A3855] flex items-center gap-1 font-bold mt-1 cursor-pointer hover:underline">
           Start chatting <TfiNewWindow size={30} className="px-2" />
         </span> */}
-      </div>
+      </span>
     ),
   },
   {

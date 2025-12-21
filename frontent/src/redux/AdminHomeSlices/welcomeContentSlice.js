@@ -25,7 +25,7 @@ export const fetchWelcomeContent = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await api.get("/admin/welcome-all");
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content fetch Error");
@@ -39,7 +39,7 @@ export const createWelcomeContent = createAsyncThunk(
   async (contentData, thunkAPI) => {
     try {
       const response = await api.post("/admin/welcome-create", contentData);
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content create error");
@@ -52,10 +52,10 @@ export const updateWelcomeContent = createAsyncThunk(
   "welcome/updateContent",
   async ({ id, data }, thunkAPI) => {
     try {
-      console.log(data);
+      //console.log(data);
       const response = await api.put(`/admin/welcome-content/${id}`, data);
 
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content Update Failed");

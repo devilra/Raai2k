@@ -39,7 +39,7 @@ export const createOurSolution = createAsyncThunk(
   async (contentData, thunkAPI) => {
     try {
       const response = await api.post("/admin/oursolution-create", contentData);
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content create error");
@@ -52,10 +52,10 @@ export const updateOurSolution = createAsyncThunk(
   "ourSolution/updateContent",
   async ({ id, data }, thunkAPI) => {
     try {
-      console.log(data);
+      //console.log(data);
       const response = await api.put(`/admin/oursolution-update/${id}`, data);
 
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content Update Failed");

@@ -71,7 +71,7 @@ export const createAboutBanner = createAsyncThunk(
       // Controller-இல் content: newBanner என்று இருப்பதால், அதை return செய்கிறோம்
       return res.data.content;
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       const message = getThunkError(error, "About Banner creation failed");
       return thunkAPI.rejectWithValue(message);
     }

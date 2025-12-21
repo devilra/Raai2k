@@ -62,15 +62,15 @@ export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const { admin } = useSelector((state) => state.admin);
-  // const [isLocalAdmin, setIsLocalAdmin] = useState(false); // Manual LocalStorage key-க்காகs
+  const [isLocalAdmin, setIsLocalAdmin] = useState(false); // Manual LocalStorage key-க்காகs
 
   useEffect(() => {
     // 1. Manual Key செக் (isRaaiAdmin)
 
-    // const checKLocal = localStorage.getItem("isRaaiAdmin");
-    // if (checKLocal === "true") {
-    //   setIsLocalAdmin(true);
-    // }
+    const checKLocal = localStorage.getItem("isRaaiAdmin");
+    if (checKLocal === "true") {
+      setIsLocalAdmin(true);
+    }
 
     const handleScroll = () => {
       if (window.scrollY > 57) {
@@ -168,21 +168,22 @@ export default function Navbar() {
                 ))}
 
                 {/* --- புதிய அட்மின் லாஜிக் இங்கே --- */}
-                {admin ? (
-                  <Link
-                    to="/admin"
-                    className="bg-[#2A3855] text-white px-5 py-1.5 font-bold text-[15px]   transition"
-                  >
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    to="/auth/login"
-                    className="text-[#2A3855] font-bold text-[15px]    transition"
-                  >
-                    Login
-                  </Link>
-                )}
+                {isLocalAdmin &&
+                  (admin ? (
+                    <Link
+                      to="/admin"
+                      className="bg-[#2A3855] text-white px-5 py-1.5 font-semibold text-[15px]   transition"
+                    >
+                      Dashboard
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/auth/login"
+                      className="text-[#2A3855] font-semibold text-[15px] px-5 py-1     transition"
+                    >
+                      Login
+                    </Link>
+                  ))}
               </nav>
             </div>
           </div>
