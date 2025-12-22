@@ -160,7 +160,7 @@ export default function Navbar() {
             {/* Desktop Navigation Links */}
             <div className="hidden md:hidden lg:flex gap-8 text-[#2A3855]  tracking-[1px] font-semibold ">
               {/* ActiveLink Component-ஐப் பயன்படுத்துதல் */}
-              <nav className="flex gap-8 text-[#2A3855] tracking-[1px] items-center font-semibold text-[15px]">
+              <nav className="flex gap-8 text-[#2A3855] tracking-[1px]  items-center font-semibold text-[15px]">
                 {navItems.map((item) => (
                   <ActiveLink key={item.path} to={item.path}>
                     {item.name}
@@ -168,21 +168,6 @@ export default function Navbar() {
                 ))}
 
                 {/* --- புதிய அட்மின் லாஜிக் இங்கே --- */}
-                {admin ? (
-                  <Link
-                    to="/admin"
-                    className="bg-[#2A3855] text-white px-5 py-1.5 font-bold text-[15px]   transition"
-                  >
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    to="/auth/login"
-                    className="text-[#2A3855] font-bold text-[15px]    transition"
-                  >
-                    Login
-                  </Link>
-                )}
               </nav>
             </div>
           </div>
@@ -191,6 +176,24 @@ export default function Navbar() {
           {/* <button className="border-2 hidden md:hidden lg:block font-bold border-[#223058] text-[#223058] px-6 py-1 rounded-full hover:bg-[#223058] hover:text-white transition">
             Purchase
           </button> */}
+
+          {admin ? (
+            <div className="">
+              <Link
+                to="/admin"
+                className="bg-[#2A3855] text-white px-5  py-2 font-bold text-[15px]   transition"
+              >
+                Dashboard
+              </Link>
+            </div>
+          ) : (
+            <Link
+              to="/auth/login"
+              className="text-[#2A3855] font-bold text-[15px]    transition"
+            >
+              Login
+            </Link>
+          )}
 
           {/* Mobile Menu Icon (Without changes) */}
           <div
