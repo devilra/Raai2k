@@ -11,7 +11,7 @@ const AboutContent = () => {
       <AboutBanner />
       <AboutCeo />
       <CompanyOverview />
-      {/* <OurApproach /> */}
+      <OurApproach />
       <GlobalLeadership />
     </div>
   );

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FaHospitalUser, FaBuilding, FaStore } from "react-icons/fa";
 import { MdCastForEducation } from "react-icons/md";
 import { GiBank, GiTruck } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 // ஒவ்வொரு கார்டுக்கும் தனிப்பயன் நிறங்கள்
 const industryColors = [
@@ -30,6 +31,8 @@ const itemEffect = {
 };
 
 export const IndustriesWeServe = () => {
+  const { activeIndustries } = useSelector((state) => state.industryServe);
+  //console.log(activeIndustries);
   const industries = [
     {
       icon: <GiBank size={28} />,
@@ -62,6 +65,25 @@ export const IndustriesWeServe = () => {
       desc: "CRM, workflow automation, HR tech, cloud apps & large-scale platforms.",
     },
   ];
+
+  // const getIcon = (index) => {
+  //   const icons = [
+  //     <GiBank size={24} />,
+  //     <FaHospitalUser size={24} />,
+  //     <GiReceiveMoney size={24} />,
+  //     <MdSecurity size={24} />,
+  //     <MdGavel size={24} />,
+  //     <GiHealthCapsule size={24} />,
+  //   ];
+
+  //   return icons[index % icons.length];
+  // };
+
+  // API-ல் இருந்து வரும் மெயின் டைட்டில், இல்லையெனில் டீஃபால்ட்
+  const displayTitle =
+    activeIndustries?.length > 0
+      ? activeIndustries[0].mainTitle
+      : "Industries We Serve";
 
   return (
     <motion.section

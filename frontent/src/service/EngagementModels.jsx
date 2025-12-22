@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaHandshake, FaUserTie, FaClock } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 // Fade Animation
 const container = {
@@ -20,6 +21,29 @@ const itemEffect = {
 };
 
 export const EngagementModels = () => {
+  const { activeEngagementModels } = useSelector((state) => state.engagement);
+  //console.log(activeEngagementModels);
+
+  const getIcon = (index) => {
+    const icons = [
+      <FaHandshake size={28} />,
+      <FaUserTie size={22} />,
+      <FaClock size={22} />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
+  const displayEnagementTitle =
+    activeEngagementModels && activeEngagementModels.length > 0
+      ? activeEngagementModels[0].pageTitle
+      : "Choose Your Perfect Engagement Model";
+
+  const pageDesc =
+    activeEngagementModels && activeEngagementModels.length > 0
+      ? activeEngagementModels[0].pageDesc
+      : "We offer flexible partnership models designed to fit your project's unique requirements and budget.";
+
   const models = [
     {
       icon: <FaHandshake size={28} />,
@@ -54,7 +78,7 @@ export const EngagementModels = () => {
         variants={itemEffect}
         className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855] drop-shadow-sm"
       >
-        Choose Your Perfect Engagement Model
+        {displayEnagementTitle}
       </motion.h2>
 
       <motion.div
@@ -66,8 +90,7 @@ export const EngagementModels = () => {
         variants={itemEffect}
         className="text-center text-[16px] text-[#2A3855] mb-16 max-w-2xl mx-auto"
       >
-        We offer flexible partnership models designed to fit your project's
-        unique requirements and budget.
+        {pageDesc}
       </motion.p>
 
       {/* Cards Grid */}
@@ -75,7 +98,7 @@ export const EngagementModels = () => {
         variants={container}
         className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10"
       >
-        {models.map((m, i) => (
+        {activeEngagementModels.map((m, i) => (
           <motion.div
             key={i}
             variants={itemEffect}
@@ -91,13 +114,13 @@ export const EngagementModels = () => {
 
             <div className="relative z-10">
               <div className="flex items-center gap-4">
-                <div className="mb-3">{m.icon}</div>
+                <div className="mb-3">{getIcon(i)}</div>
                 <h3 className="text-[21px] md:text-[18px] font-bold mb-3">
-                  {m.title}
+                  {m.subtitle}
                 </h3>
               </div>
 
-              <p className="text-gray-100 opacity-90 text-[16px]">{m.desc}</p>
+              <p className="text-gray-100 opacity-90 text-[16px]">{m.para}</p>
 
               <button
                 className="mt-6 inline-flex items-center px-6 py-3 border border-white 

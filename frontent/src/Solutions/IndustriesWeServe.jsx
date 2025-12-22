@@ -8,52 +8,55 @@ import { FaShieldAlt } from "react-icons/fa";
 import { MdShowChart } from "react-icons/md";
 import { SiBlockchaindotcom } from "react-icons/si";
 import { LuMonitorCog } from "react-icons/lu";
+import { FaHospitalUser, FaBuilding, FaStore } from "react-icons/fa";
+import { MdCastForEducation } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 // DATA
-const industries = [
-  {
-    id: 1,
-    icon: <PiBankBold size={28} className="text-[#2A3855]" />,
-    title: "Retail Banking & Neobanks",
-    desc: "Next-gen digital banking platforms with seamless onboarding, secure transactions, and modern UX.",
-  },
-  {
-    id: 2,
-    icon: <MdPayments size={28} className="text-[#2A3855]" />,
-    title: "Payments & Digital Wallets",
-    desc: "High-speed, compliant payment and wallet systems built for reliability and instant settlements.",
-  },
-  {
-    id: 3,
-    icon: <GiReceiveMoney size={28} className="text-[#2A3855]" />,
-    title: "Peer-to-Peer Lending & Microlending",
-    desc: "Automated credit workflows, risk checks, scoring engines, and lending lifecycle management.",
-  },
-  {
-    id: 4,
-    icon: <FaShieldAlt size={28} className="text-[#2A3855]" />,
-    title: "Insurtech",
-    desc: "Digital insurance platforms powered by claims automation, risk modeling, and customer analytics.",
-  },
-  {
-    id: 5,
-    icon: <MdShowChart size={28} className="text-[#2A3855]" />,
-    title: "Wealthtech & Robo-Advisory",
-    desc: "Investment engines with portfolios, market data, advisory automation, and seamless user experiences.",
-  },
-  {
-    id: 6,
-    icon: <SiBlockchaindotcom size={28} className="text-[#2A3855]" />,
-    title: "Cryptocurrency & Digital Assets",
-    desc: "Blockchain-backed asset platforms with secure custody, tokenization, and compliant digital transactions.",
-  },
-  {
-    id: 7,
-    icon: <LuMonitorCog size={35} className="text-[#2A3855]" />,
-    title: "RegTech & Compliance Firms",
-    desc: "KYC, AML, and regulatory workflow automation with advanced monitoring and reporting systems.",
-  },
-];
+// const industries = [
+//   {
+//     id: 1,
+//     icon: <PiBankBold size={28} className="text-[#2A3855]" />,
+//     title: "Retail Banking & Neobanks",
+//     desc: "Next-gen digital banking platforms with seamless onboarding, secure transactions, and modern UX.",
+//   },
+//   {
+//     id: 2,
+//     icon: <MdPayments size={28} className="text-[#2A3855]" />,
+//     title: "Payments & Digital Wallets",
+//     desc: "High-speed, compliant payment and wallet systems built for reliability and instant settlements.",
+//   },
+//   {
+//     id: 3,
+//     icon: <GiReceiveMoney size={28} className="text-[#2A3855]" />,
+//     title: "Peer-to-Peer Lending & Microlending",
+//     desc: "Automated credit workflows, risk checks, scoring engines, and lending lifecycle management.",
+//   },
+//   {
+//     id: 4,
+//     icon: <FaShieldAlt size={28} className="text-[#2A3855]" />,
+//     title: "Insurtech",
+//     desc: "Digital insurance platforms powered by claims automation, risk modeling, and customer analytics.",
+//   },
+//   {
+//     id: 5,
+//     icon: <MdShowChart size={28} className="text-[#2A3855]" />,
+//     title: "Wealthtech & Robo-Advisory",
+//     desc: "Investment engines with portfolios, market data, advisory automation, and seamless user experiences.",
+//   },
+//   {
+//     id: 6,
+//     icon: <SiBlockchaindotcom size={28} className="text-[#2A3855]" />,
+//     title: "Cryptocurrency & Digital Assets",
+//     desc: "Blockchain-backed asset platforms with secure custody, tokenization, and compliant digital transactions.",
+//   },
+//   {
+//     id: 7,
+//     icon: <LuMonitorCog size={35} className="text-[#2A3855]" />,
+//     title: "RegTech & Compliance Firms",
+//     desc: "KYC, AML, and regulatory workflow automation with advanced monitoring and reporting systems.",
+//   },
+// ];
 
 // ANIMATION
 const container = {
@@ -76,6 +79,28 @@ const itemEffect = {
 };
 
 const IndustriesWeServe = () => {
+  const { activeIndustries } = useSelector((state) => state.industryServe);
+
+  const getIcon = (index) => {
+    const icons = [
+      <PiBankBold size={28} />,
+      <MdPayments size={24} />,
+      <GiReceiveMoney size={24} />,
+      <FaShieldAlt size={24} />,
+      <MdShowChart size={24} />,
+      <SiBlockchaindotcom size={24} />,
+      <LuMonitorCog size={24} />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
+  // API-ல் இருந்து வரும் மெயின் டைட்டில், இல்லையெனில் டீஃபால்ட்
+  const displayTitle =
+    activeIndustries?.length > 0
+      ? activeIndustries[0].mainTitle
+      : "Industries We Serve";
+
   return (
     <motion.section
       variants={container}
@@ -90,7 +115,7 @@ const IndustriesWeServe = () => {
           variants={itemEffect}
           className="text-3xl md:text-4xl font-bold text-center text-[#2A3855]"
         >
-          Industries We Serve
+          {displayTitle}
         </motion.h2>
 
         <motion.div
@@ -102,9 +127,9 @@ const IndustriesWeServe = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((item, index) => (
+          {activeIndustries?.map((item, i) => (
             <motion.div
-              key={item.id}
+              key={item.id || i}
               variants={itemEffect}
               className="p-6 rounded-xl border border-gray-300 shadow-xl
                          bg-white transition duration-300 
@@ -114,20 +139,20 @@ const IndustriesWeServe = () => {
                 {/* Number circle */}
                 <div className="shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-[#dadee5]">
                   <span className="text-lg font-bold text-[#2A3855]">
-                    {index + 1}
+                    {i + 1}
                   </span>
                 </div>
 
                 <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
-                  {item.title}
+                  {item.industryName}
                 </h3>
               </div>
 
               <p className="text-gray-600 text-[15px] leading-relaxed border-l-4 border-gray-100 pl-4 py-1">
-                {item.desc}
+                {item.description}
               </p>
 
-              <div className="mt-4 flex justify-end">{item.icon}</div>
+              <div className="mt-4 flex justify-end">{getIcon(i)}</div>
             </motion.div>
           ))}
         </div>

@@ -8,44 +8,8 @@ import { Link } from "react-router-dom";
 // Detect lg device
 const isLargeScreen = window.innerWidth >= 1024;
 
-const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
-  //console.log("Active Overvies", activeOverviews);
+const CompanyOverview = ({ activeOverviews }) => {
   // Icon size (optional – you can also hardcode)
-
-  //console.log("Active Approaches", Array.isArray(activeApproaches));
-
-  const overview =
-    activeOverviews && activeOverviews.length > 0 ? activeOverviews[0] : null;
-
-  // 2. Approach Data
-  const approach =
-    activeApproaches && activeApproaches.length > 0
-      ? activeApproaches[0]
-      : null;
-
-  // 2. gridContent String-ஆக இருப்பதால் அதை Array-ஆக மாற்றுகிறோம்
-  let parsedGrid = [];
-  try {
-    parsedGrid = overview?.gridContent ? JSON.parse(overview.gridContent) : [];
-  } catch (error) {
-    console.error("Error parsing gridContent", e);
-  }
-
-  //console.log(parsedGrid);
-
-  // 3. Approach Cards Parsing (API-ல் இருந்து வரும் String-ஐ Array-ஆக மாற்றுகிறோம்)
-  let parsedApproachCards = [];
-
-  //console.log(parsedApproachCards);
-
-  try {
-    parsedApproachCards = approach?.approachCards
-      ? JSON.parse(approach.approachCards)
-      : [];
-  } catch (error) {
-    console.error("Error parsing approachCards", error);
-  }
-
   const iconSize = 28;
 
   // === SAME FADE-UP EFFECT FOR ALL DEVICES ===
@@ -90,7 +54,7 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
           variants={itemEffect}
           className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]"
         >
-          {overview.pageTitle || "Company Overview"}
+          Company Overview
         </motion.h2>
 
         <motion.div
@@ -108,8 +72,7 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
             variants={itemEffect}
             className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4"
           >
-            {overview.cardSubtitle ||
-              "Build Fast. Scale Smart. Launch Confidently."}
+            Build Fast. Scale Smart. Launch Confidently.
           </motion.h3>
 
           {/* Paragraph */}
@@ -117,8 +80,8 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
             variants={itemEffect}
             className="text-gray-600 text-[16px] mb-8"
           >
-            {overview.mainDescription ||
-              "At Raai2k, we help startups turn ideas into scalable, investor-ready technology..."}
+            At Raai2k, we help startups turn ideas into scalable, investor-ready
+            technology...
           </motion.p>
 
           {/* Quote */}
@@ -128,14 +91,20 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
           >
             <FaQuoteLeft size={iconSize} className="text-4xl text-gray-300" />
             <p className="text-[21px] md:text-[18px] font-bold text-[#2A3855] leading-relaxed">
-              {overview.highlightQuote ||
-                "We turn complex fintech ideas into scalable, secure, and future-ready digital solutions."}
+              We turn complex fintech ideas into scalable, secure, and
+              future-ready digital solutions.
             </p>
           </motion.div>
 
           {/* GRID CONTENT */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-600 leading-relaxed text-[15.5px]">
-            {parsedGrid.map((text, index) => (
+            {[
+              "W e are a technology consulting firm helping organizations turn ideas into robust, scalable systems.",
+              "We specialize in fintech transformation... banking systems, compliance, blockchain...",
+              "Whether you're a startup launching a wallet or a bank modernizing systems...",
+              "Deep expertise in architecture, engineering, cloud, DevOps...",
+              "We help startups, SMBs, enterprises optimize performance...",
+            ].map((text, index) => (
               <motion.p key={index} variants={itemEffect}>
                 {index === 0 && (
                   <span className="text-3xl font-bold text-[#2A3855]">W</span>
@@ -160,7 +129,7 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
             variants={itemEffect}
             className="text-[28px] md:text-[37px] font-bold text-[#2A3855] text-center"
           >
-            {approach?.pageTitle || "Our Approach"}
+            Our Approach
           </motion.h2>
 
           <motion.div
@@ -169,7 +138,32 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
           ></motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {parsedApproachCards.map((section, i) => (
+            {[
+              {
+                title: "How We Work",
+                points: [
+                  "Understand the business",
+                  "Engineer the right solution",
+                  "Deliver measurable outcomes",
+                ],
+              },
+              {
+                title: "Our Mission",
+                points: [
+                  "Bridge technology and finance",
+                  "Deliver secure fintech systems",
+                  "Accelerate time-to-market",
+                ],
+              },
+              {
+                title: "We Understand Startups",
+                points: [
+                  "Move fast",
+                  "Keep costs predictable",
+                  "Stay compliant",
+                ],
+              },
+            ].map((section, i) => (
               <motion.div
                 key={i}
                 variants={itemEffect}
@@ -195,7 +189,8 @@ const CompanyOverview = ({ activeOverviews, activeApproaches }) => {
             variants={itemEffect}
             className="text-center mt-14 max-w-3xl mx-auto text-[21px] md:text-[18px] text-[#2A3855] font-medium leading-relaxed"
           >
-            {approach?.footerDescription}
+            We become your extended tech partner — so you focus on users,
+            funding, and growth.
           </motion.p>
         </div>
       </motion.section>

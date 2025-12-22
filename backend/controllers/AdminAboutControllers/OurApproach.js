@@ -118,7 +118,7 @@ exports.getAllOurApproaches = async (req, res) => {
 // --- 6. Front-end-க்கு Active Approach-ஐ மட்டும் பெறுதல் (GET) ---
 exports.getPublicOurApproach = async (req, res) => {
   try {
-    const approach = await AboutOurApproach.findOne({
+    const approach = await AboutOurApproach.findAll({
       where: { isActive: true },
       order: [["createdAt", "DESC"]], // சமீபத்திய ஆக்டிவ் பதிவை மட்டும் எடுக்க
     });

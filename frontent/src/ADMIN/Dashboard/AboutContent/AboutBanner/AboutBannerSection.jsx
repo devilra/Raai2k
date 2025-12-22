@@ -178,9 +178,9 @@ const AboutBannerSection = () => {
                       <div className="text-sm font-semibold text-gray-900 truncate">
                         {banner.title}
                       </div>
-                      <div className="text-xs text-gray-500 truncate">
+                      {/* <div className="text-xs text-gray-500 truncate">
                         {banner.description}
-                      </div>
+                      </div> */}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">
                       {banner.fontVariant || "hero"}

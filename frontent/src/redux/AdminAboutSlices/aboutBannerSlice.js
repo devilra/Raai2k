@@ -4,14 +4,12 @@ import api from "../../api";
 // ---------------------------
 // Error Message Retrieval Logic
 // ---------------------------
-
 const getThunkError = (error, defaultMessage) => {
   const message =
     (error.response && error.response.data && error.response.data.message) ||
     error.message ||
     error.toString();
 
-  // Server-இல் இருந்து message கிடைக்கவில்லை என்றால் default message-ஐ பயன்படுத்தவும்
   return message === "Request failed with status code 401"
     ? defaultMessage
     : message;
@@ -21,15 +19,13 @@ const getThunkError = (error, defaultMessage) => {
     ASYNC THUNKS (API Calls)
 ===================================================== */
 
-// 1️⃣ Fetch ALL Solution Banners (ADMIN - List Mode)
+// 1️⃣ Fetch ALL About Banners (ADMIN)
 export const fetchAllAboutBanners = createAsyncThunk(
   "aboutBanner/fetchAll",
   async (_, thunkAPI) => {
     try {
-      // 💡 Admin Route: /api/admin/solution-banner/solutionbanner-all
       const res = await api.get("/admin/aboutbanner-all");
-      //console.log(res.data);
-      return res.data; // Array of all banners
+      return res.data;
     } catch (error) {
       const message = getThunkError(error, "About Banners fetch Error");
       return thunkAPI.rejectWithValue(message);
@@ -37,15 +33,13 @@ export const fetchAllAboutBanners = createAsyncThunk(
   }
 );
 
-// 2️⃣ Fetch Active Solution Banners (PUBLIC - UI)
+// 2️⃣ Fetch Active About Banners (FRONTEND/PUBLIC)
 export const fetchPublishedAboutBanner = createAsyncThunk(
   "aboutBanner/fetchPublished",
   async (_, thunkAPI) => {
     try {
-      // 💡 Public Route: /api/solution-banner/solutionbanner-active
-      // உங்கள் Routes-இல் /api/solution-banner/solutionbanner-active என்று Public Route அமைத்துள்ளீர்கள்.
       const res = await api.get("/admin/aboutbanner-active");
-      return res.data; // Array of active banners
+      return res.data;
     } catch (error) {
       const message = getThunkError(
         error,
@@ -56,40 +50,30 @@ export const fetchPublishedAboutBanner = createAsyncThunk(
   }
 );
 
-// 3️⃣ Create Solution Banner (ADMIN)
+// 3️⃣ Create About Banner (ADMIN)
 export const createAboutBanner = createAsyncThunk(
   "aboutBanner/create",
   async (formData, thunkAPI) => {
     try {
-      // 💡 Admin Route: /api/admin/solution-banner/solutionbanner-create
       const res = await api.post("/admin/aboutbanner-create", formData, {
-        headers: {
-          // ⚠️ FormData-வைப் பயன்படுத்தும் போது Content-Type: multipart/form-data அவசியம்
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      // Controller-இல் content: newBanner என்று இருப்பதால், அதை return செய்கிறோம்
       return res.data.content;
     } catch (error) {
-      //console.log(error.message);
       const message = getThunkError(error, "About Banner creation failed");
       return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
-// 4️⃣ Update Solution Banner (ADMIN)
+// 4️⃣ Update About Banner (ADMIN)
 export const updateAboutBanner = createAsyncThunk(
   "aboutBanner/update",
   async ({ id, formData }, thunkAPI) => {
     try {
-      // 💡 Admin Route: /api/admin/solution-banner/solutionbanner-update/:id
       const res = await api.put(`/admin/aboutbanner-update/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      // Controller-இல் content: banner என்று இருப்பதால், அதை return செய்கிறோம்
       return res.data.content;
     } catch (error) {
       const message = getThunkError(error, "About Banner update failed");
@@ -98,14 +82,13 @@ export const updateAboutBanner = createAsyncThunk(
   }
 );
 
-// 5️⃣ Delete Solution Banner (ADMIN)
+// 5️⃣ Delete About Banner (ADMIN)
 export const deleteAboutBanner = createAsyncThunk(
   "aboutBanner/delete",
   async (id, thunkAPI) => {
     try {
-      // 💡 Admin Route: /api/admin/solution-banner/solutionbanner-delete/:id
       await api.delete(`/admin/aboutbanner-delete/${id}`);
-      return id; // id-ஐ மட்டும் திரும்ப அனுப்பினால், state-ல் இருந்து நீக்கலாம்
+      return id;
     } catch (error) {
       const message = getThunkError(error, "About Banner deletion failed");
       return thunkAPI.rejectWithValue(message);
@@ -120,12 +103,19 @@ export const deleteAboutBanner = createAsyncThunk(
 const AboutBannerSlice = createSlice({
   name: "aboutBanner",
   initialState: {
-    // 'banners' என்பது Admin list மற்றும் Public list இரண்டிற்கும் பயன்படுத்தப்படும்.
+    // Admin States
     AboutBanners: [],
     isLoading: false,
     isSuccess: false,
     isError: false,
     message: "",
+
+    // Frontend (Active Content) States
+    activeAboutBanners: [],
+    isActiveLoading: false,
+    isActiveSuccess: false,
+    isActiveError: false,
+    activeMessage: "",
   },
   reducers: {
     resetAboutBannerState: (state) => {
@@ -133,66 +123,52 @@ const AboutBannerSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      // Frontend state reset (Optional - தேவைப்பட்டால் மட்டும்)
+      state.isActiveLoading = false;
+      state.isActiveSuccess = false;
+      state.isActiveError = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      /* ================= FETCH ALL / PUBLISHED BANNERS STATUS ================= */
-      // Fetch All (Admin) மற்றும் Fetch Published (Public) இரண்டிற்கும் பொதுவான Logic பயன்படுத்தப்பட்டுள்ளது.
-
-      // Fetch All Banners
+      /* --------- ADMIN: FETCH ALL --------- */
       .addCase(fetchAllAboutBanners.pending, (state) => {
         state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
       })
       .addCase(fetchAllAboutBanners.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.AboutBanners = action.payload; // All banners array
+        state.AboutBanners = action.payload;
       })
       .addCase(fetchAllAboutBanners.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.AboutBanners = [];
         state.message = action.payload;
       })
 
-      // Fetch Published Banners
+      /* --------- FRONTEND: FETCH ACTIVE --------- */
       .addCase(fetchPublishedAboutBanner.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
+        state.isActiveLoading = true;
       })
       .addCase(fetchPublishedAboutBanner.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.AboutBanners = action.payload; // Active banners array
+        state.isActiveLoading = false;
+        state.isActiveSuccess = true;
+        state.activeAboutBanners = action.payload; // Active content only
       })
       .addCase(fetchPublishedAboutBanner.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.AboutBanners = [];
-        state.message = action.payload;
+        state.isActiveLoading = false;
+        state.isActiveError = true;
+        state.activeMessage = action.payload;
       })
 
-      /* ================= CREATE BANNER STATUS (ADMIN) ================= */
+      /* --------- ADMIN: CREATE --------- */
       .addCase(createAboutBanner.pending, (state) => {
         state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
       })
       .addCase(createAboutBanner.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "About Banner created successfully.";
-
-        // புதிதாக உருவாக்கப்பட்ட பேனரை Array-இல் சேர்க்கவும்
-        const newBanner = action.payload;
-        if (newBanner) {
-          // இது Admin List-ஐ மட்டுமே update செய்யும், Public List-க்கு fetchPublishedSolutionBanner மீண்டும் அழைக்கப்பட வேண்டும்
-          state.AboutBanners.push(newBanner);
-        }
+        state.AboutBanners.push(action.payload);
       })
       .addCase(createAboutBanner.rejected, (state, action) => {
         state.isLoading = false;
@@ -200,54 +176,23 @@ const AboutBannerSlice = createSlice({
         state.message = action.payload;
       })
 
-      /* ================= UPDATE BANNER STATUS (ADMIN) ================= */
-      .addCase(updateAboutBanner.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
-      })
+      /* --------- ADMIN: UPDATE --------- */
       .addCase(updateAboutBanner.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "Solution Banner updated successfully";
-
-        const updatedBanner = action.payload;
-
-        // Array-இல் உள்ள பழைய பேனரை புதிய data மூலம் மாற்றவும்
         const index = state.AboutBanners.findIndex(
-          (banner) => banner.id === updatedBanner.id
+          (b) => b.id === action.payload.id
         );
-
-        if (index !== -1) {
-          state.AboutBanners[index] = updatedBanner;
-        }
-      })
-      .addCase(updateAboutBanner.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
+        if (index !== -1) state.AboutBanners[index] = action.payload;
       })
 
-      /* ================= DELETE BANNER STATUS (ADMIN) ================= */
-      .addCase(deleteAboutBanner.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-        state.isSuccess = false;
-      })
+      /* --------- ADMIN: DELETE --------- */
       .addCase(deleteAboutBanner.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "Solution Banner deleted successfully";
-
-        // நீக்கப்பட்ட id-ஐத் தவிர மற்றவற்றை மட்டும் Array-இல் வைக்கவும்
         state.AboutBanners = state.AboutBanners.filter(
-          (banner) => banner.id !== action.payload
+          (b) => b.id !== action.payload
         );
-      })
-      .addCase(deleteAboutBanner.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
       });
   },
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const leaders = [
   {
@@ -63,6 +64,15 @@ const itemEffect = {
 };
 
 const LeadershipSection = () => {
+  const { activeLeaders } = useSelector((state) => state.globalLeadership);
+  //console.log(activeLeaders);
+
+  const hasData = Array.isArray(activeLeaders) && activeLeaders.length > 0;
+
+  if (!hasData) {
+    return null;
+  }
+
   return (
     <motion.section
       variants={container}
@@ -73,15 +83,15 @@ const LeadershipSection = () => {
     >
       {/* Title */}
       <h2 className="text-[28px] md:text-[37px] font-bold text-center text-[#2A3855]">
-        Global Leadership
+        {activeLeaders[0]?.mainTitle || "Global Leadership"}
       </h2>
       <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-4 mb-16"></div>
 
       {/* Cards Grid */}
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {leaders.map((leader, i) => (
+        {activeLeaders.map((leader, i) => (
           <motion.div
-            key={i}
+            key={leader.id || index}
             variants={itemEffect}
             initial="hidden"
             whileInView="show"
@@ -101,22 +111,24 @@ const LeadershipSection = () => {
           >
             {/* Image */}
             <img
-              src={leader.img}
-              alt={leader.name}
+              src={leader.image}
+              alt={leader.role}
               className="w-full h-[250px] object-contain rounded-lg"
             />
 
             {/* Name + Role */}
             <h3 className="mt-4 text-xl font-bold text-[#2A3855]">
-              {leader.name}
-            </h3>
-            <p className="font-bold text-[#2A3855] py-1 text-sm">
               {leader.role}
+            </h3>
+            <p className="font-semibold text-[#2A3855] py-1 text-sm">
+              {leader.subTitle}
             </p>
-            <p className=" text-gray-400 py-1 text-sm">{leader.des}</p>
+            <p className=" text-gray-400 py-1 text-sm">{leader.description}</p>
 
             {/* Description */}
-            <p className="mt-3 text-gray-600 text-[16px] ">{leader.desc}</p>
+            {/* <p className="mt-3 text-gray-600 text-[16px] ">
+              {leader.description}
+            </p> */}
           </motion.div>
         ))}
       </div>

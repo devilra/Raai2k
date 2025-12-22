@@ -8,7 +8,7 @@ import {
 } from "../../../../redux/AdminAboutSlices/globalLeadershipSlice";
 
 const initialFormData = {
-  mainTitle: "",
+  mainTitle: "Global Leadership",
   role: "",
   subTitle: "",
   description: "",

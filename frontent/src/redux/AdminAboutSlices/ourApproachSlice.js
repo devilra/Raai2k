@@ -19,12 +19,13 @@ const getThunkError = (error, defaultMessage) => {
 // 2. ASYNC THUNKS (API Calls)
 // ----------------------------------------------------
 
-// அனைத்து பதிவுகளையும் பெறுதல்
+// 1️⃣ Fetch ALL Approaches (ADMIN)
 export const fetchOurApproaches = createAsyncThunk(
   "ourApproach/fetchAll",
   async (_, thunkAPI) => {
     try {
       const response = await api.get("/admin/about/approach-all");
+
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Approach fetch Error");
@@ -33,7 +34,23 @@ export const fetchOurApproaches = createAsyncThunk(
   }
 );
 
-// புதிய பதிவை உருவாக்குதல்
+// 2️⃣ Fetch ACTIVE Approaches (FRONTEND/PUBLIC)
+export const fetchActiveOurApproaches = createAsyncThunk(
+  "ourApproach/fetchActive",
+  async (_, thunkAPI) => {
+    try {
+      // Backend-ல் active content-க்கு என தனி route இருப்பின் அதை பயன்படுத்தவும்
+      const response = await api.get("/admin/about/approach-active");
+      //console.log(response.data);
+      return response.data;
+    } catch (error) {
+      const message = getThunkError(error, "Active Approach fetch Error");
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// 3️⃣ Create Our Approach (ADMIN)
 export const createOurApproach = createAsyncThunk(
   "ourApproach/create",
   async (approachData, thunkAPI) => {
@@ -50,7 +67,7 @@ export const createOurApproach = createAsyncThunk(
   }
 );
 
-// பதிவைப் புதுப்பித்தல்
+// 4️⃣ Update Our Approach (ADMIN)
 export const updateOurApproach = createAsyncThunk(
   "ourApproach/update",
   async ({ id, data }, thunkAPI) => {
@@ -67,7 +84,7 @@ export const updateOurApproach = createAsyncThunk(
   }
 );
 
-// பதிவை நீக்குதல்
+// 5️⃣ Delete Our Approach (ADMIN)
 export const deleteOurApproach = createAsyncThunk(
   "ourApproach/delete",
   async (id, thunkAPI) => {
@@ -85,11 +102,19 @@ export const deleteOurApproach = createAsyncThunk(
 // 3. INITIAL STATE
 // ----------------------------------------------------
 const initialState = {
+  // Admin States
   approaches: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
   message: "",
+
+  // Frontend (Active Content) States
+  activeApproaches: [],
+  isActiveLoading: false,
+  isActiveSuccess: false,
+  isActiveError: false,
+  activeMessage: "",
 };
 
 // ----------------------------------------------------
@@ -104,11 +129,14 @@ export const ourApproachSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.isActiveLoading = false;
+      state.isActiveError = false;
+      state.activeMessage = "";
     },
   },
   extraReducers: (builder) => {
     builder
-      // ================= FETCH STATUS =================
+      /* --------- ADMIN: FETCH ALL --------- */
       .addCase(fetchOurApproaches.pending, (state) => {
         state.isLoading = true;
       })
@@ -123,10 +151,23 @@ export const ourApproachSlice = createSlice({
         state.message = action.payload;
         state.approaches = [];
       })
-      // ================= CREATE STATUS =================
-      .addCase(createOurApproach.pending, (state) => {
-        state.isLoading = true;
+
+      /* --------- FRONTEND: FETCH ACTIVE --------- */
+      .addCase(fetchActiveOurApproaches.pending, (state) => {
+        state.isActiveLoading = true;
       })
+      .addCase(fetchActiveOurApproaches.fulfilled, (state, action) => {
+        state.isActiveLoading = false;
+        state.isActiveSuccess = true;
+        state.activeApproaches = action.payload; // UI only active content
+      })
+      .addCase(fetchActiveOurApproaches.rejected, (state, action) => {
+        state.isActiveLoading = false;
+        state.isActiveError = true;
+        state.activeMessage = action.payload;
+      })
+
+      /* --------- ADMIN: CREATE --------- */
       .addCase(createOurApproach.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
@@ -135,15 +176,8 @@ export const ourApproachSlice = createSlice({
           state.approaches.unshift(action.payload.data);
         }
       })
-      .addCase(createOurApproach.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      // ================= UPDATE STATUS =================
-      .addCase(updateOurApproach.pending, (state) => {
-        state.isLoading = true;
-      })
+
+      /* --------- ADMIN: UPDATE --------- */
       .addCase(updateOurApproach.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
@@ -156,15 +190,8 @@ export const ourApproachSlice = createSlice({
           state.approaches[index] = updatedData;
         }
       })
-      .addCase(updateOurApproach.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      // ================= DELETE STATUS =================
-      .addCase(deleteOurApproach.pending, (state) => {
-        state.isLoading = true;
-      })
+
+      /* --------- ADMIN: DELETE --------- */
       .addCase(deleteOurApproach.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
@@ -172,11 +199,6 @@ export const ourApproachSlice = createSlice({
         state.approaches = state.approaches.filter(
           (item) => item.id !== action.payload
         );
-      })
-      .addCase(deleteOurApproach.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
       });
   },
 });

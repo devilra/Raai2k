@@ -7,11 +7,14 @@ const {
   createCeoMessage,
   updateCeoMessage,
   deleteCeoMessage,
+  getActiveCeoMessages,
 } = require("../../controllers/AdminAboutControllers/AboutCeoController");
 const router = express.Router();
 
 // Public Route (Read): யாருக்கும் அனுமதி உண்டு
 router.get("/about-ceo", getCeoMessages);
+
+router.get("/active-ceo", getActiveCeoMessages);
 
 // ------------------------------------------------------------------
 // 🔐 Admin Routes (AdminAuthProtect சேர்க்கப்பட்டுள்ளது)

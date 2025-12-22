@@ -1,12 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api";
 
-// ----------------------------------------------------
-// 1. ASYNC THUNKS (API Calls)
-// ----------------------------------------------------
-
 // ---------------------------
-// Error Message Retrieval Logic (homeContentSlice-இல் உள்ளதைப் போன்றது)
+// Error Message Retrieval Logic
 // ---------------------------
 const getThunkError = (error, defaultMessage) => {
   const message =
@@ -14,18 +10,21 @@ const getThunkError = (error, defaultMessage) => {
     error.message ||
     error.toString();
 
-  // Server-இல் இருந்து message கிடைக்கவில்லை என்றால் default message-ஐ பயன்படுத்தவும்
   return message === "Request failed with status code 401"
     ? defaultMessage
     : message;
 };
 
+/* =====================================================
+    ASYNC THUNKS (API Calls)
+===================================================== */
+
+// 1️⃣ Fetch ALL Company Overviews (ADMIN)
 export const fetchCompanyOverviews = createAsyncThunk(
   "companyOverview/fetchAll",
   async (_, thunkAPI) => {
     try {
       const response = await api.get("/admin/about/overview-all");
-      //console.log("Our-Solution", response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Overview fetch Error");
@@ -34,6 +33,22 @@ export const fetchCompanyOverviews = createAsyncThunk(
   }
 );
 
+// 2️⃣ Fetch ACTIVE Company Overviews (FRONTEND/PUBLIC)
+export const fetchActiveCompanyOverviews = createAsyncThunk(
+  "companyOverview/fetchActive",
+  async (_, thunkAPI) => {
+    try {
+      // உங்கள் Backend-ல் ஆக்டிவ் கன்டென்ட்க்கு என தனி Route இருந்தால் அதை இங்கு மாற்றவும்
+      const response = await api.get("/admin/about/overview-active");
+      return response.data;
+    } catch (error) {
+      const message = getThunkError(error, "Active Overview fetch Error");
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// 3️⃣ Create Company Overview (ADMIN)
 export const createCompanyOverview = createAsyncThunk(
   "companyOverview/create",
   async (overviewData, thunkAPI) => {
@@ -42,7 +57,6 @@ export const createCompanyOverview = createAsyncThunk(
         "/admin/about/overview-create",
         overviewData
       );
-      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Overview create error");
@@ -51,17 +65,15 @@ export const createCompanyOverview = createAsyncThunk(
   }
 );
 
+// 4️⃣ Update Company Overview (ADMIN)
 export const updateCompanyOverview = createAsyncThunk(
   "companyOverview/update",
   async ({ id, data }, thunkAPI) => {
     try {
-      //console.log(data);
       const response = await api.put(
         `/admin/about/overview-update/${id}`,
         data
       );
-
-      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Overview Update Failed");
@@ -70,12 +82,13 @@ export const updateCompanyOverview = createAsyncThunk(
   }
 );
 
+// 5️⃣ Delete Company Overview (ADMIN)
 export const deleteCompanyOverview = createAsyncThunk(
   "companyOverview/delete",
   async (id, thunkAPI) => {
     try {
       await api.delete(`/admin/about/overview-delete/${id}`);
-      return id; // வெற்றிகரமாக delete ஆன ID-ஐத் திரும்ப அனுப்பவும்
+      return id;
     } catch (error) {
       const message = getThunkError(error, "Overview Delete Error");
       return thunkAPI.rejectWithValue(message);
@@ -83,21 +96,25 @@ export const deleteCompanyOverview = createAsyncThunk(
   }
 );
 
-// ----------------------------------------------------
-// 2. INITIAL STATE
-// ----------------------------------------------------
+/* =====================================================
+    SLICE DEFINITION
+===================================================== */
 
 const initialState = {
+  // Admin States
   overviews: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
   message: "",
-};
 
-// ----------------------------------------------------
-// 3. SLICE DEFINITION
-// ----------------------------------------------------
+  // Frontend (Active Content) States
+  activeOverviews: [],
+  isActiveLoading: false,
+  isActiveSuccess: false,
+  isActiveError: false,
+  activeMessage: "",
+};
 
 export const companyOverviewSlice = createSlice({
   name: "companyOverview",
@@ -108,61 +125,57 @@ export const companyOverviewSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.isActiveLoading = false;
+      state.isActiveError = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      // ================= FETCH CONTENT STATUS =================
+      /* --------- ADMIN: FETCH ALL --------- */
       .addCase(fetchCompanyOverviews.pending, (state) => {
         state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
       })
       .addCase(fetchCompanyOverviews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.overviews = action.payload;
-        state.message = ""; // Success message-ஐ fetch-க்கு வைக்கத் தேவையில்லை
       })
       .addCase(fetchCompanyOverviews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
-        state.overviews = []; // Error-இல் array-ஐ காலி செய்யலாம்
       })
-      // ================= CREATE CONTENT STATUS =================
-      .addCase(createCompanyOverview.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
+
+      /* --------- FRONTEND: FETCH ACTIVE --------- */
+      .addCase(fetchActiveCompanyOverviews.pending, (state) => {
+        state.isActiveLoading = true;
       })
+      .addCase(fetchActiveCompanyOverviews.fulfilled, (state, action) => {
+        state.isActiveLoading = false;
+        state.isActiveSuccess = true;
+        state.activeOverviews = action.payload; // UI க்கான ஆக்டிவ் டேட்டா மட்டும்
+      })
+      .addCase(fetchActiveCompanyOverviews.rejected, (state, action) => {
+        state.isActiveLoading = false;
+        state.isActiveError = true;
+        state.activeMessage = action.payload;
+      })
+
+      /* --------- ADMIN: CREATE --------- */
       .addCase(createCompanyOverview.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.message = "Company Overview created successfully.";
-        // கன்ட்ரோலரில் response 'data' என்ற கீ-யில் வருவதால்:
         if (action.payload.data) {
-          state.overviews.unshift(action.payload.data); // புதியதை முதலில் சேர்க்க unshift
+          state.overviews.unshift(action.payload.data);
         }
       })
-      .addCase(createCompanyOverview.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
-        state.message = action.payload;
-      })
-      // ================= UPDATE CONTENT STATUS =================
-      .addCase(updateCompanyOverview.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
-      })
+
+      /* --------- ADMIN: UPDATE --------- */
       .addCase(updateCompanyOverview.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.message = "Company Overview updated successfully.";
-
         const updatedData = action.payload.data;
         const index = state.overviews.findIndex(
           (item) => item.id === updatedData.id
@@ -171,18 +184,8 @@ export const companyOverviewSlice = createSlice({
           state.overviews[index] = updatedData;
         }
       })
-      .addCase(updateCompanyOverview.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
-        state.message = action.payload;
-      })
-      // ================= DELETE CONTENT STATUS =================
-      .addCase(deleteCompanyOverview.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
-      })
+
+      /* --------- ADMIN: DELETE --------- */
       .addCase(deleteCompanyOverview.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
@@ -190,12 +193,6 @@ export const companyOverviewSlice = createSlice({
         state.overviews = state.overviews.filter(
           (item) => item.id !== action.payload
         );
-      })
-      .addCase(deleteCompanyOverview.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
-        state.message = action.payload;
       });
   },
 });

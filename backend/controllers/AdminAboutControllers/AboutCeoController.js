@@ -15,6 +15,25 @@ exports.getCeoMessages = async (req, res) => {
   }
 };
 
+// UI-க்காக Active-ஆக உள்ள CEO செய்திகளை மட்டும் பெறுதல்
+exports.getActiveCeoMessages = async (req, res) => {
+  try {
+    const activeMessages = await CeoMessage.findAll({
+      where: {
+        isActive: true, // Active நிலையில் இருப்பவை மட்டும்
+      },
+      order: [["slideOrder", "ASC"]], // வரிசைப்படி
+    });
+
+    return res.status(200).json(activeMessages);
+  } catch (error) {
+    console.error("Error fetching active CEO messages:", error);
+    return res
+      .status(500)
+      .json({ message: "Active CEO messages fetch failed" });
+  }
+};
+
 // 2. புதிய Slide-ஐ உருவாக்குதல் (CREATE)
 exports.createCeoMessage = async (req, res) => {
   try {
