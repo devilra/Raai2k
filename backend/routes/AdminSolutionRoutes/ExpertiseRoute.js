@@ -7,11 +7,14 @@ const {
   createExpertise,
   updateExpertise,
   deleteExpertise,
+  getActiveExpertise,
 } = require("../../controllers/AdminSolutionControllers/Expertise");
 const router = express.Router();
 
 // Public Route (Read): யாருக்கும் அனுமதி உண்டு
 router.get("/expertise", getExpertise);
+
+router.get("/active-expertise", getActiveExpertise);
 
 // ------------------------------------------------------------------
 // 🔐 Admin Routes (AdminAuthProtect சேர்க்கப்பட்டுள்ளது)

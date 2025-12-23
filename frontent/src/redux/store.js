@@ -19,6 +19,8 @@ import IndustryWeServe from "../redux/AdminServiceSlice/industryServeSlice";
 import FintechService from "../redux/AdminServiceSlice/FintechServiceSlice";
 import EngagementModel from "../redux/AdminServiceSlice/EngagementSlice";
 import CaseStudies from "../redux/AdminServiceSlice/CaseStudySlice";
+import VideoContentSlice from "../redux/AdminHomeSlices/videoContentSlice";
+import WhyChooseUsSlice from "../redux/AdminHomeSlices/WhyChooseUsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -42,5 +44,7 @@ export const store = configureStore({
     finTech: FintechService,
     engagement: EngagementModel,
     caseStudy: CaseStudies,
+    videoContent: VideoContentSlice,
+    whyChooseUs: WhyChooseUsSlice,
   },
 });

@@ -135,7 +135,7 @@ exports.getAllWelcomeContent = async (req, res) => {
 
 exports.getWelcomeContent = async (req, res) => {
   try {
-    const content = await WelcomeContent.findOne({
+    const content = await WelcomeContent.findAll({
       where: {
         sectionActive: true,
       },

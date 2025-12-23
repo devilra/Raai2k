@@ -1,11 +1,21 @@
 import React from "react";
 
-const SolutionsHero = () => {
+const SolutionsHero = ({ activeBanners }) => {
+  //console.log(activeBanners);
+  // Array-இல் டேட்டா இருக்கிறதா என்று சரிபார்த்து முதல் ஆப்ஜெக்ட்டை எடுக்கிறோம்
+  const hasData = activeBanners && activeBanners.length > 0;
+
+  const banner = hasData ? activeBanners[0].image : "/solution/solution.jpg";
+  const title = hasData ? activeBanners[0].title : "Solutions";
+
+  // 🚨 இங்கே தான் மாற்றம் செய்யப்பட்டுள்ளது: activeBanners[0].description
+  const para = hasData ? activeBanners[0].description : "";
+
   return (
     <section
       className="w-full h-[310px] md:h-[380px] bg-cover bg-center relative flex items-center"
       style={{
-        backgroundImage: "url('/solution/solution.jpg')",
+        backgroundImage: `url(${banner})`,
         backgroundPosition: "10% 60%",
       }} // Change if needed
     >
@@ -15,13 +25,11 @@ const SolutionsHero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl  px-6 md:px-20">
         <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
-          Solutions
+          {title}
         </h1>
 
         <p className="text-lg md:text-xl text-gray-200 mt-4 max-w-2xl leading-relaxed">
-          End-to-end fintech and technology solutions designed for speed,
-          security, and scale. From neobanking to lending, payments, and wealth
-          — we build systems that power the future of finance.
+          {para}
         </p>
 
         {/* Breadcrumb */}

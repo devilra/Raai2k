@@ -135,7 +135,7 @@ exports.getAllOurProcess = async (req, res) => {
 
 exports.getOurProcess = async (req, res) => {
   try {
-    const content = await OurProcess.findOne({
+    const content = await OurProcess.findAll({
       where: {
         sectionActive: true,
       },

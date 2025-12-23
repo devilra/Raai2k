@@ -135,7 +135,7 @@ exports.getAllOurSolution = async (req, res) => {
 
 exports.getOurSolution = async (req, res) => {
   try {
-    const content = await OurSolution.findOne({
+    const content = await OurSolution.findAll({
       where: {
         sectionActive: true,
       },

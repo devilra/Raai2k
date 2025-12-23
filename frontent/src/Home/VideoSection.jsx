@@ -44,7 +44,7 @@ const features = [
   },
 ];
 
-const VideoSection = () => {
+const VideoSection = ({ activeVideo }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // -------------------------------------------------------
@@ -81,6 +81,16 @@ const VideoSection = () => {
 
   const handlePlayerReady = () => {
     console.log("YouTube Video Ready!");
+  };
+
+  const getIcons = (index) => {
+    const icons = [
+      <VscWorkspaceTrusted size={28} />,
+      <MdOutlineArchitecture size={28} />,
+      <IoFlashOutline size={28} />,
+    ];
+
+    return icons[index % icons.length];
   };
 
   return (
@@ -147,21 +157,21 @@ const VideoSection = () => {
           )}
 
           {/* FEATURES */}
-          <div className="mt-16 flex flex-col md:flex-row justify-between gap-5">
-            {features.map((item, index) => (
+          <div className="mt-16 flex flex-col md:grid md:grid-cols-3 justify-between gap-5">
+            {activeVideo.map((item, index) => (
               <motion.div
                 key={index}
                 variants={itemEffect}
                 className="border p-3 shadow-md rounded-lg border-neutral-400/30"
               >
                 <div className="flex items-start gap-4">
-                  <div className="text-[#2A3855]">{item.icon}</div>
+                  <div className="text-[#2A3855]">{getIcons(index)}</div>
                   <div>
                     <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855]">
-                      {item.title}
+                      {item.mainHeading}
                     </h3>
                     <p className="text-gray-600 text-[16px] mt-2 max-w-xs">
-                      {item.desc}
+                      {item.subText}
                     </p>
                   </div>
                 </div>

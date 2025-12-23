@@ -53,7 +53,25 @@ const itemEffect = {
   show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
 };
 
-export default function ThingsYouGet() {
+export default function ThingsYouGet({ activeThings }) {
+  const getIcons = (index) => {
+    const icons = [
+      <MdPayment size={28} />,
+      <GiReceiveMoney size={28} />,
+      <RiBankCardLine size={28} />,
+      <GiChart size={28} />,
+      <HiOutlineLightBulb size={28} />,
+      <LuLaptop size={28} />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
+  const displayTitle =
+    activeThings && activeThings.length > 0
+      ? activeThings[0].mainTitle
+      : "Things You Get";
+
   return (
     <motion.section
       variants={container}
@@ -65,30 +83,30 @@ export default function ThingsYouGet() {
       {/* Title */}
       <div className="text-center mb-16">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
-          Things You Get
+          {displayTitle}
         </h2>
         <div className="w-24 h-[3px] bg-[#2A3855] mx-auto mt-5"></div>
       </div>
 
       {/* Grid Items */}
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
-        {items.map((item, index) => (
+        {activeThings.map((item, index) => (
           <motion.div
             variants={itemEffect}
             key={index}
             className="text-center flex flex-col items-center"
           >
             {/* Icon */}
-            <div className="mb-5">{item.icon}</div>
+            <div className="mb-5">{getIcons(index)}</div>
 
             {/* Title */}
             <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-3">
-              {item.title}
+              {item.subHeading}
             </h3>
 
             {/* Description */}
             <p className="text-gray-600 text-[16px] max-w-xs mx-auto">
-              {item.desc}
+              {item.description}
             </p>
           </motion.div>
         ))}

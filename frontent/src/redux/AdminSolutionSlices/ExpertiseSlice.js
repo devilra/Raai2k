@@ -1,218 +1,201 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api";
 
-/* =====================================================
-   ASYNC THUNKS
-===================================================== */
-
-// 1️⃣ Get Active Slides (PUBLIC - Home Page)
-// 1️⃣ Fetch Active Slides (PUBLIC)
-// Home page-la kaatura active slides-a eduka use aagudhu.
-// Admin auth illama, yaar venumnaalum idha access pannalam.
-
-// ---------------------------
-// Error Message Retrieval Logic (AdminAuth-இல் உள்ளதைப் போன்றது)
-// ---------------------------
+// Error Message Helper
 const getThunkError = (error, defaultMessage) => {
   const message =
     (error.response && error.response.data && error.response.data.message) ||
     error.message ||
     error.toString();
-
-  // Server-இல் இருந்து message கிடைக்கவில்லை என்றால் default message-ஐ பயன்படுத்தவும்
   return message === "Request failed with status code 401"
     ? defaultMessage
     : message;
 };
 
+/* =====================================================
+   ASYNC THUNKS
+===================================================== */
+
+// 1️⃣ Fetch ALL (ADMIN)
 export const fetchExpertise = createAsyncThunk(
   "expertise/fetchExpertise",
   async (_, thunkAPI) => {
     try {
       const res = await api.get("/admin/expertise");
-      //console.log(res.data);
-      return res.data; // Slides data-vai return pannudhu
+      return res.data;
     } catch (error) {
-      // 🚨 AdminAuth style error handling
-      const message = getThunkError(error, "Expertise fetch Error");
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(
+        getThunkError(error, "Expertise fetch Error")
+      );
     }
   }
 );
 
-// 2️⃣ Create Slide (ADMIN)
+// 2️⃣ Fetch ACTIVE Only (FRONTEND - Public)
+export const fetchActiveExpertise = createAsyncThunk(
+  "expertise/fetchActiveExpertise",
+  async (_, thunkAPI) => {
+    try {
+      // Ungal public API route-ai inge use seiyavum
+      const res = await api.get("/admin/active-expertise");
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        getThunkError(error, "Active Expertise fetch Error")
+      );
+    }
+  }
+);
+
+// 3️⃣ Create Expertise (ADMIN)
 export const createExpertise = createAsyncThunk(
   "expertise/createExpertise",
   async (formData, thunkAPI) => {
     try {
       const res = await api.post("/admin/create-expertise", formData, {
-        headers: {
-          // ⚠️ FormData-வைப் பயன்படுத்தும் போது Content-Type: multipart/form-data அவசியம்
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      //console.log(res.data.slide);
       return res.data.slide;
     } catch (error) {
-      // 🚨 AdminAuth style error handling
-      const message = getThunkError(error, "Expertise create error");
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(
+        getThunkError(error, "Expertise create error")
+      );
     }
   }
 );
 
-// 3️⃣ Update Slide (ADMIN)
+// 4️⃣ Update Expertise (ADMIN)
 export const updateExpertise = createAsyncThunk(
   "expertise/updateExpertise",
   async ({ id, formData }, thunkAPI) => {
     try {
       const res = await api.put(`/admin/update-expertise/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      //console.log(res.data.slide);
       return res.data.slide;
     } catch (error) {
-      // 🚨 AdminAuth style error handling
-      const message = getThunkError(error, "Expertise Update Failed");
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(
+        getThunkError(error, "Expertise Update Failed")
+      );
     }
   }
 );
 
-// 4️⃣ Delete Slide (ADMIN)
+// 5️⃣ Delete Expertise (ADMIN)
 export const deleteExpertise = createAsyncThunk(
   "expertise/deleteExpertise",
   async (id, thunkAPI) => {
     try {
       await api.delete(`/admin/delete-expertise/${id}`);
-      //console.log(id);
       return id;
     } catch (error) {
-      // 🚨 AdminAuth style error handling
-      const message = getThunkError(error, "Expertise Delete Error");
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(
+        getThunkError(error, "Expertise Delete Error")
+      );
     }
   }
 );
 
 /* =====================================================
-   SLICE (State Management)
+   SLICE (State Management)
 ===================================================== */
 
-const Expertise = createSlice({
+const expertiseSlice = createSlice({
   name: "expertise",
   initialState: {
+    // Admin States
     expertises: [],
     isLoading: false,
     isSuccess: false,
     isError: false,
     message: "",
+
+    // Frontend (Active) States
+    activeExpertise: [],
+    isActiveLoading: false,
+    isActiveSuccess: false,
+    isActiveError: false,
+    activeMessage: "",
   },
   reducers: {
-    // Ellam status-ayum default value-ku reset panna
     resetExpertiseState: (state) => {
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      // Resetting active states
+      state.isActiveLoading = false;
+      state.isActiveSuccess = false;
+      state.isActiveError = false;
+      state.activeMessage = "";
     },
   },
 
   extraReducers: (builder) => {
     builder
-      /* ================= FETCH SLIDES STATUS ================= */
+      /* --- ADMIN: FETCH ALL --- */
       .addCase(fetchExpertise.pending, (state) => {
         state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
       })
       .addCase(fetchExpertise.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = true;
         state.expertises = action.payload;
       })
       .addCase(fetchExpertise.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
       })
 
-      /* ================= CREATE SLIDE STATUS ================= */
+      /* --- FRONTEND: FETCH ACTIVE --- */
+      .addCase(fetchActiveExpertise.pending, (state) => {
+        state.isActiveLoading = true;
+      })
+      .addCase(fetchActiveExpertise.fulfilled, (state, action) => {
+        state.isActiveLoading = false;
+        state.isActiveSuccess = true;
+        state.activeExpertise = action.payload;
+      })
+      .addCase(fetchActiveExpertise.rejected, (state, action) => {
+        state.isActiveLoading = false;
+        state.isActiveError = true;
+        state.activeMessage = action.payload;
+      })
+
+      /* --- CREATE --- */
       .addCase(createExpertise.pending, (state) => {
         state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
+        state.isSuccess = false;
       })
       .addCase(createExpertise.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-
-        state.message = "Slide Created Successfull.";
-        // 🚨 முக்கிய மாற்றம்: புதிதாக உருவாக்கப்பட்ட ஸ்லைடை state.slides Array-இல் சேர்க்கவும்
-        const newSlide = action.payload; // API response-இல் புதிதாகச் உருவாக்கப்பட்ட ஸ்லைடு டேட்டா இருக்க வேண்டும்.
-        if (newSlide) {
-          state.expertises.push(newSlide);
-        }
-      })
-      .addCase(createExpertise.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
-        state.message = action.payload;
+        state.expertises.push(action.payload);
+        state.message = "Expertise Created Successfully.";
       })
 
-      /* ================= UPDATE SLIDE STATUS ================= */
-      .addCase(updateExpertise.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
-      })
+      /* --- UPDATE --- */
       .addCase(updateExpertise.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "Slide Update Successfull";
-
-        const updatedSlide = action.payload;
-
         const index = state.expertises.findIndex(
-          (slide) => slide.id === updatedSlide.id
+          (e) => e.id === action.payload.id
         );
+        if (index !== -1) state.expertises[index] = action.payload;
+        state.message = "Expertise Updated Successfully.";
+      })
 
-        if (index !== -1) {
-          state.expertises[index] = updatedSlide;
-        }
-      })
-      .addCase(updateExpertise.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
-        state.message = action.payload;
-      })
-      /* ================= DELETE SLIDE STATUS ================= */
-      .addCase(deleteExpertise.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false; // Reset status
-        state.isError = false; // Reset status
-      })
+      /* --- DELETE --- */
       .addCase(deleteExpertise.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.expertises = state.slides.filter(
-          (slide) => slide.id !== action.payload
+        state.expertises = state.expertises.filter(
+          (e) => e.id !== action.payload
         );
-        state.message = "Slide Delete Successfull";
-      })
-      .addCase(deleteExpertise.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.isSuccess = false; // Failure-இல் success false
-        state.message = action.payload;
+        state.message = "Expertise Deleted Successfully.";
       });
   },
 });
 
-export const { resetExpertiseState } = Expertise.actions;
-export default Expertise.reducer;
+export const { resetExpertiseState } = expertiseSlice.actions;
+export default expertiseSlice.reducer;

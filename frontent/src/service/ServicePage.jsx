@@ -26,6 +26,8 @@ const ServicePage = () => {
   const { activeEngagementModels } = useSelector((state) => state.engagement);
   const { activeIndustries } = useSelector((state) => state.industryServe);
 
+  console.log(activeCaseStudies);
+
   // அனைத்து டேட்டாவும் ஏற்கனவே இருக்கிறதா என்று சோதித்தல் (Cashing)
   const hasAllData =
     activeServiceBanners?.length > 0 &&
@@ -49,7 +51,7 @@ const ServicePage = () => {
           dispatch(fetchActiveIndustries()).then(unwrapResult),
           dispatch(fetchActiveFinTech()).then(unwrapResult),
           dispatch(fetchActiveEngagementModels()).then(unwrapResult),
-          // dispatch(fetchActiveCaseStudies()).then(unwrapResult),
+          dispatch(fetchActiveCaseStudies()).then(unwrapResult),
         ]);
       } catch (error) {
         console.error("Service Data Fetching Error:", error);
@@ -77,7 +79,7 @@ const ServicePage = () => {
       <ServiceHome />
       <EngagementModels />
       {/* <ProcessWorkflow /> */}
-      <CaseStudySection />
+      <CaseStudySection activeCaseStudies={activeCaseStudies} />
 
       {/* <IndustriesWeServe /> */}
       {/* <Faq /> */}

@@ -48,7 +48,18 @@ const fadeIn = {
   },
 };
 
-const SolutionsList = () => {
+const SolutionsList = ({ activeOurSolutions }) => {
+  const getIcons = (index) => {
+    const icons = [
+      <PiBankFill size={28} className="text-white" />,
+      <GiReceiveMoney size={28} className="text-white" />,
+      <MdPayment size={28} className="text-white" />,
+      <RiLineChartFill size={28} className="text-white" />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
   return (
     <motion.section
       variants={container}
@@ -79,22 +90,22 @@ const SolutionsList = () => {
           variants={container}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
         >
-          {solutions.map((item, i) => (
+          {activeOurSolutions?.map((item, i) => (
             <motion.div
               key={i}
               variants={fadeIn}
               className="bg-white p-8 rounded-2xl shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
             >
               <div className="p-4 bg-[#2A3855] rounded-xl shadow-md mb-4 w-fit">
-                {item.icon}
+                {getIcons(i)}
               </div>
 
               <h3 className="text-[21px] md:text-[18px] truncate font-bold text-[#2A3855] mb-3">
-                {item.title}
+                {item.mainHeading}
               </h3>
 
               <p className="text-gray-700 text-[15.5px] leading-relaxed">
-                {item.desc}
+                {item.subText}
               </p>
             </motion.div>
           ))}

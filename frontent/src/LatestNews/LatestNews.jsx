@@ -1,10 +1,10 @@
 import React from "react";
 import LatestNewsHome from "./LatestNewsHome";
 
-const LatestNews = () => {
+const LatestNews = ({ activeNews }) => {
   return (
     <div>
-      <LatestNewsHome />
+      <LatestNewsHome activeNews={activeNews} />
     </div>
   );
 };

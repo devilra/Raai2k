@@ -74,19 +74,36 @@ const caseStudies = [
   },
 ];
 
-const CaseStudySection = () => {
+const CaseStudySection = ({ activeCaseStudies }) => {
+  const getIcon = (index) => {
+    const icons = [
+      <BsWallet2 size={28} className="text-white" />,
+      <GiReceiveMoney size={28} className="text-white" />,
+      <MdOutlinePayments size={28} className="text-white" />,
+      <TbChartInfographic size={28} className="text-white" />,
+      <PiCubeTransparentLight size={28} className="text-white" />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
+  const displayTitle =
+    activeCaseStudies && activeCaseStudies.length > 0
+      ? activeCaseStudies[0].pageTitle
+      : "Case Studies";
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855] text-center">
-          Case Studies
+          {displayTitle}
         </h2>
         <div className="w-24 h-[3px] bg-[#2A3855] mx-auto mt-3 mb-12"></div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {caseStudies.map((item, index) => {
+          {activeCaseStudies?.map((item, index) => {
             // Animation logic
             const animationVariant = isLargeScreen
               ? index % 2 === 0
@@ -106,21 +123,40 @@ const CaseStudySection = () => {
                 {/* Icon + Title */}
                 <div className="flex items-center gap-4 mb-5">
                   <div className="p-3 bg-[#2A3855] rounded-xl shadow">
-                    {item.icon}
+                    {getIcon(index)}
                   </div>
                   <h3 className="text-xl font-semibold text-[#2A3855]">
-                    {item.title}
+                    {item.heading}
                   </h3>
                 </div>
 
                 {/* Points */}
                 <ul className="space-y-3 text-gray-700 w-full">
-                  {item.points.map((point, i) => (
+                  {/* {item?.points?.map((point, i) => (
                     <li key={i} className="flex items-center gap-4 mb-3">
                       <FaCheckCircle className="text-gray-500" />
                       <span className="text-[#2A3855]">{point}</span>
                     </li>
-                  ))}
+                  ))} */}
+                  {(() => {
+                    let pointsArray = [];
+
+                    try {
+                      pointsArray =
+                        typeof item.points === "string"
+                          ? JSON.parse(item.points)
+                          : item.points;
+                    } catch (error) {
+                      pointsArray = [];
+                    }
+                    // console.log(pointsArray);
+                    return pointsArray.map((point, i) => (
+                      <li key={i} className="flex items-center gap-4 mb-3">
+                        <FaCheckCircle className="text-gray-500" />
+                        <span className="text-[#2A3855]">{point}</span>
+                      </li>
+                    ));
+                  })()}
                 </ul>
               </motion.div>
             );

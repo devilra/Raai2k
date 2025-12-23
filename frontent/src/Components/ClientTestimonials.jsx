@@ -56,7 +56,7 @@ const PrevArrow = ({ onClick }) => (
   </div>
 );
 
-const ClientTestimonials = () => {
+const ClientTestimonials = ({ activeTestimonials }) => {
   const settings = {
     infinite: true,
     autoplay: true,
@@ -91,12 +91,12 @@ const ClientTestimonials = () => {
 
         {/* Carousel */}
         <Slider {...settings}>
-          {testimonials.map((t, idx) => (
+          {activeTestimonials.map((t, idx) => (
             <div key={idx}>
               <div className="flex flex-col md:flex-row items-center gap-10 p-6">
                 {/* Left Image */}
                 <img
-                  src={t.img}
+                  src={t.image}
                   alt={t.name}
                   className="w-60 h-60 object-cover rounded-2xl shadow-md"
                 />

@@ -2,46 +2,33 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api";
 
 // ----------------------------------------------------
-// 1. ERROR HELPER
+// 1. ASYNC THUNKS (API Calls)
 // ----------------------------------------------------
+
+// ---------------------------
+// Error Message Retrieval Logic (homeContentSlice-இல் உள்ளதைப் போன்றது)
+// ---------------------------
 const getThunkError = (error, defaultMessage) => {
   const message =
     (error.response && error.response.data && error.response.data.message) ||
     error.message ||
     error.toString();
 
+  // Server-இல் இருந்து message கிடைக்கவில்லை என்றால் default message-ஐ பயன்படுத்தவும்
   return message === "Request failed with status code 401"
     ? defaultMessage
     : message;
 };
 
-// ----------------------------------------------------
-// 2. ASYNC THUNKS (API Calls)
-// ----------------------------------------------------
-
-// Admin: அனைத்து Welcome Content-களையும் பெறுதல்
 export const fetchWelcomeContent = createAsyncThunk(
   "welcome/fetchContent",
   async (_, thunkAPI) => {
     try {
       const response = await api.get("/admin/welcome-all");
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content fetch Error");
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-// Frontend: Active Welcome Content-ஐ மட்டும் பெறுதல் (New)
-export const fetchActiveWelcome = createAsyncThunk(
-  "welcome/fetchActive",
-  async (_, thunkAPI) => {
-    try {
-      const response = await api.get("/admin/welcome-active");
-      return response.data;
-    } catch (error) {
-      const message = getThunkError(error, "Active Welcome fetch Error");
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -52,6 +39,7 @@ export const createWelcomeContent = createAsyncThunk(
   async (contentData, thunkAPI) => {
     try {
       const response = await api.post("/admin/welcome-create", contentData);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content create error");
@@ -64,7 +52,10 @@ export const updateWelcomeContent = createAsyncThunk(
   "welcome/updateContent",
   async ({ id, data }, thunkAPI) => {
     try {
+      //console.log(data);
       const response = await api.put(`/admin/welcome-content/${id}`, data);
+
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       const message = getThunkError(error, "Welcome Content Update Failed");
@@ -78,7 +69,7 @@ export const deleteWelcomeContent = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await api.delete(`/admin/welcome-content/${id}`);
-      return id;
+      return id; // வெற்றிகரமாக delete ஆன ID-ஐத் திரும்ப அனுப்பவும்
     } catch (error) {
       const message = getThunkError(error, "Welcome Content Delete Error");
       return thunkAPI.rejectWithValue(message);
@@ -87,27 +78,21 @@ export const deleteWelcomeContent = createAsyncThunk(
 );
 
 // ----------------------------------------------------
-// 3. INITIAL STATE
+// 2. INITIAL STATE
 // ----------------------------------------------------
+
 const initialState = {
-  // Admin States
   welcomeContents: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
   message: "",
-
-  // Frontend (Active) States
-  activeWelcome: null,
-  isActiveLoading: false,
-  isActiveSuccess: false,
-  isActiveError: false,
-  activeMessage: "",
 };
 
 // ----------------------------------------------------
-// 4. SLICE DEFINITION
+// 3. SLICE DEFINITION
 // ----------------------------------------------------
+
 export const welcomeContentSlice = createSlice({
   name: "welcomeContent",
   initialState,
@@ -117,56 +102,41 @@ export const welcomeContentSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
-      state.isActiveLoading = false;
-      state.isActiveSuccess = false;
-      state.isActiveError = false;
-      state.activeMessage = "";
     },
   },
   extraReducers: (builder) => {
     builder
-      // ================= FETCH ALL (Admin) =================
+      // ================= FETCH CONTENT STATUS =================
       .addCase(fetchWelcomeContent.pending, (state) => {
         state.isLoading = true;
-        state.isSuccess = false;
-        state.isError = false;
+        state.isSuccess = false; // Reset status
+        state.isError = false; // Reset status
       })
       .addCase(fetchWelcomeContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.welcomeContents = action.payload;
+        state.message = ""; // Success message-ஐ fetch-க்கு வைக்கத் தேவையில்லை
       })
       .addCase(fetchWelcomeContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
+        state.welcomeContents = []; // Error-இல் array-ஐ காலி செய்யலாம்
       })
-
-      // ================= FETCH ACTIVE (Frontend) =================
-      .addCase(fetchActiveWelcome.pending, (state) => {
-        state.isActiveLoading = true;
-        state.isActiveError = false;
-        state.isActiveSuccess = false;
-      })
-      .addCase(fetchActiveWelcome.fulfilled, (state, action) => {
-        state.isActiveLoading = false;
-        state.isActiveSuccess = true;
-        state.activeWelcome = action.payload;
-      })
-      .addCase(fetchActiveWelcome.rejected, (state, action) => {
-        state.isActiveLoading = false;
-        state.isActiveError = true;
-        state.activeMessage = action.payload;
-      })
-
-      // ================= CREATE CONTENT =================
+      // ================= CREATE CONTENT STATUS =================
       .addCase(createWelcomeContent.pending, (state) => {
         state.isLoading = true;
+        state.isSuccess = false; // Reset status
+        state.isError = false; // Reset status
       })
       .addCase(createWelcomeContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.message = "Welcome Content created successfully.";
+
+        // response-இன் structure-ஐப் பொறுத்து .content-ஐப் பயன்படுத்துகிறோம்
         const newContent = action.payload.content;
         if (newContent) {
           state.welcomeContents.push(newContent);
@@ -175,21 +145,26 @@ export const welcomeContentSlice = createSlice({
       .addCase(createWelcomeContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
       })
-
-      // ================= UPDATE CONTENT =================
+      // ================= UPDATE CONTENT STATUS =================
       .addCase(updateWelcomeContent.pending, (state) => {
         state.isLoading = true;
+        state.isSuccess = false; // Reset status
+        state.isError = false; // Reset status
       })
       .addCase(updateWelcomeContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.message = "Welcome Content updated successfully.";
+
+        // புதுப்பிக்கப்பட்ட entry-ஐ list-இல் மாற்றுகிறோம்
         const updatedContent = action.payload.content;
         const index = state.welcomeContents.findIndex(
           (content) => content.id === updatedContent.id
         );
+
         if (index !== -1) {
           state.welcomeContents[index] = updatedContent;
         }
@@ -197,17 +172,20 @@ export const welcomeContentSlice = createSlice({
       .addCase(updateWelcomeContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
       })
-
-      // ================= DELETE CONTENT =================
+      // ================= DELETE CONTENT STATUS =================
       .addCase(deleteWelcomeContent.pending, (state) => {
         state.isLoading = true;
+        state.isSuccess = false; // Reset status
+        state.isError = false; // Reset status
       })
       .addCase(deleteWelcomeContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.message = "Welcome Content deleted successfully.";
+        // நீக்கப்பட்ட ID-ஐப் பயன்படுத்தி list-இல் இருந்து நீக்குகிறோம்
         state.welcomeContents = state.welcomeContents.filter(
           (content) => content.id !== action.payload
         );
@@ -215,6 +193,7 @@ export const welcomeContentSlice = createSlice({
       .addCase(deleteWelcomeContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false; // Failure-இல் success false
         state.message = action.payload;
       });
   },

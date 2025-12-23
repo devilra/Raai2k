@@ -82,7 +82,7 @@ const services = [
   },
 ];
 
-const ExpertiseSection = () => {
+const ExpertiseSection = ({ activeExpertise }) => {
   return (
     <section className="w-full py-10 md:pt-10 mt-14">
       <div className="max-w-6xl mx-auto px-5">
@@ -107,45 +107,49 @@ const ExpertiseSection = () => {
 
         {/* Expertise Blocks */}
         <div className="flex flex-col gap-5 md:gap-10 lg:gap-0">
-          {services.map((item) => (
-            <div
-              key={item.id}
-              className={`flex flex-col ${
-                item.reverse ? "lg:flex-row-reverse" : "lg:flex-row"
-              } bg-white overflow-hidden w-full`}
-            >
-              {/* IMAGE BLOCK */}
-              <motion.div
-                variants={item.reverse ? fadeRight : fadeLeft}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
-                className="w-full lg:w-1/2 h-[350px] md:h-[300px]"
-              >
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
+          {activeExpertise?.map((item, i) => {
+            const isReverse = i % 2 !== 0;
 
-              {/* TEXT BLOCK */}
-              <motion.div
-                variants={item.reverse ? fadeLeft : fadeRight}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
-                className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10"
+            return (
+              <div
+                key={item.id}
+                className={`flex flex-col ${
+                  isReverse ? "lg:flex-row-reverse" : "lg:flex-row"
+                } bg-white overflow-hidden w-full`}
               >
-                <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-[16px] border-l-4 pl-4 border-red-500 mb-6">
-                  {item.desc}
-                </p>
-              </motion.div>
-            </div>
-          ))}
+                {/* IMAGE BLOCK */}
+                <motion.div
+                  variants={item.reverse ? fadeRight : fadeLeft}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="w-full lg:w-1/2 h-[350px] md:h-[300px]"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+
+                {/* TEXT BLOCK */}
+                <motion.div
+                  variants={item.reverse ? fadeLeft : fadeRight}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-10"
+                >
+                  <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-[16px] border-l-4 pl-4 border-red-500 mb-6">
+                    {item.description}
+                  </p>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

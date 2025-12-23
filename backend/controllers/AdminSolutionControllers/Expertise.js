@@ -15,6 +15,23 @@ exports.getExpertise = async (req, res) => {
   }
 };
 
+// 🌟 புதிய பங்க்ஷன்: Active நிலையில் உள்ளவற்றை மட்டும் பெறுதல் (PUBLIC/FRONTEND READ)
+exports.getActiveExpertise = async (req, res) => {
+  try {
+    const activeSlides = await Expertise.findAll({
+      where: { isActive: true }, // isActive true ஆக உள்ளவை மட்டும்
+      order: [["slideOrder", "ASC"]], // வரிசைப்படி
+    });
+
+    return res.status(200).json(activeSlides);
+  } catch (error) {
+    console.error("Error fetching active expertise:", error);
+    return res
+      .status(500)
+      .json({ message: "Failed to fetch active expertise data" });
+  }
+};
+
 // 2. புதிய Slide-ஐ உருவாக்குதல் (CREATE)
 exports.createExpertise = async (req, res) => {
   console.log(req.file);

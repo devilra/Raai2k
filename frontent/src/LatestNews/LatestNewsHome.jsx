@@ -95,7 +95,7 @@ const itemEffect = {
   show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
 };
 
-const LatestNewsHome = () => {
+const LatestNewsHome = ({ activeNews }) => {
   const settings = {
     infinite: true,
     autoplay: true,
@@ -119,6 +119,11 @@ const LatestNewsHome = () => {
     ],
   };
 
+  const displayTile =
+    activeNews && activeNews.length > 0
+      ? activeNews[0].pageTitle
+      : "Latest News";
+
   return (
     <motion.section
       variants={container}
@@ -130,7 +135,7 @@ const LatestNewsHome = () => {
       {/* Title */}
       <div className="text-center mb-14">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
-          Latest News
+          {displayTile}
         </h2>
         <div className="w-16 h-[3px] bg-[#2A3855] mx-auto mt-4"></div>
       </div>
@@ -138,13 +143,13 @@ const LatestNewsHome = () => {
       {/* Carousel Section */}
       <div className="max-w-7xl hidden md:block mx-auto px-6 overflow-hidden ">
         <Slider {...settings}>
-          {newsData.map((item) => (
+          {activeNews?.map((item) => (
             <motion.div variants={itemEffect} key={item.id} className="px-3">
               <div className="bg-white rounded-2xl shadow-sm  hover:shadow-xl transition-all duration-300">
                 {/* Image */}
                 <img
-                  src={item.img}
-                  alt={item.title}
+                  src={item.image}
+                  alt={item.newsTitle}
                   className="w-full h-56 object-cover"
                 />
 
@@ -156,13 +161,13 @@ const LatestNewsHome = () => {
                     //to={`/news/${item.id}`}
                     className="text-[21px] md:text-[18px] font-bold text-[#2A3855] leading-snug mb-2 block"
                   >
-                    {item.title}
+                    {item.newsTitle}
                   </a>
 
-                  <p className="text-gray-400 text-sm mb-4">By {item.author}</p>
+                  <p className="text-gray-400 text-sm mb-4">By {item.byName}</p>
 
                   <p className="text-gray-600 text-[16px] truncate mb-6">
-                    {item.desc}
+                    {item.description}
                   </p>
 
                   <a
@@ -181,35 +186,41 @@ const LatestNewsHome = () => {
       </div>
       <div className="max-w-7xl md:hidden mx-auto px-6 overflow-hidden">
         <Slider {...settings} slidesToShow={1}>
-          {newsData.map((item) => (
+          {activeNews?.map((item) => (
             <motion.div variants={itemEffect} key={item.id} className="px-3">
               <div className="bg-white rounded-2xl shadow-sm  hover:shadow-xl transition-all duration-300">
                 {/* Image */}
                 <img
-                  src={item.img}
-                  alt={item.title}
+                  src={item.image}
+                  alt={item.newsTitle}
                   className="w-full h-56 object-cover"
                 />
 
                 {/* Content */}
                 <div className="p-8">
-                  <Link
-                    to={`/news/${item.id}`}
-                    className="text-[21px] md:text-[18px] font-bold text-[#2A3855]  mb-2 block"
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    //to={`/news/${item.id}`}
+                    className="text-[21px] md:text-[18px] font-bold text-[#2A3855] leading-snug mb-2 block"
                   >
-                    {item.title}
-                  </Link>
+                    {item.newsTitle}
+                  </a>
 
-                  <p className="text-gray-500 text-sm mb-4">By {item.author}</p>
+                  <p className="text-gray-400 text-sm mb-4">By {item.byName}</p>
 
-                  <p className="text-gray-600 text-[16px]  mb-6">{item.desc}</p>
+                  <p className="text-gray-600 text-[16px] truncate mb-6">
+                    {item.description}
+                  </p>
 
-                  <Link
-                    to={`/news/${item.id}`}
-                    className="text-[#2A3855] font-semibold flex items-center gap-2 hover:gap-4 transition-all"
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    //to={`/news/${item.id}`}
+                    className="text-[#2A3855] text-[16px] font-semibold flex items-center gap-2 hover:gap-4 transition-all"
                   >
                     Learn More →
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

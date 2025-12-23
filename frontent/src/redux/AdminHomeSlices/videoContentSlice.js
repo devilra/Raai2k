@@ -19,68 +19,72 @@ const getThunkError = (error, defaultMessage) => {
 // 2. ASYNC THUNKS (API Calls)
 // ----------------------------------------------------
 
-// Admin: அனைத்து Welcome Content-களையும் பெறுதல்
-export const fetchWelcomeContent = createAsyncThunk(
-  "welcome/fetchContent",
+// Admin: அனைத்து Video Content-களையும் பெறுதல்
+export const fetchVideoContent = createAsyncThunk(
+  "video/fetchContent",
   async (_, thunkAPI) => {
     try {
-      const response = await api.get("/admin/welcome-all");
+      const response = await api.get("/admin/home/video-all");
       return response.data;
     } catch (error) {
-      const message = getThunkError(error, "Welcome Content fetch Error");
+      const message = getThunkError(error, "Video Content fetch Error");
       return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
-// Frontend: Active Welcome Content-ஐ மட்டும் பெறுதல் (New)
-export const fetchActiveWelcome = createAsyncThunk(
-  "welcome/fetchActive",
+// Frontend: Active Video Content-ஐ மட்டும் பெறுதல்
+export const fetchActiveVideo = createAsyncThunk(
+  "video/fetchActive",
   async (_, thunkAPI) => {
     try {
-      const response = await api.get("/admin/welcome-active");
+      const response = await api.get("/admin/home/video-active");
+      console.log(response.data);
       return response.data;
     } catch (error) {
-      const message = getThunkError(error, "Active Welcome fetch Error");
+      const message = getThunkError(error, "Active Video fetch Error");
       return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
-export const createWelcomeContent = createAsyncThunk(
-  "welcome/createContent",
+// Admin: புதிய Video Content உருவாக்குதல்
+export const createVideoContent = createAsyncThunk(
+  "video/createContent",
   async (contentData, thunkAPI) => {
     try {
-      const response = await api.post("/admin/welcome-create", contentData);
+      const response = await api.post("/admin/home/video-create", contentData);
       return response.data;
     } catch (error) {
-      const message = getThunkError(error, "Welcome Content create error");
+      const message = getThunkError(error, "Video Content create error");
       return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
-export const updateWelcomeContent = createAsyncThunk(
-  "welcome/updateContent",
+// Admin: Video Content-ஐப் புதுப்பித்தல்
+export const updateVideoContent = createAsyncThunk(
+  "video/updateContent",
   async ({ id, data }, thunkAPI) => {
     try {
-      const response = await api.put(`/admin/welcome-content/${id}`, data);
+      const response = await api.put(`/admin/home/video-content/${id}`, data);
       return response.data;
     } catch (error) {
-      const message = getThunkError(error, "Welcome Content Update Failed");
+      const message = getThunkError(error, "Video Content Update Failed");
       return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
-export const deleteWelcomeContent = createAsyncThunk(
-  "welcome/deleteContent",
+// Admin: Video Content-ஐ நீக்குதல்
+export const deleteVideoContent = createAsyncThunk(
+  "video/deleteContent",
   async (id, thunkAPI) => {
     try {
-      await api.delete(`/admin/welcome-content/${id}`);
+      await api.delete(`/admin/home/video-content/${id}`);
       return id;
     } catch (error) {
-      const message = getThunkError(error, "Welcome Content Delete Error");
+      const message = getThunkError(error, "Video Content Delete Error");
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -91,14 +95,14 @@ export const deleteWelcomeContent = createAsyncThunk(
 // ----------------------------------------------------
 const initialState = {
   // Admin States
-  welcomeContents: [],
+  videoContents: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
   message: "",
 
   // Frontend (Active) States
-  activeWelcome: null,
+  activeVideo: [],
   isActiveLoading: false,
   isActiveSuccess: false,
   isActiveError: false,
@@ -108,11 +112,11 @@ const initialState = {
 // ----------------------------------------------------
 // 4. SLICE DEFINITION
 // ----------------------------------------------------
-export const welcomeContentSlice = createSlice({
-  name: "welcomeContent",
+export const videoContentSlice = createSlice({
+  name: "videoContent",
   initialState,
   reducers: {
-    resetWelcomeContentState: (state) => {
+    resetVideoContentState: (state) => {
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
@@ -126,93 +130,89 @@ export const welcomeContentSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // ================= FETCH ALL (Admin) =================
-      .addCase(fetchWelcomeContent.pending, (state) => {
+      .addCase(fetchVideoContent.pending, (state) => {
         state.isLoading = true;
-        state.isSuccess = false;
-        state.isError = false;
       })
-      .addCase(fetchWelcomeContent.fulfilled, (state, action) => {
+      .addCase(fetchVideoContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.welcomeContents = action.payload;
+        state.videoContents = action.payload;
       })
-      .addCase(fetchWelcomeContent.rejected, (state, action) => {
+      .addCase(fetchVideoContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
 
       // ================= FETCH ACTIVE (Frontend) =================
-      .addCase(fetchActiveWelcome.pending, (state) => {
+      .addCase(fetchActiveVideo.pending, (state) => {
         state.isActiveLoading = true;
-        state.isActiveError = false;
-        state.isActiveSuccess = false;
       })
-      .addCase(fetchActiveWelcome.fulfilled, (state, action) => {
+      .addCase(fetchActiveVideo.fulfilled, (state, action) => {
         state.isActiveLoading = false;
         state.isActiveSuccess = true;
-        state.activeWelcome = action.payload;
+        state.activeVideo = action.payload;
       })
-      .addCase(fetchActiveWelcome.rejected, (state, action) => {
+      .addCase(fetchActiveVideo.rejected, (state, action) => {
         state.isActiveLoading = false;
         state.isActiveError = true;
         state.activeMessage = action.payload;
       })
 
       // ================= CREATE CONTENT =================
-      .addCase(createWelcomeContent.pending, (state) => {
+      .addCase(createVideoContent.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createWelcomeContent.fulfilled, (state, action) => {
+      .addCase(createVideoContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "Welcome Content created successfully.";
+        state.message = "Video Content created successfully.";
         const newContent = action.payload.content;
         if (newContent) {
-          state.welcomeContents.push(newContent);
+          state.videoContents.push(newContent);
         }
       })
-      .addCase(createWelcomeContent.rejected, (state, action) => {
+      .addCase(createVideoContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
 
       // ================= UPDATE CONTENT =================
-      .addCase(updateWelcomeContent.pending, (state) => {
+      .addCase(updateVideoContent.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(updateWelcomeContent.fulfilled, (state, action) => {
+      .addCase(updateVideoContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "Welcome Content updated successfully.";
+        state.message = "Video Content updated successfully.";
         const updatedContent = action.payload.content;
-        const index = state.welcomeContents.findIndex(
+        const index = state.videoContents.findIndex(
           (content) => content.id === updatedContent.id
         );
         if (index !== -1) {
-          state.welcomeContents[index] = updatedContent;
+          state.videoContents[index] = updatedContent;
         }
       })
-      .addCase(updateWelcomeContent.rejected, (state, action) => {
+      .addCase(updateVideoContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
 
       // ================= DELETE CONTENT =================
-      .addCase(deleteWelcomeContent.pending, (state) => {
+      .addCase(deleteVideoContent.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteWelcomeContent.fulfilled, (state, action) => {
+      .addCase(deleteVideoContent.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = "Welcome Content deleted successfully.";
-        state.welcomeContents = state.welcomeContents.filter(
+        state.message = "Video Content deleted successfully.";
+        state.videoContents = state.videoContents.filter(
           (content) => content.id !== action.payload
         );
       })
-      .addCase(deleteWelcomeContent.rejected, (state, action) => {
+      .addCase(deleteVideoContent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -220,5 +220,5 @@ export const welcomeContentSlice = createSlice({
   },
 });
 
-export const { resetWelcomeContentState } = welcomeContentSlice.actions;
-export default welcomeContentSlice.reducer;
+export const { resetVideoContentState } = videoContentSlice.actions;
+export default videoContentSlice.reducer;

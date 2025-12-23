@@ -59,7 +59,20 @@ const container = {
   },
 };
 
-const ProcessWorkflow = () => {
+const ProcessWorkflow = ({ activeOurProcess }) => {
+  const getIcons = (index) => {
+    const icons = [
+      <MdSearch size={28} className="text-white" />,
+      <MdArchitecture size={28} className="text-white" />,
+      <MdOutlineDesignServices size={28} className="text-white" />,
+      <MdSecurity size={28} className="text-white" />,
+      <FaCloudUploadAlt size={28} className="text-white" />,
+      <FaRocket size={28} className="text-white" />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
   return (
     <motion.section
       variants={container}
@@ -89,7 +102,7 @@ const ProcessWorkflow = () => {
           variants={fadeIn}
           className="relative border-l-4 border-gray-300 ml-4 md:ml-10"
         >
-          {steps.map((item, index) => (
+          {activeOurProcess?.map((item, index) => (
             <motion.div
               key={index}
               variants={fadeIn}
@@ -102,15 +115,15 @@ const ProcessWorkflow = () => {
               <div className="p-6 rounded-xl shadow-md hover:shadow-xl transition bg-white border-l-4 border-[#2A3855]">
                 <div className="flex items-center gap-4 mb-3">
                   <div className="p-3 bg-[#2A3855] rounded-lg shadow">
-                    {item.icon}
+                    {getIcons(index)}
                   </div>
                   <h3 className="text-xl font-semibold text-[#2A3855]">
-                    {item.title}
+                    {item.mainHeading}
                   </h3>
                 </div>
 
                 <p className="text-gray-700 text-[15.5px] leading-relaxed">
-                  {item.desc}
+                  {item.subText}
                 </p>
               </div>
             </motion.div>

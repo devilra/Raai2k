@@ -23,53 +23,64 @@ const itemEffect = {
   show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
 };
 
-const features = [
-  {
-    icon: <BiBarChartAlt2 size={40} className="text-[#2A3855]" />,
-    title: "Core Banking & Digital Banking Systems",
-    desc: "Secure and scalable digital banking systems built for modern financial operations.",
-  },
-  // {
-  //   icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
-  //   title: "Data Analytics, AI & Machine Learning",
-  //   desc: "AI/ML analytics that unlock insights and automate decisions.",
-  // },
+// const features = [
+//   {
+//     icon: <BiBarChartAlt2 size={40} className="text-[#2A3855]" />,
+//     title: "Core Banking & Digital Banking Systems",
+//     desc: "Secure and scalable digital banking systems built for modern financial operations.",
+//   },
+//   // {
+//   //   icon: <AiOutlineLineChart size={40} className="text-[#2A3855]" />,
+//   //   title: "Data Analytics, AI & Machine Learning",
+//   //   desc: "AI/ML analytics that unlock insights and automate decisions.",
+//   // },
 
-  {
-    icon: <MdPayment size={40} className="text-[#2A3855]" />,
-    title: "Payments & Wallets",
-    desc: "Secure, real-time payment and wallet systems.",
-  },
+//   {
+//     icon: <MdPayment size={40} className="text-[#2A3855]" />,
+//     title: "Payments & Wallets",
+//     desc: "Secure, real-time payment and wallet systems.",
+//   },
 
-  {
-    icon: <GiReceiveMoney size={40} className="text-[#2A3855]" />,
-    title: "Lending, Credit & Risk Systems",
-    desc: "Automated lending with fast, compliant risk checks.",
-  },
-  {
-    icon: <TbShieldLock size={40} className="text-[#2A3855]" />,
-    title: "RegTech & Compliance Engineering",
-    desc: "Automated KYC, AML, and compliance workflows.",
-  },
-  // {
-  //   icon: <PiCubeTransparentLight size={40} className="text-[#2A3855]" />,
-  //   title: "Blockchain & Distributed Ledger",
-  //   desc: "Secure, transparent, tamper-proof blockchain solutions.",
-  // },
+//   {
+//     icon: <GiReceiveMoney size={40} className="text-[#2A3855]" />,
+//     title: "Lending, Credit & Risk Systems",
+//     desc: "Automated lending with fast, compliant risk checks.",
+//   },
+//   {
+//     icon: <TbShieldLock size={40} className="text-[#2A3855]" />,
+//     title: "RegTech & Compliance Engineering",
+//     desc: "Automated KYC, AML, and compliance workflows.",
+//   },
+//   // {
+//   //   icon: <PiCubeTransparentLight size={40} className="text-[#2A3855]" />,
+//   //   title: "Blockchain & Distributed Ledger",
+//   //   desc: "Secure, transparent, tamper-proof blockchain solutions.",
+//   // },
 
-  // {
-  //   icon: <HiOutlineUserGroup size={40} className="text-[#2A3855]" />,
-  //   title: "Awesome Team",
-  //   desc: "Before talking destination, we shine a spotlight across your organizationto fully understand it.",
-  // },
-  // {
-  //   icon: <IoIosChatbubbles size={40} className="text-[#2A3855]" />,
-  //   title: "Excellent Support",
-  //   desc: "If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.",
-  // },
-];
+//   // {
+//   //   icon: <HiOutlineUserGroup size={40} className="text-[#2A3855]" />,
+//   //   title: "Awesome Team",
+//   //   desc: "Before talking destination, we shine a spotlight across your organizationto fully understand it.",
+//   // },
+//   // {
+//   //   icon: <IoIosChatbubbles size={40} className="text-[#2A3855]" />,
+//   //   title: "Excellent Support",
+//   //   desc: "If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.",
+//   // },
+// ];
 
-const WelcomeSection = () => {
+const WelcomeSection = ({ activeWelcome }) => {
+  const getIcon = (index) => {
+    const icons = [
+      <BiBarChartAlt2 size={40} />,
+      <MdPayment size={40} />,
+      <GiReceiveMoney size={40} />,
+      <TbShieldLock size={40} />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
   return (
     <motion.div
       variants={container}
@@ -108,7 +119,7 @@ const WelcomeSection = () => {
   gap-12 md:gap-6 lg:gap-12 
   items-start"
           >
-            {features.map((item, index) => (
+            {activeWelcome?.map((item, index) => (
               <motion.div
                 key={index}
                 variants={itemEffect}
@@ -116,15 +127,15 @@ const WelcomeSection = () => {
               >
                 {/* Icon circle */}
                 <div className="w-20 h-20 flex items-center justify-center rounded-full font-bold bg-[#f7f7f7] border border-gray-200 mb-6">
-                  {item.icon}
+                  {getIcon(index)}
                 </div>
                 {/* Title */}
                 <h3 className="text-[21px] md:text-[18px] font-bold text-[#2A3855] mb-3 ">
-                  {item.title}
+                  {item.mainHeading}
                 </h3>
                 {/* Description */}
                 <p className="text-gray-600 text-[16px]  text-center">
-                  {item.desc}
+                  {item.subText}
                 </p>
               </motion.div>
             ))}

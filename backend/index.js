@@ -24,6 +24,8 @@ const IndustryWeServeRoutes = require("./routes/AdminServiceRoutes/IndustryWeSer
 const FintechServicesRoutes = require("./routes/AdminServiceRoutes/FinTechServiceRoutes");
 const EngagementModelRoutes = require("./routes/AdminServiceRoutes/EngagementModelRoutes");
 const CaseStudyRoutes = require("./routes/AdminServiceRoutes/CaseStudyRoutes");
+const VideoContentRoutes = require("./routes/AdminHomeRoutes/VideoContentRoutes");
+const WhyChooseUs = require("./routes/AdminHomeRoutes/whyChooseUsRoutes");
 
 const app = express();
 
@@ -74,6 +76,8 @@ app.use("/api/admin/service", IndustryWeServeRoutes);
 app.use("/api/admin/service", FintechServicesRoutes);
 app.use("/api/admin/service", EngagementModelRoutes);
 app.use("/api/admin/service", CaseStudyRoutes);
+app.use("/api/admin/home", VideoContentRoutes);
+app.use("/api/admin/home", WhyChooseUs);
 
 // Simple root route for testing
 app.get("/", (req, res) => {

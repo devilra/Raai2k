@@ -52,13 +52,30 @@ const fadeUp = {
   },
 };
 
-export default function WhyChooseElixir() {
+export default function WhyChooseElixir({ activeWhyChoose }) {
+  const getIcons = (index) => {
+    const icons = [
+      <FaComments size={28} className="text-[#2A3855]" />,
+      <MdCreateNewFolder size={28} className="text-[#2A3855]" />,
+      <GiTimeTrap size={28} className="text-[#2A3855]" />,
+    ];
+
+    return icons[index % icons.length];
+  };
+
+  const displayImage =
+    activeWhyChoose.length > 0 ? activeWhyChoose[0].image : null;
+  const displayTitle =
+    activeWhyChoose && activeWhyChoose.length > 0
+      ? activeWhyChoose[0].pageTitle
+      : "Why Choose raai2k";
+
   return (
     <section className="w-full bg-white pt-20">
       {/* Heading */}
       <div className="text-center mb-16">
         <h2 className="text-[28px] md:text-[37px] font-bold text-[#2A3855]">
-          Why Choose raai2k
+          {displayTitle}
         </h2>
         <div className="w-20 h-[3px] bg-[#2A3855] mx-auto mt-3"></div>
       </div>
@@ -74,7 +91,7 @@ export default function WhyChooseElixir() {
           className="w-full lg:w-[400px]"
         >
           <img
-            src="/service/s1.jpg"
+            src={displayImage || "/service/s1.jpg"}
             className="rounded-xl shadow-md w-full object-cover"
             alt="Choose RAai2k"
           />
@@ -88,11 +105,11 @@ export default function WhyChooseElixir() {
           viewport={{ once: true, amount: 0.3 }}
           className="w-full lg:w-1/2 flex flex-col gap-10"
         >
-          {items.map((item, index) => (
+          {activeWhyChoose.map((item, index) => (
             <div key={index} className="flex items-start gap-4">
-              <div>{item.icon}</div>
+              <div>{getIcons(index)}</div>
               <div>
-                <p className="text-gray-600 text-[16px]">{item.desc}</p>
+                <p className="text-gray-600 text-[16px]">{item.description}</p>
               </div>
             </div>
           ))}
