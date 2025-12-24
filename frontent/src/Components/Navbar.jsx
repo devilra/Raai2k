@@ -178,7 +178,7 @@ export default function Navbar() {
           </button> */}
 
           {admin ? (
-            <div className="">
+            <div className="hidden md:hidden lg:flex">
               <Link
                 to="/admin"
                 className="bg-[#2A3855] text-white px-5  py-2 font-bold text-[15px]   transition"
@@ -187,12 +187,14 @@ export default function Navbar() {
               </Link>
             </div>
           ) : (
-            <Link
-              to="/auth/login"
-              className="text-[#2A3855] font-bold text-[15px]    transition"
-            >
-              Login
-            </Link>
+            <div className="hidden md:hidden lg:flex">
+              <Link
+                to="/auth/login"
+                className="text-[#2A3855] font-bold text-[15px]    transition"
+              >
+                Login
+              </Link>
+            </div>
           )}
 
           {/* Mobile Menu Icon (Without changes) */}
@@ -328,24 +330,23 @@ export default function Navbar() {
                 FAQs
               </Link> */}
 
-              {isLocalAdmin &&
-                (admin ? (
-                  <Link
-                    to="/admin-dashboard"
-                    className="px-5 py-2 bg-gray-100 font-bold"
-                    onClick={() => setOpenMenu(false)}
-                  >
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    to="/login"
-                    className="px-5 py-2 text-indigo-600 font-bold"
-                    onClick={() => setOpenMenu(false)}
-                  >
-                    Login
-                  </Link>
-                ))}
+              {admin ? (
+                <Link
+                  to="/admin"
+                  className="px-5 py-2  font-bold"
+                  onClick={() => setOpenMenu(false)}
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <Link
+                  to="/auth/login"
+                  className="px-5 py-2 text-indigo-600 font-bold"
+                  onClick={() => setOpenMenu(false)}
+                >
+                  Login
+                </Link>
+              )}
             </div>
             {/* <div className="absolute bottom-5 left-0 w-full px-6">
               <button className="w-full border-2 border-[#223058] text-[#223058] font-semibold py-3 rounded-full">
